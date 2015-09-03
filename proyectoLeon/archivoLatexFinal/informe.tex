@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[12pt,letterpaper]{article}     % Tipo de documento y otras especificaciones
+\usepackage[utf8]{inputenc}                   % Para escribir tildes y eñes
+\usepackage[spanish]{babel}                   % Para que los títulos de figuras, tablas y otros estén en español
+\addto\captionsspanish{\renewcommand{\tablename}{Tabla}}					% Cambiar nombre a tablas
+\addto\captionsspanish{\renewcommand{\listtablename}{Índice de tablas}}		% Cambiar nombre a lista de tablas
+\usepackage{geometry}                         
+\geometry{left=18mm,right=18mm,top=21mm,bottom=21mm} % Tamaño del área de escritura de la página
+\usepackage{ucs}
+\usepackage{amsmath}      % Los paquetes ams son desarrollados por la American Mathematical Society
+\usepackage{amsfonts}     % y mejoran la escritura de fórmulas y símbolos matemáticos.
+\usepackage{amssymb}
+\usepackage{graphicx}     % Para insertar gráficas
+\usepackage{pdfpages}   %incluir paginas de pdf externo, para los anexos
+\usepackage{pdflscape}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{appendix}   %para los anexos
+ \usepackage{epstopdf}   % Permite el uso de eps
+\usepackage[lofdepth,lotdepth]{subfig}	% Para colocar varias figuras
+\usepackage{unitsdef}	  % Para la presentación correcta de unidades
+\usepackage{pdfpages}   %incluir paginas de pdf externo, para los anexos
+\usepackage{appendix}   %para los anexos
+\renewcommand{\unitvaluesep}{\hspace*{4pt}}	% Redimensionamiento del espacio entre magnitud y unidad
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=black]{hyperref}     % Para insertar hipervínculos y marcadores
+\usepackage{float}		% Para ubicar las tablas y figuras justo después del texto
+\usepackage{booktabs}	% Para hacer tablas más estilizadas
+\batchmode
+%\usepackage{apacite}
+\bibliographystyle{plain} 
+\pagestyle{plain} 
+\pagenumbering{arabic}
+\usepackage{lastpage}
+\usepackage{fancyhdr}	% Para manejar los encabezados y pies de página
+\pagestyle{fancy}		% Contenido de los encabezados y pies de pagina
+
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset{ %
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Python,                 % the language of the code
+  otherkeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%No modificar las líneas anteriores
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\lhead{IE-0521 Estructuras de computadores II }
+\chead{}
+\rhead{Tarea 2 }	% Aquí va el numero de experimento, al igual que en el titulo
+\lfoot{Escuela de Ingeniería Eléctrica}
+\cfoot{\thepage\ de \pageref{LastPage}}
+\rfoot{Universidad de Costa Rica}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\author{Alejandro León Torres, B13645 \\ Andrés Mora Zúñiga, B14463 \\ Kenneth Vallecillo González, B16750  \\ {\small Grupo: 1}\\ \\ \\ \\Profesor: Erick Carvajal Barboza  \vspace*{2.0in}}
+\title{Universidad de Costa Rica\\{\small Facultad de Ingeniería\\Escuela de Ingeniería Eléctrica\\ IE-0521 Estructuras de computadores II \\ I ciclo 2015\\\vspace*{0.55in} Tarea 3}\\  \textbf{Multiplicador en Verilog}  \vspace*{1.55in}}
+%\date{4 de septiembre de 2014}  			
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\break	
+\begin{document}	% Inicio del documento
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfbookmark[1]{Portada}{portada} 	% Marcador para el título
+
+\maketitle	
+
+\thispagestyle{empty}
+% Título
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introducción}
+Implementación del AES en un FPGA
+\url{http://www.dspace.espol.edu.ec/bitstream/123456789/24372/1/JorgeCeli_AES_NIOSII.pdf}
+
+Explicación de Criptografía simétrica, asimétrica e Híbrida.
+\url{http://www.genbetadev.com/seguridad-informatica/tipos-de-criptografia-simetrica-asimetrica-e-hibrida}
+
+Ejemplos de algoritmos de cifrado maso explicados.
+\url{http://www.redeszone.net/2010/11/04/criptografia-algoritmos-de-cifrado-de-clave-simetrica/}
+\url{http://www.uv.es/~sto/cursos/seguridad.java/html/sjava-12.html}
+
+Un buen sistema de cifrado pone toda la seguridad en la clave y ninguna en el algoritmo. En otras palabras, no debería ser de ninguna ayuda para un atacante conocer el algoritmo que se está usando. Sólo si el atacante obtuviera la clave, le serviría conocer el algoritmo.
+
+
+\section{Universidad Politécnica de Madrid}
+Los 2 grandes métodos de encriptación son las siguientes:
+\begin{itemize}
+\item Transposición: Las letras del texto en claro intercambian sus posiciones según cierto patrón, así en el texto cifrado aparecen las mismas letras pero con sus posiciones permutadas.
+
+\item Sustitución: Las letras del texto claro mantienen su posición pero son cambiadas por otro tipo sea otro abecedario, números u otros signos.
+\end{itemize} 
+
+Criptoanálisis
+
+
+\section{Cifrado Simétrico}
+\subsection{Cifrados de flujo}
+Cifran el mensaje con correspondencias bit a bit sobre el flujo (stream). Un ejemplo de cifrado de flujo es RC4.
+
+\subsection{Cifrados de Bloque}
+Cifran el mensaje dividiendo el flujo en bloques de k bits. Cada bloque se corresponde con otro diferente. Por ejemplo, un bloque con k=3 "010" se podría corresponder con "110". Algunos ejemplos de cifrado de bloque son los algoritmos AES o RC6.
+
+
+\section{Cifrado RC5}
+Se encuentra basado en una red Feistel.
+\subsection{Usos}
+\begin{itemize}
+\item Procesamiento de Transacciones On Line (OLTP).
+\item Symbian.
+\item Protocolos de Seguridad de correo electrónico como PGP y S/MIME.
+\item RSA Data Security.
+\end{itemize}
+
+\begin{lstlisting}
+def imul(a,b) //	 Recibe las palabras a y b.
+producto = 0 //Inicializa el resultado.
+for i in range(0,32,1): //Itera sobre los 32 bits de cada palabra.
+if b & 0x1 == 1: // Y-logica de b con 1.
+producto += a //Si el ultimo bit de b era un 1 sumo a.
+a = a << 1 //Desplazo a hacia la izquierda.
+b = b >> 1 //Desplazo b hacia la derecha.
+return producto.
+\end{lstlisting}
+
+
+\section{Links intro}
+\url{http://www.seagate.com/staticfiles/SeagateCryptofaceoff.pdf}
+\url{https://hal.inria.fr/hal-00850899/document}
+\url{http://www.apricorn.com/software-vs-hardware-encryption/}
+KINGSTON ESTA DEMASIADO BUENO PARA EL MARCO PORQUE INCLUYE UNA LISTA DE VENTAJAS Y DESVENTAJAS
+\url{http://www.kingston.com/us/usb/encrypted_security/hardware_vs_software}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Referencias
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Referencias}
+\begin{thebibliography}{}
+
+\bibitem[Hennessy, 2014]{Hennessy} John L. Hennessy $\&$ David. A. Patterson.\emph{Computer organization and design}. Morgan Kaufmann 5th ed.
+
+
+\bibitem[Harris, 2013]{Harris} David Money Harris $\&$ Sarah L. Harris.\emph{Digital Design and Computer Architecture}. Morgan Kaufmann 2nd ed.
+
+
+\end{thebibliography} 
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

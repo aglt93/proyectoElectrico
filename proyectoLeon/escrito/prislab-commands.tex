@@ -1,0 +1,445 @@
+%Packages
+\usepackage{xspace}
+\usepackage{color}
+
+%Colours
+%ucr
+\definecolor{celesteUCR}{RGB}{65,173,231}
+\definecolor{amarilloUCR}{RGB}{249,234,100}
+\definecolor{verdeUCR}{RGB}{81,186,69}
+%
+%tum
+\definecolor{blueTUM}{RGB}{0,105,178}
+%
+\definecolor{redPRIS}{RGB}{180,0,0}
+\definecolor{yellowPRIS}{RGB}{240,230,170}
+\definecolor{grayPRIS}{RGB}{90,100,140}
+\definecolor{blackPRIS}{RGB}{0,0,0}
+%
+\definecolor{prisred}{RGB}{180,0,0}
+\definecolor{prisgrey}{RGB}{180,150,150}
+\definecolor{darkgrey}{RGB}{50,60,70}
+\definecolor{lightgrey}{RGB}{150,150,150}
+\definecolor{labgrey}{RGB}{90,100,140}
+\definecolor{labyellow}{RGB}{240,230,170}
+\definecolor{prisgray}{RGB}{50,60,70}
+\definecolor{prisblack}{RGB}{0,0,0}
+\definecolor{prisblue}{RGB}{40,65,140}
+\definecolor{ace1}{RGB}{0,150,215}
+\definecolor{ace2}{RGB}{0,50,70}
+\definecolor{ribBlue}{RGB}{0,100,150}
+
+\definecolor{pris}{RGB}{180,0,0}
+\definecolor{prisblue}{RGB}{40,65,140}
+% \definecolor{prisgray}{RGB}{107,107,107}
+\definecolor{labyellow}{RGB}{240,230,170}
+\definecolor{lightgrey}{RGB}{150,150,150}
+
+%Teknovae colors
+\definecolor{teknovaeBlack}{RGB}{0,0,0}
+\definecolor{teknovaeOrange}{RGB}{255,139,51}
+\definecolor{teknovaeGreen}{RGB}{3,204,0}
+\definecolor{teknovaeBlue}{RGB}{65,26,255}
+%
+\definecolor{blackTKN}{RGB}{0,0,0}
+\definecolor{redTKN}{RGB}{255,139,51}
+\definecolor{greenTKN}{RGB}{3,204,0}
+\definecolor{blueTKN}{RGB}{65,26,255}
+
+%Fonts
+\DeclareFontFamily{T1}{pbk}{}
+\DeclareFontFamily{T1}{pbks}{}
+\DeclareFontShape{T1}{pbk}{m}{n}{<->s*pbkl}{}
+\DeclareFontShape{T1}{pbks}{m}{n}{<->s*[0.7]pbkl}{}
+
+%Names
+\newcommand{\prislab}{{\fontfamily{pbk}\selectfont\textcolor{prisred}{PR}\textcolor{prisblack}{IS}}{\fontfamily{pbks}\selectfont\textcolor{prisgray}{-LAB}}\xspace}
+\newcommand{\pris}{Pattern Recognition and Intelligent Systems Laboratory\xspace}
+\newcommand{\prises}{Laboratorio de Investigación en Reconocimiento de Patrones y Sistemas Inteligentes\xspace}
+\newcommand{\prisfull}{\prislab: \pris}
+\newcommand{\prisfulles}{\prislab: \prises}
+
+\definecolor{core1}{RGB}{75,95,115}
+\definecolor{core2}{RGB}{220,60,60}
+\newcommand{\core}{{\fontfamily{bookman}\sc \textcolor{core1}{C}\textcolor{core2}{o}\textcolor{core1}{re}}\xspace}
+
+\definecolor{excess1}{RGB}{33,180,168}
+\definecolor{excess2}{RGB}{190,0,60}
+\newcommand{\excess}{{\fontfamily{bookman}\sc \textcolor{excess1}{E}\textcolor{excess2}{x}\textcolor{excess1}{cess}}\xspace}
+
+\definecolor{essence1}{RGB}{90,140,50}
+\definecolor{essence2}{RGB}{124,222,50}
+\newcommand{\essence}{{\fontfamily{bookman}\sc \textcolor{essence1}{E}\textcolor{essence2}{ss}\textcolor{essence1}{ence}}\xspace}
+
+\newcommand{\bend}{{\fontfamily{bookman}\sc \textcolor{excess2}{B}\textcolor{excess1}{e}\textcolor{excess1}{nd}}\xspace}
+\newcommand{\hint}{{\fontfamily{bookman}\sc \textcolor{essence1}{H}\textcolor{essence2}{int}}\xspace}
+
+% PRIS-Lab
+% \newcommand{\pris}{Pattern Recognition and Intelligent Systems Laboratory\xspace}
+% \newcommand{\prislab}{{\fontfamily{bookman}\sc\textcolor{prisred}{PR}\textcolor{black}{IS\textcolor{prisgray}{-lab}}}\xspace}
+% \newcommand{\bcrn}{{\fontfamily{bookman}\sc\textcolor{prisred}{PR}\textcolor{black}{IS\textcolor{prisgray}{-lab}}}\xspace}
+% \newcommand{\prisfull}{{\fontfamily{bookman}\sc\prislab}: \pris}
+% \newcommand{\prislabfull}{\sc Laboratorio de Investigación en\\\textcolor{redPRIS}{Reconocimiento de Patrones}\\y Sistemas Inteligentes}
+\newcommand{\aprs}{{\fontfamily{bookman}\sc APRS}\xspace}
+\newcommand{\aprsfull}{{\fontfamily{bookman}\sc\aprs}: Advanced Pattern Recognition System\xspace}
+\newcommand{\aprsfulles}{{\fontfamily{bookman}\sc\aprs}: Sistema Avanzado de Reconocimiento de Patrones\xspace}
+%
+\newcommand{\prissem}{{\fontfamily{bookman}\sc\textcolor{prisred}{PR}\textcolor{black}{IS\textcolor{black}{-Seminar}}}\xspace}
+\newcommand{\coloquio}{\textit{Coloquio de Investigación}\xspace}
+\newcommand{\ace}{{\fontfamily{bookman}\sc\textcolor{ace1}{A}\textcolor{ace2}{ce}}\xspace}
+
+\newcommand{\sura}{{\fontfamily{bookman}\sc\textcolor{prisred}{S}\textcolor{black}{u}\textcolor{prisblue}{r}\textcolor{prisgray}{á}}\xspace}
+\newcommand{\boknama}{{\fontfamily{bookman}\sc Boknama}\xspace}
+\newcommand{\iriria}{{\fontfamily{bookman}\sc Iriria}\xspace}
+
+%Networks
+\newcommand{\rib}{{\fontfamily{bookman}\sc\textcolor{ribBlue}{RIB}}\xspace}
+\newcommand{\ribfull}{\rib: Red de Investigación en Biocomputación\xspace}
+\newcommand{\bcrn}{{\fontfamily{bookman}\sc\textcolor{ribBlue}{BcRN}}\xspace}
+\newcommand{\bcrnfull}{\bcrn: Biocomputing Research Network\xspace}
+
+\newcommand{\rider}{{\fontfamily{bookman}\sc \textcolor{orange!80!black}{Rider}}\xspace}
+\newcommand{\riderfull}{\rider: Red de Investigación y Desarrollo en Eficiencia Energética y Tecnologías en Energía Renovable\xspace}
+
+\newcommand{\ricc}{{\fontfamily{bookman}\sc \textcolor{red!80!black}{R}\textcolor{green!80!black}{I}\textcolor{blue!80!black}{C}\textcolor{prisgray}{C}}\xspace}
+\newcommand{\riccfull}{\ricc: Red de Investigación en Computación Científica\xspace}
+\newcommand{\scrn}{{\fontfamily{bookman}\sc \textcolor{red!80!black}{S}\textcolor{green!80!black}{C}\textcolor{blue!80!black}{R}\textcolor{prisgray}{N}}\xspace}
+\newcommand{\scrnfull}{\scrn: Scientific Computing Research Network\xspace}
+
+%Institutions
+\newcommand{\arcoslab}{ARCOS-LAB\xspace}
+\newcommand{\arcoslabfull}{\arcoslab: Autonomous Robots and Cognitive Systems Laboratory\xspace}
+
+\newcommand{\clcar}{CLCAR\xspace}
+\newcommand{\clcarfull}{\clcar: Conferencia Latinoamericana de Computación de Alto Rendimiento\xspace}
+
+\newcommand{\nsf}{{\fontfamily{bookman}\sc NSF}\xspace}
+\newcommand{\nsffull}{\nsf: National Science Foundation\xspace}
+
+\newcommand{\conare}{{\fontfamily{bookman}\sc CONARE}\xspace}
+\newcommand{\conarefull}{\conare: Consejo Nacional de Rectores\xspace}
+
+\newcommand{\cenat}{{\fontfamily{bookman}\sc CeNAT}\xspace}
+\newcommand{\cenatfull}{\cenat: Centro Nacional de Alta Tecnología\xspace}
+
+\newcommand{\cnca}{{\fontfamily{bookman}\sc CNCA}\xspace}
+\newcommand{\cncafull}{\cnca: Co-laboratorio Nacional de Computación Avanzada\xspace}
+\newcommand{\cadejos}{{\fontfamily{bookman}\sc\textcolor{black}{cadejos}}\xspace}
+
+\newcommand{\ictp}{ICTP: International Centre for Theoretical Physics\xspace}
+
+
+\newcommand{\ucr}{Universidad de Costa Rica\xspace}
+\newcommand{\eie}{Escuela de Ingeniería Eléctrica\xspace}
+\newcommand{\fing}{Facultad de Ingeniería\xspace}
+
+\newcommand{\towhom}{To Whom it May Concern\xspace}
+\newcommand{\aquien}{A Quien Corresponda\xspace}
+
+\newcommand{\fourVidTags}{\emph{4vid}\textit{Tags}\xspace}
+
+
+
+%Conferences
+\newcommand{\ines}{17th IEEE International Conference on Intelligent Engineering Systems -- INES\xspace}
+\newcommand{\cinti}{14th IEEE International Symposium on Computational Intelligence and Informatics -- CINTI\xspace}
+\newcommand{\sami}{IEEE International Symposium on Applied Machine Intelligence and Informatics -- SAMI\xspace}
+
+%People
+\newcommand{\juanD}{Juan Marcos Delgado Zumbado, MLE\xspace}
+\newcommand{\juanDjob}{Director}
+\newcommand{\juanDwho}{Estimado Sr. Delgado}
+
+\newcommand{\lauraR}{Laura Robles Loaiza, Licda.\xspace}
+\newcommand{\lauraRjob}{Unidad de adquisiciones, \os}
+\newcommand{\lauraRwho}{Estimada Sra. Robles}
+
+\newcommand{\yamilethF}{Yamileth Figueroa Barahona, MBA.\xspace}
+\newcommand{\yamilethFjob}{Directora de la Dirección Financiera, Rectoría\xspace}
+\newcommand{\olgaC}{Olga Cordero Quirós\xspace}
+\newcommand{\olgaCjob}{Gestora de la Dirección Financiera, Rectoría\xspace}
+\newcommand{\electrizarte}{ElectrizArte\xspace}
+
+\newcommand{\oaice}{OAICE\xspace}
+\newcommand{\oaicefull}{\oaice: Oficina de Asuntos Internacionales y Cooperación Externa\xspace}
+\newcommand{\oaicename}{Oficina de Asuntos Internacionales y Cooperación Externa\xspace}
+
+\newcommand{\julietaC}{Dra. Julieta Carranza Velázquez\xspace}
+\newcommand{\julietaCjob}{Directora \oaice\xspace}
+\newcommand{\julietaCwho}{Estimada Dra. Carranza\xspace}
+
+\newcommand{\walterM}{Dr. Walter Marín Méndez\xspace}
+\newcommand{\walterMjob}{Subdirector \oaicename\xspace}
+\newcommand{\walterMwho}{Estimado Dr. Marín\xspace}
+
+\newcommand{\fatimaA}{Fátima Acosta López\xspace}
+\newcommand{\fatimaAjob}{Jefe de Sección de Movilidad Académica-Administrativa\xspace}
+\newcommand{\fatimaAwho}{Estimada Sra. Acosta\xspace}
+
+\newcommand{\haydeeR}{Haydée Ramos\xspace}
+\newcommand{\haydeeRjob}{Académicos Visitantes, Becas Cortas\xspace}
+\newcommand{\haydeeRwho}{Estimada Sra. Ramos\xspace}
+
+
+\newcommand{\osg}{OSG\xspace}
+\newcommand{\osgname}{Oficina de Servicios Generales\xspace}
+\newcommand{\osgfull}{\osg: \osgname}
+
+\newcommand{\oscarM}{M.Sc. Óscar Mario Molina Molina\xspace}
+\newcommand{\oscarMjob}{Director\xspace}
+\newcommand{\oscarMwho}{Estimado Sr. Molina\xspace}
+
+\newcommand{\jeffreyD}{Ing. Jeffrey Dimarco Fernández\xspace}
+\newcommand{\jeffreyDjob}{Jefe de la sección de transportes\xspace}
+\newcommand{\jeffreyDwho}{Estimado Sr. Dimarco\xspace}
+
+\newcommand{\audiP}{Audi Paniagua Gómez\xspace}
+\newcommand{\audiPjob}{Sección de transportes\xspace}
+\newcommand{\audiPwho}{Estimado Sr. Paniagua\xspace}
+
+
+
+
+\newcommand{\anaAA}{Ana Alfaro Alvarado\xspace}
+\newcommand{\anaAAjob}{Gestora de  Becas CU / Consejo de Rectoría / FDI / Membresías\xspace}
+\newcommand{\anaAAwho}{Estimada Sra. Alfaro\xspace}
+
+\newcommand{\MIT}{Massachusetts Institute of Technology\xspace}
+
+\newcommand{\tec}{Tecnológico de Costa Rica\xspace}
+\newcommand{\siplab}{SIP-Lab\xspace}
+
+\newcommand{\ipcvlab}{IPCV-LAB\xspace}
+\newcommand{\ipcvlabfull}{Image Processing and Computer Vision Laboratory\xspace}
+
+
+\newcommand{\una}{Universidad Nacional\xspace}
+
+
+
+\newcommand{\cieq}{Comisión Institucional de Equipamiento\xspace}
+\newcommand{\odi}{Oficina de Divulgación e Información\xspace}
+\newcommand{\proinnova}{PROINNNOVA\xspace}
+
+
+\newcommand{\tecmo}{TECMO S.A.\xspace}
+
+\newcommand{\citic}{CITIC\xspace}
+\newcommand{\citicfull}{\citic: Centro de Investigación en Tecnologías de Información y Comunicación\xspace}
+
+\newcommand{\cimohu}{CIMOHU\xspace}
+\newcommand{\cimohufull}{\cimohu: Centro de Investigación en Movimiento Humano\xspace}
+
+\newcommand{\ciet}{CIET\xspace}
+\newcommand{\cietfull}{\ciet: Centro de Investigación en Enfermedades Tropicales\xspace}
+
+\newcommand{\ciemic}{CIEMIC\xspace}
+\newcommand{\ciemicfull}{\ciemic: Centro de Investigación en Estructuras Microscópicas\xspace}
+
+\newcommand{\micitt}{MICITT\xspace}
+\newcommand{\micittfull}{\micitt: Ministerio de Ciencia y Tecnología y Telecomunicaciones\xspace}
+
+\newcommand{\estebanC}{Dr.~Esteban Chaves Olarte\xspace}
+
+\newcommand{\alexandraM}{Dra.~Alexandra Martínez Porras\xspace}
+\newcommand{\steveQ}{Dr.~rer.~nat.~Steve Quirós Barrantes\xspace}
+\newcommand{\rodrigoM}{Dr.~rer.~nat.~Rodrigo Mora Rodríguez\xspace}
+
+\newcommand{\ceciliaD}{Dra.~Cecilia Díaz Oreiro\xspace}
+\newcommand{\ceciliaDjob}{Decana}
+\newcommand{\ceciliaDwho}{Estimada Dra. Díaz}
+
+\newcommand{\gabrielaM}{Dra.~Gabriela Marín Raventós\xspace}
+\newcommand{\gabrielaMjob}{Directora}
+\newcommand{\gabrielaMwho}{Estimada Dra. Marín\xspace}
+
+\newcommand{\ramonB}{Ramón Bonilla Lizano\xspace}
+
+\newcommand{\fernandoG}{Dr. Fernándo García Santamaría}
+\newcommand{\cesarR}{Dr. César Rodríguez Sánchez}
+
+\newcommand{\gabrielaB}{Dra.~Gabriela Barrantes Sliesarieva\xspace}
+
+\newcommand{\ecci}{Escuela de las Ciencias de la Computación e Informática\xspace}
+
+\newcommand{\ci}{Centro de Informática\xspace}
+
+\newcommand{\aldebaran}{{\sc ALDEBARAN Robotics}\xspace}
+\newcommand{\nao}{{\sc Nao}\xspace}
+\newcommand{\robocup}{{\sc RoboCup}\xspace}
+
+\newcommand{\nvidia}{{\sc NVIDIA Corporation}\xspace}
+
+\newcommand{\naturalpoint}{{\sc Natural Point Inc.}\xspace}
+\newcommand{\optitrack}{{\sc OptiTrack}\xspace}
+
+\newcommand{\dell}{{\sc DELL}\xspace}
+
+\newcommand{\samsung}{{\sc Samsung}\xspace}
+\newcommand{\microexport}{{\sc Micro Export}\xspace}
+
+\newcommand{\tum}{TUM\xspace}
+\newcommand{\tumfull}{\tum: Technische Universität München\xspace}
+
+\newcommand{\unibremen}{UniBremen\xspace}
+\newcommand{\unibremenfull}{\unibremen: Universität Bremen\xspace}
+
+\newcommand{\cotesys}{{\sc CoTeSys}\xspace}
+\newcommand{\cotesysfull}{\cotesys: Cognition for Technical Systems\xspace}
+\newcommand{\crlab}{{\sc CR-Lab}\xspace}
+\newcommand{\crlabfull}{\crlab: Cognitive Robotics Research Laboratory\xspace}
+
+\newcommand{\upgc}{Universidad de las Palmas de Gran Canaria\xspace}
+
+
+\newcommand{\geovanniM}{Dr.-Ing.~Geovanni Martínez Castillo\xspace}
+\newcommand{\geovanniMjob}{Coordinador Comisión de Investigación}
+\newcommand{\geovanniMwho}{Estimado Don Geovanni}
+
+\newcommand{\franciscoS}{Dr.~rer.~nat.~Francisco Siles Canales\xspace}
+\newcommand{\franciscoSjob}{Coordinador del \prislab}
+\newcommand{\franciscoSwho}{Estimado Don Francisco}
+
+
+\newcommand{\jorgeR}{Jorge Romero Chacón, Ph.D.\xspace}
+\newcommand{\jorgeRjob}{Director, \eie}
+\newcommand{\jorgeRwho}{Estimado Don Jorge}
+
+\newcommand{\randolphS}{Randolph Steinvorth Fernández, Ph.D.\xspace}
+\newcommand{\randolphSjob}{Director}
+\newcommand{\randolphSwho}{Estimado Don Randolph}
+
+\newcommand{\eddieA}{Eddie Araya Padilla, Ph.D.\xspace}
+\newcommand{\eddieAjob}{Coordinador de la Comisión de Credenciales, Currículum y Reconocimiento, \eie}
+\newcommand{\eddieAwho}{Estimado Dr. Araya}
+
+
+\newcommand{\edwinS}{Ing. Edwin Solórzano Campos, M.Sc.\xspace}
+\newcommand{\edwinSjob}{Decano, \fing\xspace}
+\newcommand{\edwinSwho}{Estimado Don Edwin\xspace}
+
+\newcommand{\henningJ}{Dr.~Henning Jensen Pennington\xspace}
+\newcommand{\henningJjob}{Rector\xspace}
+\newcommand{\henningJwho}{Estimado Don Henning\xspace}
+
+\newcommand{\eliecerU}{M.Sc. Eliécer Ureña Prado\xspace}
+\newcommand{\eliecerUjob}{Director Consejo Universitario\xspace}
+
+\newcommand{\jfranciscoA}{Ing. José Francisco Aguilar Pereira\xspace}
+\newcommand{\jfranciscoAjob}{Representante Área de Ingeniería, Consejo Universitario\xspace}
+
+
+\newcommand{\gloriaM}{Gloria Meléndez Celis, M.Sc.\xspace}
+\newcommand{\gloriaMjob}{Directora Ejecutiva, Rectoría\xspace}
+\newcommand{\gloriaMwho}{Estimada Doña Gloria\xspace}
+
+\newcommand{\aliceP}{Alice L. Pérez Sánchez, Ph.D.\xspace}
+\newcommand{\alicePjob}{Vicerrectora\xspace}
+\newcommand{\alicePwho}{Estimada Dra. Pérez}
+
+\newcommand{\carlosA}{Dr. Carlos Araya Leandro\xspace}
+\newcommand{\carlosAjob}{Vicerrector\xspace}
+\newcommand{\carlosAwho}{Estimado Dr. Araya}
+
+
+\newcommand{\cristinaA}{Ana Cristina Alvarado Ulloa, Licda.\xspace}
+
+\newcommand{\anaG}{Ana Isabel Gamboa Camacho, Br.\xspace}
+
+\newcommand{\alonsoC}{Sr. Alonso Castro Vindas\xspace}
+\newcommand{\alonsoCjob}{Analista Financiero, \vinv}
+\newcommand{\alonsoCwho}{Estimado Sr. Castro\xspace}
+
+\newcommand{\alonsoCM}{Alonso Castro Mattei, M.Sc.\xspace}
+\newcommand{\alonsoCMjob}{Director}
+\newcommand{\alonsoCMwho}{Estimado Sr. Castro\xspace}
+
+
+\newcommand{\juanS}{Sr. Juan Manuel Sanabria\xspace}
+
+\newcommand{\maurenR}{Sra. Mauren Reyes Umanzor\xspace}
+\newcommand{\maurenRjob}{Unidad de Almacenamiento y Distribución\xspace}
+
+\newcommand{\os}{Oficina de Suministros\xspace}
+\newcommand{\vad}{Vicerrectoría de Administración\xspace}
+
+\newcommand{\xiniaA}{Xinia Aguilar Sánchez, M.A.U.\xspace}
+\newcommand{\xiniaAjob}{Jefe Administrativa\xspace}
+\newcommand{\xiniaAwho}{Estimada Xinia\xspace}
+
+\newcommand{\lochiY}{Lochi Yu Lo, Ph.D.\xspace}
+
+\newcommand{\wajihaS}{Lcda. Wajiha Sasa Marín\xspace}
+\newcommand{\ottoS}{Otto Salas Murillo\xspace}
+
+\newcommand{\ieee}{{\sc IEEE}\xspace}
+\newcommand{\iwobi}{{\sc IWOBI}\xspace}
+\newcommand{\iwobifull}{\iwobi: International Conference and Workshop on Bioinspired Intelligence\xspace}
+% \newcommand{\}{\xspace}
+
+
+\newcommand{\maryhelenB}{Mary Helen Bialas\xspace}
+\newcommand{\maryhelenBjob}{Academic Relations Manager\xspace}
+\newcommand{\maryhelenBwho}{Estimada Mary Helen\xspace}
+
+
+
+\newcommand{\jeffryD}{Ing. Jeffry Dimarco Fernández\xspace}
+\newcommand{\jeffryDjob}{Jefe Sección de Transportes\xspace}
+
+\newcommand{\teodoroW}{Teodoro Willink Castro\xspace}
+\newcommand{\fabianA}{Fabián Abarca Calderón\xspace}
+\newcommand{\diegoD}{Diego Dumani Jarquín\xspace}
+\newcommand{\tonyO}{Tony Ortíz Salazar\xspace}
+
+\newcommand{\juanC}{Dr.~Ing.~Juan Luis Crespo Mariño\xspace}
+\newcommand{\juanCjob}{Profesor Investigador\xspace}
+\newcommand{\juanCwho}{Estimado Dr. Crespo\xspace}
+
+\newcommand{\saulC}{Saúl Calderón Ramírez\xspace}
+
+\newcommand{\federicoR}{Dr.~rer.~nat.~in~fieri~Federico Ruiz Ugalde\xspace}
+\newcommand{\federicoRjob}{Profesor Investigador\xspace}
+\newcommand{\federicoRwho}{Estimado Sr. Ruiz\xspace}
+
+
+\newcommand{\alvaroO}{Dr.~Álvaro de la Ossa Osegueda\xspace}
+\newcommand{\alvaroOjob}{Director del Co-laboratorio Nacional de Computación Avanzada\xspace}
+\newcommand{\alvaroOwho}{Estimado Dr. de la Ossa\xspace}
+
+
+\newcommand{\certec}{CerTec~S.A.\xspace}
+\newcommand{\orbe}{CEO~El Orbe\xspace}
+\newcommand{\isc}{I.S. Corporación\xspace}
+
+\newcommand{\sepucr}{SEP\xspace}
+\newcommand{\sepname}{Sistema de Estudios de Posgrado\xspace}
+\newcommand{\sepfull}{\sepucr: \sepname}
+
+\newcommand{\feeii}{FEEII\xspace}
+\newcommand{\feeiifull}{\feeii: Fondo de Estímulo Especial para la Investigación e Intersedes\xspace}
+
+
+\newcommand{\vinv}{Vicerrectoría de Investigación\xspace}
+\newcommand{\juanSanabria}{Sr.~Juan Manuel Sanabria Mora, Téc.~Vic.~Inv.\xspace}
+
+\newcommand{\vadm}{Vicerrectoría de Administración\xspace}
+
+\newcommand{\auge}{AUGE\xspace}
+\newcommand{\augefull}{\auge: Agencia Universitaria para el Emprendimiento\xspace}
+\newcommand{\ucrea}{UCREA\xspace}
+\newcommand{\ucreafull}{\ucrea: Espacio de Estudios Avanzados de la \ucr}
+\newcommand{\iia}{IIArte\xspace}
+\newcommand{\iiafull}{\iia: Instituto de Investigaciones en Arte\xspace}
+
+
+
+\newcommand{\fs}[1]{\fontsize{#1}{#1pt+0.2*#1pt}\selectfont} %font size
+
+\newcommand{\dfg}{Deutsche Forshugnsgemainschaft\xspace}
+\newcommand{\aspogamo}{ASpoGAMo\xspace}
+
+\newcommand{\intelcr}{Componentes Intel de Costa Rica\xspace}
+
+\hyphenation{e-du-ca-ti-va la-bo-ra-to-rios e-du-ca-ti-vos li-te-ra-tu-ra ca-pa-ci-ta-ción a-cep-ta-ción gra-dua-ción re-so-lu-ción rea-li-za co-la-bo-ra-ción in-ter-na-cio-na-les res-pe-tuo-sa-men-te do-cu-men-to con-si-de-rar an-te-rior-men-te cum-pli-mien-to re-que-ri-mien-to Mi-nis-te-rio au-to-ri-zar ac-tual me-dian-te si-guien-tes au-to-ma-ti-za-do e-va-lua-ción rea-li-zar-se es-tu-dian-te in-ter-dis-ci-pli-na-ria equi-pa-mien-to ge-ne-ra-dos de-sa-rro-lla-das Pos-doc-to-ran-te Re-co-no-ci-mien-to mi-sión de-sa-rro-llar pro-ble-mas res-pon-sa-ble in-quie-tu-des pro-pues-ta es-tu-dian-tes u-ni-da-des in-ves-ti-ga-do-res des-cri-tos ge-ne-ra ne-ce-sa-rios Es-pe-ra-mos co-rres-pon-dien-tes rea-li-zar an-te-rior co-la-bo-ra-cio-nes la-bo-ra-to-rio bi-blio-gra-fí-a ma-ne-ra cons-ta-ta vi-sua-li-za-ción si-mu-la-ción ti-tu-la-do des-cri-to ad-mi-nis-tra-ti-vas ca-rac-te-ri-zar ge-ne-ra-rá di-se-ño ge-ne-ra-ción mo-de-los rea-li-za-rán re-que-ri-mien-tos res-pon-sa-bi-li-da-des He-rra-mien-tas u-sua-rios va-
+li-da-ción rea-li-za-das de-sa-rro-llo an-te-rio-ri-dad he-rra-mien-ta bi-blio-te-cas ins-truc-cio-nes des-pués co-rres-pon-den es-ta-ble-ci-mien-to cam-peo-na-to con-ti-nua-rá Vi-ce-rrec-to-ría re-fe-ren-cia me-dian-te co-rres-pon-dien-tes ca-rac-te-rís-ti-cas res-pues-ta re-so-lu-cio-nes a-pro-pia-da-men-te Ge-ren-te ins-tan-cias nues-tro par-ti-ci-pa-ción si-guien-te e-di-fi-cio par-ti-cu-lar man-te-ni-mien-to so-li-ci-tó}

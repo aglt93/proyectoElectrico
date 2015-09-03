@@ -1,0 +1,52 @@
+\chapter{Conclusiones y recomendaciones}
+
+Para finalizar este informe escrito, se expone las conclusiones, se da algunas recomendaciones y se propone trabajo que queda aún por realizar para seguir perfeccionando la herramienta. Las conclusiones se realizan con relación directa a los objetivos tanto el general como los específicos propuestos al inicio del trabajo y los resultados obtenidos luego de la creación de la aplicación y el uso de la misma.
+
+\section*{Conclusiones}
+
+\begin{itemize}
+	
+\item Se concluyó satisfactoriamente la creación de una aplicación web para la generación de los 4 diferentes tipos de segmentación requeridos: temporal, trayectorias, contornos y semántica. La aplicación es completamente funcional, permite cargar videos locales, guardar y cargar proyectos, y descargar los datos generados en formato JSON para poder procesarlos y compararlos con los datos que son obtenidos de los algoritmos.
+
+\item El cargar videos desde el servidor se vio limitado a la funcionalidad que tienen los navegadores en la actualidad. Estos no están hechos para cargar todo el video rápidamente y poder manipular su tiempo tan deliberadamente, los videos en \emph{streaming} en los navegadores están diseñados para utilizar el mínimo ancho de banda posible y la principal función del navegador es reproducirlo una sola vez, por lo que no carga todo como es necesario y además va limpiando el \emph{buffer} de carga, por lo que los datos que se tenían cargados previamente, si ingresan muchos datos, son desechados y no se puede regresar a esas secciones del video sin volver a realizar un \emph{buffering} desde cero.
+
+\item Las herramientas web disponibles en la actualidad satisfacen diferentes necesidades y diferentes gustos según el programador. En distintos lenguajes de programación como en Python y JavaScript, con diferentes tipos de servidores sincrónicos o asincrónicos. Quedará siempre a criterio del ingeniero que tipo de herramienta le es más útil dados sus gustos y el tipo de aplicación que quiere llegar a tener al final.
+
+\item Se diseñó correctamente una base de datos del tipo NO-SQL, utilizando MongoDb. Esta base de datos tiene la ventaja de que escala rápidamente, que su formato de lectura y escritura predeterminado es JSON, el cual se utiliza ampliamente en los frontend en JavaScript o Python, lo que convierte a MongoDb en una excelente opción en bases de datos no relacionadas para aplicaciones o sitios web que se basen en estos lenguajes de programación.
+
+\item Los resultados de comparar el uso de GT-Tool con Sensarea y VideoANT comprueban que se logró realizar una herramienta más eficiente en todos los aspectos a evaluar. Los datos de trayectoria y contorno se generan más rápido y con una resolución de puntos mayor para poder validar de mejor manera los algoritmos. En el caso de la segmentación temporal y semántica no es más rápida que VideoANT, pero esto se compensa ya que GT-Tool si logra realizar esta segmentación a nivel de cuadros y no de segundos como lo hace VideoANT. Además GT-Tool tiene de forma nativa e intuitiva el como realizar cada uno de los tipos de segmentación, y es una solución multiplataforma.
+
+\item Se creó satisfactoriamente un manual básico y fácil de entender para que los usuarios puedan instalar y hacer uso de la herramienta correctamente y en poco tiempo. Además el video tutorial está disponible en línea en  \url{pris.eie.ucr.ac.cr/tools/gt-tool}.
+
+\end{itemize}
+
+\section*{Recomendaciones}
+
+\begin{itemize}
+	
+	\item El desarrollo de software, especialmente de aplicaciones completas, es una tarea bastante complicada, más si todas las labores las realiza una sola persona. Se recomienda tener un equipo de más personas debido a que hacer el diseño de la interfaz gráfica, el desarrollo de funcionalidades y la verificación de las mismas, todo por una sola persona, con lleva mucho tiempo y no es lo ideal, ya que no se toma en cuenta lo que piensan otras persona de la interfaz y algunos errores se pasan por alto porque otra persona usó exhaustivamente la aplicación.
+	
+	\item En este tipo de diseños es importante asegurar que el código es legible para poder darle mantenimiento en presencia de cualquier problema. Es importante llevar una buena documentación a lo largo de todo el desarrollo ya que ayuda a mantener el orden y a entender mejor las labores que se está realizando.
+	
+	\item Seguir patrones de diseño como el MVC es de gran utilidad en el desarrollo de aplicaciones. Le da características modulares al código, por lo que si se quiere cambiar la interfaz del programa, se puede alterar únicamente los valores y archivos de los objetos que tienen que ver con los Views y los demás pueden mantenerse igual. Si todo se realiza correctamente la compatibilidad entre la nueva interfaz y el código de controllers y model anterior debe de funcionar en su totalidad o por lo menos con una compatibilidad muy alta.
+	
+\end{itemize}
+
+\section*{Trabajo por realizar}
+
+En vista de que un software nunca alcanza su versión final, siempre hay errores que se pueden reparar, desempeño que se puede mejorar o funcionalidades que se pueden agregar, se tiene una lista de funcionalidades o extras que pueden ser muy útiles de tener en la aplicación:
+
+\begin{itemize}
+\item Una plantilla en formato tipo JSON que se pueda cargar a los diferentes modos para personalizar el nombre de las etiquetas de la segmentación temporal o configurar previamente la cantidad de contornos o trayectorias y sus colores en los respectivos modos de operación.
+
+\item Desarrollar alguna solución para poder cargar videos del servidor en su totalidad sin perder el buffering anterior o poder adelantarlo si se quiere cargar solo una sección adelantada del video.
+
+\item La implementación de comandos comunes del teclado utilizados en la mayoría de software. Por ejemplo ctrl-z para deshacer y ctrl-s para guardar.
+
+\item Crear una aplicación para dispositivos móviles que utilice la misma base de datos.
+
+\item Instalar la aplicación en un servidor y realizar pruebas de estrés y carga por cantidad de usuarios y peticiones.
+
+\item Ofrecer la posibilidad de descargar los datos generados en diferentes formatos: JSON, YAML, XML, entre otros.
+
+\end{itemize}
