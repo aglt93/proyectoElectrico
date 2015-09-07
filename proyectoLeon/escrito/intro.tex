@@ -1,31 +1,16 @@
 \chapter{Introducción}
 
 \section{Justificación}
-Software solutions for hard drives have been available for some time now. They have often been criticized for being inconvenient, slow and like any other software, prone to needing updates.
+La encriptación de datos por seguridad es una necesidad en la actualidad. Por ejemplo cuando a un empleado le roban una computadora corporativa que contiene datos sensibles para la empresa en la que labora, la encriptación evita que se pueda acceder a los mismos y que así se protejan de terceros.
 
+En el caso de la encriptación de software trae consigo problemáticas como lo son la necesidad de actualizaciones y el desempeño del computador. Este último aspecto se debe a que una encriptación a nivel de software debe dedicar recursos del sistema a encriptar/desencriptar información. 
 
-In contrast, hardware encryption is very reliable, fast and convenient. Hardware encryption doesn’t require system resources to perform the encryption/decryption process and therefore allows for better system performance. Since hardware encrypted drives are not subject to updates, the costs related to traditional software solutions are eliminated. Another great advantage of hardware encrypted drives, they can be easily reset. This reduces the amount of time spent scrubbing the drive or erasing disk data, which in turn stretches the IT department budgets when redeployment of assets is necessary.
+En el caso de hardware se tienen los beneficios de que es muy confiable, rápido y conveniente. A diferencia de la encriptación de software se tiene una parte de hardware dedicada al proceso de encriptación/descriptación y por tanto el desempeño de la computadora no se ve tan afectado, también al no haber forma de actualizar hardware ocurre una disminución en costos (ACA FALTA LA CITA). Otra de las grandes ventajas de la encriptación basada en hardware es la facilidad de configuración, ya que gran parte de esto proceso es eliminado debido a que el hardware se encarga directamente de esto. (CITA DE DRIVETRUST).
 
+Debido a lo expuesto anteriormente se buscó trabajar en algoritmos de encriptación en hardware ya que es un área de trabajo que se puede explotar para investigar y mejorar.
 
-Data encryption is no longer a luxury. It’s a necessity. Organizations and users with sensitive
-data in use on laptops and desktops have no choice but to secure data on disk drives in a manner
-that is reasonable to regulators.
+Se escogió como plataforma de trabajo un FPGA 
 
-Software-based encryption products address the basic need for encrypting data on computer
-systems where performance is not the primary concern or where disk encryption is a part of a
-larger set of data privacy requirements. Examples of this include communications and messaging
-encryption requirements. Software-based products can also provide encryption at the file
-and folder level, as well as for removable storage devices.
-
-Hardware-based encryption overcomes the two most significant barriers to widespread adoption
-of encryption technology — ease of use and system performance. Encryption built into the
-hard disk eliminates much of the setup and configuration complexity. DriveTrust isolates the
-encryption functions and stores the encryption keys in the hard drive itself, providing an added
-security benefit of blocking rootkits and other malware from accessing keys and other sensitive
-information from the operating system. In addition, hardware encryption performance is very
-close to that of a non-encrypted drive with minimal impact on computing operations, far superior
-to software-based encryption. Hardware-based encryption is well-suited to mobile user
-populations where performance and ease of implementation and use are concerns
 
 \section{Alcances y limitaciones del proyecto}
 Se implementarán 2 algoritmos de encriptación de datos en un FPGA haciendo uso de Verilog como lenguaje de descripción de hardware. 
