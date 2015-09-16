@@ -1,0 +1,64 @@
+ASIC IMPLEMENTATION OF 128 BIT KEY RC5 CIPHER
+
+Raghunatha & Sowmya Sunkara
+
+
+//
+This paper presents the design of RC5 algorithm and its physical design implementation. The
+RC5 cryptographic algorithm is widely used in wireless communication networks like WSAN and WBSN. RC5 is a fast block cipher, developed by RSA Security, which exploits data rotation to achieve a high level of nonlinearity. 128 bit key and 12 rounds of operation in
+the design will provide great security to the user’s data. The RC5 hardware implementation will make the computation faster.
+
+//
+RC5 symmetric cipher provides data protection via the use of a secret key only known to the encryption and decryption ends
+of the communication path. Communication applications such as Wireless Transport Layer Security (WTLS), which is the security layer of
+Wireless Application Protocol (WAP) and WSAN (Wireless Sensor Area Network), uses RC5 algorithm to protect the user’s privacy.
+
+
+//
+Notation of particular RC5 algorithm is RC5-w/r/b, in this design RC5-32/12/16 is employed which indicates 32-bit words, 12 rounds and 16-byte
+secret key. The input and output blocks will be 2w=64bits. Algorithm involves three processes- key expansion, encryption and decryption. These routines
+consist of three primitive operations (and their inverse operation): words addition, bitwise XOR and data-dependent cyclic left / right rotation of x by y denoted as x <<< y / x>>>y
+
+//
+The hardware for key expansion is included in both the modules to make the operation faster.
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Design and Implementation of FPGA Based Efficient Data Transmission Using Verilog
+
+Girish Kumar B , Prabhu V , Siva Prasad T , Ruban Thomas
+
+
+//
+In cryptography, there are two different types of methods to provide the security to a data. They are 1.Symmetric & 2.Asymmetric. Symmetric means same
+key for sender as well as receiver. Generally, cryptography concepts having three important blocks, they are Encryption, Key generation & Decryption. Data
+transmission can be starts from sender who can only able to mix the original data with Key which is called as “Cipher Text”.
+
+
+//
+A. Security risks are on the rise because of mobile devices 71% say mobile devices have contributed to increased security incidents.
+The Android mobile platform is considered to introduce the greatest security risks.
+
+B. Employee behavior impacts security of mobile data 47% report customer data is stored on mobile devices. Lack of employee awareness about security policies ranked as having the greatest impact on the security of mobile data. 72% say careless employees are a greater security threat than hackers
+C. Extensive use of mobile devices on corporate networks Participants were asked if mobile devices, such as smart phones or tablets, connected to their corporate networks. 
+
+The IT professionals who took the survey reported broad use of mobile devices within their organizations with 89% saying that they had mobile devices connecting to corporate networks. Most participants, 65%, reported that their organizations had devices that were personally owned by
+employees in addition to company-owned mobile devices accessing corporate networks.
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Analysis of 64- bit RC5 Encryption Algorithm for Pipelined Architecture
+
+Ashmi Singh, Puran Gour Braj, Bihari Soni
+
+
+//
+A typical cryptograph had been presented by [7] in which proposed new hardware dedicated to RC5. In the proposed RC5 dedicated hardware, by introducing an architecture suitable for each operation used for the encryption, high speed processing, and area reduction can be realized. The high performance pipeline hardware proposed in [2] in which implementation of RC5 that improves the response time of the system with less resources and performance of this architecture provide high throughput. In [3] represents RC5 algorithm and its implementation for low power and in complex architecture.
+
+Our work aim to design objective based pipeline architecture specifically based for low delay with high frequency. The introduction & reconfigurable architecture of pipeline design has been already presented in the text.
+
+
+
+
