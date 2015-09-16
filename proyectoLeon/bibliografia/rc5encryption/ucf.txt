@@ -1,0 +1,47 @@
+NET  "clock"   LOC = "p77";
+
+NET  "reset"   LOC = "p59";
+
+#NET  "start"   LOC = "p88";
+
+NET  "out<0>"  LOC = "p46";
+
+NET  "out<1>"  LOC = "p45";
+
+NET  "out<2>"  LOC = "p44";
+
+NET  "out<3>"  LOC = "p43";
+
+NET  "out<4>"  LOC = "p42";
+
+NET  "out<5>"  LOC = "p41";
+
+NET  "out<6>"  LOC = "p37";
+
+NET  "out<7>"  LOC = "p36";
+
+NET  "an<0>"   LOC = "p60";
+
+NET  "an<1>"   LOC = "p69";
+
+NET  "an<2>"   LOC = "p71";
+
+NET  "an<3>"   LOC = "p75";
+
+NET  "ssg<0>"  LOC = "p74";
+
+NET  "ssg<1>"  LOC = "p70";
+
+NET  "ssg<2>"  LOC = "p67";
+
+NET  "ssg<3>"  LOC = "p62";
+
+NET  "ssg<4>"  LOC = "p61";
+
+NET  "ssg<5>"  LOC = "p73";
+
+NET  "ssg<6>"  LOC = "p68";
+
+NET  "dot"     LOC = "p63";
+
+
