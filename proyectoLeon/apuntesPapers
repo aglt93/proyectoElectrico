@@ -55,10 +55,22 @@ Ashmi Singh, Puran Gour Braj, Bihari Soni
 
 
 //
+operates on W-bit wide data for r-rounds using b-bytes of key to encrypt the data
+
 A typical cryptograph had been presented by [7] in which proposed new hardware dedicated to RC5. In the proposed RC5 dedicated hardware, by introducing an architecture suitable for each operation used for the encryption, high speed processing, and area reduction can be realized. The high performance pipeline hardware proposed in [2] in which implementation of RC5 that improves the response time of the system with less resources and performance of this architecture provide high throughput. In [3] represents RC5 algorithm and its implementation for low power and in complex architecture.
 
 Our work aim to design objective based pipeline architecture specifically based for low delay with high frequency. The introduction & reconfigurable architecture of pipeline design has been already presented in the text.
 
+// EXCELENTE DESCRIPCION DEL ALGORITMO DE RC5
+
+RC5 algorithm got designated as RC5-w/r/b. The number of bits in a word w, is a parameter of RC5. Different choices of this parameter result in different RC5 algorithms. With a variable number of rounds, RC5 is iterative in structure. with second parameter of algorithm is r, is called number of rounds. A variable-length of secret key is used by RC5. The third parameter of RC5 is the key length b(in bytes). The all parameters are summarized as follows :
+w: The word size, in bits. The standard value is 32bits and allowable values are 16, 32 and 64. To generate the ciphertext and plaintext blocks size are each 2w bits , RC5 encrypts two-word blocks. r: The number of rounds. Allowable values of r are 0 to 255. Also, the expanded key array S contains T = 2 (r + 1) words. b: The number of bytes in the user’s key K. expected values of b are 0 to 255. There are three components in RC5: key expansion algorithm,
+encryption algorithm, and decryption algorithm. These routines consist of three primitive operations (and their inverse): words addition , bitwise XOR, and data-dependent left rotation of cx by dx denoted by cx <<< dx. Note that only the log2(w) low order bits of y affect this rotation. So secret
+key K is expanded to fill a key array whose size depends on the number of rounds in Key expansion routine. The key array S is then used in encryption. The description of the encryption algorithm is given.
 
 
+//
+a shift process used for encryption is replaced by a bit selection process. Because of this substitution, the shift process can be realized in wiring.
 
+//
+As Fig. 4 shows, RC5's round processing enciphers a 64-bit plaintext. However, the actual processing is performed every 32 bits. Therefore, the round is divided into the left hand right parts to perform left and right processing with two clock signals, which raises the operating frequency and improves latency.
