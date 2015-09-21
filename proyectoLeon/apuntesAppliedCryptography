@@ -1,0 +1,192 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Applied Cryptography, Second Edition: Protocols, Algorthms, and Source
+Code in C (cloth)
+(Publisher: John Wiley & Sons, Inc.)
+Author(s): Bruce Schneier
+ISBN: 0471128457
+Publication Date: 01/01/96
+
+
+//
+A message is plaintext (sometimes called cleartext). The process of disguising a message in such a way as to hide its substance is encryption. An encrypted message is ciphertext. The process of turning ciphertext back into plaintext is decryption. This is all shown in Figure 1.1.
+
+(If you want to follow the ISO 7498-2 standard, use the terms “encipher” and “decipher.” It seems that some cultures find the terms “encrypt” and “decrypt” offensive, as they refer to dead bodies.)
+
+The art and science of keeping messages secure is cryptography, and it is practiced by cryptographers. Cryptanalysts are practitioners of cryptanalysis, the art and science of breaking ciphertext; that is, seeing through the disguise. The branch of mathematics encompassing both cryptography and cryptanalysis is cryptology and its practitioners are cryptologists. Modern cryptologists are generally trained in theoretical
+mathematics—they have to be.
+
+
+Plaintext is denoted by M, for message, or P, for plaintext. It can be a stream of bits, a text file, a bitmap, a stream of digitized voice, a digital video image...whatever. As far as a computer is concerned, M is simply binary data. (After this chapter, this book concerns itself with binary data and computer cryptography.) The plaintext can be intended for either transmission or storage. In any case, M is the message to be encrypted.
+
+Ciphertext is denoted by C. It is also binary data: sometimes the same size as M, sometimes larger. (By combining encryption with compression, C may be
+smaller than M. However, encryption does not accomplish this.) The encryption function E, operates on M to produce C. Or, in mathematical notation:
+
+E(M) = C
+
+In the reverse process, the decryption function D operates on C to produce M:
+
+D(C) = M
+
+Since the whole point of encrypting and then decrypting a message is to recover the original plaintext, the following identity must hold true:
+
+D(E(M)) = M
+
+
+
+//
+In addition to providing confidentiality, cryptography is often asked to do other jobs:
+
+— Authentication. It should be possible for the receiver of a message to ascertain its origin; an intruder should not be able to masquerade as someone else.
+
+— Integrity. It should be possible for the receiver of a message to verify that it has not been modified in transit; an intruder should not be able to substitute a false message for a legitimate one.
+
+— Nonrepudiation. A sender should not be able to falsely deny later that he sent a message.
+
+
+
+//
+A cryptographic algorithm, also called a cipher, is the mathematical function used for encryption and decryption.
+
+
+//
+If the security of an algorithm is based on keeping the way that algorithmworks a secret, it is a restricted algorithm. Restricted algorithms have historical interest, but are woefully inadequate by today’s standards. A large or changing group of users cannot use them, because every time a user leaves the group everyone else must switch to a different algorithm. If someone accidentally reveals the secret, everyone must change their algorithm.
+
+
+//
+Despite these major drawbacks, restricted algorithms are enormously popular for low-security applications. Users either don’t realize or don’t care about the security problems inherent in their system.
+
+//
+Modern cryptography solves this problem with a key, denoted by K. This key might be any one of a large number of values. The range of possible values of the key is called the keyspace. Both the encryption and decryption operations use this key (i.e., they are dependent on the key and this fact is denoted by the k subscript), so the functions now become:
+
+E K (M) = C
+
+D K (C) = M
+
+Those functions have the property that (see Figure 1.2):
+
+D K (E K (M)) = M
+
+Some algorithms use a different encryption key and decryption key (see Figure 1.3). That is, the encryption key, K 1 , is different from the corresponding decryption key, K 2 . In this case:
+
+E K1 (M) = C
+
+D K2 (C) = M
+
+D K2 (E K 1 (M)) = M
+
+All of the security in these algorithms is based in the key (or keys); none is based in the details of the algorithm. This means that the algorithm can be published and analyzed. Products using the algorithm can be mass-produced. It doesn’t matter if an eavesdropper knows your algorithm; if she doesn’t know your particular key, she can’t read your messages.
+
+
+//
+A cryptosystem is an algorithm, plus all possible plaintexts, ciphertexts, and keys.
+
+
+
+
+//
+Symmetric Algorithms
+
+There are two general types of key-based algorithms: symmetric and public-key. Symmetric algorithms, sometimes called conventional algorithms, are algorithms where the encryption key can be calculated from the decryption key and vice versa. In most symmetric algorithms, the encryption key and the decryption key are the same. These algorithms, also called secret-key algorithms, single-key algorithms, or one-key algorithms, require that the sender and receiver agree on a key before they can communicate securely. The security of a symmetric algorithm rests in the key; divulging the key means that anyone could encrypt and decrypt messages. As long as the communication needs to remain secret, the key must remain secret. Encryption and decryption with a symmetric algorithm are denoted by:
+
+E K (M) = C
+
+D K (C) = M
+
+
+Symmetric algorithms can be divided into two categories. Some operate on the plaintext a single bit (or sometimes byte) at a time; these are called stream algorithms or stream ciphers. Others operate on the plaintext in groups of bits. The groups of bits are called blocks, and the algorithms are called block algorithms or block ciphers. For modern computer algorithms, a typical block size is 64 bits—large enough to preclude analysis and small enough to be workable. (Before computers, algorithms generally operated on plaintext one character at a time. You can think of this as a stream algorithm operating on a stream of characters.)
+
+
+//
+Public-Key Algorithms
+
+Public-key algorithms (also called asymmetric algorithms) are designed so that the key used for encryption is different from the key used for decryption.
+Furthermore, the decryption key cannot (at least in any reasonable amount of time) be calculated from the encryption key. The algorithms are called “public-key” because the encryption key can be made public: A complete stranger can use the encryption key to encrypt a message, but only a specific person with the corresponding decryption key can decrypt the message. In these systems, the encryption key is often called the public key, and the decryption key is often called the private key. The private key is sometimes also called the secret key, but to avoid confusion with symmetric algorithms, that tag won’t be used here. 
+
+Encryption using public key K is denoted by:
+E K (M) = C
+
+Even though the public key and private key are different, decryption with the corresponding private key is denoted by:
+
+D K (C) = M
+
+Sometimes, messages will be encrypted with the private key and decrypted with the public key; this is used in digital signatures (see Section 2.6). Despite the possible confusion, these operations are denoted by, respectively:
+
+E K (M) = C
+
+D K (C) = M
+
+
+
+
+//
+The whole point of cryptography is to keep the plaintext (or the key, or both) secret from eavesdroppers (also called adversaries, attackers, interceptors, interlopers, intruders, opponents, or simply the enemy). Eavesdroppers are assumed to have complete access to the communications between the sender and receiver. Cryptanalysis is the science of recovering the plaintext of a message without access to the key. Successful cryptanalysis may recover the plaintext or the key. It also may find weaknesses in a cryptosystem that eventually lead to the previous results. (The loss of a key through noncryptanalytic means is called a compromise.) An attempted cryptanalysis is called an attack. A fundamental assumption in cryptanalysis, first enunciated by the Dutchman A. Kerckhoffs in the nineteenth century, is that the secrecy must reside entirely in the key [794]. Kerckhoffs assumes that the cryptanalyst has complete details of the cryptographic algorithm and implementation. (Of course, one would assume that the CIA does not make a habit of telling Mossad about its cryptographic algorithms, but Mossad probably finds out anyway.) While real-world cryptanalysts don’t always have such detailed information, it’s a good assumption to make. If others can’t break an algorithm, even with knowledge of how it works, then they certainly won’t be able to break it without that knowledge. There are four general types of cryptanalytic attacks. Of course, each of them assumes that the cryptanalyst has complete knowledge of the encryption algorithm used:
+
+- Ciphertext-only attack.
+
+- Known-plaintext attack
+ 
+- Chosen-plaintext attack
+ 
+- Adaptive-chosen-plaintext attack
+ 
+- Chosen-ciphertext attack
+ 
+- Chosen-key attack.
+ 
+- Rubber-hose cryptanalysis
+
+
+
+//
+And don’t forget Kerckhoffs’s assumption: If the strength of your new cryptosystem relies on the fact that the attacker does not know the algorithm’s inner workings, you’re sunk. If you believe that keeping the algorithm’s insides secret improves the security of your cryptosystem more than letting the academic community analyze it, you’re wrong. And if you think that someone won’t disassemble your code and reverse-engineer your algorithm, you’re naïve. (In 1994 this happened with the RC4 algorithm—see Section 17.1.) The best algorithms we have are the ones that have been made public, have been attacked by the world’s best cryptographers for years, and are still unbreakable.
+
+
+//
+Security of Algorithms
+
+
+Lars Knudsen classified these different categories of breaking an algorithm. Indecreasing order of severity [858]:
+
+1. Total break. A cryptanalyst finds the key, K, such that D K (C) = P.
+
+2. Global deduction. A cryptanalyst finds an alternate algorithm, A, equivalent to D K (C), without knowing K.
+
+3. Instance (or local) deduction. A cryptanalyst finds the plaintext of an intercepted ciphertext.
+
+4. Information deduction. A cryptanalyst gains some information about the key or plaintext. This information could be a few bits of the key, some information about the form of the plaintext, and so forth.
+
+
+An algorithm is unconditionally secure if, no matter how much ciphertext a cryptanalyst has, there is not enough information to recover the plaintext. In point of fact, only a one-time pad (cuando se agarran las letras y se ponen en un papel en desorden y se usa esto como algoritmo de cifrado por ej tomar el plaintext y one-time pad y hacerle addition modulo 26 para cifrar.)
+EJ DE ONE TIME PAD
+
+ONETIMEPAD plaintext
+TBFRGFARFM sequence from de pad
+IPKLPSFHGQ resultado
+
+ya que 
+
+O + T mod 26 = I
+N + B mod 26 = P
+E + F mod 26 = K
+
+
+
+
+(see Section 1.5) is unbreakable given infinite resources. All other cryptosystems are breakable in a ciphertext-only attack, simply by trying every possible key one by one and checking whether the resulting plaintext is meaningful. This is called a brute-force attack (see Section 7.1).
+
+
+
+
+//
+You can measure the complexity (see Section 11.1) of an attack in different
+ways:
+
+1. Data complexity. The amount of data needed as input to the attack.
+
+2. Processing complexity. The time needed to perform the attack. This is often called the work factor.
+
+3. Storage requirements. The amount of memory needed to do the attack.
+
+As a rule of thumb, the complexity of an attack is taken to be the minimum of these three factors. Some attacks involve trading off the three complexities: A faster attack might be possible at the expense of a greater storage requirement. Complexities are expressed as orders of magnitude. If an algorithm has a processing complexity of 2 128 , then 2 128 operations are required to break the algorithm. (These operations may be complex and time-consuming.) Still, if you assume that you have enough computing speed to perform a million operations every second and you set a million parallel processors against the task, it will still take over 10 19 years to recover the key. That’s a billion times the age of the universe.
+
+While the complexity of an attack is constant (until some cryptanalyst finds a better attack, of course)!!!!!!!!!!!!!!!!!!!

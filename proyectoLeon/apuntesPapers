@@ -74,3 +74,5 @@ a shift process used for encryption is replaced by a bit selection process. Beca
 
 //
 As Fig. 4 shows, RC5's round processing enciphers a 64-bit plaintext. However, the actual processing is performed every 32 bits. Therefore, the round is divided into the left hand right parts to perform left and right processing with two clock signals, which raises the operating frequency and improves latency.
+
+
