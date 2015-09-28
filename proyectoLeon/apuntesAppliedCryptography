@@ -190,3 +190,87 @@ ways:
 As a rule of thumb, the complexity of an attack is taken to be the minimum of these three factors. Some attacks involve trading off the three complexities: A faster attack might be possible at the expense of a greater storage requirement. Complexities are expressed as orders of magnitude. If an algorithm has a processing complexity of 2 128 , then 2 128 operations are required to break the algorithm. (These operations may be complex and time-consuming.) Still, if you assume that you have enough computing speed to perform a million operations every second and you set a million parallel processors against the task, it will still take over 10 19 years to recover the key. That’s a billion times the age of the universe.
 
 While the complexity of an attack is constant (until some cryptanalyst finds a better attack, of course)!!!!!!!!!!!!!!!!!!!
+
+
+
+// 
+Antes de la era de la computación los algoritmos de criptografía estaban basados en caracteres, donde los mismos eran sustituidos 
+o traspuestos por otros caracteres. Estos conceptos son llamados cifrados de sustitución o de transposición y continuan siendo la base de la
+criptografía pero por ejemplo se pasa de los 26 caracteres del alfabeto a los 2 símbolos del sistema binario.
+
+
+\subsubsection{Cifrado de sustitución}
+Como se explicó anteriormente este tipo de cifrado se basa en tomar un caracter del texto plano y sustituirlo por otro caracter.
+Para descrifrar el texto cifrado simplemente se sustituyen de vuelta los caracteres y listo.
+
+Según \cite{} en al criptografía clásica existen 4 tipos de cifrado por sustitución:
+\begin{itemize}
+\item Cifrado de sustitución simple: Una sustitución de uno a uno entre cada caracter del texto plano y el texto cifrado.
+Ejemplos de este tipo de sustitución son el famoso cifrado de César y el ROT13 utilizado en UNIX.
+
+\item Cifrado de sustitución homofónico: Una sustición de uno a muchos. Un caracter del texto plano, por ejemplo A, puede ser sustituido
+por varios caracteres en el texto crifado, por ejemplo "5", "13", "43".
+
+\item Cifrado de sustitución de poligrama: Una sustitucióin por bloques en donde se toma un bloque de caracteres del texto plano y
+se sustituye por su bloque equivalente en el texto cifrado. Por ejemplo si en el texto plano se tiene "ABC" se sustituye por "SLL"
+en el texto cifrado.
+
+\item Cifrado de sustitución polialfabético: ????? 
+\end{itemize}
+
+\subsubsection{Cifrado de transposición}
+En este tipo de algoritmos de cifrado el texto plano se convierte en texto cifrado cuando el orden de los caracteres es
+cambiado bajo alguna norma.
+
+
+Finalmente existen otros tipos de algoritmos en la criptografía clásica como lo son el XOR o One-time pads.
+
+
+//
+1.6 Computer Algorithms
+There are many cryptographic algorithms. These are three of the most common:
+
+— DES (Data Encryption Standard) is the most popular computer encryption algorithm. DES is a U.S. and international standard. It is a
+symmetric algorithm; the same key is used for encryption and decryption.
+
+— RSA (named for its creators—Rivest, Shamir, and Adleman) is the most popular public-key algorithm. It can be used for both encryption
+and digital signatures.
+
+— DSA (Digital Signature Algorithm, used as part of the Digital Signature Standard) is another public-key algorithm. It cannot be used
+for encryption, but only for digital signatures.
+
+
+
+
+//////////////////////////////////////////////////////////////
+Chapter 2
+Protocol Building Blocks
+
+//
+2.1 Introduction to Protocols 
+
+A protocol is a series of steps, involving two or more parties, designed to accomplish a task
+
+
+
+Protocols have other characteristics as well:
+
+— Everyone involved in the protocol must know the protocol and all of the steps to follow in advance.
+— Everyone involved in the protocol must agree to follow it.
+— The protocol must be unambiguous; each step must be well defined and there must be no chance of a misunderstanding.
+— The protocol must be complete; there must be a specified action for every possible situation.
+
+
+Un protoloco criptográfico es un protocolo que utiliza criptografía e implementado un algoritmo de cifrado. El objetivo de utilizar
+criptografía en un protocolo es prevenir que se viole la seguridad y privacidad así como detectar cuando esto ocurre.
+
+
+
+
+
+
+
+
+
+
+
