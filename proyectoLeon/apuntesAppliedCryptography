@@ -265,6 +265,209 @@ Un protoloco criptográfico es un protocolo que utiliza criptografía e implemen
 criptografía en un protocolo es prevenir que se viole la seguridad y privacidad así como detectar cuando esto ocurre.
 
 
+// MUY IMPORTANTE MENCIONAR EN EL MARCO TEORICO VIENE A ACLARAR PORQUE LA IMPORTANCIA DE LA CRIPTOGRAFIA
+ ASI COMO EL PORQUÉ DE LA CRIPTOGRAFIA DE LLAVE PÚBLICA.
+
+Many face-to-face protocols rely on people’s presence to ensure fairness and
+security. Would you send a stranger a pile of cash to buy groceries for you?
+Would you play poker with someone if you couldn’t see him shuffle and deal?
+Would you mail the government your secret ballot without some assurance of
+anonymity?
+It is naïve to assume that people on computer networks are honest. It is naïve
+to assume that the managers of computer networks are honest. It is even naïve
+to assume that the designers of computer networks are honest. Most are, but
+the dishonest few can do a lot of damage. By formalizing protocols, we can
+examine ways in which dishonest parties can subvert them. Then we can
+develop protocols that are immune to that subversion.
+
+
+
+
+
+//
+In summary, symmetric cryptosystems have the following problems:
+— Keys must be distributed in secret. They are as valuable as all the
+messages they encrypt, since knowledge of the key gives knowledge of
+all the messages. For encryption systems that span the world, this can be
+a daunting task. Often couriers hand-carry keys to their destinations.
+— If a key is compromised (stolen, guessed, extorted, bribed, etc.), then
+Eve can decrypt all message traffic encrypted with that key. She can
+also pretend to be one of the parties and produce false messages to fool
+the other party.
+— Assuming a separate key is used for each pair of users in a network,
+the total number of keys increases rapidly as the number of users
+increases. A network of n users requires n(n - 1)/2 keys. For example,
+10 users require 45 different keys to talk with one another and 100 users
+require 4950 keys. This problem can be minimized by keeping the
+number of users small, but that is not always possible.
+
+
+
+
+//
+2.3 One way functions 
+
+One-way functions are relatively easy to compute, but significantly harder to
+reverse. That is, given x it is easy to compute f(x), but given f(x) it is hard to
+compute x
+
+
+A trapdoor one-way function is a special type of one-way function, one with
+a secret trapdoor 
+
+it is easy to compute f(x) given x, and hard to compute x given f(x). However, there is some secret information, y,
+such that given f(x) and y it is easy to compute x.
+
+//
+PREGUNTARLE AL PROFE SOBRE 2.4 ONE WAY HASH FUNCTION PORQUE NO ENTENDI
+
+importante saber q el MAC tambien conocido como DAC es un one way function
+
+
+//
+BUENA ANALOGIA DE QUE ES UN ALGORITMO SIMETRICO
+
+Think of a symmetric algorithm as a safe. The key is the combination.
+Someone with the combination can open the safe, put a document inside, and
+close it again. Someone else with the combination can open the safe and take
+the document out. Anyone without the combination is forced to learn
+safecracking.
+
+
+// BUENA ANALOGIA PARA UN ALGORITMO DE LLAVE PUBLICA
+
+It is as if
+someone turned the cryptographic safe into a mailbox. Putting mail in the
+mailbox is analogous to encrypting with the public key; anyone can do it. Just
+open the slot and drop it in. Getting mail out of a mailbox is analogous to
+decrypting with the private key. Generally it’s hard; you need welding torches.
+However, if you have the secret (the physical key to the mailbox), it’s easy to
+get mail out of a mailbox.
+Mathematically, the process is based on the trap-door one-way functions
+previously discussed.
+
+//
+PAra cuestiones de redes no se debe confiar en nadie
+
+
+//
+El objetivo de utilizar cifrado de llave pública se basa en:
+
+ - Receptor y emisor acuerdan un sistema de cifrado.
+ - El receptor entrega al emisor su llave pública.
+ - El emisor cifra el texto plano haciendo uso de la llave pública entregada y el sistema acordado.
+ - El emisor envía el texto cifrado.
+ - El receptor descrifa el texto cifrado haciendo uso de la llave privada.
+
+
+De esta manera no hay forma que fisgones logren descrifrar el mensaje aunque obtengan la llave pública, así el receptor
+se asegura que las comunicaciones van a ser mucho más seguras ya que el emisor deja de tener la llave para descifrar y así no puede
+brindarse a nadie o que sea robada a este.
+
+Before, Alice and Bob had to agree on a key in
+secret. Alice could choose one at random, but she still had to get it to Bob. She
+could hand it to him sometime beforehand, but that requires foresight. She
+could send it to him by secure courier, but that takes time
+
+More commonly, a network of users agrees on a public-key cryptosystem.
+Every user has his or her own public key and private key, and the public keys
+are all published in a database somewhere. Now the protocol is even easier:
+(1) Alice gets Bob’s public key from the database.
+(2) Alice encrypts her message using Bob’s public key and sends it to
+Bob.
+(3) Bob then decrypts Alice’s message using his private key.
+
+
+
+// Hybrid cryptosystems
+In the real world, public-key algorithms are not a substitute for symmetric
+algorithms. They are not used to encrypt messages; they are used to encrypt
+keys. There are two reasons for this:
+1. Public-key algorithms are slow. Symmetric algorithms are generally
+at least 1000 times faster than public-key algorithms. Yes, computers
+are getting faster and faster, and in 15 years computers will be able to do
+public-key cryptography at speeds comparable to symmetric
+cryptography today. But bandwidth requirements are also increasing,
+and there will always be the need to encrypt data faster than public-key
+cryptography can manage.
+2. Public-key cryptosystems are vulnerable to chosen-plaintext attacks.
+If C = E(P), when P is one plaintext out of a set of n possible plaintexts,
+then a cryptanalyst only has to encrypt all n possible plaintexts and
+compare the results with C (remember, the encryption key is public). He
+won’t be able to recover the decryption key this way, but he will be able
+to determine P.
+
+
+In most practical implementations public-key cryptography is used to secure
+and distribute session keys; those session keys are used with symmetric
+algorithms to secure message traffic [879]. This is sometimes called a hybrid
+cryptosystem.
+(1) Bob sends Alice his public key.
+(2) Alice generates a random session key, K, encrypts it using Bob’s
+public key, and sends it to Bob.
+EB(K)
+(3) Bob decrypts Alice’s message using his private key to recover the
+session key.
+DB(EB(K)) = K
+(4) Both of them encrypt their communications using the same session
+key.
+Using public-key cryptography for key distribution solves a very important
+key-management problem. With symmetric cryptography, the data encryption
+key sits around until it is used. If Eve ever gets her hands on it, she can decrypt
+messages encrypted with it. With the previous protocol, the session key is
+created when it is needed to encrypt communications and destroyed when it is
+no longer needed. This drastically reduces the risk of compromising the
+session key. Of course, the private key is vulnerable to compromise, but it is at
+less risk because it is only used once per communication to encrypt a session
+key. This is further discussed in Section 3.1.
+
+
+
+
+
+
+//
+Merkle’s Puzzles
+Ralph Merkle invented the first construction of public-key cryptography. In
+1974
+
+
+
+//
+Digital Signatures
+
+Comprueban autoría de una personaje sobre un texto plano ya que la firma es autentica, no reusable, no repudiable e infalsificable.
+Además el documento firmado es inalterable. Esto no necesariamente se cumple siempre, aún menos para una computadora donde los archivos
+son fáciles de copiar y alterar sin que nadie se dé cuenta. Debido a esto se hace uso de critpografía para asegurar las características
+antes mencionadas.
+
+En el caso de los criptosistemas simétricos según (cita) se tiene el siguiente protocolo:
+
+Se tiene un árbitro para tramitar mensajes entre el emisor y el receptor, el cual brinda una llave a ambos la cual ya ha sido
+previamente establecida antes de iniciar el protocolo. Ahora:
+
+- El emisor cifra el texto plano con la llave dada por el árbitro y se la envía a este.
+- El árbitro toma el texto cifrado, lo descifra, le agrega una autenticación de que recibió el texto plano del emisor y vuelve
+a cifrarlo pero utilizando la llave dada al receptor.
+- El receptor descrifra el texto enviado por el árbitro en donde puede leer la autenticación del árbitro.
+
+
+Note como el protocolo cumple con todas las características antes mencionadas pero aún más importante es destacar como el árbitro
+invierte su tiempo en las transacciones, además de que toma el papel de cuello de botella si se tuvieran comunicaciones múltiples
+y finalmente lo díficil que es crear y mantener a una entidad de este tipo. Por estos motivos es que esto solo funciona a nivel teórico
+y no a nivel práctico.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
