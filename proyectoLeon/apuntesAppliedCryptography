@@ -464,9 +464,85 @@ y no a nivel práctico.
 
 
 
+/////////////////////////////////////////////////////////////////////////////////////////
+Chapter 3
+Basic Protocols
+
+// 3.1 Key Exchange
+
+A common cryptographic technique is to encrypt each individual conversation
+with a separate key. This is called a session key, because it is used for only one
+particular communications session. As discussed in Section 8.5, session keys
+are useful because they only exist for the duration of the communication. How
+this common session key gets into the hands of the conversants can be a
+complicated matter.
 
 
 
+
+
+
+
+
+//
+Multiple-Key Public-Key Cryptography
+Public-key cryptography uses two keys. A message encrypted with one key
+can be decrypted with the other. Usually one key is private and the other is
+public. However, let’s assume that Alice has one key and Bob has the other.
+Now Alice can encrypt a message so that only Bob can decrypt it, and Bob can
+encrypt a message so that only Alice can read it.
+This concept was generalized by Colin Boyd [217]. Imagine a variant of
+public-key cryptography with three keys: K A , K B , and K C , distributed as
+shown in Table 3.2.
+Alice can encrypt a message with K A so that Ellen, with K B and K C , can
+decrypt it. So can Bob and Carol in collusion. Bob can encrypt a message so
+that Frank can read it, and Carol can encrypt a message so that Dave can read
+it. Dave can encrypt a message with K A so that Ellen can read it, with K B so
+that Frank can read it, or with both K A and K B so that Carol can read it.
+Similarly, Ellen can encrypt a message so that either Alice, Dave, or Frank can
+read it. All the possible combinations are summarized in Table 3.3; there are
+no other ones.
+
+
+
+3.6 Secret Splitting
+
+here are ways to take a message and divide it
+up into pieces [551]. Each piece by itself means nothing, but put them together
+and the message appears. If the message is the recipe and each employee has apiece, then only together can they make the sauce. If any employee resigns
+with his single piece of the recipe, his information is useless by itself.
+The simplest sharing scheme splits a message between two people. Here’s a
+protocol in which Trent can split a message between Alice and Bob:
+(1) Trent generates a random-bit string, R, the same length as the
+message, M.
+(2) Trent XORs M with R to generate S.
+M • R = S
+(3) Trent gives R to Alice and S to Bob.
+To reconstruct the message, Alice and Bob have only one step to do:
+(4) Alice and Bob XOR their pieces together to reconstruct the
+message:
+R • S = M
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+Chapter 7
+
+7.1 Symmetric Key Length
+
+The security of a symmetric cryptosystem is a function of two things: the
+strength of the algorithm and the length of the key.
+
+
+
+Asumiendo que se tiene una fuerza del algoritmo perfecta, la única forma de quebrar el criptosistema sería mediante un ataque de fuerza bruta el cual es un tipo de known-plaintext attack donde sería solamente necesario unos 64 bits de texto plano y texto cifrado para ejecutarlo. Ahora tomemos en consideración el tamaño de la llave, si se tuviera una llave de 2^8 bits el atacante solamente tendría que probar 256 posibilidades para obtener la llave, en cambio para 2^64 bits tenemos 1.8446744^19 posibles llaves que el atacante debe probar lo cual tomaría con los recursos computacionales de una supercomputadora alrededor de 585,000 años. Y para una longitud de llave de 2048
 
 
 
