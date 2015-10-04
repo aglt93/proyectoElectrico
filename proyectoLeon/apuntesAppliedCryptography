@@ -542,7 +542,114 @@ strength of the algorithm and the length of the key.
 
 
 
-Asumiendo que se tiene una fuerza del algoritmo perfecta, la única forma de quebrar el criptosistema sería mediante un ataque de fuerza bruta el cual es un tipo de known-plaintext attack donde sería solamente necesario unos 64 bits de texto plano y texto cifrado para ejecutarlo. Ahora tomemos en consideración el tamaño de la llave, si se tuviera una llave de 2^8 bits el atacante solamente tendría que probar 256 posibilidades para obtener la llave, en cambio para 2^64 bits tenemos 1.8446744^19 posibles llaves que el atacante debe probar lo cual tomaría con los recursos computacionales de una supercomputadora alrededor de 585,000 años. Y para una longitud de llave de 2048
+Asumiendo que se tiene una fuerza del algoritmo perfecta, la única forma de quebrar el criptosistema sería mediante
+un ataque de fuerza bruta el cual es un tipo de known-plaintext attack donde sería solamente necesario unos 64 bits
+de texto plano y texto cifrado para ejecutarlo. Ahora tomemos en consideración el tamaño de la llave, si se tuviera 
+una llave de 2^8 bits el atacante solamente tendría que probar 256 posibilidades para obtener la llave lo que le tomaría
+a un atacante unos cuantos segundos en una computadora, en cambio para 2^64 bits tenemos 1.8446744^19 posibles llaves 
+que el atacante debe probar lo cual tomaría con los recursos computacionales de una supercomputadora alrededor de 585,000 años. 
+Y para una longitud de llave de 2048, a million million-attempts-per-second computers working in parallel will spend
+10597 years finding the key.
+
+Two parameters determine the speed of a brute-force attack: the number of keys to be tested and the speed of each test
+since we are looking for key lengths that are millions of times more difficult to crack than would be feasible, 
+small differences due to test speed are irrelevant.
+
+
+// TAL VEZ SE PUEDE AGREGAR EN DONDE SE EXPLICAN LOS ALGORITMOS DE LLAVE PUBLICA
+today’s dominant public-key encryption algorithms are based on
+the difficulty of factoring large numbers that are the product of two large
+primes. (Other algorithms are based on something called the Discrete
+Logarithm Problem, but for the moment assume the same discussion applies.)
+
+
+
+
+
+// DEMASIADO IMPORTANTE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+You can, but remember that you pay a price in computation time as your keys get longer. You want a key long enough to be
+secure, but short enough to be computationally usable.
+
+
+
+
+
+//
+Public keys are often used
+to secure things of great value for a long time: the bank’s master key for a
+digital cash system, the key the government uses to certify its passports, or a
+notary public’s digital signature key. It probably isn’t worth the effort to spend
+months of computing time to break an individual’s private key, but if you can
+print your own money with a broken key the idea becomes more attractive
+
+
+
+
+//7.3 Comparing Symmetric and Public-Key Key
+Length
+A system is going to be attacked at its weakest point. If you are designing a
+system that uses both symmetric and public-key cryptography, the key lengths
+for each type of cryptography should be chosen so that it is equally difficult to
+attack the system via each mechanism. It makes no sense to use a symmetric
+algorithm with a 128-bit key together with a public-key algorithm with a
+386-bit key, just as it makes no sense to use a symmetric algorithm with a
+56-bit key together with a public-key algorithm with a 1024-bit key.
+Table 7.9 lists public-key modulus lengths whose factoring difficulty roughly
+equals the difficulty of a brute-force attack for popular symmetric key lengths.
+This table says that if you are concerned enough about security to choose a
+symmetric algorithm with a 112-bit key, you should choose a modulus length
+for your public-key algorithm of about 1792 bits. In general, though, you
+should choose a public-key length that is more secure than your
+symmetric-key length. Public keys generally stay around longer, and are used
+to protect more information.
+
+
+
+// Key management
+
+Se puede tener un algoritmo extremadamente robusto, veloz y con un tamaño de llave perfecto, pero si un atacante puede obtener
+la llave, ya sea chantajeando, interceptando, extorsionando o pagando por la misma se pierde todo. De ahí la gran importancia
+de como manejar las llaves.
+
+Al ser esto tan importante existen ciertas maneras de generar llaves:
+\begin{itemize}
+\item Ingresada por el usuario: El usuario elige una llave y esa es la que se va a utilizar. Este método es sumamente inseguro
+debido a que gran cantidad de contraseñas se repiten, o son datos personales del usuario como su número de celular o similares.
+Por tanto se pueden realizar \textit{ataques de diccionario} donde las primeras llaves que se prueban son las mencionadas
+anteriormente.
+
+\item Random keys: Es un muy buen método para generar llaves, consiste en utilizar un programa que genere la llave, es ventajoso
+ya que es robusto ante ataques de diccionario pero presenta el problema que la llave es difícil de recordar y posiblemente se olvide.
+
+\item pass phrases: Es una combinación de ambos, el usuario escribe una contraseña fácil de recordar y después
+hace uso de un one-way has function para convertir esta llave en una llave random de tamaño arbitrario.
+\end{itemize}
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Capitulo 9
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
