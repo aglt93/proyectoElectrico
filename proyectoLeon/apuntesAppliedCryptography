@@ -644,10 +644,43 @@ posibles algoritmos
 block cipher:
 
 RC5
-IDEA
+IDEA: Para HW y SW
 GOST
 CAST
+3-way: Orientado a HW
 
+
+
+
+public key
+
+RSA: Tiene implementaciones en HW.
+
+
+
+
+
+// DEFINICION DE FEISTEL NETWORK
+Feistel Networks
+Most block algorithms are Feistel networks. This idea dates from the early
+1970s [552,553]. Take a block of length n and divide it into two halves of
+length n/2: L and R. Of course, n must be even. You can define an iterated
+block cipher where the output of the ith round is determined from the output of
+the previous round:
+Li = Ri - 1
+Ri = Li - 1 • f(Ri - 1,Ki)
+Ki is the subkey used in the ith round and f is an arbitrary round function.
+You’ve seen this concept in DES, Lucifer, FEAL, Khufu, Khafre, LOKI,
+GOST, CAST, Blowfish, and others. Why is it such a big deal? The function is
+guaranteed to be reversible. Because XOR is used to combine the left half with
+the output of the round function, it is necessarily true that
+Li - 1 • f(Ri - 1,Ki) • f(Ri - 1,Ki) = Li - 1
+A cipher that uses this construction is guaranteed to be invertible as long as the
+inputs to f in each round can be reconstructed. It doesn’t matter what f is; f
+need not be invertible. We can design f to be as complicated as we please, and
+we don’t have to implement two different algorithms—one for encryption and
+another for decryption. The structure of a Feistel network takes care of all this
+automatically.
 
 
 
