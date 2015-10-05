@@ -1,2 +1,240 @@
 Denning, Dorothy E., (Dorothy Elizabeth), 1945-
 Cryptography and data security.
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+Cap 1
+
+//
+Cryptography is the science and study of secret writing. A cipher is a secret method
+of writing, whereby plaintext (or cleartext) is transformed into ciphertext
+(sometimes called a cryptogram). The process of transforming plaintext into ciphertext
+is called encipherment or encryption; the reverse process of transforming
+ciphertext into plaintext is called decipherment or deeryption. Both encipherment
+and decipherment are controlled by a cryptographic key or keys
+
+
+
+There are two basic types of ciphers: transpositions and substitutions. 
+
+Transposition ciphers rearrange bits or characters in the data. 
+Un ejemplo de este tipo de algoritmos es el "rail-fence" donde el texto plano se reacomoda 
+con la forma de una cerca como se observa en la Figura XXXXX. En este caso la llave del algoritmos sería
+la profundidad de la cerca, en el caso de la imagen es de 3.
+
+
+Substitution ciphers replace bits, characters, or blocks of characters with
+substitutes. A simple type of substitution cipher shifts each letter in the English
+alphabet forward by K positions (shifts past Z cycle back to A); K is the key to the
+cipher. The cipher is often called a Caesar cipher
+
+
+A code is a special type of substitution cipher that uses a "code book" as the
+key. Plaintext words or phrases are entered into the code book together with their
+ciphertext substitutes, as shown next"
+
+
+
+
+In computer applications, transposition is usually combined with substitution.
+The Data Encryption Standard (DES), for example, enciphers 64-bit blocks
+using a combination of transposition and substitution
+
+
+
+
+Cryptanalysis is the science and study of methods of breaking ciphers. A
+cipher is breakable if it is possible to determine the plaintext or key from the
+ciphertext, or to determine the key from plaintext-ciphertext pairs. There are three
+basic methods of attack: ciphertext-only, known-plaintext, and chosen-plaintext.
+Under a eiphertext-only attack, a cryptanalyst must determine the key solely
+from intercepted ciphertext, though the method of encryption, the plaintext language,
+the subject matter of the ciphertext, and certain probable words may be
+DATA SECURITY 3
+known. For example, a message describing the location of a buried treasure would
+probably contain words such as BURIED, TREASURE, NORTH, TURN,
+RIGHT, MILES.
+Under a known-plaintext attack, a cryptanalyst knows some plaintextciphertext
+pairs. As an example, suppose an enciphered message transmitted from
+a user's terminal to the computer is intercepted by a cryptanalyst who knows that
+the message begins with a standard header such as "LOGIN". As another example,
+the cryptanalyst may know that the Department field of a particular record
+contains the ciphertext for Physics; indeed, the cryptanalyst may know the Department
+field of every record in thedatabase. In some cases, knowledge of probable
+words allows a close approximation to a known-plaintext attack. Encrypted
+programs are particularly vulnerable because of the regular appearance of
+keywordsue.g, begin, end, var, procedure, if, then. Even if the exact position of
+encrypted keywords is unknown, a cryptanalyst may be able to make reasonable
+guesses about them. Ciphers today are usually considered acceptable only if they
+can withstand a known-plaintext attack under the assumption that the cryptanalyst
+has an arbitrary amount of plaintext-ciphertext pairs.
+Under a ehosen-plaintext attack, a cryptanalyst is able to acquire the ciphertext
+corresponding to selected plaintext. This is the most favorable case for the
+cryptanalyst. A database system may be particularly vulnerable to this type of
+attack if users can insert elements into the database, and then observe the changes
+in the stored ciphertext. Bayer and Metzger [Baye76] call this the planted record
+problem.
+Public-key systems (defined in Section 1.3) have introduced a fourth kind of
+attack: a chosen-eiphertext attack. Although the plaintext is not likely to be intelligible,
+the cryptanalyst may be able to use it to deduce the key.
+A cipher is unconditionally secure if, no matter how much ciphertext is intercepted,
+there is not enough information in the ciphertext to determine the plaintext
+uniquely. We shall give a formal definition of an unconditionally secure cipher in
+Section 1.4. With one exception, all ciphers are breakable given unlimited resources,
+so we are more interested in ciphers that are computationally infeasible to
+break. A cipher is computationally secure, or strong, if it cannot be broken by
+systematic analysis with available resources.
+
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+The branch of knowledge embodying both cryptography and cryptanalysis is
+called eryptology.
+
+
+//
+1.3 CRYPTOGRAPHIC SYSTEMS
+This section describes the general requirements of all cryptographic systems, the
+specific properties of public-key encryption, and digital signatures.
+A cryptographic system (or cryptosystem for short) has five components:
+1. A plaintext message space, if/.
+2. A ciphertext message space, C.
+3. A key space, .K.
+4. A family of enciphering transformations, EK: ~ ~ C, where K ~ .K.
+5. A family of deciphering transformations, DK: C ~ ~, where K ~ .K.
+
+
+
+Each enciphering transformation E K is defined by an enciphering algorithm
+E, which is common to every transformation in the family, and a key K, which
+distinguishes it from the other transformations. Similarly, each deciphering transformation
+D K is defined by a deciphering algorithm D and a key K. For a given K,
+D K is the inverse of EK; that is, DK(EK(M )) = M for every plaintext message M. In
+a given cryptographic system, the transformations E K and D K are described by
+parameters derived from K (or directly by K). The set of parameters describing E K
+is called the enciphering key, and the set of parameters describing D K the deciphering
+key. Figure 1.5 illustrates the enciphering and deciphering of data.
+Cryptosystems must satisfy three general requirements:
+1. The enciphering and deciphering transformations must be efficient for all
+keys. is essential for computer applications; data is usually enciphered
+and deciphered at the time of transmission, and these operations must not be
+bottlenecks.
+2. The system must be easy to use.
+3. The security of the system should depend only on the secrecy of the keys and
+not on the secrecy of the algorithms E or D.
+
+
+
+
+
+
+//
+There are specific requirements for secrecy and authenticity. Secrecy requires
+that a cryptanalyst not be able to determine plaintext data from intercepted
+ciphertext. Formally, there are two requirements:
+Secrecy requirements
+- It should be computationally infeasible for a cryptanalyst to systematically
+determine the deciphering transformation D K from intercepted ciphertext C,
+even if the corresponding plaintext M is known.
+
+- It should be computationally infeasible for a cryptanalyst to systematically
+determine plaintext M from intercepted ciphertext C.
+
+Requirement (1) ensures that a cryptanalyst cannot systematically determine the
+deciphering transformation (guessing may be possible). Thus, the cryptanalyst will
+be unable to decipher C or other ciphertext enciphered under the transformation
+E g. Requirement (2) ensures that a cryptanalyst cannot systematically determine
+plaintext without the deciphering transformation. Both requirements should hold
+regardless of the length or number of ciphertext messages intercepted.
+
+
+
+Data authenticity requires that a cryptanalyst not be able to substitute a
+false ciphertext C' for a ciphertext C without detection. Formally, the two requirements
+are:
+Authenticity requirements
+
+- It should be computationally infeasible for a cryptanalyst to systematically
+determine the enciphering transformation E g given C, even if the corresponding
+plaintext M is known.
+
+- It should be computationally infeasible for a cryptanalyst to systematically
+find ciphertext C' such that DK(C' ) is valid plaintext in the set M.
+
+
+Requirement (1) ensures that a cryptanalyst cannot systematically determine the
+enciphering transformation. Thus the cryptanalyst will be unable to encipher a
+different plaintext message M', and substitute the false ciphertext C' = EK(M')
+for C. Requirement (2) ensures that a cryptanalyst cannot find ciphertext C' that
+deciphers into meaningful plaintext without the enciphering transformation.
+
+
+
+
+///////
+Transposition ciphers rearrange characters according to some scheme.
+
+
+
+SIMPLE SUBSTITUTION CIPHERS
+There are four types of substitution ciphers: simple substitution, homophonic substitution,
+polyalphabetic substitution, and polygram substitution
+
+A simple substitution cipher replaces each character of an ordered plaintext
+alphabet, denoted A, with the corresponding character of an ordered cipher alphabet,
+denoted C
+
+
+
+A homophonic substitution cipher maps each character a of the plaintext alphabet
+into a set of ciphertext elements f(a) called homophones. Thus the mapping f from
+plaintext to ¢iphertext is of the form.j2 A ~ 2 e.
+
+
+The following illustrates a possible assignment of integers to the letters
+in the message PLAIN PILOT
+
+
+
+Ver figura HOMOPHONICCIPHEREXAMPLE!!!!!!!!!!!!!!!!!!!!!!!1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
