@@ -219,8 +219,7 @@ en el texto cifrado.
 \end{itemize}
 
 \subsubsection{Cifrado de transposición}
-En este tipo de algoritmos de cifrado el texto plano se convierte en texto cifrado cuando el orden de los caracteres es
-cambiado bajo alguna norma.
+En este tipo de algoritmos de cifrado el texto plano se convierte en texto cifrado cuando el orden de los caracteres es cambiado bajo alguna norma.
 
 
 Finalmente existen otros tipos de algoritmos en la criptografía clásica como lo son el XOR o One-time pads.

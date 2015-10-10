@@ -10,5 +10,8 @@
 \contentsline {section}{\numberline {1.4}Metodolog\IeC {\'\i }a}{3}
 \contentsline {section}{\numberline {1.5}Desarrollo}{3}
 \contentsline {chapter}{\chapternumberline {2}Marco Te\IeC {\'o}rico}{5}
-\contentsline {subsection}{Conceptos B\IeC {\'a}sicos}{5}
-\contentsline {subsection}{Sistema criptogr\IeC {\'a}fico \textit {criptosistema}}{6}
+\contentsline {section}{\numberline {2.1}Conceptos B\IeC {\'a}sicos}{5}
+\contentsline {section}{\numberline {2.2}Sistema criptogr\IeC {\'a}fico (\textit {criptosistema})}{6}
+\contentsline {section}{\numberline {2.3}Algoritmos de cifrado}{9}
+\contentsline {subsection}{Algoritmos sim\IeC {\'e}tricos}{9}
+\contentsline {subsection}{Algoritmos de llave p\IeC {\'u}blica}{10}

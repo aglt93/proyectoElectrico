@@ -1,4 +1,8 @@
 \select@language {spanish}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica de un sistema criptogr\IeC {\'a}fico.\relax }}{8}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica de un sistema criptogr\IeC {\'a}fico.\relax }}{7}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Ejemplo de cifrado homof\IeC {\'o}nico.\relax }}{8}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Ejemplo de cifrado de transposici\IeC {\'o}n.\relax }}{8}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica de una algoritmo de llave sim\IeC {\'e}trica.\relax }}{9}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Descripci\IeC {\'o}n gr\IeC {\'a}fica de una algoritmo de llave p\IeC {\'u}blica.\relax }}{11}

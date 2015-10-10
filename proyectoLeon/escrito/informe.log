@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  7 OCT 2015 18:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  9 OCT 2015 16:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1227,6 +1227,10 @@ Package natbib Warning: Citation `bruce' on page 5 undefined on input line 16.
 
 [5]
 
+Package natbib Warning: Citation `denning' on page 6 undefined on input line 38
+.
+
+
 Package natbib Warning: Citation `denning' on page 6 undefined on input line 40
 .
 
@@ -1236,17 +1240,77 @@ File: ./images/figExplicacionSistemaCripto.png Graphic file (type png)
 <use ./images/figExplicacionSistemaCripto.png>
 Package pdftex.def Info: ./images/figExplicacionSistemaCripto.png used on input
  line 55.
-(pdftex.def)             Requested size: 184.5pt x 78.18716pt.
-)
-LaTeX Info: Redefining \. on input line 220.
-LaTeX Info: Redefining \% on input line 220.
+(pdftex.def)             Requested size: 295.20113pt x 125.09808pt.
+LaTeX Info: Redefining \. on input line 62.
+LaTeX Info: Redefining \% on input line 62.
  [6]
+
+Package natbib Warning: Citation `bruce' on page 7 undefined on input line 67.
+
+<./images/figExampleHomophonicCipher.png, id=81, 333.49594pt x 231.86626pt>
+File: ./images/figExampleHomophonicCipher.png Graphic file (type png)
+
+<use ./images/figExampleHomophonicCipher.png>
+Package pdftex.def Info: ./images/figExampleHomophonicCipher.png used on input 
+line 76.
+(pdftex.def)             Requested size: 221.40225pt x 153.93437pt.
+LaTeX Info: Redefining \. on input line 85.
+LaTeX Info: Redefining \% on input line 85.
+ [7 <./images/figExplicacionSistemaCripto.png>]
+<./images/figExampleTranspositionCipher.png, id=85, 349.305pt x 195.73125pt>
+File: ./images/figExampleTranspositionCipher.png Graphic file (type png)
+
+<use ./images/figExampleTranspositionCipher.png>
+Package pdftex.def Info: ./images/figExampleTranspositionCipher.png used on inp
+ut line 91.
+(pdftex.def)             Requested size: 239.84775pt x 134.39764pt.
+
+
+Package natbib Warning: Citation `???' on page 8 undefined on input line 97.
+
+LaTeX Info: Redefining \. on input line 100.
+LaTeX Info: Redefining \% on input line 100.
+[8 <./images/figExampleHomophonicCipher.png> <./images/figExampleTranspositionC
+ipher.png>]
+
+Package natbib Warning: Citation `bruce' on page 9 undefined on input line 102.
+
+
+<./images/figSimmetricKeyAlgorithm.png, id=89, 528.47438pt x 175.40532pt>
+File: ./images/figSimmetricKeyAlgorithm.png Graphic file (type png)
+
+<use ./images/figSimmetricKeyAlgorithm.png>
+Package pdftex.def Info: ./images/figSimmetricKeyAlgorithm.png used on input li
+ne 114.
+(pdftex.def)             Requested size: 332.09775pt x 110.2249pt.
+
+
+Package natbib Warning: Citation `bruce' on page 9 undefined on input line 120.
+
+
+LaTeX Info: Redefining \. on input line 126.
+LaTeX Info: Redefining \% on input line 126.
+[9 <./images/figSimmetricKeyAlgorithm.png>]
+
+Package natbib Warning: Citation `bruce' on page 10 undefined on input line 128
+.
+
+<./images/figPublicKeyAlgorithm.png, id=93, 528.47438pt x 164.86594pt>
+File: ./images/figPublicKeyAlgorithm.png Graphic file (type png)
+
+<use ./images/figPublicKeyAlgorithm.png>
+Package pdftex.def Info: ./images/figPublicKeyAlgorithm.png used on input line 
+152.
+(pdftex.def)             Requested size: 239.84775pt x 74.8229pt.
+LaTeX Info: Redefining \. on input line 162.
+LaTeX Info: Redefining \% on input line 162.
+ [10]
+LaTeX Info: Redefining \. on input line 234.
+LaTeX Info: Redefining \% on input line 234.
+ [11 <./images/figPublicKeyAlgorithm.png>])
 LaTeX Info: Redefining \. on input line 220.
 LaTeX Info: Redefining \% on input line 220.
- [7]
-LaTeX Info: Redefining \. on input line 220.
-LaTeX Info: Redefining \% on input line 220.
- [8 <./images/figExplicacionSistemaCripto.png>]
+ [12]
 No file informe.bbl.
 
 Package natbib Warning: There were undefined citations.
@@ -1272,10 +1336,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 11830 strings out of 493304
- 162684 string characters out of 6139872
+ 11862 strings out of 493304
+ 163708 string characters out of 6139872
  293587 words of memory out of 5000000
- 14930 multiletter control sequences out of 15000+600000
+ 14958 multiletter control sequences out of 15000+600000
  49303 words of font info for 95 fonts, out of 8000000 for 9000
  1053 hyphenation exceptions out of 8191
  46i,11n,58p,1088b,509s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1293,10 +1357,10 @@ fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts
 /type1/public/cm-super/sfrm1095.pfb>
-Output written on informe.pdf (22 pages, 180859 bytes).
+Output written on informe.pdf (26 pages, 228309 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 93 compressed objects within 1 object stream
+ 151 PDF objects out of 1000 (max. 8388607)
+ 102 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 26 words of extra memory for PDF output out of 10000 (max. 10000000)
 
