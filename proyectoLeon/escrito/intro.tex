@@ -1,23 +1,23 @@
 \chapter{Introducción}
 
 \section{Justificación}
-La encriptación de datos por seguridad es una necesidad en la actualidad. Por ejemplo cuando a un empleado le roban una computadora corporativa que contiene datos sensibles para la empresa en la que labora, la encriptación evita que se pueda acceder a los mismos y que así se protejan de terceros.
+El cifrado de datos por seguridad es una necesidad en la actualidad. Por ejemplo cuando a un empleado le roban una computadora corporativa que contiene datos sensibles para la empresa en la que labora, el cifrado evita que se pueda acceder a los mismos y que así se protejan de terceros.
 
-En el caso de la encriptación de software trae consigo problemáticas como lo son la necesidad de actualizaciones y el desempeño del computador. Este último aspecto se debe a que una encriptación a nivel de software debe dedicar recursos del sistema a encriptar/desencriptar información. 
+En el caso del cifrado implementado en software trae consigo problemáticas como lo son la necesidad de actualizaciones y el desempeño del computador. Este último aspecto se debe a la necesidad de dedicar recursos del sistema para cifrar y descifrar la información. 
 
-En el caso de hardware se tienen los beneficios de que es muy confiable, rápido y conveniente. A diferencia de la encriptación de software se tiene una parte de hardware dedicada al proceso de encriptación/descriptación y por tanto el desempeño de la computadora no se ve tan afectado, también al no haber forma de actualizar hardware ocurre una disminución en costos (ACA FALTA LA CITA). Otra de las grandes ventajas de la encriptación basada en hardware es la facilidad de configuración, ya que gran parte de esto proceso es eliminado debido a que el hardware se encarga directamente de esto. (CITA DE DRIVETRUST).
+En el caso de hardware se tienen los beneficios de que es muy confiable, rápido y conveniente. A diferencia del cifrado en software se tiene una parte de hardware dedicada al proceso de cifrado/descifrado y por tanto el desempeño de la computadora no se ve tan afectado, también al no haber forma de actualizar hardware ocurre una disminución en costos (ACA FALTA LA CITA). Otra de las grandes ventajas del cifrado basado en hardware es la facilidad de configuración, ya que gran parte de esto proceso es eliminado debido a que el hardware se encarga directamente de esto. (CITA DE DRIVETRUST).
 
-Debido a lo expuesto anteriormente se buscó trabajar en algoritmos de encriptación en hardware ya que es un área de trabajo que se puede explotar para investigar y mejorar.
+Debido a lo expuesto anteriormente se buscó trabajar en algoritmos criptográficos en hardware ya que es un área de trabajo que se puede explotar para investigar y mejorar.
 
 Se escogió como plataforma de trabajo un FPGA 
 
 
 \section{Alcances y limitaciones del proyecto}
-Se implementarán 2 algoritmos de encriptación de datos en un FPGA haciendo uso de Verilog como lenguaje de descripción de hardware. 
+Se implementarán dos algoritmos criptográficos en un FPGA haciendo uso de Verilog como lenguaje de descripción de hardware. 
 
 Posteriomente y mediante las herramientas de síntesis de Xilinx se realizará un análisis de métricas críticas en el desarrollo de aplicaciones en FPGAs como los son la cantidad de compuertas o celdas, el consumo de memoria interna del FPGA así como la cantidad de bloques aritméticos o de DSP que son usados por cada algoritmo. 
 
-Inicialmente se va a llevar a cabo un análisis individual de cada algoritmo, haciendo uso de las métricas anteriormente descritas y variando parámetros comunes de los algoritmos de encriptación como lo son el tamaño de la llave y la cantidad de rondas de encriptación (este último en algoritmos de tipo Feistel). 
+Inicialmente se va a llevar a cabo un análisis individual de cada algoritmo, haciendo uso de las métricas anteriormente descritas y variando parámetros comunes de los algoritmos criptográficos como lo son el tamaño de la llave y la cantidad de rondas de cifrado (este último en algoritmos de tipo Feistel). 
 
 Como segunda parte del proyecto se va a realizar un análisis comparativo entre ambos algoritmos eligiendo parámetros fijos para ambos.
 
@@ -32,14 +32,14 @@ Se limitará a realizar una escogencia de esta manera sin la necesidad de realiz
 
 \subsection{Objetivo General}
 
-Implementar dos algoritmos de encriptación en un FPGA y realizar un análisis comparativo de la implementación de ambos algoritmos, empleando una serie de parámetros previamente seleccionados.
+Implementar dos algoritmos de cifrado en un FPGA y realizar un análisis comparativo de la implementación de ambos algoritmos, empleando una serie de parámetros previamente seleccionados.
 
 
 \subsection{Objetivos Específicos}
 
 \begin{enumerate}
 
-\item Implementar dos algoritmos de encriptación comúnmente empleados en un FPGA utilizando el lenguaje de descripción de hardware Verilog.
+\item Implementar dos algoritmos criptográficos comúnmente empleados en un FPGA utilizando el lenguaje de descripción de hardware Verilog.
 
 \item Realizar un análisis individual para cada uno de los algoritmos individuales, variando alguno de sus parámetros (por ejemplo el tamaño de la llave) para comparar haciendo uso de métricas como la cantidad de compuertas, el consumo de memoria interna del FPGA así como la cantidad de bloques aritméticos o de DSP que se van a ir utilizando conforme se varíe el parámetro del algoritmo elegido.
 
@@ -58,13 +58,13 @@ La metodología que se siguió para la realización del proyecto es la siguiente
 
 \begin{itemize}
 	\item Criptografía: importancia y como la misma se implementa en la computación.
-	\item Algoritmos de cifrado: Identificación de ramas y subramas.
-	\item Código e implementación de algoritmos de encriptación en diferentes lenguajes de programación.
+	\item Algoritmos criptográficos: Identificación de ramas y subramas.
+	\item Código e implementación de algoritmos criptográficos en diferentes lenguajes de programación.
 \end{itemize}
 
-\item Escogencia de los algoritmos de encriptación a implementar.
+\item Escogencia de los algoritmos criptográficos a implementar.
 
-\item Implementación de los algoritmos de cifrado en un FPGA Xilinx MODELO????.
+\item Implementación de los algoritmos criptográficos en un FPGA Xilinx MODELO????.
 
 \item Realización del análisis individual de cada uno de los algoritmos.
 
@@ -83,7 +83,7 @@ El presente informe se estructura para el lector de la siguiente manera:
 
 \item Capítulo II: Antecedentes y Marco Teórico. 
 
-\item Capítulo III: Implementación de los algoritmos de encriptación en el FPGA.
+\item Capítulo III: Implementación de los algoritmos criptográficos en el FPGA.
 
 \item Capítulo IV: Resultados de los análisis individuales y comparativos de los 2 algoritmos implementados en el FPGA.
 

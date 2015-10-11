@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  11 OCT 2015 00:35
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  11 OCT 2015 17:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1195,8 +1195,8 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 ]
-LaTeX Info: Redefining \. on input line 49.
-LaTeX Info: Redefining \% on input line 49.
+LaTeX Info: Redefining \. on input line 57.
+LaTeX Info: Redefining \% on input line 57.
  [2])
 LaTeX Info: Redefining \. on input line 216.
 LaTeX Info: Redefining \% on input line 216.
@@ -1234,29 +1234,31 @@ Package natbib Warning: Citation `denning' on page 6 undefined on input line 38
 Package natbib Warning: Citation `denning' on page 6 undefined on input line 40
 .
 
-<./images/figExplicacionSistemaCripto.png, id=74, 538.26094pt x 228.10219pt>
+LaTeX Info: Redefining \. on input line 52.
+LaTeX Info: Redefining \% on input line 52.
+[6]
+<./images/figExplicacionSistemaCripto.png, id=80, 538.26094pt x 228.10219pt>
 File: ./images/figExplicacionSistemaCripto.png Graphic file (type png)
 
 <use ./images/figExplicacionSistemaCripto.png>
 Package pdftex.def Info: ./images/figExplicacionSistemaCripto.png used on input
  line 55.
 (pdftex.def)             Requested size: 295.20113pt x 125.09808pt.
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
- [6]
+
 
 Package natbib Warning: Citation `bruce' on page 7 undefined on input line 67.
 
-<./images/figExampleHomophonicCipher.png, id=81, 333.49594pt x 231.86626pt>
+LaTeX Info: Redefining \. on input line 73.
+LaTeX Info: Redefining \% on input line 73.
+[7 <./images/figExplicacionSistemaCripto.png>]
+<./images/figExampleHomophonicCipher.png, id=84, 333.49594pt x 231.86626pt>
 File: ./images/figExampleHomophonicCipher.png Graphic file (type png)
 
 <use ./images/figExampleHomophonicCipher.png>
 Package pdftex.def Info: ./images/figExampleHomophonicCipher.png used on input 
 line 76.
 (pdftex.def)             Requested size: 221.40225pt x 153.93437pt.
-LaTeX Info: Redefining \. on input line 85.
-LaTeX Info: Redefining \% on input line 85.
- [7 <./images/figExplicacionSistemaCripto.png>]
+
 <./images/figExampleTranspositionCipher.png, id=85, 349.305pt x 195.73125pt>
 File: ./images/figExampleTranspositionCipher.png Graphic file (type png)
 
@@ -1266,16 +1268,19 @@ ut line 91.
 (pdftex.def)             Requested size: 239.84775pt x 134.39764pt.
 
 
-Package natbib Warning: Citation `???' on page 8 undefined on input line 97.
-
-LaTeX Info: Redefining \. on input line 100.
-LaTeX Info: Redefining \% on input line 100.
-[8 <./images/figExampleHomophonicCipher.png> <./images/figExampleTranspositionC
-ipher.png>]
-
-Package natbib Warning: Citation `bruce' on page 9 undefined on input line 102.
+Package natbib Warning: Citation `denning' on page 8 undefined on input line 97
+.
 
 
+Package natbib Warning: Citation `bruce' on page 8 undefined on input line 102.
+
+
+
+Underfull \vbox (badness 1931) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 103.
+LaTeX Info: Redefining \% on input line 103.
+ [8 <./images/figExampleHomophonicCipher.png>]
 <./images/figSimmetricKeyAlgorithm.png, id=89, 528.47438pt x 175.40532pt>
 File: ./images/figSimmetricKeyAlgorithm.png Graphic file (type png)
 
@@ -1288,74 +1293,110 @@ ne 114.
 Package natbib Warning: Citation `bruce' on page 9 undefined on input line 120.
 
 
-LaTeX Info: Redefining \. on input line 128.
-LaTeX Info: Redefining \% on input line 128.
-[9 <./images/figSimmetricKeyAlgorithm.png>]
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
+[9 <./images/figExampleTranspositionCipher.png>]
 
-Package natbib Warning: Citation `bruce' on page 10 undefined on input line 143
+Package natbib Warning: Citation `bruce' on page 10 undefined on input line 142
+.
+
+LaTeX Info: Redefining \. on input line 149.
+LaTeX Info: Redefining \% on input line 149.
+[10 <./images/figSimmetricKeyAlgorithm.png>]
+
+Package natbib Warning: Citation `bruce' on page 11 undefined on input line 154
 .
 
 
-Package natbib Warning: Citation `bruce' on page 10 undefined on input line 155
-.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--160
+Underfull \hbox (badness 10000) in paragraph at lines 154--159
 
  []
 
-LaTeX Info: Redefining \. on input line 160.
-LaTeX Info: Redefining \% on input line 160.
-[10] <./images/figPublicKeyAlgorithm.png, id=96, 528.47438pt x 164.86594pt>
+<./images/figPublicKeyAlgorithm.png, id=96, 528.47438pt x 164.86594pt>
 File: ./images/figPublicKeyAlgorithm.png Graphic file (type png)
 
 <use ./images/figPublicKeyAlgorithm.png>
 Package pdftex.def Info: ./images/figPublicKeyAlgorithm.png used on input line 
-168.
+167.
 (pdftex.def)             Requested size: 239.84775pt x 74.8229pt.
 
 
-Package natbib Warning: Citation `bruce' on page 11 undefined on input line 175
+Package natbib Warning: Citation `bruce' on page 11 undefined on input line 174
 .
 
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
+LaTeX Info: Redefining \. on input line 175.
+LaTeX Info: Redefining \% on input line 175.
 [11 <./images/figPublicKeyAlgorithm.png>]
+LaTeX Info: Redefining \. on input line 200.
+LaTeX Info: Redefining \% on input line 200.
+ [12]
 
-Package natbib Warning: Citation `bruce' on page 12 undefined on input line 199
+Package natbib Warning: Citation `bruce' on page 13 undefined on input line 203
 .
 
 
-Package natbib Warning: Citation `bruce' on page 12 undefined on input line 201
+Package natbib Warning: Citation `bruce' on page 13 undefined on input line 205
 .
 
-LaTeX Info: Redefining \. on input line 203.
-LaTeX Info: Redefining \% on input line 203.
-[12]
-LaTeX Info: Redefining \. on input line 227.
-LaTeX Info: Redefining \% on input line 227.
- [13]
 
-Package natbib Warning: Citation `bruce' on page 14 undefined on input line 228
+Package natbib Warning: Citation `denning' on page 13 undefined on input line 2
+22.
+
+
+Package natbib Warning: Citation `raeAnalisis' on page 13 undefined on input li
+ne 222.
+
+LaTeX Info: Redefining \. on input line 224.
+LaTeX Info: Redefining \% on input line 224.
+[13]
+
+Package natbib Warning: Citation `bruce' on page 14 undefined on input line 224
 .
 
-<./images/figVariacionLlaves.png, id=108, 442.65375pt x 475.7775pt>
+
+Package natbib Warning: Citation `bruce' on page 14 undefined on input line 226
+.
+
+
+Package natbib Warning: Citation `denning' on page 14 undefined on input line 2
+26.
+
+LaTeX Info: Redefining \. on input line 244.
+LaTeX Info: Redefining \% on input line 244.
+[14]
+
+Package natbib Warning: Citation `bruce' on page 15 undefined on input line 249
+.
+
+
+Package natbib Warning: Citation `bruce' on page 15 undefined on input line 252
+.
+
+
+Package natbib Warning: Citation `bruce' on page 15 undefined on input line 254
+.
+
+<./images/figVariacionLlaves.png, id=111, 442.65375pt x 475.7775pt>
 File: ./images/figVariacionLlaves.png Graphic file (type png)
 
 <use ./images/figVariacionLlaves.png>
-Package pdftex.def Info: ./images/figVariacionLlaves.png used on input line 232
+Package pdftex.def Info: ./images/figVariacionLlaves.png used on input line 258
 .
 (pdftex.def)             Requested size: 239.84775pt x 257.8017pt.
-LaTeX Info: Redefining \. on input line 246.
-LaTeX Info: Redefining \% on input line 246.
- [14 <./images/figVariacionLlaves.png (PNG copy)>]
-LaTeX Info: Redefining \. on input line 287.
-LaTeX Info: Redefining \% on input line 287.
- [15])
+LaTeX Info: Redefining \. on input line 273.
+LaTeX Info: Redefining \% on input line 273.
+ [15]
+LaTeX Info: Redefining \. on input line 288.
+LaTeX Info: Redefining \% on input line 288.
+ [16 <./images/figVariacionLlaves.png (PNG copy)>])
 LaTeX Info: Redefining \. on input line 220.
 LaTeX Info: Redefining \% on input line 220.
- [16]
+ [17]
 No file informe.bbl.
+[18
+
+
+]
 
 Package natbib Warning: There were undefined citations.
 
@@ -1377,10 +1418,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11874 strings out of 493304
- 163980 string characters out of 6139872
- 294587 words of memory out of 5000000
- 14969 multiletter control sequences out of 15000+600000
+ 11868 strings out of 493304
+ 163910 string characters out of 6139872
+ 293587 words of memory out of 5000000
+ 14963 multiletter control sequences out of 15000+600000
  49303 words of font info for 95 fonts, out of 8000000 for 9000
  1053 hyphenation exceptions out of 8191
  46i,12n,58p,1088b,577s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1399,10 +1440,10 @@ texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/
 public/cm-super/sfrm1095.pfb>
-Output written on informe.pdf (30 pages, 277215 bytes).
+Output written on informe.pdf (32 pages, 281872 bytes).
 PDF statistics:
- 168 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
+ 175 PDF objects out of 1000 (max. 8388607)
+ 118 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
