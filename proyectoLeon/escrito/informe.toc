@@ -14,4 +14,14 @@
 \contentsline {section}{\numberline {2.2}Sistema criptogr\IeC {\'a}fico (\textit {criptosistema})}{6}
 \contentsline {section}{\numberline {2.3}Algoritmos de cifrado}{9}
 \contentsline {subsection}{Algoritmos sim\IeC {\'e}tricos}{9}
-\contentsline {subsection}{Algoritmos de llave p\IeC {\'u}blica}{10}
+\contentsline {subsection}{Algoritmos de llave p\IeC {\'u}blica}{11}
+\contentsline {subsection}{Criptosistemas h\IeC {\'\i }bridos}{12}
+\contentsline {section}{\numberline {2.4}Seguridad en algoritmos de cifrado}{13}
+\contentsline {subsection}{Tipos de ataques}{13}
+\contentsline {subsection}{Tama\IeC {\~n}o de la llave}{13}
+\contentsline {subsection}{Manejo de las llaves}{14}
+\contentsline {section}{\numberline {2.5}Escogencia de los algoritmos a implementar}{15}
+\contentsline {section}{\numberline {2.6}Descripci\IeC {\'o}n de los algoritmos a implementar}{16}
+\contentsline {subsection}{RC5}{16}
+\contentsline {subsection}{IDEA o LUCIFER o FEAL}{16}
+\contentsline {section}{\numberline {2.7}Caracter\IeC {\'\i }sticas de un FPGA}{16}
