@@ -243,7 +243,7 @@ La acción en la que un criptoanalista atenta contra un criptosistema es denomin
 Otro ejemplo es que los algoritmos de llave pública son vulnerables a ataques de tipo \textit{chosen-plaintext}. Tome por ejemplo M como un texto plano del espacio $M$ de posibles mensajes. La tarea de un criptoanalista es tomar todos $\text{M} \epsilon M$ y cifrarlos para obtener todos los posibles $\text{C} \epsilon C$. De esta manera solo debe interceptar las comunicaciones que desea y comparar sus valores de texto cifrado con los que intercepta para descifrar las comunicaciones. Note que el criptoanalista no pudo obtener la llave pero si logró descrifrar las comunicaciones.
 
 
-\subsection{Tamaño de la llave}
+\subsection{Tamaño de la llave} \label{secTamanoLlave}
 Como se mencionó anteriormente la seguridad de un buen algoritmo depende de su llave. Asumiendo que se tiene una seguridad del algoritmo perfecta, la única forma de quebrar el criptosistema sería mediante un ataque de fuerza bruta, el cual es un tipo de ataque \textit{known-plaintext}, para obtener la llave. 
 
 Analizando el tamaño de la llave, si se tuviera una de $2^8$ bits, probando las 256 posibilidades se obtendría la llave, lo cual equivale a unos cuantos segundos de procesamiento en una computadora. Para $2^{64}$ bits tenemos $1.8446744^{19}$ posibles llaves, lo cual tomaría con los recursos computacionales de una supercomputadora alrededor de 585,000 años. Para una llave de 2048, con un billón de intentos por segundo en computadoras en paralelo se necesitarían 10597 años para encontrar la llave \cite{bruce}. 
@@ -270,26 +270,27 @@ debido a que gran cantidad de contraseñas se repiten, o son datos personales de
 Por tanto se pueden realizar \textit{ataques de diccionario} donde las primeras llaves que se prueban son las mencionadas
 anteriormente.
 
-\item Random keys: Es un muy buen método para generar llaves, consiste en utilizar un programa que genere la llave, es ventajoso
+\item \textit{Random keys}: Es un muy buen método para generar llaves, consiste en utilizar un programa que genere la llave, es ventajoso
 ya que es robusto ante ataques de diccionario pero presenta el problema que la llave es difícil de recordar y posiblemente se olvide.
 
-\item pass phrases: Es una combinación de ambos, el usuario escribe una contraseña fácil de recordar y después
-hace uso de un one-way has function para convertir esta llave en una llave random de tamaño arbitrario.
+\item \textit{Pass phrases}: Es una combinación de ambos, el usuario escribe una contraseña fácil de recordar y después hace uso de una función \textit{one-way} el sistema convierte esta llave en una llave random de tamaño arbitrario.
 \end{itemize}
-
 
 
 
 
 \section{Escogencia de los algoritmos a implementar}
-En un principio el objetivo de este proyecto era realizar una comparación con las métricas descritas en la Introducción sobre un algoritmo simétrico y un algoritmo de llave pública, posterior a la realización del marco teórico se llegó a la conclusión de que realizar este análisis no iba a ser para nada justo debido mayoritariamente a tres razones:
+En un principio el objetivo de este proyecto era realizar una comparación con las métricas descritas en la Introducción sobre un algoritmo simétrico y un algoritmo de llave pública, posterior a la realización del marco teórico se llegó a la conclusión de que realizar este análisis no iba a ser para nada justo debido a tres razones:
+
 \begin{itemize}
 \item El tiempo de procesamiento: Como se menciona anteriormente los algoritmos de llave pública consumen mucho más tiempo realizando el cifrado y descifrado que un algoritmo de llave simétrica.
-\item La formas en las que estos algoritmos son diseñados producen falencias en seguridad distintas por lo cual analizar comparativamente no sería tan interesante.
+
+\item La formas en las que estos algoritmos son diseñados producen falencias en seguridad distintas, como se indica en la sección \ref{secTamanoLlave} los tamaños de llaves varían mucho para lograr una seguridad similar ante un ataque de fuerza bruta, esto haría poco justo realizar un análisis comparativo con el mismo tamaño de llave.
+
 \item Los algoritmos realizan el proceso de cifrado de maneras muy diferentes: En el caso de los algoritmos simétricos son basados en transposición y sustitución que trabajan en su mayoría con XOR's, sumas y corrimientos. En cambio los algoritmos de llave pública trabajan  basados en la multiplicación de números primos y \textit{Discrete Logarithm Problem} donde ocurren muchas multiplicaciones y sumas. Esto produce un consumo de recursos muy diferente entre ambos tipos.
 \end{itemize}
 
-Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el IDEA los cuales están basados en redes de Feistel\footnote{Feistel Networks
+Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el FEAL los cuales están basados en redes de Feistel\footnote{Feistel Networks
 Most block algorithms are Feistel networks. This idea dates from the early
 1970s [552,553]. Take a block of length n and divide it into two halves of
 length n/2: L and R. Of course, n must be even. You can define an iterated
@@ -311,6 +312,58 @@ another for decryption. The structure of a Feistel network takes care of all thi
 automatically.
 } y por tanto comparten características de diseño para que la comparación sea un poco más justa.
 
+\section{\textit{Field Programmable Gate Array} (FPGA)}
+
+
+
+\subsection{FPGA vs ASIC}
+
+
+
+
+
+
+\subsection{Componentes básicos de un FPGA}
+Todos los FPGAs, como se muestra en la Figura \ref{} contienen de manera general 3 componentes:
+\begin{itemize}
+\item \textit{Combinatorial Logic Block}
+\item \textit{Programmable Switching Matrix}
+\item \textit{Input/Output Block}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figEstructuraFPGA}
+	\caption{Estructura básica de un FPGA.}
+	\label{figEstructuraFPGA}
+\end{figure}
+
+A parte de estos componentes un FGPA puede también tener un módulo de memoria RAM, ROM y hasta módulos para Digital Signal Processing (DSP).
+
+A continuación se describen de forma general los componentes que conforman los bloques descritos anteriormente.
+\begin{itemize}
+
+\item \textit{Combinatorial Logic Block} (CLB): Corresponde al recurso principal de diseño para lógica combinatoria y flip-flops. Se encuentra compuesto por slices, la cantidad que lo componen varía según el modelo. Para determinar la densidad de slices por CLB se debe por lo menos sintetizar el diseño previo a decidir cual es el modelo a utilizar para el mejor desempeño del diseño. Estos bloques son conectados a un PSM para comunicarse con otras partes del FPGA y también se conectan a un IOB para comunicarse con el mundo exterior.
+
+
+\item \textit{Slice}: Es la unidad básica de un FPGA, puede estar compuesto por:
+
+\begin{itemize}
+\item \textit{Look Up Table} (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT.
+\item \textit{Wide Multiplexers}: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples y así ahorrar LUTs y mejorar la velocidad de procesamiento.
+\item \textit{Carry Chain}: Cuando los CLBs deben de realizar operaciones como sumas o restas utilizan esta característica para mejorar la velocidad en la que se realiza la operación
+\item \textit{Registers}: Pueden ser flip-flops o latches. Son usados como RAM o SRL\footnote{Shift Register Lookup Table (SRL) es un registro desplazable de tamaño variable. Sus usos pueden ser como retardo programable en el FPGA o como una memoria FIFO.}
+\end{itemize}
+
+Ciertos slices pueden se utilizados como una memoria RAM distribuida, en donde por ejemplo el LUT se utiliza como una memoria, ya sea en configuración single, dual, simple dual o quad port. 
+
+\item \textit{Programmable Switch Matrix} (PSM): La interconexión puede realizarse de forma vertical, horizontal y diagonal.
+
+
+\item Input/Output Blocks (IOB):
+\end{itemize}
+
+
 
 
 \section{Descripción de los algoritmos a implementar}
@@ -318,13 +371,5 @@ automatically.
 
 
 \subsection{IDEA o LUCIFER o FEAL}
-
-
-
-
-
-
-\section{Características de un FPGA}
-
 
 

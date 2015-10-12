@@ -1,0 +1,156 @@
+http://www.xilinx.com/training/fpga/fpga-field-programmable-gate-array.htm
+
+
+//
+What is an FPGA?
+
+Field Programmable Gate Arrays (FPGAs) are semiconductor devices that are based around a matrix of configurable logic blocks (CLBs) connected via programmable interconnects. FPGAs can be reprogrammed to desired application or functionality requirements after manufacturing. This feature distinguishes FPGAs from Application Specific Integrated Circuits (ASICs), which are custom manufactured for specific design tasks. Although one-time programmable (OTP) FPGAs are available, the dominant types are SRAM based which can be reprogrammed as the design evolves. - Learn More
+
+
+//
+What is the difference between an ASIC and an FPGA?
+
+ASIC and FPGAs have different value propositions, and they must be carefully evaluated before choosing any one over the other. Information abounds that compares the two technologies. While FPGAs used to be selected for lower speed/complexity/volume designs in the past, today’s FPGAs easily push the 500 MHz performance barrier. With unprecedented logic density increases and a host of other features, such as embedded processors, DSP blocks, clocking, and high-speed serial at ever lower price points, FPGAs are a compelling proposition for almost any type of design. - Learn More
+FPGA Applications
+
+
+
+//
+Due to their programmable nature, FPGAs are an ideal fit for many different markets. As the industry leader, Xilinx provides comprehensive solutions consisting of FPGA devices, advanced software, and configurable, ready-to-use IP cores for markets and applications such as:
+
+    Aerospace & Defense - Radiation-tolerant FPGAs along with intellectual property for image processing, waveform generation, and partial reconfiguration for SDRs.
+    ASIC Prototyping - ASIC prototyping with FPGAs enables fast and accurate SoC system modeling and verification of embedded software
+    Audio - Xilinx FPGAs and targeted design platforms enable higher degrees of flexibility, faster time-to-market, and lower overall non-recurring engineering costs (NRE) for a wide range of audio, communications, and multimedia applications.
+    Automotive - Automotive silicon and IP solutions for gateway and driver assistance systems, comfort, convenience, and in-vehicle infotainment. - Learn how Xilinx FPGA's enable Automotive Systems
+    Broadcast - Adapt to changing requirements faster and lengthen product life cycles with Broadcast Targeted Design Platforms and solutions for high-end professional broadcast systems.
+    Consumer Electronics - Cost-effective solutions enabling next generation, full-featured consumer applications, such as converged handsets, digital flat panel displays, information appliances, home networking, and residential set top boxes.
+    Data Center - Designed for high-bandwidth, low-latency servers, networking, and storage applications to bring higher value into cloud deployments.
+    High Performance Computing and Data Storage - Solutions for Network Attached Storage (NAS), Storage Area Network (SAN), servers, and storage appliances.
+    Industrial - Xilinx FPGAs and targeted design platforms for Industrial, Scientific and Medical (ISM) enable higher degrees of flexibility, faster time-to-market, and lower overall non-recurring engineering costs (NRE) for a wide range of applications such as industrial imaging and surveillance, industrial automation, and medical imaging equipment.
+    Medical - For diagnostic, monitoring, and therapy applications, the Virtex FPGA and Spartan® FPGA families can be used to meet a range of processing, display, and I/O interface requirements.
+    Security - Xilinx offers solutions that meet the evolving needs of security applications, from access control to surveillance and safety systems.
+    Video & Image Processing - Xilinx FPGAs and targeted design platforms enable higher degrees of flexibility, faster time-to-market, and lower overall non-recurring engineering costs (NRE) for a wide range of video and imaging applications.
+    Wired Communications - End-to-end solutions for the Reprogrammable Networking Linecard Packet Processing, Framer/MAC, serial backplanes, and more
+    Wireless Communications - RF, base band, connectivity, transport and networking solutions for wireless equipment, addressing standards such as WCDMA, HSDPA, WiMAX and others.
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+http://www.xilinx.com/company/gettingstarted/index.htm
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+http://www.xilinx.com/fpga/asic.htm
+
+FPGA VS ASIC
+
+
+
+What is the Difference Between a FPGA and an ASIC?
+
+Field Programmable Gate Arrays (FPGAs) and Application Specific Integrated Circuits (ASICs) provide different values to designers, and they must be carefully evaluated before choosing any one over the other. Information abounds that compares the two technologies. While FPGAs used to be selected for lower speed/complexity/volume designs in the past, today’s FPGAs easily push the 500MHz performance barrier. With unprecedented logic density increases and a host of other features, such as embedded processors, DSP blocks, clocking, and high-speed serial at ever lower price points, FPGAs are a compelling proposition for almost any type of design.
+FPGA vs. ASIC Design Advantages
+FPGA Design
+Advantage   Benefit
+Faster time-to-market   No layout, masks or other manufacturing steps are needed
+No upfront non-recurring expenses (NRE)     Costs typically associated with an ASIC design
+Simpler design cycle    Due to software that handles much of the routing, placement, and timing
+More predictable project cycle  Due to elimination of potential re-spins, wafer capacities, etc.
+Field reprogramability  A new bitstream can be uploaded remotely
+ASIC Design
+Advantage   Benefit
+Full custom capability  For design since device is manufactured to design specs
+Lower unit costs    For very high volume designs
+Smaller form factor     Since device is manufactured to design specs
+FPGA vs. ASIC Design Flow
+
+The FPGA design flow eliminates the complex and time-consuming floorplanning, place and route, timing analysis, and mask / re-spin stages of the project since the design logic is already synthesized to be placed onto an already verified, characterized FPGA device. However, when needed, Xilinx provides the advanced floorplanning, hierarchical design, and timing tools to allow users to maximize performance for the most demanding designs.
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+http://www.xilinx.com/cpld/index.htm
+
+
+
+
+
+
+
+
+
+
+
+
+http://web.mit.edu/clarkds/www/Files/slides2.pdf
+
+
+http://www.seas.upenn.edu/~ese170/handouts/FPGA.pdf
+
+http://www.cse.iitd.ernet.in/~neeraj/doc/fpga.pdf
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+http://www.xilinx.com/training/fpga/7_series_CLB_architecture_video.htm
+
+
+Combinatortial Logic Block (CLB): Corresponde al recurso principal de diseño para lógica combinatoria y flip-flops. Se encuentra compuesto por slices, la cantidad que lo componen varía según el modelo. Para determinar la densidad de slices por CLB se debe por lo menos sintetizar el diseño previo a decidir cual es el modelo a utilizar para el mejor desempeño del diseño. Estos bloques son conectados a un PSM para comunicarse con otras partes del FPGA y también se conectan a un IOB para comunicarse con el mundo exterior.
+
+
+Slice: Es la unidad básica de un FPGA, puede estar compuesto por:
+\begin{itemize}
+\item Look-Up Tables
+\item Wide Multiplexers
+\item Carry Chains
+\item Registers: usados como RAM o SRL
+\end{itemize}
+
+
+Look Up Table (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT.
+
+Wide Multiplexers: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples y así ahorrar LUTs y mejorar la velocidad de procesamiento.
+
+Carry Chain: Cuando los CLBs deben de realizar operaciones como sumas o restas utilizan esta característica para mejorar la velocidad en la que se realiza la operación
+
+
+Registers: Pueden ser flip-flops o latches.
+
+
+Programmable Switch Matrix (PSM): La interconexión puede realizarse de forma vertical, horizontal y diagonal.
+
+
+Input/Output Blocks (IOB):
+
+
+
+    \begin{itemize}
+    \item Look Up Table (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT.
+    \item Wide Multiplexers: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples y así ahorrar LUTs y mejorar la velocidad de procesamiento.
+
+    \item Carry Chain: Cuando los CLBs deben de realizar operaciones como sumas o restas utilizan esta característica para mejorar la velocidad en la que se realiza la operación
+
+    \item Registers: Pueden ser flip-flops o latches. Son usados como RAM o SRL\footnote{Shift Register Lookup Table (SRL) es un registro desplazable de tamaño variable. Uno de sus usos es como retardo programable en el FPGA.}
+    \end{itemize}
