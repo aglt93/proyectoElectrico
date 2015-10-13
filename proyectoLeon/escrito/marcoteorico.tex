@@ -205,11 +205,7 @@ Los beneficios que conlleva utilizar algoritmos de llave pública son grandes pe
 En un mundo donde la velocidad es una clave fundamental en las comunicaciones se propuso la siguiente solución. Ya que los algoritmos simétricos tienen la debilidad de comunicar la llave antes de comenzar la comunicación pero son mucho más rápidos, y que los algoritmos de llave pública ostentan una mejor sistema para comunicarse en la red secretamente pero son muy lentos, se decidió utilizar ambos. La llave del algoritmo simétrico es encriptada con un algoritmo de llave pública para transmistirse en la red sin comprometerla y posterior a esto se realizan las comunicaciones con el algoritmo simétrico para obtener una mejor velocidad de comunicación. Se puede ver el protocolo de la siguiente manera (\cite{bruce}):
 \begin{itemize}
 \item El receptor envía su llave pública al emisor.
-\item El emisor genera una llave de sesión\footnote{A common cryptographic technique is to encrypt each individual conversation with a separate key. This is called a session key, because it is used for only one
-particular communications session. As discussed in Section 8.5, session keys
-are useful because they only exist for the duration of the communication. How
-this common session key gets into the hands of the conversants can be a
-complicated matter.}, la cifra y se la envía al receptor usando la llave pública que le fue dada.
+\item El emisor genera una llave de sesión\footnote{Una llave de sesión se utiliza en comunicaciones donde la idea es cifrar cada comunicación de manera individual con una llave distinta. Son útiles cuando la llave se crea al inicio de la comunicación y se destruye al final de la misma.}, la cifra y se la envía al receptor usando la llave pública que le fue dada.
 \item El receptor descrifra la llave de sesión usando su llave privada.
 \item Ahora ambos pueden comunicarse de forma secreta con la llave de sesión con un criptosistema simétrico.
 \end{itemize}
@@ -276,6 +272,97 @@ ya que es robusto ante ataques de diccionario pero presenta el problema que la l
 \item \textit{Pass phrases}: Es una combinación de ambos, el usuario escribe una contraseña fácil de recordar y después hace uso de una función \textit{one-way} el sistema convierte esta llave en una llave random de tamaño arbitrario.
 \end{itemize}
 
+\section{\textit{Field Programmable Gate Array} (FPGA)}
+Un FPGA consiste en una matriz de bloques lógicos configurables, conectados mediantes interconexiones programables. Posterior al proceso de manufactura el FPGA puede ser reprogramado para darle una nueva funcionalidad, esto es lo que diferencia a un FPGA de un \textit{Application Specific Integrated Circuits} (ASIC). 
+
+\subsection{FPGA vs ASIC}
+En años anteriores los FPGAs presentaban gran desventaja en cuanto a velocidad, consumo y área respecto a un ASIC y por eso aunque eran reprogramables, desarrollar aplicaciones en un FPGA solo se daba para realizar prototipos y no para un producto final. En la actualidad los FPGAs se encuentran en auge debido a que su proceso de manufactura ha mejorado mucho en los aspectos anteriormente descritos, por ejemplo un FPGA ya puede alcanzar los 500MHz, han aumentado la densidad de lógica y albergan otras funcionalidades como por ejemplo módulos de \textit{Digital Signal Proccessing} (DSP), de tiempos y hasta de \textit{high-speed serial} (\cite{xilinx1}).
+
+Estos grandes avances en conjunto con un flujo de diseño mucho más fácil, barato y rápido, indican que el desarrollo en FPGAs va a convertirse en la nueva forma de diseñar hardware. La Tabla \ref{tablaFPGA} muestra beneficios y ventajas del diseño con FPGAs y la Figura \ref{figFpgaVsAsic} muestra la diferencia en el ciclo de diseño de hardware con FPGAs y ASICs. Aún con todas estas ventajas los FPGAs todavía presentan ciertas desventajas con respecto a los ASICs, como se muestra en la Tabla \ref{tablaASIC}.
+
+
+\begin{table}[]
+\centering
+\caption{Ventajas y beneficios de diseñar con FPGAs.}
+\label{tablaFPGA}
+\begin{tabular}{l|l}
+Ventaja                                 & Beneficio                                                                                                          \\ \hline
+Tiempo de producción más corto      & \begin{tabular}[c]{@{}l@{}}Pasos de manufactura como layout, \\ máscara u otros  no son necesarios\end{tabular}                \\
+No upfront non-recurring expenses (NRE) & Costo que ocurre en el diseño de ASICs.                                                                     \\
+Ciclo de diseño más simple                    & \begin{tabular}[c]{@{}l@{}} El software se encarga en gran parte del \\ \textit{placing, routing} y \textit{timing.}\end{tabular} \\
+Ciclo del projecto más predecible          & \begin{tabular}[c]{@{}l@{}}Debido a que se eliminan los posibles \\ re-spins, capacidades de la oblea, etc.\end{tabular}        \\
+\textit{Field reprogramability}                  & Se puede cargar un nuevo RTL y listo.                                                                            
+\end{tabular}
+\end{table}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figFpgaVsAsic}
+	\caption{Ciclo de diseño de hardware para FPGAs y ASICs.}
+	\label{figFpgaVsAsic}
+\end{figure}
+
+\begin{table}[]
+\centering
+\caption{Ventajas y beneficios de diseñar con ASICs.}
+\label{tablaASIC}
+\begin{tabular}{l|l}
+Ventaja                & Beneficio                                                                                          \\ \hline
+100\% personalizados & \begin{tabular}[c]{@{}l@{}}Ya que se manufactura \\ apegado a la especificación.\end{tabular} \\
+Costos unitarios más bajos       & Para diseños de gran volumen.\\
+Más pequeños    & \begin{tabular}[c]{@{}l@{}}Debido a que el diseño se acoge \\ completamente a la especificación.\end{tabular}
+\end{tabular}
+\end{table}
+
+
+
+
+
+\subsection{Componentes básicos de un FPGA}
+Todos los FPGAs, como se muestra en la Figura \ref{figEstructuraFPGA}, tiene como mínimo 3 componentes:
+\begin{itemize}
+\item \textit{Configurable Logic Block}
+\item \textit{Programmable Switching Matrix}
+\item \textit{Input/Output Block}
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figEstructuraFPGA}
+	\caption{Estructura básica de un FPGA.}
+	\label{figEstructuraFPGA}
+\end{figure}
+
+A parte de estos componentes un FGPA también puede tener un módulos de memoria RAM, ROM y hasta módulos para DSP.
+
+A continuación se describen de forma general los componentes que conforman los bloques descritos anteriormente:
+\begin{itemize}
+
+\item \textit{Configurable Logic Block} (CLB): Corresponde a la unidad principal de diseño para lógica combinatoria y flip-flops. Se encuentra compuesto por slices y la cantidad que lo componen varía según el modelo. Para determinar la densidad de slices por CLB se debe sintetizar el diseño previamente para decidir cual es el modelo que se ajusta al mejor desempeño del diseño. Estos bloques son conectados a un PSM para comunicarse con otras partes del FPGA y también se conectan a un IOB para comunicarse con el mundo exterior.
+
+\item \textit{Slice}: Es la unidad básica de un FPGA, puede estar compuesto por:
+
+\begin{itemize}
+\item \textit{Look Up Table} (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT.
+\item \textit{Wide Multiplexers}: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples, ahorrando LUTs y mejorando la velocidad de procesamiento.
+\item \textit{Carry Chain}: Cuando los CLBs deben de realizar operaciones como sumas o restas utilizan esta característica para mejorar la velocidad en la que se realiza la operación
+\item \textit{Registers}: Pueden ser flip-flops o latches. Son usados como memoria o SRL\footnote{Shift Register Lookup Table (SRL) es un registro desplazable de tamaño variable. Sus usos pueden ser como retardo programable o como una memoria FIFO.}
+\end{itemize}
+
+Ciertos slices pueden se utilizados como una memoria RAM distribuida, en donde por ejemplo el LUT se utiliza como una memoria, ya sea en configuración \textit{single, dual, simple-dual o quad port}. 
+
+\item \textit{Programmable Switch Matrix} (PSM): Corresponde a un módulo en donde se realiza la interconexión de los distintos CLBs y otros componentes del FPGA según requiera el diseño. Esta interconexión puede realizarse de forma vertical, horizontal y diagonal.
+
+
+\item Input/Output Blocks (IOB): Estos bloques se encargan de comunicar al FPGA con el mundo exterior, manejan gran cantidad de estándares de comunicación como por ejemplo: LVCMOS, PCI, I2C y SSTL.
+\end{itemize}
+
+
+Como se puede observar los FPGAs son de gran importancia y por eso el objetivo de implementar los algoritmos criptográficos en un FPGA adquiere relevancia. Así también es muy importante conocer que tantos recursos (slices, memoria y DSP) se requieren para implementar estos diseños en un FPGA ya que al aumentar la cantidad de recursos aumentan los costos de producción, volviendo este proyecto relevante por su proyección innovadora sin dejar de lado el aspecto económico tan importante en la industria. 
+
+
+
 
 
 
@@ -290,78 +377,9 @@ En un principio el objetivo de este proyecto era realizar una comparación con l
 \item Los algoritmos realizan el proceso de cifrado de maneras muy diferentes: En el caso de los algoritmos simétricos son basados en transposición y sustitución que trabajan en su mayoría con XOR's, sumas y corrimientos. En cambio los algoritmos de llave pública trabajan  basados en la multiplicación de números primos y \textit{Discrete Logarithm Problem} donde ocurren muchas multiplicaciones y sumas. Esto produce un consumo de recursos muy diferente entre ambos tipos.
 \end{itemize}
 
-Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el FEAL los cuales están basados en redes de Feistel\footnote{Feistel Networks
-Most block algorithms are Feistel networks. This idea dates from the early
-1970s [552,553]. Take a block of length n and divide it into two halves of
-length n/2: L and R. Of course, n must be even. You can define an iterated
-block cipher where the output of the ith round is determined from the output of
-the previous round:
-Li = Ri - 1
-Ri = Li - 1  f(Ri - 1,Ki)
-Ki is the subkey used in the ith round and f is an arbitrary round function.
-You’ve seen this concept in DES, Lucifer, FEAL, Khufu, Khafre, LOKI,
-GOST, CAST, Blowfish, and others. Why is it such a big deal? The function is
-guaranteed to be reversible. Because XOR is used to combine the left half with
-the output of the round function, it is necessarily true that
-Li - 1  f(Ri - 1,Ki)  f(Ri - 1,Ki) = Li - 1
-A cipher that uses this construction is guaranteed to be invertible as long as the
-inputs to f in each round can be reconstructed. It doesn’t matter what f is; f
-need not be invertible. We can design f to be as complicated as we please, and
-we don’t have to implement two different algorithms—one for encryption and
-another for decryption. The structure of a Feistel network takes care of all this
-automatically.
-} y por tanto comparten características de diseño para que la comparación sea un poco más justa.
+Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el FEAL los cuales están basados en redes de Feistel\footnote{
+Las redes Feistal toman un bloque de texto plano de tamaño N (par) y lo dividen en dos mitades denominadas L y R. El cifrado en este tipo de redes es iterativo donde el resultado de la iteración $i$ depende del resultado de la iteración $i - 1 $. Ejemplos de algoritmos de este tipo pueden ser DES, Lucifer, FEAL, Khufu, Khafre, LOKI, GOST, CAST, Blowfish, entre otros.} y por tanto comparten características de diseño para que la comparación sea un poco más justa.
 
-\section{\textit{Field Programmable Gate Array} (FPGA)}
-
-
-
-\subsection{FPGA vs ASIC}
-
-
-
-
-
-
-\subsection{Componentes básicos de un FPGA}
-Todos los FPGAs, como se muestra en la Figura \ref{} contienen de manera general 3 componentes:
-\begin{itemize}
-\item \textit{Combinatorial Logic Block}
-\item \textit{Programmable Switching Matrix}
-\item \textit{Input/Output Block}
-\end{itemize}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\textwidth]{./images/figEstructuraFPGA}
-	\caption{Estructura básica de un FPGA.}
-	\label{figEstructuraFPGA}
-\end{figure}
-
-A parte de estos componentes un FGPA puede también tener un módulo de memoria RAM, ROM y hasta módulos para Digital Signal Processing (DSP).
-
-A continuación se describen de forma general los componentes que conforman los bloques descritos anteriormente.
-\begin{itemize}
-
-\item \textit{Combinatorial Logic Block} (CLB): Corresponde al recurso principal de diseño para lógica combinatoria y flip-flops. Se encuentra compuesto por slices, la cantidad que lo componen varía según el modelo. Para determinar la densidad de slices por CLB se debe por lo menos sintetizar el diseño previo a decidir cual es el modelo a utilizar para el mejor desempeño del diseño. Estos bloques son conectados a un PSM para comunicarse con otras partes del FPGA y también se conectan a un IOB para comunicarse con el mundo exterior.
-
-
-\item \textit{Slice}: Es la unidad básica de un FPGA, puede estar compuesto por:
-
-\begin{itemize}
-\item \textit{Look Up Table} (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT.
-\item \textit{Wide Multiplexers}: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples y así ahorrar LUTs y mejorar la velocidad de procesamiento.
-\item \textit{Carry Chain}: Cuando los CLBs deben de realizar operaciones como sumas o restas utilizan esta característica para mejorar la velocidad en la que se realiza la operación
-\item \textit{Registers}: Pueden ser flip-flops o latches. Son usados como RAM o SRL\footnote{Shift Register Lookup Table (SRL) es un registro desplazable de tamaño variable. Sus usos pueden ser como retardo programable en el FPGA o como una memoria FIFO.}
-\end{itemize}
-
-Ciertos slices pueden se utilizados como una memoria RAM distribuida, en donde por ejemplo el LUT se utiliza como una memoria, ya sea en configuración single, dual, simple dual o quad port. 
-
-\item \textit{Programmable Switch Matrix} (PSM): La interconexión puede realizarse de forma vertical, horizontal y diagonal.
-
-
-\item Input/Output Blocks (IOB):
-\end{itemize}
 
 
 
