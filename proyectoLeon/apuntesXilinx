@@ -62,6 +62,7 @@ What is the Difference Between a FPGA and an ASIC?
 
 Field Programmable Gate Arrays (FPGAs) and Application Specific Integrated Circuits (ASICs) provide different values to designers, and they must be carefully evaluated before choosing any one over the other. Information abounds that compares the two technologies. While FPGAs used to be selected for lower speed/complexity/volume designs in the past, today’s FPGAs easily push the 500MHz performance barrier. With unprecedented logic density increases and a host of other features, such as embedded processors, DSP blocks, clocking, and high-speed serial at ever lower price points, FPGAs are a compelling proposition for almost any type of design.
 FPGA vs. ASIC Design Advantages
+
 FPGA Design
 Advantage   Benefit
 Faster time-to-market   No layout, masks or other manufacturing steps are needed
@@ -69,6 +70,7 @@ No upfront non-recurring expenses (NRE)     Costs typically associated with an A
 Simpler design cycle    Due to software that handles much of the routing, placement, and timing
 More predictable project cycle  Due to elimination of potential re-spins, wafer capacities, etc.
 Field reprogramability  A new bitstream can be uploaded remotely
+
 ASIC Design
 Advantage   Benefit
 Full custom capability  For design since device is manufactured to design specs

@@ -1,0 +1,24 @@
+\begin{thebibliography}{}
+
+\bibitem[Denning, 1982]{denning}
+Denning, D. (1982).
+\newblock {\em Cryptography and Data Security}.
+\newblock Addison Wesley Publishing Company, Inc.
+
+\bibitem[RAE, 2015a]{raeCriptografia}
+RAE (2015a).
+\newblock {\em Real Academia Espanola}.
+\newblock http://buscon.rae.es/drae/srv/search?val=criptoan\%E1lisis.
+
+\bibitem[RAE, 2015b]{raeCriptoanalisis}
+RAE (2015b).
+\newblock {\em Real Academia Espanola}.
+\newblock http://buscon.rae.es/drae/srv/search?val=criptograf\%EDas.
+
+\bibitem[Schneier, 1996]{bruce}
+Schneier, B. (1996).
+\newblock {\em Applied Cryptography, Second Edition: Protocols, Algorthms, and
+  Source Code in C}.
+\newblock John Wiley \& Sons, Inc.
+
+\end{thebibliography}

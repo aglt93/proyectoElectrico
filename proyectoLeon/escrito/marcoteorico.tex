@@ -3,7 +3,7 @@
 Este capítulo va a poner en contexto al lector con respecto a conceptos básicos de criptografía, definir y explicar los algoritmos que van a ser implementados en el FPGA, y realizar una breve explicación sobre características de un FPGA para explicar el porqué de la escogencia de las métricas que van a ser analizadas.
 
 \section{Conceptos Básicos}
-Según la Real Academia Española \cite{bruce} la criptografía se define como 
+Según la (\cite{raeCriptografia}) la criptografía se define como 
 \newline
 \newline
 \emph{Arte de escribir con clave secreta o de un modo enigmático.}
@@ -13,7 +13,7 @@ El mensaje que se desea transmitir es llamado \textit{texto plano} o simplemente
 
 El texto plano o mensaje se denota por la letra M o P, el texto cifrado se denota por la letra C, la función o algoritmo que cifra se denota por E y la que descrifa se denota por D. Un algoritmo criptográfico corresponde a la función matemática para cifrar y descrifrar.
 \newline
-Se muestra en las Ecuaciones \eqref{eqCifrado} y \eqref{eqDescifrado} las relaciones entre estas notaciones. Note como al aplicarle la función de cifrado al texto plano se obtiene el texto cifrado y como al aplicarle la función de descifrado al texto cifrado se obtiene el texto plano. Finalmente se debe cumplir la identidad que describe la Ecuación \eqref{eqCifraDescifra}. \cite{bruce}
+Se muestra en las Ecuaciones \eqref{eqCifrado} y \eqref{eqDescifrado} las relaciones entre estas notaciones. Note como al aplicarle la función de cifrado al texto plano se obtiene el texto cifrado y como al aplicarle la función de descifrado al texto cifrado se obtiene el texto plano. Finalmente se debe cumplir la identidad que describe la Ecuación \eqref{eqCifraDescifra} (\cite{bruce}).
 \begin{equation} \label{eqCifrado}
 E(M) = C
 \end{equation}
@@ -35,9 +35,9 @@ La importancia de criptografía transciende más allá de brindar la confidencia
 \section{Sistema criptográfico (\textit{criptosistema})}
 Cuando la seguridad del algoritmo se basa en como procede el algoritmo, se denomina \textit{algoritmo restringido}. Este tipo de algoritmos son poco utilizados en la actualidad debido al gran problema que presentan. Tomemos de ejemplo que un grupo de usuarios decide utilizar un algoritmo criptográfico restringido para sus comunicaciones, se tendrá una comunicación segura hasta que alguno de los miembros decida salirse del grupo, ya que el usuario al no pertenecer más al grupo, no le importa mantener en secreto el algoritmo y puede distribuirlo para que terceros intercepten las comunicaciones. Así cada vez que un miembro deja el grupo, se debe proceder a cambiarse a todo un nuevo algoritmo lo cual puede tornarse una labor complicada. También ocurre el problema que si se logra obtener un algoritmo equivalente para cifrar los datos, se debe migrar a un nuevo algoritmo.
 
-En cambio, la criptografía moderna \cite{denning} agrega el concepto de \textit{llave} donde se tiene un algoritmo el cual toma como parámetros de entrada una llave y el texto plano o cifrado, y cifra o descifra el mismo de forma correcta, únicamente si se tiene la llave correcta. Retomando el ejemplo anterior, el grupo solamente necesitaría cambiar de llave cuando un miembro se va, facilitando el uso del cifrado y manteniendo las comunicaciones secretas.
+En cambio, la criptografía moderna (\cite{denning}) agrega el concepto de \textit{llave} donde se tiene un algoritmo el cual toma como parámetros de entrada una llave y el texto plano o cifrado, y cifra o descifra el mismo de forma correcta, únicamente si se tiene la llave correcta. Retomando el ejemplo anterior, el grupo solamente necesitaría cambiar de llave cuando un miembro se va, facilitando el uso del cifrado y manteniendo las comunicaciones secretas.
 
-Estos conceptos viene a definir lo que actualmente se conoce como sistema criptográfico o \textit{criptosistema}. Según \cite{denning}, un criptosistema cuenta con 5 componentes:
+Estos conceptos viene a definir lo que actualmente se conoce como sistema criptográfico o \textit{criptosistema}. Según (\cite{denning}), un criptosistema cuenta con 5 componentes:
 \begin{itemize}
 \item Un espacio de textos planos o mensajes ($M$)
 \item Un espacio de textos cifrados ($C$)
@@ -64,7 +64,7 @@ Antiguamente la criptografía se basaba en caracteres que eran sustituidos o tra
 
 Como se explicó anteriormente el cifrado de sustitución se basa en tomar un caracter del texto plano y sustituirlo por otro caracter. Para descrifrar el texto cifrado simplemente se sustituyen de vuelta los caracteres y listo.
 
-Según \cite{bruce} en la criptografía clásica existen 4 tipos de cifrado por sustitución:
+Según (\cite{bruce}), en la criptografía clásica existen 4 tipos de cifrado por sustitución:
 \begin{itemize}
 \item Cifrado de sustitución simple: Una sustitución de uno a uno entre cada caracter del texto plano y el texto cifrado.
 Ejemplos de este tipo de sustitución son el famoso cifrado de César y el ROT13 utilizado en UNIX.
@@ -94,7 +94,7 @@ La otra variedad de algoritmos son los de transposición, en este tipo de algori
 \end{figure}
 
 
-Actualmente en los algoritmos que se implementan en computadoras se combina tanto la tranposición como la sustitución. Por ejemplo se tiene el algoritmo RC5 (el cual se desarrollará más adelante en este proyecto), en donde se utiliza corrimientos o rotaciones a bits (tranposición) y sumas o XOR's (sustituciones) para cifrar el texto plano. Los algoritmos que se implementan en la criptografía moderna se dividen en dos categorías principales: simétricos y de llave pública (también llamados asimétricos \cite{denning}).
+Actualmente en los algoritmos que se implementan en computadoras se combina tanto la tranposición como la sustitución. Por ejemplo se tiene el algoritmo RC5 (el cual se desarrollará más adelante en este proyecto), en donde se utiliza corrimientos o rotaciones a bits (tranposición) y sumas o XOR's (sustituciones) para cifrar el texto plano. Los algoritmos que se implementan en la criptografía moderna se dividen en dos categorías principales: simétricos y de llave pública (también llamados asimétricos (\cite{denning})).
 
 
 \section{Algoritmos criptográficos}
@@ -139,7 +139,7 @@ Ejemplos de estos algoritmos pueden ser:
 \end{itemize}
 \end{itemize}
 
-Según (\cite{bruce}) los criptosistemas simétricos en la red afrontan los siguientes problemas
+Según (\cite{bruce}), los criptosistemas simétricos en la red afrontan los siguientes problemas
 \begin{itemize}
 \item Distribución de la llave: La llave se debe mantener en secreto. Esto en la actualidad es una tarea demasiado díficil de lograr porque la llave debe ser conocida para el cifrado y descifrado (emisores y receptores) entonces para establecer una comunicación segura el primer paso debe ser entregar la llave de forma segura, lo cual en una red de computadoras se puede tornar una tarea prácticamente imposible de realizar. La única solución sería entregar las llaves mediantes un servicio de \textit{courier} o similares e igualmente se corren riesgos. 
 
@@ -151,7 +151,7 @@ Según (\cite{bruce}) los criptosistemas simétricos en la red afrontan los sigu
 
 
 \subsection{Algoritmos de llave pública}
-Nuevamente \cite{bruce} nos ofrece una excelente analogía para explicar, en este caso, los algoritmos de llave pública. Tenemos un \textit{mailbox}, donde cualquier persona puede poner un mensaje adentro pero ÚNICAMENTE el dueño puede abrirlo para sacar y leer los mensajes.
+Nuevamente \cite{bruce}, nos ofrece una excelente analogía para explicar, en este caso, los algoritmos de llave pública. Tenemos un \textit{mailbox}, donde cualquier persona puede poner un mensaje adentro pero ÚNICAMENTE el dueño puede abrirlo para sacar y leer los mensajes.
 \newline
 \newline
 En los algoritmos de llave pública los emisores hacen uso de una llave para cifrar los mensajes que desean enviar pero estos mensajes pueden ser descrifrados únicamente si se tiene la llave para descifrar mensajes (que es diferente de la llave para cifrar), la cual el receptor la tendrá bien resguardada. En la Figura \ref{figPublicKeyAlgorithm} se muestra el diagrama básico de un algoritmo de llave pública. Ejemplos de estos algoritmos pueden ser:
@@ -171,7 +171,7 @@ En los algoritmos de llave pública los emisores hacen uso de una llave para cif
 
 Estos algoritmos sientan su base matemática en funciones llamadas \textit{one-way} en donde al aplicarle una función a una variable, la variable no puede retornar a su valor original de ninguna manera, es decir la función no tiene una inversa. 
 
-Según \cite{bruce} existen funciones \textit{one-way} con una ``puerta trasera'' donde se puede retornar a la variable original conociendo ciertos parámetros, este tipo de funciones son las que se implementan en algoritmos de llave pública. Los algoritmos dominantes de esta rama se basan en la dificultad de factorizar números grandes que son el resultado de multiplicar dos números primos grandes como también se basan en el \textit{Discrete Logarithm Problem}.
+Según (\cite{bruce}), existen funciones \textit{one-way} con una ``puerta trasera'' donde se puede retornar a la variable original conociendo ciertos parámetros, este tipo de funciones son las que se implementan en algoritmos de llave pública. Los algoritmos dominantes de esta rama se basan en la dificultad de factorizar números grandes que son el resultado de multiplicar dos números primos grandes como también se basan en el \textit{Discrete Logarithm Problem}.
 
 En estos algoritmos no es posible a partir de la llave para cifrar obtener la llave para descrifrar. Esto permite que la llave para cifrar se pueda hacer pública, por lo cual recibe el nombre de llave pública y la llave para descrifrar se denomina llave privada. La notación para estos algoritmos corresponde a la de las Ecuaciones \eqref{eqCifradoPublico} y \eqref{eqDescfiradoPublico}
 \begin{equation} \label{eqCifradoPublico}
@@ -200,7 +200,7 @@ Algunos usos de estos algoritmos en la actualidad son:
 \end{itemize} 
 
 \subsection{Criptosistemas híbridos}
-Los beneficios que conlleva utilizar algoritmos de llave pública son grandes pero se pagan a un precio muy alto: tiempo de procesamiento. Según \cite{bruce} el tiempo de procesamiento del RSA con respecto al del DES es de alrededor de 1000 mil veces más lento. 
+Los beneficios que conlleva utilizar algoritmos de llave pública son grandes pero se pagan a un precio muy alto: tiempo de procesamiento. Según (\cite{bruce}), el tiempo de procesamiento del RSA con respecto al del DES es de alrededor de 1000 mil veces más lento. 
 
 En un mundo donde la velocidad es una clave fundamental en las comunicaciones se propuso la siguiente solución. Ya que los algoritmos simétricos tienen la debilidad de comunicar la llave antes de comenzar la comunicación pero son mucho más rápidos, y que los algoritmos de llave pública ostentan una mejor sistema para comunicarse en la red secretamente pero son muy lentos, se decidió utilizar ambos. La llave del algoritmo simétrico es encriptada con un algoritmo de llave pública para transmistirse en la red sin comprometerla y posterior a esto se realizan las comunicaciones con el algoritmo simétrico para obtener una mejor velocidad de comunicación. Se puede ver el protocolo de la siguiente manera (\cite{bruce}):
 \begin{itemize}
@@ -215,11 +215,11 @@ En un mundo donde la velocidad es una clave fundamental en las comunicaciones se
 
 
 \section{Seguridad en algoritmos criptográficos}
-Como parte de la investigación previa para este proyecto no podemos dejar de lado la otra cara de la moneda, el criptoanálisis. La ciencia que abarca la criptografía y el criptoanálisis es conocida como criptología (\cite{denning}). Claramente el objetivo de la criptografía es mantener un mensaje en secreto de terceros, pues el criptoanálisis según (\cite{raeAnalisis}) es el ``arte de descifrar criptogramas'', así es como los terceros buscan inmiscuirse en las comunicaciones secretas sin tener un acceso a la llave.  
+Como parte de la investigación previa para este proyecto no podemos dejar de lado la otra cara de la moneda, el criptoanálisis. La ciencia que abarca la criptografía y el criptoanálisis es conocida como criptología (\cite{denning}). Claramente el objetivo de la criptografía es mantener un mensaje en secreto de terceros, pues el criptoanálisis según (\cite{raeCriptoanalisis}), es el ``arte de descifrar criptogramas'', así es como los terceros buscan inmiscuirse en las comunicaciones secretas sin tener un acceso a la llave.  
 
-Según \cite{bruce}, el criptógrafo al diseñar su algoritmo debe asumir que el criptoanalista puede tener un acceso completo a las comunicaciones entre emisor y receptor y al algoritmo que implementa el criptosistema, así toda la seguridad del criptosistema debe residir en la llave.
+Según (\cite{bruce}), el criptógrafo al diseñar su algoritmo debe asumir que el criptoanalista puede tener un acceso completo a las comunicaciones entre emisor y receptor y al algoritmo que implementa el criptosistema, así toda la seguridad del criptosistema debe residir en la llave.
 
-La acción en la que un criptoanalista atenta contra un criptosistema es denominada \textit{ataque}. Según \cite{bruce} y \cite{denning} los principales tipos de ataques son:
+La acción en la que un criptoanalista atenta contra un criptosistema es denominada \textit{ataque}. Según (\cite{bruce,denning}), los principales tipos de ataques son:
 \begin{itemize}
 
 \item \textit{Ciphertext-only}: El criptoanalista debe obtener la llave a partir de varios textos cifrados. Debe conocer el tema tratado de las comunicaciones que está interviniendo (lo cual es obvio, ya que sino para qué está interviniendo las comunicaciones) entonces puede saber de forma previa que ciertas cosas que puede contener el texto plano.
@@ -242,7 +242,7 @@ Otro ejemplo es que los algoritmos de llave pública son vulnerables a ataques d
 \subsection{Tamaño de la llave} \label{secTamanoLlave}
 Como se mencionó anteriormente la seguridad de un buen algoritmo depende de su llave. Asumiendo que se tiene una seguridad del algoritmo perfecta, la única forma de quebrar el criptosistema sería mediante un ataque de fuerza bruta, el cual es un tipo de ataque \textit{known-plaintext}, para obtener la llave. 
 
-Analizando el tamaño de la llave, si se tuviera una de $2^8$ bits, probando las 256 posibilidades se obtendría la llave, lo cual equivale a unos cuantos segundos de procesamiento en una computadora. Para $2^{64}$ bits tenemos $1.8446744^{19}$ posibles llaves, lo cual tomaría con los recursos computacionales de una supercomputadora alrededor de 585,000 años. Para una llave de 2048, con un billón de intentos por segundo en computadoras en paralelo se necesitarían 10597 años para encontrar la llave \cite{bruce}. 
+Analizando el tamaño de la llave, si se tuviera una de $2^8$ bits, probando las 256 posibilidades se obtendría la llave, lo cual equivale a unos cuantos segundos de procesamiento en una computadora. Para $2^{64}$ bits tenemos $1.8446744^{19}$ posibles llaves, lo cual tomaría con los recursos computacionales de una supercomputadora alrededor de 585,000 años. Para una llave de 2048, con un billón de intentos por segundo en computadoras en paralelo se necesitarían 10597 años para encontrar la llave (\cite{bruce}). 
 
 
 Entonces ¿Porqué no hacer un algoritmo con una llave muy grande?. La respuesta es porque conforme aumenta el tamaño de la llave, se paga en tiempo de procesamiento. Así se debe obtener un balance donde la llave sea lo suficientemente grande para que sea el algoritmo sea seguro, pero lo suficientemente pequeña para que el tiempo de procesamiento sea bueno (\cite{bruce}).
@@ -339,7 +339,14 @@ A parte de estos componentes un FGPA también puede tener un módulos de memoria
 A continuación se describen de forma general los componentes que conforman los bloques descritos anteriormente:
 \begin{itemize}
 
-\item \textit{Configurable Logic Block} (CLB): Corresponde a la unidad principal de diseño para lógica combinatoria y flip-flops. Se encuentra compuesto por slices y la cantidad que lo componen varía según el modelo. Para determinar la densidad de slices por CLB se debe sintetizar el diseño previamente para decidir cual es el modelo que se ajusta al mejor desempeño del diseño. Estos bloques son conectados a un PSM para comunicarse con otras partes del FPGA y también se conectan a un IOB para comunicarse con el mundo exterior.
+\item \textit{Configurable Logic Block} (CLB): Corresponde a la unidad principal de diseño para lógica combinatoria y flip-flops. Se encuentra compuesto por slices y la cantidad que lo componen varía según el modelo. Para determinar la densidad de slices por CLB se debe sintetizar el diseño previamente para decidir cual es el modelo que se ajusta al mejor desempeño del diseño. Estos bloques son conectados a un PSM para comunicarse con otras partes del FPGA y también se conectan a un IOB para comunicarse con el mundo exterior. La Figura \ref{figEstructuraCLB} muestra una representación general de lo que puede contener un CLB.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.4\textwidth]{./images/figEstructuraCLB}
+	\caption{Estructura básica de un CLB.}
+	\label{figEstructuraCLB}
+\end{figure}
 
 \item \textit{Slice}: Es la unidad básica de un FPGA, puede estar compuesto por:
 
