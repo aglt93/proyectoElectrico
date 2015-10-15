@@ -25,7 +25,7 @@ D(E(M)) = M
 \end{equation}
 
 
-La importancia de criptografía transciende más allá de brindar la confidencialidad en la comunicación la criptografía también cumple con la siguientes tareas:
+La importancia de la criptografía transciende más allá de brindar la confidencialidad en la comunicación, la criptografía también cumple con la siguientes tareas:
 \begin{itemize}
 \item Autenticación: El receptor del mensaje debe de poder conocer y asegurar el emisor del mensaje, esto para que un tercero no pueda adjudicarse la identidad del emisor.
 \item Integridad: El receptor tiene que poder asegurarse que el mensaje no fue cambiado en el transito del mismo. Esto para que un tercero no pueda cambiar el contenido enviado por el emisor sin que el receptor lo sepa.
@@ -190,13 +190,13 @@ El objetivo de utilizar cifrado de llave pública se basa en:
 \item El receptor descrifa el texto cifrado haciendo uso de la llave privada.
 \end{itemize}
 
-De esta manera no hay forma que fisgones logren descrifrar el mensaje aunque obtengan la llave pública, así el receptor se asegura que las comunicaciones van a ser mucho más seguras ya que el emisor deja de tener la llave para descifrar y no puede brindarsela a nadie o que le sea robada a este. Para la implementación de un criptosistema que hace uso de algoritmos de llave pública, lo que se hace es que en la red se tiene una base de datos donde se registra el usuario y su respectiva llave pública, así cuando un usuario se desea comunicar con otro, va a la base de datos, busca al usuario y su llave pública, cifra el mensaje con la misma y se la envía. Esto solventa los problemas que presentaba anteriormente los algoritmos simétricos, ya que no es necesario transmitir de forma secreta llaves para poder realizar comunicaciones y para que diferentes usuarios se comuniquen de forma secreta entre si no es necesario el uso de diferentes llaves por cada enlace de comunicación. 
+De esta manera no hay forma en que fisgones logren descrifrar el mensaje aunque obtengan la llave pública. De esta manera el receptor se asegura que las comunicaciones van a ser mucho más seguras, ya que el emisor deja de tener la llave para descifrar y no puede brindarsela a nadie o que le sea robada a este. Para la implementación de un criptosistema que hace uso de algoritmos de llave pública, lo que se hace es que en la red se tiene una base de datos donde se registra el usuario y su respectiva llave pública. Así cuando un usuario desea comunicarse con otro, va a la base de datos, busca al usuario y su llave pública, cifra el mensaje con la misma y se la envía. Esto solventa los problemas que presentaba anteriormente los algoritmos simétricos, ya que no es necesario transmitir de forma secreta llaves para poder realizar comunicaciones y para que diferentes usuarios se comuniquen de forma secreta entre si no es necesario el uso de diferentes llaves por cada enlace de comunicación. 
 
 Algunos usos de estos algoritmos en la actualidad son:
 \begin{itemize}
 \item Llave maestra para el sistema de pago digital de un banco.
 \item La clave que utiliza un gobierno para certificar sus visas o pasaportes.
-\item La firma digital es un notario público.
+\item La firma digital de un notario público.
 \end{itemize} 
 
 \subsection{Criptosistemas híbridos}
@@ -226,7 +226,7 @@ La acción en la que un criptoanalista atenta contra un criptosistema es denomin
 
 \item \textit{Known-plaintext}: El criptoanalista tiene acceso a ciertos textos planos y sus respectivos textos cifrados. A partir de estos debe deducir la llave o debe generar un algoritmo de descifrado equivalente al diseñado por el criptográfo.
 
-\item \textit{Chosen-plaintext}: El criptoanalista puede obtener el texto cifrado de un texto plano que él seleccione, esto es mucho más poderoso porque puede encriptar mensajes que den más información acerca de la llave por ejemplo. Un sistema de bases de datos es vulnerable a este tipo de ataques debido a que los usuarios pueden agregar elementos a la base de datos y ver el resultado del texto cifrado en la misma. Nuevamente su tarea es obtener la llave o generar un algoritmo de descifrado equivalente.
+\item \textit{Chosen-plaintext}: El criptoanalista puede obtener el texto cifrado de un texto plano que él seleccione, esto es mucho más poderoso porque puede cifrar mensajes que den más información acerca de la llave. Un sistema de bases de datos es vulnerable a este tipo de ataques debido a que los usuarios pueden agregar elementos a la base de datos y ver el resultado del texto cifrado en la misma. Nuevamente su tarea es obtener la llave o generar un algoritmo de descifrado equivalente.
 
 \item \textit{Chosen-ciphertext}: Este tipo de ataque se da en algoritmos de llave pública, en donde el criptoanalista tiene acceso al texto cifrado que va a ser descifrado y al texto plano. Es decir tiene una ``caja negra'' donde la entrada es el texto cifrado y la salida el texto plano. El objetivo es obtener la llave a partir de estos recursos.
 
