@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  12 OCT 2015 23:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  16 OCT 2015 22:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1195,49 +1195,42 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 ]
-LaTeX Info: Redefining \. on input line 57.
-LaTeX Info: Redefining \% on input line 57.
- [2])
+LaTeX Info: Redefining \. on input line 45.
+LaTeX Info: Redefining \% on input line 45.
+ [2]
+LaTeX Info: Redefining \. on input line 91.
+LaTeX Info: Redefining \% on input line 91.
+
+[3])
 LaTeX Info: Redefining \. on input line 216.
 LaTeX Info: Redefining \% on input line 216.
-
-[3]
+ [4]
 \openout2 = `marcoteorico.aux'.
 
- (./marcoteorico.tex [4
+ (./marcoteorico.tex [5
 
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 6--13
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--13
-
- []
-
-[5]
-LaTeX Info: Redefining \. on input line 52.
-LaTeX Info: Redefining \% on input line 52.
+LaTeX Info: Redefining \. on input line 56.
+LaTeX Info: Redefining \% on input line 56.
  [6]
 <./images/figExplicacionSistemaCripto.png, id=80, 538.26094pt x 228.10219pt>
 File: ./images/figExplicacionSistemaCripto.png Graphic file (type png)
 
 <use ./images/figExplicacionSistemaCripto.png>
 Package pdftex.def Info: ./images/figExplicacionSistemaCripto.png used on input
- line 55.
+ line 59.
 (pdftex.def)             Requested size: 295.20113pt x 125.09808pt.
-LaTeX Info: Redefining \. on input line 73.
-LaTeX Info: Redefining \% on input line 73.
+LaTeX Info: Redefining \. on input line 77.
+LaTeX Info: Redefining \% on input line 77.
  [7 <./images/figExplicacionSistemaCripto.png>]
 <./images/figExampleHomophonicCipher.png, id=84, 333.49594pt x 231.86626pt>
 File: ./images/figExampleHomophonicCipher.png Graphic file (type png)
 
 <use ./images/figExampleHomophonicCipher.png>
 Package pdftex.def Info: ./images/figExampleHomophonicCipher.png used on input 
-line 76.
+line 80.
 (pdftex.def)             Requested size: 221.40225pt x 153.93437pt.
 
 <./images/figExampleTranspositionCipher.png, id=85, 349.305pt x 195.73125pt>
@@ -1245,25 +1238,28 @@ File: ./images/figExampleTranspositionCipher.png Graphic file (type png)
 
 <use ./images/figExampleTranspositionCipher.png>
 Package pdftex.def Info: ./images/figExampleTranspositionCipher.png used on inp
-ut line 91.
+ut line 93.
 (pdftex.def)             Requested size: 239.84775pt x 134.39764pt.
-LaTeX Info: Redefining \. on input line 103.
-LaTeX Info: Redefining \% on input line 103.
+
+Underfull \vbox (badness 8000) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 105.
+LaTeX Info: Redefining \% on input line 105.
  [8 <./images/figExampleHomophonicCipher.png>]
 <./images/figSimmetricKeyAlgorithm.png, id=89, 528.47438pt x 175.40532pt>
 File: ./images/figSimmetricKeyAlgorithm.png Graphic file (type png)
 
 <use ./images/figSimmetricKeyAlgorithm.png>
 Package pdftex.def Info: ./images/figSimmetricKeyAlgorithm.png used on input li
-ne 114.
+ne 116.
 (pdftex.def)             Requested size: 332.09775pt x 110.2249pt.
-LaTeX Info: Redefining \. on input line 129.
-LaTeX Info: Redefining \% on input line 129.
+LaTeX Info: Redefining \. on input line 131.
+LaTeX Info: Redefining \% on input line 131.
  [9 <./images/figExampleTranspositionCipher.png>]
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
+LaTeX Info: Redefining \. on input line 151.
+LaTeX Info: Redefining \% on input line 151.
  [10 <./images/figSimmetricKeyAlgorithm.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 154--159
+Underfull \hbox (badness 10000) in paragraph at lines 156--161
 
  []
 
@@ -1272,43 +1268,39 @@ File: ./images/figPublicKeyAlgorithm.png Graphic file (type png)
 
 <use ./images/figPublicKeyAlgorithm.png>
 Package pdftex.def Info: ./images/figPublicKeyAlgorithm.png used on input line 
-167.
+169.
 (pdftex.def)             Requested size: 239.84775pt x 74.8229pt.
-LaTeX Info: Redefining \. on input line 175.
-LaTeX Info: Redefining \% on input line 175.
+LaTeX Info: Redefining \. on input line 177.
+LaTeX Info: Redefining \% on input line 177.
  [11 <./images/figPublicKeyAlgorithm.png>]
-LaTeX Info: Redefining \. on input line 200.
-LaTeX Info: Redefining \% on input line 200.
+LaTeX Info: Redefining \. on input line 201.
+LaTeX Info: Redefining \% on input line 201.
  [12]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
+LaTeX Info: Redefining \. on input line 223.
+LaTeX Info: Redefining \% on input line 223.
  [13]
-LaTeX Info: Redefining \. on input line 240.
-LaTeX Info: Redefining \% on input line 240.
+LaTeX Info: Redefining \. on input line 242.
+LaTeX Info: Redefining \% on input line 242.
  [14]
 <./images/figVariacionLlaves.png, id=111, 442.65375pt x 475.7775pt>
 File: ./images/figVariacionLlaves.png Graphic file (type png)
 
 <use ./images/figVariacionLlaves.png>
-Package pdftex.def Info: ./images/figVariacionLlaves.png used on input line 254
+Package pdftex.def Info: ./images/figVariacionLlaves.png used on input line 256
 .
 (pdftex.def)             Requested size: 239.84775pt x 257.8017pt.
-LaTeX Info: Redefining \. on input line 269.
-LaTeX Info: Redefining \% on input line 269.
+LaTeX Info: Redefining \. on input line 270.
+LaTeX Info: Redefining \% on input line 270.
  [15]
-
-Package natbib Warning: Citation `xilinx1' on page 16 undefined on input line 2
-79.
-
-LaTeX Info: Redefining \. on input line 280.
-LaTeX Info: Redefining \% on input line 280.
-[16 <./images/figVariacionLlaves.png (PNG copy)>]
+LaTeX Info: Redefining \. on input line 279.
+LaTeX Info: Redefining \% on input line 279.
+ [16 <./images/figVariacionLlaves.png (PNG copy)>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 284.
+               Default added (so using `tbp') on input line 286.
 
 
-Overfull \hbox (49.99945pt too wide) in paragraph at lines 288--296
+Overfull \hbox (49.99945pt too wide) in paragraph at lines 290--298
  [][] 
  []
 
@@ -1316,40 +1308,36 @@ Overfull \hbox (49.99945pt too wide) in paragraph at lines 288--296
 File: ./images/figFpgaVsAsic.png Graphic file (type png)
 
 <use ./images/figFpgaVsAsic.png>
-Package pdftex.def Info: ./images/figFpgaVsAsic.png used on input line 301.
+Package pdftex.def Info: ./images/figFpgaVsAsic.png used on input line 303.
 (pdftex.def)             Requested size: 332.09775pt x 267.58577pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 306.
+               Default added (so using `tbp') on input line 308.
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-LaTeX Info: Redefining \. on input line 325.
-LaTeX Info: Redefining \% on input line 325.
- [17]
-<./images/figEstructuraFPGA.png, id=123, 675.52374pt x 343.2825pt>
+LaTeX Info: Redefining \. on input line 327.
+LaTeX Info: Redefining \% on input line 327.
+[17] <./images/figEstructuraFPGA.png, id=123, 675.52374pt x 343.2825pt>
 File: ./images/figEstructuraFPGA.png Graphic file (type png)
 
 <use ./images/figEstructuraFPGA.png>
-Package pdftex.def Info: ./images/figEstructuraFPGA.png used on input line 332.
+Package pdftex.def Info: ./images/figEstructuraFPGA.png used on input line 334.
 
 (pdftex.def)             Requested size: 332.09775pt x 168.76512pt.
-LaTeX Info: Redefining \. on input line 343.
-LaTeX Info: Redefining \% on input line 343.
+LaTeX Info: Redefining \. on input line 345.
+LaTeX Info: Redefining \% on input line 345.
  [18 <./images/figFpgaVsAsic.png>]
-<./images/figEstructuraCLB.jpg, id=128, 206.7725pt x 198.7425pt>
+<./images/figEstructuraCLB.jpg, id=128, 340.27126pt x 335.2525pt>
 File: ./images/figEstructuraCLB.jpg Graphic file (type jpg)
 
 <use ./images/figEstructuraCLB.jpg>
-Package pdftex.def Info: ./images/figEstructuraCLB.jpg used on input line 346.
-(pdftex.def)             Requested size: 147.59775pt x 141.86932pt.
-LaTeX Info: Redefining \. on input line 357.
-LaTeX Info: Redefining \% on input line 357.
+Package pdftex.def Info: ./images/figEstructuraCLB.jpg used on input line 348.
+(pdftex.def)             Requested size: 147.59775pt x 145.4193pt.
+LaTeX Info: Redefining \. on input line 358.
+LaTeX Info: Redefining \% on input line 358.
  [19 <./images/figEstructuraFPGA.png> <./images/figEstructuraCLB.jpg>]
-LaTeX Info: Redefining \. on input line 383.
-LaTeX Info: Redefining \% on input line 383.
+LaTeX Info: Redefining \. on input line 385.
+LaTeX Info: Redefining \% on input line 385.
  [20])
 LaTeX Info: Redefining \. on input line 220.
 LaTeX Info: Redefining \% on input line 220.
@@ -1357,22 +1345,85 @@ LaTeX Info: Redefining \% on input line 220.
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 9--12
-[]\T1/aer/m/n/10.95 RAE (2015a).  \T1/aer/m/it/10.95 Real Aca-de-mia Es-pa-no-l
-a\T1/aer/m/n/10.95 .
+LaTeX Font Info:    Try loading font information for T1+aett on input line 7.
+
+(/usr/share/texlive/texmf-dist/tex/latex/ae/t1aett.fd
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 16--21
+[]\T1/aer/m/n/10.95 Hamilton, D. (2015).  Fi-ve da-ta leak night-ma-res.  Re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 14--17
-[]\T1/aer/m/n/10.95 RAE (2015b).  \T1/aer/m/it/10.95 Real Aca-de-mia Es-pa-no-l
-a\T1/aer/m/n/10.95 .
+Underfull \hbox (badness 10000) in paragraph at lines 16--21
+\T1/aer/m/n/10.95 cu-pe-ra-do de $\T1/aett/m/n/10.95 http : / / www . thewhir .
+ com / web-[]hosting-[]news /
+ []
+
+
+Overfull \hbox (57.86525pt too wide) in paragraph at lines 16--21
+\T1/aett/m/n/10.95 uc-[]browsers-[]lack-[]of-[]encryption-[]could-[]have-[]leak
+ed-[]personal-[]data-[]to-[]spies$\T1/aer/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 6268) in paragraph at lines 44--50
+[]\T1/aer/m/n/10.95 SANS (2007).  Hard-wa-re ver-sus soft-wa-re a usa-bi-lity c
+om-pa-ri-son
+ []
+
+
+Underfull \hbox (badness 1946) in paragraph at lines 44--50
+\T1/aer/m/n/10.95 of software-based encry-ption with sea-ga-te dri-ve-trust har
+dware-based
+ []
+
+
+Underfull \hbox (badness 1838) in paragraph at lines 44--50
+\T1/aer/m/n/10.95 encry-ption.  Re-cu-pe-ra-do de $\T1/aett/m/n/10.95 http : / 
+/ www . seagate . com / staticfiles /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--63
+[]\T1/aer/m/n/10.95 Vance, J. (2008).  Fi-ve da-ta leak night-ma-res.  Re-cu-pe
+-ra-do
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 58--63
+\T1/aer/m/n/10.95 de $\T1/aett/m/n/10.95 http : / / www . networkworld . com / 
+article / 2289232 / lan-[]wan /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 71--76
+\T1/aett/m/n/10.95 xilinx . com / training / fpga / 7 _ series _ CLB _ architec
+ture _ video . htm$\T1/aer/m/n/10.95 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--83
+[]\T1/aer/m/n/10.95 Xilinx (2015b).  Field pro-gram-ma-ble ga-te array (fp-ga).
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 78--83
+\T1/aer/m/n/10.95 Re-cu-pe-ra-do de $\T1/aett/m/n/10.95 http : / / www . xilinx
+ . com / training / fpga /
+ []
+
+[23]
+Underfull \hbox (badness 6094) in paragraph at lines 97--102
+[]\T1/aer/m/n/10.95 Yadron, D. y Beck, M. (2015).  Health in-su-rer ant-hem did
+n't
  []
 
 )
-
-Package natbib Warning: There were undefined citations.
-
-[23]
+LaTeX Info: Redefining \. on input line 245.
+LaTeX Info: Redefining \% on input line 245.
+ [24]
 \tf@toc=\write4
 \openout4 = `informe.toc'.
 
@@ -1385,24 +1436,19 @@ Package natbib Warning: There were undefined citations.
  (./informe.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
- (./resumen.aux) (./intro.aux) (./marcoteorico.aux)
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+ (./resumen.aux) (./intro.aux) (./marcoteorico.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11904 strings out of 493304
- 164725 string characters out of 6139872
+ 11967 strings out of 493304
+ 165712 string characters out of 6139872
  294587 words of memory out of 5000000
- 14993 multiletter control sequences out of 15000+600000
- 49303 words of font info for 95 fonts, out of 8000000 for 9000
+ 15048 multiletter control sequences out of 15000+600000
+ 54130 words of font info for 102 fonts, out of 8000000 for 9000
  1053 hyphenation exceptions out of 8191
- 46i,14n,58p,1088b,603s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,14n,58p,1088b,601s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1418,12 +1464,13 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sfrm1095.pfb>
-Output written on informe.pdf (37 pages, 417314 bytes).
+ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
+1095.pfb>
+Output written on informe.pdf (38 pages, 444574 bytes).
 PDF statistics:
- 206 PDF objects out of 1000 (max. 8388607)
- 137 compressed objects within 2 object streams
+ 213 PDF objects out of 1000 (max. 8388607)
+ 142 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

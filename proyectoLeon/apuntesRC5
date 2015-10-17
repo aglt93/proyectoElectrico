@@ -1,0 +1,17 @@
+Según \cite{rivest} los beneficios de utilizar el RC5 como algoritmo de cifrado:
+
+\begin{itemize}
+\item A fixed set of parameters may be at least as dangerous, since the parameters
+can not be increased when necessary. Consider the problem DES has now:
+its key size is too short, and there is no easy way to increase it.
+\item It is expected that implementors will provide implementations that ensure
+that suitably large parameters are chosen. While unsafe choices might be
+usable in principle, they would be forbidden in practice.
+\end{itemize}
+
+Otros usos del algoritmo one might consider using RC5-32/8/0
+(with no secret key) applied to inputs 0, 1, 2, ... to generate a sequence of pseudo-
+random numbers to be used in a randomized computation.
+
+
+

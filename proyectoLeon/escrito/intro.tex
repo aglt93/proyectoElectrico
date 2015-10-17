@@ -1,16 +1,24 @@
 \chapter{Introducción}
-
 \section{Justificación}
-El cifrado de datos para aplicaciones de seguridad es completamente vital en la actualidad. Por ejemplo cuando a un empleado le roban una computadora corporativa que contiene datos sensibles para la empresa en la que labora, el cifrado evita que se pueda acceder a los mismos y que así se protejan de terceros.
+El cifrado de datos para aplicaciones de seguridad es completamente vital en la actualidad. Por ejemplo la fuga de datos de Home Depot, donde se perdió una computadora que contenía información personal de $10000$ empleados causando un costo de millones de dólares a la empresa \citep{homeDepot}. La noticia en mayo sobre el buscador web \textit{UC Browser} donde indica que es posible robar datos personales por falta de cifrado en la transmisión de datos \citep{ucBrowser}. También en febrero de este año se dio a conocer la fuga de decenas de millones de datos de la compañía de seguros \textit{Anthem}. Los datos robados (números de seguro, lugar de residencia, números de teléfono, entre otros), se encontraban en una base de datos en la cual los datos se encontraban sin encriptar como indica \cite{anthem}:
+\begin{center}
+    \begin{minipage}{0.9\linewidth}
+        \vspace{5pt}%margen superior de minipage
+        {\small
+            \emph{``\textit{Anthem} descubrió que \textit{hackers} irrumpieron en la base de datos y se hicieron de la información de decenas de millones de consumidores, siendo esta la mayor violación de seguridad informática en las compañías de servicios de salud. Debido a que los datos no se encontraban cifrados, eran fácilmente leíbles por los \textit{hackers}.''}
+        }
+ 		\vspace{5pt}%margen inferior de la minipage
+    \end{minipage}
+\end{center}
+Dada la importancia del cifrado de datos, ahora nos debemos plantear ¿Porqué es importante cifrar datos utilizando hardware?.
 
-En el caso del cifrado implementado en software, trae consigo problemáticas como lo son la necesidad de actualizaciones y el impacto en el desempeño del computador. Este último aspecto se debe a la necesidad de dedicar recursos del sistema para cifrar y descifrar la información. 
+En el caso del cifrado implementado en software, trae consigo problemáticas como lo son la necesidad de actualizaciones y el impacto en el desempeño del computador. Este último aspecto se debe a la necesidad de dedicar recursos del sistema para cifrar y descifrar la información \citep{apricorn}.
 
-En el caso de hardware se tienen los beneficios de que es muy confiable, rápido y conveniente. A diferencia del cifrado en software se tiene una parte de hardware dedicada al proceso de cifrado/descifrado y por tanto el desempeño de la computadora no se ve tan afectado, también al no haber forma de actualizar hardware ocurre una disminución en costos (ACA FALTA LA CITA). Otra de las grandes ventajas del cifrado basado en hardware es la facilidad de configuración, ya que gran parte de esto proceso es eliminado debido a que el hardware se encarga directamente de esto. (CITA DE DRIVETRUST).
+En el caso de hardware se tienen los beneficios de que es muy confiable, rápido y conveniente. A diferencia del cifrado en software se tiene una parte de hardware dedicada al proceso de cifrado/descifrado y por tanto el desempeño de la computadora no se ve tan afectado \citep{apricorn}. Otra de las grandes ventajas del cifrado basado en hardware es la facilidad de configuración, ya que gran parte de esto proceso es eliminado debido a que el hardware se encarga directamente de esto \citep{driveTrust}.
 
 Debido a lo expuesto anteriormente se buscó trabajar en algoritmos criptográficos en hardware ya que es un área de trabajo que se puede explotar para investigar y mejorar.
 
-Se eligió como plataforma de trabajo un FPGA debido al bajo costo que permite usarla como un plataforma de desarrollo conveniente. Además la popularidad de las FPGAs a venido aumentando con el tiempo [buscar cita como http://www.fpgadeveloper.com/2014/06/zynq-trend-towards-arm-fpga.html 
-
+Se eligió como plataforma de trabajo un FPGA debido al bajo costo que permite usarla como un plataforma de desarrollo conveniente, la popularidad que ha alcanzado en los últimos años y las mejoras que se le han realizado para que estos dispositivos logren desempeños similares a los ASICs.
 
 \section{Alcances y limitaciones del proyecto}
 Se implementarán dos algoritmos criptográficos en un FPGA haciendo uso de Verilog como lenguaje de descripción de hardware. 
@@ -25,8 +33,7 @@ Los análisis individuales y comparativos anteriomente mencionados no abarcarán
 
 Para la escogencia de estos dos algoritmos se realizará a partir de una identificación de las principales ramas del cifrado para así elegir los dos algoritmos de dos de estas ramas abarcando de esta manera un tema más amplio para el análisis y discusión.
 
-Se limitará a realizar una escogencia de esta manera sin la necesidad de realizar un criptoanálisis de los algoritmos, y más bien se simplificará a buscar algoritmos que sean implementables, de manera relativamente sencilla, en un FPGA conociendo desde un principio las limitantes estáticas del hardware.
-
+Se limitará a realizar una escogencia de esta manera donde también tendrá mucho peso que los algoritmos que sean implementables, de manera relativamente sencilla, en un FPGA conociendo desde un principio las limitantes estáticas del hardware.
 
 \section{Objetivos}
 
