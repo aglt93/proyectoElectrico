@@ -23,6 +23,7 @@ module probador (clk,rst,pW,qW,key);
 	
     	$dumpfile("prueba.vcd");
 		$dumpvars;
+		//$monitor("%d", pegado.);
 		
 		clk = 0;
     	pW = 10;

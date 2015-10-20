@@ -20,8 +20,57 @@ module keyBytesToWords
 
 
 	wire [w-1:0] S [t-1:0];
-	wire [w-1:0] L [c-1:0];
+	reg [w-1:0] L [c-1:0];
+
+	
 	wire [7:0] keyInBytes [b-1:0];
+	reg [b:0] count;
+	reg done;
+
+	always @(posedge clk) begin
+
+		if (done != 0) begin
+			if(count==0) begin
+				done = 1;
+			end
+
+			else begin
+				count = count-1;	
+			end
+		end
+	end
+
+
+	always @(posedge clk or posedge rst) begin
+
+		if(rst) begin
+
+			count = b;
+			done = 0;
+			L[0] = 0;
+			L[1] = 0;
+			L[2] = 0;
+			L[3] = 0;
+
+		end
+
+		else begin 
+			if (done != 1) begin
+				L[(count)/u] = {L[(count)/u][7:0],L[(count)/u][w-1:0]} + qW;
+			end
+		end
+	end
+
+
+
+
+
+
+
+
+
+
+	/*
 
 	generate
 
@@ -30,12 +79,13 @@ module keyBytesToWords
 		for (j = 0; j < b; j = j+1) begin
 			assign keyInBytes[j]=key[8*j+7:8*j];
 		end
-		*/
+		
 		for (i = b-1; i >= 0 ; i = i - 1) begin
 			oper1 #(w) hola (clk,rst,L[i/u],key[8*i+7:8*i],L[i/u]);
 		end
 
 	endgenerate
+	*/
 
 	assign out0 = L[0];
 	assign out1 = L[1];
