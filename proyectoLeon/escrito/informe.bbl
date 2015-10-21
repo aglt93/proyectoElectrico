@@ -1,5 +1,12 @@
 \begin{thebibliography}{}
 
+\bibitem[fig, 2015]{figRandom1}
+ (2015).
+\newblock Field programmable gate arrays (fpga).
+\newblock Recuperado de
+  \url{http://mazsola.iit.uni-miskolc.hu/cae/docs/pld1.en.html}.
+\newblock [Consulta 12 oct. 2015].
+
 \bibitem[Apricorn, 2015]{apricorn}
 Apricorn (2015).
 \newblock Software vs hardware encryption.
@@ -18,13 +25,6 @@ Hamilton, D. (2015).
 \newblock Recuperado de
   \url{http://www.thewhir.com/web-hosting-news/uc-browsers-lack-of-encryption-could-have-leaked-personal-data-to-spies}.
 \newblock [Consulta 16 oct. 2015].
-
-\bibitem[hungara, 2015]{figRandom1}
-hungara, U. (2015).
-\newblock Field programmable gate arrays (fpga).
-\newblock Recuperado de
-  \url{http://mazsola.iit.uni-miskolc.hu/cae/docs/pld1.en.html}.
-\newblock [Consulta 12 oct. 2015].
 
 \bibitem[RAE, 2015a]{raeCriptografia}
 RAE (2015a).

@@ -39,7 +39,7 @@ La importancia de la criptografía transciende más allá de brindar la confiden
 \section{Sistema criptográfico (\textit{criptosistema})}
 Cuando la seguridad del algoritmo se basa en como procede el algoritmo, se denomina \textit{algoritmo restringido}. Este tipo de algoritmos son poco utilizados en la actualidad debido al gran problema que presentan. Tomemos de ejemplo que un grupo de usuarios decide utilizar un algoritmo criptográfico restringido para sus comunicaciones, se tendrá una comunicación segura hasta que alguno de los miembros decida salirse del grupo, ya que el usuario al no pertenecer más al grupo, no le importa mantener en secreto el algoritmo y puede distribuirlo para que terceros intercepten las comunicaciones. Así cada vez que un miembro deja el grupo, se debe proceder a cambiarse a todo un nuevo algoritmo lo cual puede tornarse una labor complicada. También ocurre el problema que si se logra obtener un algoritmo equivalente para cifrar los datos, se debe migrar a un nuevo algoritmo.
 
-En cambio, la criptografía moderna \citep{denning} agrega el concepto de \textit{llave} donde se tiene un algoritmo el cual toma como parámetros de entrada una llave y el texto plano o cifrado, y cifra o descifra el mismo de forma correcta, únicamente si se tiene la llave correcta. Retomando el ejemplo anterior, el grupo solamente necesitaría cambiar de llave cuando un miembro se va, facilitando el uso del cifrado y manteniendo las comunicaciones secretas.
+En cambio, la criptografía moderna \citep{denning} agrega el concepto de \textit{llave} donde se tiene un algoritmo el cual toma como parámetros de entrada una llave y el texto plano o cifrado, y cifra o descifra el mismo de forma correcta, únicamente si se tiene la llave correcta. El esquema descrito anteriormente se muestra en la Figura \ref{figExplicacionSistemaCripto}. Retomando el ejemplo anterior, el grupo solamente necesitaría cambiar de llave cuando un miembro se va, facilitando el uso del cifrado y manteniendo las comunicaciones secretas. 
 
 Estos conceptos viene a definir lo que actualmente se conoce como sistema criptográfico o \textit{criptosistema}. Según \cite{denning}, un criptosistema cuenta con 5 componentes:
 \begin{itemize}
@@ -292,7 +292,7 @@ Ventaja                                 & Beneficio                             
 Tiempo de producción más corto      & \begin{tabular}[c]{@{}l@{}}Pasos de manufactura como layout, \\ máscara u otros  no son necesarios\end{tabular}                \\
 No upfront non-recurring expenses (NRE) & Costo que ocurre en el diseño de ASICs.                                                                     \\
 Ciclo de diseño más simple                    & \begin{tabular}[c]{@{}l@{}} El software se encarga en gran parte del \\ \textit{placing, routing} y \textit{timing.}\end{tabular} \\
-Ciclo del projecto más predecible          & \begin{tabular}[c]{@{}l@{}}Debido a que se eliminan los posibles \\ re-spins, capacidades de la oblea, etc.\end{tabular}        \\
+Ciclo del proyecto más predecible          & \begin{tabular}[c]{@{}l@{}}Debido a que se eliminan los posibles \\ re-spins, capacidades de la oblea, etc.\end{tabular}        \\
 \textit{Field reprogramability}                  & Se puede cargar un nuevo RTL y listo.                                                                            
 \end{tabular}
 \end{table}
@@ -353,10 +353,11 @@ A continuación se describen de forma general los componentes que conforman los 
 \item \textit{Slice}: Es la unidad básica de un FPGA, puede estar compuesto por:
 
 \begin{itemize}
-\item \textit{Look Up Table} (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT.
-\item \textit{Wide Multiplexers}: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples, ahorrando LUTs y mejorando la velocidad de procesamiento.
+\item \textit{Look Up Table} (LUT): También son llamados Function Generators, depende del número de entradas y no de la complejidad de la función que se está implementando. Así el retardo es constante para todo el LUT. Son usados para implementar lógica booleano y también como memoria o SRL\footnote{Shift Register Lookup Table (SRL) es un registro desplazable de tamaño variable. Sus usos pueden ser como retardo programable o como una memoria FIFO.}
+
+\item \textit{Wide Multiplexers}: Se utilizan para conectar LUTs entre si y también para no utilizar LUTs en operaciones simples, ahorrando LUTs y mejorando la velocidad de procesamiento. 
 \item \textit{Carry Chain}: Cuando los CLBs deben de realizar operaciones como sumas o restas utilizan esta característica para mejorar la velocidad en la que se realiza la operación
-\item \textit{Registers}: Pueden ser flip-flops o latches. Son usados como memoria o SRL\footnote{Shift Register Lookup Table (SRL) es un registro desplazable de tamaño variable. Sus usos pueden ser como retardo programable o como una memoria FIFO.}
+\item \textit{Registers}: Pueden ser flip-flops o latches.
 \end{itemize}
 
 Ciertos slices pueden se utilizados como una memoria RAM distribuida, en donde por ejemplo el LUT se utiliza como una memoria, ya sea en configuración \textit{single, dual, simple-dual o quad port}. 
