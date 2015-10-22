@@ -7,12 +7,10 @@
 `define c 4
 
 // PROBADOR DEL PIPELINE IF_ID LISTOS.
-module probador (clk,rst,pW,qW,key);
+module probador (clk,rst,key,L_sub_i);
   
   
 	// Salidas
-  output reg [`w-1:0] pW;
-  output reg [`w-1:0] qW;
   output reg [8*`b-1:0] key;
   output reg rst,clk;
  
@@ -37,16 +35,20 @@ module probador (clk,rst,pW,qW,key);
 
 	always #5 clk = ~clk;
 	
+	always @(posedge clk) begin
+		L_sub_i = L[]
+	end
+
+
 endmodule
 
 
 module tester;
 
-  wire [`w-1:0] pW,Qw;
-  wire [8*`b-1:0] key;
-  wire [`w-1:0] out0,out1,out2,out3;
+  wire [8*`b-1:0] key_sub_i;
+  wire [`w-1:0] L_sub_i,L_sub_i_prima;
 
-  probador test(clk,rst,pW,Qw,key);
-  keyBytesToWords pegado (clk,rst,pW,Qw,key,out0,out1,out2,out3);
+  probador test(clk,rst,key_sub_i,L_sub_i,L_sub_i_prima);
+  keyBytesToWords pegado (clk,rst,key_sub_i,L_sub_i,L_sub_i_prima);
 
 endmodule
