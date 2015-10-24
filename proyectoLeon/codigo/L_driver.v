@@ -16,9 +16,6 @@ task drv_init;
     @(negedge clk2)
 		rst = 0;
 
-    @(negedge clk2)
-		rst = 0;
-
   end
 
 endtask
