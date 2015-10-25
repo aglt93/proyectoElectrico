@@ -4,182 +4,173 @@
 :vpi_module "system";
 :vpi_module "v2005_math";
 :vpi_module "va_math";
-S_0x10a2450 .scope module, "tester" "tester" 2 75;
+S_0x1f2de80 .scope module, "keyMixer" "keyMixer" 2 5;
  .timescale -9 -11;
-v0x10d0420_0 .net "S_address", 4 0, L_0x10cf560; 1 drivers
-v0x10d04f0_0 .net "S_sub_i", 31 0, v0x10cff80_0; 1 drivers
-v0x10d05c0_0 .net "S_sub_i_prima", 31 0, v0x10cefe0_0; 1 drivers
-v0x10d0690_0 .net "clk1", 0 0, v0x10d0190_0; 1 drivers
-v0x10d0760_0 .net "clk2", 0 0, v0x10d0210_0; 1 drivers
-v0x10d0830_0 .net "done", 0 0, L_0x10d0d50; 1 drivers
-v0x10d0900_0 .net "rst", 0 0, v0x10d0370_0; 1 drivers
-S_0x10cf950 .scope module, "test" "probador" 2 85, 2 16, S_0x10a2450;
+P_0x1f2f108 .param/l "b" 2 7, +C4<010000>;
+P_0x1f2f130 .param/l "b_length" 2 8, +C4<0100>;
+P_0x1f2f158 .param/l "c_length" 2 11, +C4<010>;
+P_0x1f2f180 .param/l "qW" 2 14, C4<10011110001101110111100110111001>;
+P_0x1f2f1a8 .param/l "t" 2 12, +C4<011010>;
+P_0x1f2f1d0 .param/l "t_length" 2 13, +C4<00000000000000000000000000000101>;
+P_0x1f2f1f8 .param/l "u" 2 10, +C4<0100>;
+P_0x1f2f220 .param/l "w" 2 9, +C4<0100000>;
+v0x1f5ec80_0 .net "L_address", 1 0, L_0x1f5fc10; 1 drivers
+v0x1f5ef30_0 .net "L_sub_i", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x1f5efe0_0 .net "L_sub_i_prima", 31 0, v0x1f5e550_0; 1 drivers
+v0x1f5f090_0 .net "S_address", 4 0, L_0x1f5dc90; 1 drivers
+v0x1f5f170_0 .net "S_sub_i", 31 0, C4<zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz>; 0 drivers
+v0x1f5f220_0 .net "S_sub_i_prima", 31 0, v0x1f5d720_0; 1 drivers
+v0x1f5f2a0_0 .net "clk1", 0 0, C4<z>; 0 drivers
+v0x1f5f320_0 .net "clk2", 0 0, C4<z>; 0 drivers
+v0x1f5f440_0 .net "done", 0 0, L_0x1f60160; 1 drivers
+v0x1f5f4c0_0 .net "key_address", 3 0, L_0x1f5f9a0; 1 drivers
+v0x1f5f540_0 .net "key_sub_i", 7 0, C4<zzzzzzzz>; 0 drivers
+v0x1f5f5f0_0 .net "rst", 0 0, C4<z>; 0 drivers
+S_0x1f5e080 .scope module, "block_L" "keyBytesToWords" 2 43, 3 3, S_0x1f2de80;
  .timescale -9 -11;
-v0x10cfe30 .array "S", 0 25, 31 0;
-v0x10cfed0_0 .alias "S_address", 4 0, v0x10d0420_0;
-v0x10cff80_0 .var "S_sub_i", 31 0;
-v0x10d0030_0 .alias "S_sub_i_prima", 31 0, v0x10d05c0_0;
-v0x10d0110_0 .var *"_s0", 0 0; Local signal
-v0x10d0190_0 .var "clk1", 0 0;
-v0x10d0210_0 .var "clk2", 0 0;
-v0x10d02c0_0 .alias "done", 0 0, v0x10d0830_0;
-v0x10d0370_0 .var "rst", 0 0;
-E_0x10cf100 .event edge, v0x10cf4e0_0;
-S_0x10cfd40 .scope task, "drv_init" "drv_init" 3 1, 3 1, S_0x10cf950;
+P_0x1f5e178 .param/l "b" 3 5, +C4<010000>;
+P_0x1f5e1a0 .param/l "b_length" 3 6, +C4<0100>;
+P_0x1f5e1c8 .param/l "c_length" 3 9, +C4<010>;
+P_0x1f5e1f0 .param/l "u" 3 8, +C4<0100>;
+P_0x1f5e218 .param/l "w" 3 7, +C4<0100000>;
+v0x1f5e3f0_0 .alias "L_address", 1 0, v0x1f5ec80_0;
+v0x1f5e4b0_0 .alias "L_sub_i", 31 0, v0x1f5ef30_0;
+v0x1f5e550_0 .var "L_sub_i_prima", 31 0;
+v0x1f5e5f0_0 .net *"_s1", 0 0, L_0x1f5f670; 1 drivers
+v0x1f5e670_0 .net *"_s10", 4 0, C4<00100>; 1 drivers
+v0x1f5e710_0 .net *"_s12", 4 0, L_0x1f5fb20; 1 drivers
+v0x1f5e7f0_0 .net/s *"_s2", 0 0, C4<1>; 1 drivers
+v0x1f5e890_0 .net/s *"_s4", 0 0, C4<0>; 1 drivers
+v0x1f5e930_0 .alias "clk1", 0 0, v0x1f5f2a0_0;
+v0x1f5e9b0_0 .alias "clk2", 0 0, v0x1f5f320_0;
+v0x1f5ea60_0 .var "count", 4 0;
+v0x1f5eae0_0 .net "done", 0 0, L_0x1f5f7e0; 1 drivers
+v0x1f5eb60_0 .alias "key_address", 3 0, v0x1f5f4c0_0;
+v0x1f5ec00_0 .alias "key_sub_i", 7 0, v0x1f5f540_0;
+v0x1f5ed20_0 .alias "rst", 0 0, v0x1f5f5f0_0;
+v0x1f5edd0_0 .var "temp", 31 0;
+L_0x1f5f670 .reduce/nor v0x1f5ea60_0;
+L_0x1f5f7e0 .functor MUXZ 1, C4<0>, C4<1>, L_0x1f5f670, C4<>;
+L_0x1f5f9a0 .part v0x1f5ea60_0, 0, 4;
+L_0x1f5fb20 .arith/div 5, v0x1f5ea60_0, C4<00100>;
+L_0x1f5fc10 .part L_0x1f5fb20, 0, 2;
+S_0x1f2db80 .scope module, "block_S" "initArrayS" 2 63, 4 4, S_0x1f2de80;
  .timescale -9 -11;
-TD_tester.test.drv_init ;
-    %wait E_0x10cfb70;
-    %set/v v0x10d0370_0, 1, 1;
-    %wait E_0x10cfb70;
-    %set/v v0x10d0370_0, 0, 1;
-    %end;
-S_0x10cfbe0 .scope task, "drv_read" "drv_read" 3 15, 3 15, S_0x10cf950;
- .timescale -9 -11;
-E_0x10cfcd0 .event posedge, v0x10cf5e0_0;
-TD_tester.test.drv_read ;
-    %wait E_0x10cfcd0;
-    %ix/getv 3, v0x10cfed0_0;
-    %load/av 8, v0x10cfe30, 32;
-    %set/v v0x10cff80_0, 8, 32;
-    %end;
-S_0x10cfa80 .scope task, "drv_write" "drv_write" 3 21, 3 21, S_0x10cf950;
- .timescale -9 -11;
-E_0x10cfb70 .event negedge, v0x10cf5e0_0;
-TD_tester.test.drv_write ;
-    %wait E_0x10cfb70;
-    %load/v 8, v0x10d0030_0, 32;
-    %ix/load 0, 1, 0;
-    %load/vp0 40, v0x10cfed0_0, 32;
-    %ix/get 3, 40, 32;
-   %jmp/1 t_0, 4;
-   %ix/load 1, 0, 0;
-   %set/av v0x10cfe30, 8, 32;
-t_0 ;
-    %end;
-S_0x10b4d00 .scope module, "pegado" "initArrayS" 2 105, 4 4, S_0x10a2450;
- .timescale -9 -11;
-P_0x10b4df8 .param/l "b" 4 6, +C4<010000>;
-P_0x10b4e20 .param/l "b_length" 4 7, +C4<00000000000000000000000000000100>;
-P_0x10b4e48 .param/l "qW" 4 11, +C4<0101>;
-P_0x10b4e70 .param/l "t" 4 9, +C4<011010>;
-P_0x10b4e98 .param/l "t_length" 4 10, +C4<00000000000000000000000000000101>;
-P_0x10b4ec0 .param/l "w" 4 8, +C4<0100000>;
-L_0x10cf560 .functor BUFZ 5, v0x10cf680_0, C4<00000>, C4<00000>, C4<00000>;
-v0x10b62b0_0 .alias "S_address", 4 0, v0x10d0420_0;
-v0x10cef40_0 .alias "S_sub_i", 31 0, v0x10d04f0_0;
-v0x10cefe0_0 .var "S_sub_i_prima", 31 0;
-v0x10cf080_0 .net/s *"_s10", 0 0, C4<1>; 1 drivers
-v0x10cf130_0 .net/s *"_s12", 0 0, C4<0>; 1 drivers
-v0x10cf1d0_0 .net *"_s2", 7 0, L_0x10d09d0; 1 drivers
-v0x10cf2b0_0 .net *"_s5", 2 0, C4<000>; 1 drivers
-v0x10cf350_0 .net *"_s6", 7 0, C4<00011001>; 1 drivers
-v0x10cf440_0 .net *"_s8", 0 0, L_0x10d0b90; 1 drivers
-v0x10cf4e0_0 .alias "clk1", 0 0, v0x10d0690_0;
-v0x10cf5e0_0 .alias "clk2", 0 0, v0x10d0760_0;
-v0x10cf680_0 .var "count", 4 0;
-v0x10cf790_0 .alias "done", 0 0, v0x10d0830_0;
-v0x10cf830_0 .alias "rst", 0 0, v0x10d0900_0;
-E_0x10a22d0 .event posedge, v0x10cf4e0_0;
-E_0x10a1fa0 .event posedge, v0x10cf830_0, v0x10cf5e0_0;
-L_0x10d09d0 .concat [ 5 3 0 0], v0x10cf680_0, C4<000>;
-L_0x10d0b90 .cmp/eq 8, L_0x10d09d0, C4<00011001>;
-L_0x10d0d50 .functor MUXZ 1, C4<0>, C4<1>, L_0x10d0b90, C4<>;
-    .scope S_0x10cf950;
-T_3 ;
-    %vpi_call 2 40 "$dumpfile", "S_prueba.vcd";
-    %vpi_call 2 41 "$dumpvars";
-    %movi 8, 10, 32;
-   %ix/load 1, 0, 0;
-   %ix/load 3, 0, 0;
-   %set/av v0x10cfe30, 8, 32;
-    %set/v v0x10d0190_0, 0, 1;
-    %fork TD_tester.test.drv_init, S_0x10cfd40;
-    %join;
-    %movi 8, 40, 7;
-T_3.0 %cmp/s 0, 8, 7;
-    %jmp/0xz T_3.1, 5;
-    %add 8, 1, 7;
-    %fork t_2, S_0x10cf950;
-    %fork TD_tester.test.drv_read, S_0x10cfbe0;
-    %join;
-    %join;
-    %jmp t_1;
-t_2 ;
-    %fork TD_tester.test.drv_write, S_0x10cfa80;
-    %join;
-    %end;
-t_1 ;
-    %jmp T_3.0;
-T_3.1 ;
-    %delay 200, 0;
-    %vpi_call 2 58 "$finish";
-    %end;
-    .thread T_3;
-    .scope S_0x10cf950;
-T_4 ;
-    %delay 500, 0;
-    %load/v 8, v0x10d0190_0, 1;
-    %inv 8, 1;
-    %set/v v0x10d0190_0, 8, 1;
-    %jmp T_4;
-    .thread T_4;
-    .scope S_0x10cf950;
-T_5 ;
-    %wait E_0x10cf100;
-    %load/v 8, v0x10d0190_0, 1;
-    %set/v v0x10d0110_0, 8, 1;
-    %movi 8, 50, 7;
-    %ix/get 0, 8, 7;
-    %delayx 0;
-    %load/v 8, v0x10d0110_0, 1;
-    %set/v v0x10d0210_0, 8, 1;
-    %jmp T_5;
-    .thread T_5, $push;
-    .scope S_0x10b4d00;
-T_6 ;
-    %wait E_0x10a1fa0;
-    %load/v 8, v0x10cf830_0, 1;
-    %jmp/0xz  T_6.0, 8;
-    %movi 8, 31, 6;
-    %set/v v0x10cf680_0, 8, 5;
-    %jmp T_6.1;
-T_6.0 ;
-    %load/v 8, v0x10cf790_0, 1;
+P_0x1f310b8 .param/l "qW" 4 9, C4<10011110001101110111100110111001>;
+P_0x1f310e0 .param/l "t" 4 7, +C4<011010>;
+P_0x1f31108 .param/l "t_bit_size" 4 24, +C4<011111>;
+P_0x1f31130 .param/l "t_length" 4 8, +C4<00000000000000000000000000000101>;
+P_0x1f31158 .param/l "w" 4 6, +C4<0100000>;
+L_0x1f5dc90 .functor BUFZ 5, v0x1f5ddb0_0, C4<00000>, C4<00000>, C4<00000>;
+v0x1f42ff0_0 .alias "S_address", 4 0, v0x1f5f090_0;
+v0x1f5d680_0 .alias "S_sub_i", 31 0, v0x1f5f170_0;
+v0x1f5d720_0 .var "S_sub_i_prima", 31 0;
+v0x1f5d7c0_0 .net/s *"_s10", 0 0, C4<1>; 1 drivers
+v0x1f5d860_0 .net/s *"_s12", 0 0, C4<0>; 1 drivers
+v0x1f5d900_0 .net *"_s2", 7 0, L_0x1f5fda0; 1 drivers
+v0x1f5d9e0_0 .net *"_s5", 2 0, C4<000>; 1 drivers
+v0x1f5da80_0 .net *"_s6", 7 0, C4<00011001>; 1 drivers
+v0x1f5db70_0 .net *"_s8", 0 0, L_0x1f5ff60; 1 drivers
+v0x1f5dc10_0 .alias "clk1", 0 0, v0x1f5f2a0_0;
+v0x1f5dd10_0 .alias "clk2", 0 0, v0x1f5f320_0;
+v0x1f5ddb0_0 .var "count", 4 0;
+v0x1f5dec0_0 .alias "done", 0 0, v0x1f5f440_0;
+v0x1f5df60_0 .alias "rst", 0 0, v0x1f5f5f0_0;
+E_0x1f31450 .event posedge, v0x1f5dc10_0;
+E_0x1f2fe80 .event posedge, v0x1f5df60_0, v0x1f5dd10_0;
+L_0x1f5fda0 .concat [ 5 3 0 0], v0x1f5ddb0_0, C4<000>;
+L_0x1f5ff60 .cmp/eq 8, L_0x1f5fda0, C4<00011001>;
+L_0x1f60160 .functor MUXZ 1, C4<0>, C4<1>, L_0x1f5ff60, C4<>;
+    .scope S_0x1f5e080;
+T_0 ;
+    %wait E_0x1f2fe80;
+    %load/v 8, v0x1f5ed20_0, 1;
+    %jmp/0xz  T_0.0, 8;
+    %movi 8, 16, 6;
+    %set/v v0x1f5ea60_0, 8, 5;
+    %jmp T_0.1;
+T_0.0 ;
+    %load/v 8, v0x1f5eae0_0, 1;
     %mov 9, 0, 1;
     %cmpi/u 8, 0, 2;
-    %jmp/0xz  T_6.2, 4;
-    %load/v 8, v0x10cef40_0, 32;
-    %mov 40, 0, 1;
-    %addi 8, 5, 33;
-    %set/v v0x10cefe0_0, 8, 32;
-T_6.2 ;
-T_6.1 ;
-    %jmp T_6;
-    .thread T_6;
-    .scope S_0x10b4d00;
-T_7 ;
-    %wait E_0x10a22d0;
-    %load/v 8, v0x10cf790_0, 1;
+    %jmp/0xz  T_0.2, 4;
+    %load/v 8, v0x1f5e4b0_0, 32;
+    %load/v 40, v0x1f5e4b0_0, 8; Select 8 out of 32 bits
+    %set/v v0x1f5edd0_0, 8, 32;
+    %load/v 8, v0x1f5edd0_0, 32;
+    %load/v 40, v0x1f5ec00_0, 8;
+    %mov 48, 0, 24;
+    %add 8, 40, 32;
+    %set/v v0x1f5e550_0, 8, 32;
+T_0.2 ;
+T_0.1 ;
+    %jmp T_0;
+    .thread T_0;
+    .scope S_0x1f5e080;
+T_1 ;
+    %wait E_0x1f31450;
+    %load/v 8, v0x1f5eae0_0, 1;
     %mov 9, 0, 1;
     %cmpi/u 8, 0, 2;
     %mov 8, 4, 1;
-    %load/v 9, v0x10cf830_0, 1;
+    %load/v 9, v0x1f5ed20_0, 1;
     %mov 10, 0, 1;
     %cmpi/u 9, 0, 2;
     %mov 9, 4, 1;
     %and 8, 9, 1;
-    %jmp/0xz  T_7.0, 8;
-    %load/v 8, v0x10cf680_0, 5;
+    %jmp/0xz  T_1.0, 8;
+    %load/v 8, v0x1f5ea60_0, 5;
+    %mov 13, 0, 27;
+    %subi 8, 1, 32;
+    %set/v v0x1f5ea60_0, 8, 5;
+T_1.0 ;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_0x1f2db80;
+T_2 ;
+    %wait E_0x1f2fe80;
+    %load/v 8, v0x1f5df60_0, 1;
+    %jmp/0xz  T_2.0, 8;
+    %movi 8, 31, 6;
+    %set/v v0x1f5ddb0_0, 8, 5;
+    %jmp T_2.1;
+T_2.0 ;
+    %load/v 8, v0x1f5dec0_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %jmp/0xz  T_2.2, 4;
+    %load/v 8, v0x1f5d680_0, 32;
+    %mov 40, 0, 1;
+    %addi 8, 2654435769, 33;
+    %set/v v0x1f5d720_0, 8, 32;
+T_2.2 ;
+T_2.1 ;
+    %jmp T_2;
+    .thread T_2;
+    .scope S_0x1f2db80;
+T_3 ;
+    %wait E_0x1f31450;
+    %load/v 8, v0x1f5dec0_0, 1;
+    %mov 9, 0, 1;
+    %cmpi/u 8, 0, 2;
+    %mov 8, 4, 1;
+    %load/v 9, v0x1f5df60_0, 1;
+    %mov 10, 0, 1;
+    %cmpi/u 9, 0, 2;
+    %mov 9, 4, 1;
+    %and 8, 9, 1;
+    %jmp/0xz  T_3.0, 8;
+    %load/v 8, v0x1f5ddb0_0, 5;
     %mov 13, 0, 27;
     %addi 8, 1, 32;
-    %set/v v0x10cf680_0, 8, 5;
-T_7.0 ;
-    %jmp T_7;
-    .thread T_7;
+    %set/v v0x1f5ddb0_0, 8, 5;
+T_3.0 ;
+    %jmp T_3;
+    .thread T_3;
 # The file index is used to find the file name in the following table.
 :file_names 5;
     "N/A";
     "<interactive>";
-    "S_tb.v";
-    "./S_driver.v";
+    "mixer.v";
+    "./L_operation.v";
     "./S_operation.v";

@@ -95,8 +95,6 @@ module tester;
       
     initArrayS
     #(
-        .b(`b),
-        .b_length(`b_length),
         .w(`w),
         .t(`t),
         .t_length(`t_length),

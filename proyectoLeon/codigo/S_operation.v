@@ -3,8 +3,6 @@
 
 module initArrayS
 #(
-	parameter b = 16,
-	parameter b_length = 4,
 	parameter w = 32,
 	parameter t = 26,
 	parameter t_length = $clog2(t),
@@ -22,6 +20,8 @@ module initArrayS
 	output wire done
 );
 
+
+	parameter t_bit_size = 2**t_length-1;
 	reg [t_length-1:0] count;
 	assign S_address = count;
 
@@ -30,7 +30,7 @@ module initArrayS
 	always @(posedge clk2 or posedge rst) begin
 
 		if(rst) begin
-			count = 2**t_length-1;
+			count = t_bit_size;
 		end
 
 		else begin 

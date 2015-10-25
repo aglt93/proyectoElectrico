@@ -19,7 +19,7 @@ task drv_read;
 endtask
 
 task drv_write;
-	@(negedge clk2) begin
+	@(negedge clk2) begin	
 		S[S_address+1] = S_sub_i_prima;	
 	end
 endtask

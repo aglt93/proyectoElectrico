@@ -6,7 +6,6 @@ module keyBytesToWords
 	parameter b_length = 4,
 	parameter w = 32,
 	parameter u = 4,
-	parameter c = 4,
 	parameter c_length = 2
 )
 

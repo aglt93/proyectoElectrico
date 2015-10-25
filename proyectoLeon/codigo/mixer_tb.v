@@ -87,6 +87,7 @@ module tester;
         .b_length(`b_length),
         .w(`w),
         .u(`u),
+        .c(`c),
         .c_length(`c_length)
     )
     pegado 
