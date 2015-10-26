@@ -1,4 +1,4 @@
-`include "mixer.v"
+`include "keyExpander.v"
 
 `timescale 1ns/10ps
 
@@ -25,12 +25,11 @@ module probador
     input [`b_length-1:0] key_address,
     input [`c_length-1:0] L_address,
     input [`w-1:0] L_sub_i_prima,
-    input L_done,
     //
     output reg [`w-1:0] S_sub_i,
     input [`t_length-1:0] S_address,
     input [`w-1:0] S_sub_i_prima,
-    input S_done
+    input done
 );
 
     integer i;
@@ -40,11 +39,11 @@ module probador
     reg [7:0] keyInBytes [`b-1:0];
     reg [8*`b-1:0] key;
 
-    `include "mixer_driver.v"
+    `include "keyExpander_driver.v"
 
     initial begin
 
-    $dumpfile("mixer_prueba.vcd");
+    $dumpfile("keyExpander_prueba.vcd");
     $dumpvars;
 
     S[0] = `pW;
@@ -53,7 +52,7 @@ module probador
 
     drv_init();
 
-    repeat(40) begin
+    repeat(120) begin
         fork 
             drv_write();
             drv_read();
@@ -79,13 +78,13 @@ module tester;
     wire [`w-1:0] L_sub_i,L_sub_i_prima;
     wire [`b_length-1:0] key_address;
     wire [`c_length-1:0] L_address;
-    wire L_done;
     //
     wire [`w-1:0] S_sub_i;
     wire [`w-1:0] S_sub_i_prima;
     wire [`t_length-1:0] S_address;
-    wire S_done;
-     
+    //
+    wire done;
+    
     probador test
     (
         .clk1(clk1),
@@ -97,15 +96,14 @@ module tester;
         .L_sub_i_prima(L_sub_i_prima),
         .key_address(key_address),
         .L_address(L_address),
-        .L_done(L_done),
         //
         .S_sub_i(S_sub_i),
         .S_sub_i_prima(S_sub_i_prima),
         .S_address(S_address),
-        .S_done(S_done)
+        .done(done)
     );
       
-    keyMixer 
+    keyExpander 
     #(
         .b(`b),
         .b_length(`b_length),
@@ -114,7 +112,8 @@ module tester;
         .c_length(`c_length),
         .t(`t),
         .t_length(`t_length),
-        .qW(`qW)
+        .qW(`qW),
+        .c(`c)
     )
     pegado 
     (
@@ -127,12 +126,12 @@ module tester;
         .L_sub_i_prima(L_sub_i_prima),
         .key_address(key_address),
         .L_address(L_address),
-        .L_done(L_done),
         //
         .S_sub_i(S_sub_i),
         .S_sub_i_prima(S_sub_i_prima),
         .S_address(S_address),
-        .S_done(S_done)
+        //
+        .done(done)
     );
 
 endmodule

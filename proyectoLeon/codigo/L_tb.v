@@ -16,16 +16,16 @@ module probador
     output reg rst,
     output reg clk1,
     output reg clk2,
-    output reg [8*`b-1:0] key,
     output reg [`w-1:0] L_sub_i,
     output reg [7:0] key_sub_i,
     input [`b_length-1:0] key_address,
     input [`c_length-1:0] L_address,
-    input [`w-1:0] L_sub_i_prima
+    input [`w-1:0] L_sub_i_prima,
+    input done
 );
 
     integer i;
-
+    reg key;
     reg [`w-1:0] L [`c-1:0];
     reg [7:0] keyInBytes [`b-1:0];
 
@@ -68,6 +68,7 @@ module tester;
     wire [`w-1:0] L_sub_i,L_sub_i_prima;
     wire [`b_length-1:0] key_address;
     wire [`c_length-1:0] L_address;
+    wire done;
      
     probador test
     (
@@ -78,7 +79,8 @@ module tester;
         .L_sub_i(L_sub_i),
         .L_sub_i_prima(L_sub_i_prima),
         .key_address(key_address),
-        .L_address(L_address)
+        .L_address(L_address),
+        .done(done)
     );
       
     keyBytesToWords 
@@ -98,7 +100,8 @@ module tester;
         .L_sub_i(L_sub_i),
         .L_sub_i_prima(L_sub_i_prima),
         .key_address(key_address),
-        .L_address(L_address)
+        .L_address(L_address),
+        .done(done)
     );
 
 endmodule

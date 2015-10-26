@@ -17,13 +17,11 @@ module keyBytesToWords
 	input [w-1:0] L_sub_i,
 	output [b_length-1:0] key_address,
 	output [c_length-1:0] L_address,
-	output reg [w-1:0] L_sub_i_prima
+	output reg [w-1:0] L_sub_i_prima,
+	output done
 );
 
 	reg [b_length:0] count;
-
-	wire done;
-
 
 	assign done = (!count) ? 1:0;
 	assign key_address = count;
@@ -39,8 +37,7 @@ module keyBytesToWords
 
 		else begin 
 			if (done==0) begin
-				temp = {L_sub_i[7:0],L_sub_i[w-1:0]};	
-				//$display("L = %h   ,  temp = %h" , L_sub_i,temp);
+				temp = {L_sub_i[7:0],L_sub_i[w-1:8]};	
 				L_sub_i_prima = temp + key_sub_i;
 			end
 		end
