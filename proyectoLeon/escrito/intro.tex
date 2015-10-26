@@ -1,6 +1,6 @@
 \chapter{Introducción}
 \section{Justificación}
-El cifrado de datos para aplicaciones de seguridad es completamente vital en la actualidad. Por ejemplo la fuga de datos de Home Depot, donde se perdió una computadora que contenía información personal de $10000$ empleados causando un costo de millones de dólares a la empresa \citep{homeDepot}. La noticia en mayo sobre el buscador web \textit{UC Browser} donde indica que es posible robar datos personales por falta de cifrado en la transmisión de datos \citep{ucBrowser}. También en febrero de este año se dio a conocer la fuga de decenas de millones de datos de la compañía de seguros \textit{Anthem}. Los datos robados (números de seguro, lugar de residencia, números de teléfono, entre otros), se encontraban en una base de datos en la cual los datos se encontraban sin encriptar como indica \cite{anthem}:
+El cifrado de datos para aplicaciones de seguridad es de vital importancia en la actualidad. Un ejemplo de esto la fuga de datos de Home Depot en el año 2014, donde se perdió una computadora que contenía información personal de $10000$ empleados y clientes causando un costo de millones de dólares a la empresa \citep{homeDepot}. Otro ejemplo fue la noticia en mayo de 2015 sobre el buscador web \textit{UC Browser} donde indica que es posible robar datos personales por falta de cifrado en la transmisión de datos \citep{ucBrowser}. También en febrero de 2015 se dio a conocer la fuga de decenas de millones de datos de la compañía de seguros \textit{Anthem}. Los datos robados (números de seguro, lugar de residencia, números de teléfono, entre otros), se encontraban en una base de datos en la cual los datos se encontraban sin cifrar como indica \cite{anthem}:
 \begin{center}
     \begin{minipage}{0.9\linewidth}
         \vspace{5pt}%margen superior de minipage
@@ -25,9 +25,9 @@ Se implementarán dos algoritmos criptográficos en un FPGA haciendo uso de Veri
 
 Posteriomente y mediante las herramientas de síntesis de Xilinx se realizará un análisis de métricas críticas en el desarrollo de aplicaciones en FPGAs como los son la cantidad de compuertas o celdas, el consumo de memoria interna del FPGA así como la cantidad de bloques aritméticos o de DSP que son usados por cada algoritmo. Uno de los factores que aunque tiene importancia no se tomará en cuenta es el consumo de potencia.
 
-Inicialmente se va a llevar a cabo un análisis individual de cada algoritmo, haciendo uso de las métricas anteriormente descritas y variando parámetros comunes de los algoritmos criptográficos como lo son el tamaño de la llave y la cantidad de rondas de cifrado (este último en algoritmos de tipo Feistel). 
+Inicialmente se va llevará a cabo un análisis individual de cada algoritmo, haciendo uso de las métricas anteriormente descritas y variando parámetros comunes de los algoritmos criptográficos como lo son el tamaño de la llave y la cantidad de rondas de cifrado (este último en algoritmos de tipo Feistel). 
 
-Como segunda parte del proyecto se va a realizar un análisis comparativo entre ambos algoritmos eligiendo parámetros fijos para ambos.
+Como segunda parte del proyecto se realizará un análisis comparativo entre ambos algoritmos eligiendo parámetros fijos para ambos.
 
 Los análisis individuales y comparativos anteriomente mencionados no abarcarán ningún tipo de criptoanálisis de algún algoritmo con respecto otro ni de cuál sería la escogencia de los parámetros ideal para realizar un análisis comparativo entre ambos. Sino que a partir del análisis individual realizado se va a efectuar una escogencia de los parámetros de ambos algoritmos para realizar su comparación implementando las métricas descritas.
 

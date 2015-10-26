@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  21 OCT 2015 17:31
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.24)  26 OCT 2015 10:02
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1049,57 +1049,78 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
+(/usr/share/texlive/texmf-dist/tex/latex/blindtext/blindtext.sty
+Package: blindtext 2012/01/06 V2.0 blindtext-Package
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
+)
+\c@blindtext=\count168
+\c@Blindtext=\count169
+\c@blind@countparstart=\count170
+\blind@countxx=\count171
+\blindtext@numBlindtext=\count172
+\blind@countyy=\count173
+\c@blindlist=\count174
+\c@blindlistlevel=\count175
+\c@blindlist@level=\count176
+\blind@listitem=\count177
+\c@blind@listcount=\count178
+\c@blind@levelcount=\count179
+\blind@mathformula=\count180
+\blind@Mathformula=\count181
+\c@blind@randomcount=\count182
+\c@blind@randommax=\count183
+\c@blind@pangramcount=\count184
+\c@blind@pangrammax=\count185
+)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2013/08/26 1.5b listings language file
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 )
-(./prislab-commands.tex
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
-)) (./informe.aux
+(./prislab-commands.tex) (./informe.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
-
-(./resumen.aux) (./intro.aux) (./marcoteorico.aux))
+ (./resumen.aux) (./intro.aux)
+(./marcoteorico.aux))
 \openout1 = `informe.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 165.
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 165.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 165.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 166.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 166.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 166.
 
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 165.
-LaTeX Info: Redefining \. on input line 165.
-LaTeX Info: Redefining \% on input line 165.
+LaTeX Font Info:    ... okay on input line 166.
+LaTeX Info: Redefining \. on input line 166.
+LaTeX Info: Redefining \% on input line 166.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count168
+\scratchcounter=\count186
 \scratchdimen=\dimen175
 \scratchbox=\box35
-\nofMPsegments=\count169
-\nofMParguments=\count170
+\nofMPsegments=\count187
+\nofMParguments=\count188
 \everyMPshowfont=\toks40
-\MPscratchCnt=\count171
+\MPscratchCnt=\count189
 \MPscratchDim=\dimen176
-\MPnumerator=\count172
-\makeMPintoPDFobject=\count173
+\MPnumerator=\count190
+\makeMPintoPDFobject=\count191
 \everyMPtoPDFconversion=\toks41
 ) (/usr/share/texlive/texmf-dist/tex/latex/ms/ragged2e.sty
 Package: ragged2e 2009/05/21 v2.1 ragged2e Package (MS)
@@ -1127,16 +1148,16 @@ LaTeX Info: Redefining \selectfont on input line 126.
 )
 \symgns@font=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `gns@font' in version `bold'
-(Font)                  TS1/aer/m/n --> TS1/aer/bx/n on input line 165.
-Package gensymb Info: Math companion symbols declared on input line 165.
-LaTeX Info: Redefining \degree on input line 165.
-LaTeX Info: Redefining \celsius on input line 165.
+(Font)                  TS1/aer/m/n --> TS1/aer/bx/n on input line 166.
+Package gensymb Info: Math companion symbols declared on input line 166.
+LaTeX Info: Redefining \degree on input line 166.
+LaTeX Info: Redefining \celsius on input line 166.
 Package gensymb Info: Using text companion symbols for \degree, \celsius and \p
-erthousand on input line 165.
-LaTeX Info: Redefining \ohm on input line 165.
-Package gensymb Info: Using \textohm for \ohm on input line 165.
-Package gensymb Info: Using \textmu for \micro on input line 165.
-\c@lstlisting=\count174
+erthousand on input line 166.
+LaTeX Info: Redefining \ohm on input line 166.
+Package gensymb Info: Using \textohm for \ohm on input line 166.
+Package gensymb Info: Using \textmu for \micro on input line 166.
+\c@lstlisting=\count192
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
  [1
@@ -1145,24 +1166,34 @@ Package caption Info: End \AtBeginDocument code.
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ]
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 188.
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 189.
 
-LaTeX Font Info:    No file TS1aer.fd. on input line 188.
+LaTeX Font Info:    No file TS1aer.fd. on input line 189.
 
 
 LaTeX Font Warning: Font shape `TS1/aer/m/n' undefined
-(Font)              using `TS1/cmr/m/n' instead on input line 188.
+(Font)              using `TS1/cmr/m/n' instead on input line 189.
 
 [3] [4
 
 ]
 \openout2 = `resumen.aux'.
 
- (./resumen.tex [5
+ (./resumen.tex
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 4.
+
+[5
 
 ] [6
 
-] [7] [8
+]
+
+Package blindtext Warning: spanish not defined, using English instead.
+(blindtext)                 on input line 9.
+
+[7] [8
 
 ]) [9] [10
 
@@ -1195,7 +1226,7 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 ]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4859) has occurred while \output is active []
 
 LaTeX Info: Redefining \. on input line 43.
 LaTeX Info: Redefining \% on input line 43.
@@ -1204,8 +1235,8 @@ LaTeX Info: Redefining \. on input line 89.
 LaTeX Info: Redefining \% on input line 89.
 
 [3])
-LaTeX Info: Redefining \. on input line 216.
-LaTeX Info: Redefining \% on input line 216.
+LaTeX Info: Redefining \. on input line 217.
+LaTeX Info: Redefining \% on input line 217.
  [4]
 \openout2 = `marcoteorico.aux'.
 
@@ -1341,8 +1372,8 @@ LaTeX Info: Redefining \% on input line 359.
 LaTeX Info: Redefining \. on input line 386.
 LaTeX Info: Redefining \% on input line 386.
  [20])
-LaTeX Info: Redefining \. on input line 220.
-LaTeX Info: Redefining \% on input line 220.
+LaTeX Info: Redefining \. on input line 221.
+LaTeX Info: Redefining \% on input line 221.
  [21] (./informe.bbl [22
 
 
@@ -1423,8 +1454,8 @@ n't
  []
 
 )
-LaTeX Info: Redefining \. on input line 245.
-LaTeX Info: Redefining \% on input line 245.
+LaTeX Info: Redefining \. on input line 246.
+LaTeX Info: Redefining \% on input line 246.
  [24]
 \tf@toc=\write4
 \openout4 = `informe.toc'.
@@ -1444,10 +1475,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 11967 strings out of 493304
- 165712 string characters out of 6139872
- 294587 words of memory out of 5000000
- 15048 multiletter control sequences out of 15000+600000
+ 12121 strings out of 493304
+ 168150 string characters out of 6139871
+ 306207 words of memory out of 5000000
+ 15198 multiletter control sequences out of 15000+600000
  54130 words of font info for 102 fonts, out of 8000000 for 9000
  1053 hyphenation exceptions out of 8191
  46i,14n,58p,1088b,607s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1469,7 +1500,7 @@ fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1095.pfb>
-Output written on informe.pdf (38 pages, 445264 bytes).
+Output written on informe.pdf (38 pages, 446478 bytes).
 PDF statistics:
  213 PDF objects out of 1000 (max. 8388607)
  142 compressed objects within 2 object streams

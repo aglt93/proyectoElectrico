@@ -6,46 +6,44 @@ A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: intro.aux
 A level-1 auxiliary file: marcoteorico.aux
 Database file #1: eieclases_ref.bib
-Warning--to sort, need author or key in figRandom1
 You've used 15 entries,
             1935 wiz_defined-function locations,
-            553 strings with 5930 characters,
-and the built_in function-call counts, 3865 in all, are:
-= -- 413
-> -- 104
-< -- 14
-+ -- 34
-- -- 30
+            554 strings with 5946 characters,
+and the built_in function-call counts, 3910 in all, are:
+= -- 418
+> -- 111
+< -- 15
++ -- 36
+- -- 32
 * -- 235
-:= -- 759
+:= -- 776
 add.period$ -- 58
 call.type$ -- 15
-change.case$ -- 88
+change.case$ -- 89
 chr.to.int$ -- 11
-cite$ -- 17
+cite$ -- 15
 duplicate$ -- 158
-empty$ -- 245
-format.name$ -- 46
-if$ -- 722
+empty$ -- 242
+format.name$ -- 49
+if$ -- 728
 int.to.chr$ -- 5
 int.to.str$ -- 0
 missing$ -- 4
 newline$ -- 91
-num.names$ -- 42
-pop$ -- 44
+num.names$ -- 45
+pop$ -- 43
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 91
 quote$ -- 0
-skip$ -- 134
+skip$ -- 136
 stack$ -- 0
-substring$ -- 181
+substring$ -- 180
 swap$ -- 2
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 86
-warning$ -- 1
-while$ -- 28
+warning$ -- 0
+while$ -- 30
 width$ -- 0
-write$ -- 207
-(There was 1 warning)
+write$ -- 208

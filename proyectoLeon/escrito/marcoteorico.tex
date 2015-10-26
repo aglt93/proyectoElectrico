@@ -1,6 +1,6 @@
 \chapter{Marco Teórico}
 
-Este capítulo va a poner en contexto al lector con respecto a conceptos básicos de criptografía, definir y explicar los algoritmos que van a ser implementados en el FPGA, y realizar una breve explicación sobre características de un FPGA para explicar el porqué de la escogencia de las métricas que van a ser analizadas.
+Este capítulo va a poner en contexto al lector con respecto a conceptos básicos de criptografía, definir y explicar los algoritmos que van a ser implementados en el FPGA, y realizar una breve explicación sobre características de un FPGA para explicar el porqué de la escogencia de los parámetros que van a ser analizadas.
 
 \section{Conceptos Básicos}
 Según la \cite{raeCriptografia} la criptografía se define como
@@ -153,7 +153,7 @@ Según \cite{bruce}, los criptosistemas simétricos en la red afrontan los sigui
 
 
 \subsection{Algoritmos de llave pública}
-Nuevamente \cite{bruce}, nos ofrece una excelente analogía para explicar, en este caso, los algoritmos de llave pública. Tenemos un \textit{mailbox}, donde cualquier persona puede poner un mensaje adentro pero ÚNICAMENTE el dueño puede abrirlo para sacar y leer los mensajes.
+Nuevamente \cite{bruce}, nos ofrece una excelente analogía para explicar, en este caso, los algoritmos de llave pública. Tenemos un \textit{mailbox}, donde cualquier persona puede poner un mensaje adentro pero \textbf{únicamente} el dueño puede abrirlo para sacar y leer los mensajes.
 \newline
 \newline
 En los algoritmos de llave pública los emisores hacen uso de una llave para cifrar los mensajes que desean enviar pero estos mensajes pueden ser descrifrados únicamente si se tiene la llave para descifrar mensajes (que es diferente de la llave para cifrar), la cual el receptor la tendrá bien resguardada. En la Figura \ref{figPublicKeyAlgorithm} se muestra el diagrama básico de un algoritmo de llave pública. Ejemplos de estos algoritmos pueden ser:
@@ -192,7 +192,7 @@ El objetivo de utilizar cifrado de llave pública se basa en:
 \item El receptor descrifa el texto cifrado haciendo uso de la llave privada.
 \end{itemize}
 
-De esta manera no hay forma en que fisgones logren descrifrar el mensaje aunque obtengan la llave pública. De esta manera el receptor se asegura que las comunicaciones van a ser mucho más seguras, ya que el emisor deja de tener la llave para descifrar y no puede brindarsela a nadie o que le sea robada a este. Para la implementación de un criptosistema que hace uso de algoritmos de llave pública, lo que se hace es que en la red se tiene una base de datos donde se registra el usuario y su respectiva llave pública. Así cuando un usuario desea comunicarse con otro, va a la base de datos, busca al usuario y su llave pública, cifra el mensaje con la misma y se la envía. Esto solventa los problemas que presentaba anteriormente los algoritmos simétricos, ya que no es necesario transmitir de forma secreta llaves para poder realizar comunicaciones y para que diferentes usuarios se comuniquen de forma secreta entre si no es necesario el uso de diferentes llaves por cada enlace de comunicación. 
+De esta manera no hay forma en que fisgones logren descrifrar el mensaje aunque obtengan la llave pública. Así el receptor se asegura que las comunicaciones van a ser mucho más seguras, ya que el emisor deja de tener la llave para descifrar y no puede brindarsela a nadie o que le sea robada a este. Para la implementación de un criptosistema que hace uso de algoritmos de llave pública, lo que se hace es que en la red se tiene una base de datos donde se registra el usuario y su respectiva llave pública. Así cuando un usuario desea comunicarse con otro, va a la base de datos, busca al usuario y su llave pública, cifra el mensaje con la misma y se la envía. Esto solventa los problemas que presentaba anteriormente los algoritmos simétricos, ya que no es necesario transmitir de forma secreta llaves para poder realizar comunicaciones y para que diferentes usuarios se comuniquen de forma secreta entre si no es necesario el uso de diferentes llaves por cada enlace de comunicación. 
 
 Algunos usos de estos algoritmos en la actualidad son:
 \begin{itemize}
@@ -204,7 +204,7 @@ Algunos usos de estos algoritmos en la actualidad son:
 \subsection{Criptosistemas híbridos}
 Los beneficios que conlleva utilizar algoritmos de llave pública son grandes pero se pagan a un precio muy alto: tiempo de procesamiento. Según \cite{bruce}, el tiempo de procesamiento del RSA con respecto al del DES es de alrededor de 1000 mil veces más lento. 
 
-En un mundo donde la velocidad es una clave fundamental en las comunicaciones se propuso la siguiente solución. Ya que los algoritmos simétricos tienen la debilidad de comunicar la llave antes de comenzar la comunicación pero son mucho más rápidos, y que los algoritmos de llave pública ostentan una mejor sistema para comunicarse en la red secretamente pero son muy lentos, se decidió utilizar ambos. La llave del algoritmo simétrico es encriptada con un algoritmo de llave pública para transmistirse en la red sin comprometerla y posterior a esto se realizan las comunicaciones con el algoritmo simétrico para obtener una mejor velocidad de comunicación. Se puede ver el protocolo de la siguiente manera \citep{bruce}:
+En un mundo donde la velocidad es una clave fundamental en las comunicaciones se propuso la siguiente solución. Ya que los algoritmos simétricos tienen la debilidad de comunicar la llave antes de comenzar la comunicación pero son mucho más rápidos, y que los algoritmos de llave pública ostentan una mejor sistema para comunicarse en la red secretamente pero son muy lentos, se decidió utilizar ambos. La llave del algoritmo simétrico es cifrado con un algoritmo de llave pública para transmistirse en la red sin comprometerla y posterior a esto se realizan las comunicaciones con el algoritmo simétrico para obtener una mejor velocidad de comunicación. Se puede ver el protocolo de la siguiente manera \citep{bruce}:
 \begin{itemize}
 \item El receptor envía su llave pública al emisor.
 \item El emisor genera una llave de sesión\footnote{Una llave de sesión se utiliza en comunicaciones donde la idea es cifrar cada comunicación de manera individual con una llave distinta. Son útiles cuando la llave se crea al inicio de la comunicación y se destruye al final de la misma \citep{bruce}.}, la cifra y se la envía al receptor usando la llave pública que le fue dada.
@@ -388,7 +388,7 @@ En un principio el objetivo de este proyecto era realizar una comparación con l
 \end{itemize}
 
 Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el FEAL los cuales están basados en redes de Feistel\footnote{
-Las redes Feistal toman un bloque de texto plano de tamaño N (par) y lo dividen en dos mitades denominadas L y R. El cifrado en este tipo de redes es iterativo donde el resultado de la iteración $i$ depende del resultado de la iteración $i - 1 $. Ejemplos de algoritmos de este tipo pueden ser DES, Lucifer, FEAL, Khufu, Khafre, LOKI, GOST, CAST, Blowfish, entre otros.} y por tanto comparten características de diseño para que la comparación sea un poco más justa.
+Las redes Feistel toman un bloque de texto plano de tamaño N (par) y lo dividen en dos mitades denominadas L y R. El cifrado en este tipo de redes es iterativo donde el resultado de la iteración $i$ depende del resultado de la iteración $i - 1 $. Ejemplos de algoritmos de este tipo pueden ser DES, Lucifer, FEAL, Khufu, Khafre, LOKI, GOST, CAST, Blowfish, entre otros.} y por tanto comparten características de diseño para que la comparación sea un poco más justa.
 
 
 
