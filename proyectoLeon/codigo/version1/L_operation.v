@@ -10,8 +10,7 @@ module keyBytesToWords
 )
 
 (
-	input clk1,
-	input clk2,
+	input clk,
 	input rst,
 	input [7:0] key_sub_i,
 	input [w-1:0] L_sub_i,
@@ -21,7 +20,7 @@ module keyBytesToWords
 	output done
 );
 
-	reg [b_length:0] count;
+	reg [b_length-1:0] count;
 
 	assign done = (!count) ? 1:0;
 	assign key_address = count;
@@ -29,10 +28,14 @@ module keyBytesToWords
 
 	reg [w-1:0] temp;
 
-	always @(posedge clk2 or posedge rst) begin
+	always @(posedge clk or posedge rst) begin
 
 		if(rst) begin
-			count = b;
+			count = b-1;
+		end
+
+		else if (done==0 && rst==0) begin
+			count = count - 1;
 		end
 
 		else begin 
@@ -41,12 +44,7 @@ module keyBytesToWords
 				L_sub_i_prima = temp + key_sub_i;
 			end
 		end
-	end
-
-	always @(posedge clk1) begin
-		if (done==0 && rst==0) begin
-			count = count - 1;
-		end
+		
 	end
 
 endmodule

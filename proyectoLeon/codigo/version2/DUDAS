@@ -1,0 +1,6 @@
+preguntar si debo agregar un estado más donde solo cambien los punteros.
+
+preguntar si debo agregar un estado más para poner el write enable en 1 para que el siguiente estado se mande a escribir.
+
+
+si le parece bien que cuando termine de operar mande al estado READ_DATA
