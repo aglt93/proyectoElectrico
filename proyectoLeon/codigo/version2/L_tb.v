@@ -25,6 +25,7 @@ module testbench
 );
 
 	integer i;
+	reg [127:0] key;
 
 	initial begin
 		
@@ -32,19 +33,20 @@ module testbench
 		$dumpvars;
 		clk=0;
 		rst = 0;
+		key = 128'hFFFEEEE58684FFF05FFE493853000434;
 
 		for (i = 0; i < `c; i = i + 1) begin
 				L_RAM.ram[i]=0;
 		end
 
 		for (i = 0; i < `b; i = i + 1) begin
-				key_RAM.ram[i]=5+i;
+				key_RAM.ram[i]=key[8*i+:8];
 		end 
 
 		#2 rst = 1;
 		#4 rst = 0;
 
-		#600 
+		#800 
 
 		for (i = 0; i < `c; i = i + 1) begin
 				$display(L_RAM.ram[i]);

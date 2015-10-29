@@ -7,86 +7,78 @@
 `define WRITE_DATA 3'b100
 
 
-module L_operation
+
+module S_operation
 #(
-     parameter B = 16,
+     parameter T = 16,
      parameter W = 32,
-     parameter U = 4,
-     parameter C = 4
+     parameter QW = 4
 )
 
 (
-     input clk,
-     input rst,
-     //
-     output reg [B_length-1:0] key_address,
-     input [7:0] key_sub_i,
-     //
-     input [W-1:0] L_sub_i,
-     output reg [C_length-1:0] L_address,
-     //
-     output reg [W-1:0] L_sub_i_prima,
-     output reg done,
-     output reg L_we
+
+    input clk,
+    input rst,
+    //
+    input wire [W-1:0] iS_sub_i,
+    output reg [W-1:0] oS_sub_i_prima,
+    output reg [T_LENGTH-1:0] oS_address,
+    output reg oDone,
+    output reg oS_we
 );
 
-     parameter B_length = $clog2(B);
-     parameter C_length = $clog2(C);
+    parameter T_LENGTH = $clog2(T);
+    parameter T_BIT_SIZE = 2**T_LENGTH-1;
 
      reg [2:0] state;
-     reg [B_length-1:0] count;
+     reg [T_LENGTH-1:0] rCount;
 
      always @(state) 
           begin
                case (state)
 
                     `IDLE: begin
-                         count <= B-1;
-                         done <= 0;
-                         L_we <= 0;
+                         rCount <= 1;
+                         oDone <= 0;
+                         oS_we <= 0;
                     end
-                         
+
                     `WAIT_ADDR: begin
-                        key_address <= count;
-                        L_address <= count/U;
-                        done <= done;
-                        L_sub_i_prima <= L_sub_i_prima;
-                        L_we <= 0;
+                        oS_address <= rCount-1;
+                        oDone <= oDone;
+                        oS_sub_i_prima <= oS_sub_i_prima;
+                        oS_we <= 0;
                     end
                          
                     `READ_DATA: begin
-                         key_address <= key_address;
-                         L_address <= L_address;
-                         done <= done;
-                         L_we <= L_we;
-                         L_sub_i_prima <= L_sub_i_prima;
+                         oS_address <= oS_address;
+                         oDone <= oDone;
+                         oS_we <= oS_we;
+                         oS_sub_i_prima <= oS_sub_i_prima;
                     end
                          
                     `OPERATE_DATA: begin
-                         key_address <= key_address;
-                         L_address <= L_address;
-                         done <= done;
-                         L_we <= L_we;
-                         // {L_sub_i[7:0],L_sub_i[W-1:8]}
-                         L_sub_i_prima <= L_sub_i + key_sub_i;
+                         oS_address <= rCount;
+                         oDone <= oDone;
+                         oS_we <= oS_we;                        
+                         oS_sub_i_prima <= iS_sub_i + QW;
                     end
                          
                     `WRITE_DATA: begin
-                         count = count-1;
-                         key_address <= key_address;
-                         L_address <= L_address;
-                         L_sub_i_prima <= L_sub_i_prima;
-                         L_we <= 1;
+                         rCount = rCount+1;
+                         oS_address <= oS_address;
+                         oS_sub_i_prima <= oS_sub_i_prima;
+                         oS_we <= 1;
 
-                         if (count == B-1) begin
-                              done <= 1;
+                         if (rCount == T) begin
+                              oDone <= 1;
                          end
 
                          else begin
-                              done <= done;     
+                              oDone <= oDone;     
                          end
                     end
-                    
+
                endcase
           end
 
@@ -98,7 +90,7 @@ module L_operation
                     case (state)
                         ///////////////////////
                         `IDLE: begin
-                            if (!rst) begin
+                        	if (!rst) begin
                                 state <= `WAIT_ADDR;
                             end
                             else begin
@@ -107,7 +99,7 @@ module L_operation
                         end
                         ////////////////////////
                         `WAIT_ADDR: begin
-                            if (done) begin
+                            if (oDone) begin
                                 state <= `WAIT_ADDR;
                             end
 
@@ -117,7 +109,7 @@ module L_operation
                         end
                         ///////////////////////     
                         `READ_DATA: begin
-                            state <= `OPERATE_DATA; 
+                        	state <= `OPERATE_DATA;	
                         end
                         ///////////////////////
                         `OPERATE_DATA: begin
