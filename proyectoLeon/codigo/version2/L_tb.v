@@ -28,9 +28,10 @@ module testbench
 	reg [127:0] key;
 
 	initial begin
-		
+
 		$dumpfile("L.vcd");
 		$dumpvars;
+		
 		clk=0;
 		rst = 0;
 		key = 128'hFFFEEEE58684FFF05FFE493853000434;
@@ -45,14 +46,7 @@ module testbench
 
 		#2 rst = 1;
 		#4 rst = 0;
-
-		#800 
-
-		for (i = 0; i < `c; i = i + 1) begin
-				$display(L_RAM.ram[i]);
-		end
-
-		#1 $finish;
+		#800 $finish;
 
 	end
 

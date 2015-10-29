@@ -1,5 +1,5 @@
 $date
-	Wed Oct 28 17:01:17 2015
+	Thu Oct 29 10:57:29 2015
 $end
 $version
 	Icarus Verilog
@@ -970,5 +970,3 @@ b10001011 E
 1*
 1%
 #80600
-b100 +
-#80700
