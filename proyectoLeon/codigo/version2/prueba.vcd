@@ -1,0 +1,41 @@
+$date
+	Thu Oct 29 22:52:35 2015
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module test $end
+$var wire 64 ! oData [63:0] $end
+$var reg 64 " iData [63:0] $end
+$var reg 1 # iDir $end
+$var reg 64 $ iRotate [63:0] $end
+$scope module barrel $end
+$var wire 64 % iData [63:0] $end
+$var wire 1 & iDir $end
+$var wire 64 ' iRotate [63:0] $end
+$var reg 64 ( oData [63:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b10000000000000000000000000000000000000000000000001100101110101 (
+b11 '
+1&
+b1100101110101001 %
+b11 $
+1#
+b1100101110101001 "
+b10000000000000000000000000000000000000000000000001100101110101 !
+$end
+#5
+b1100101110101001 (
+b1100101110101001 !
+0#
+0&
+b10000000000000000000000000000000000000000000000001100101110101 "
+b10000000000000000000000000000000000000000000000001100101110101 %
+#7
