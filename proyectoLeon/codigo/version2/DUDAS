@@ -1,6 +1,22 @@
+27/10/15
+
 preguntar si debo agregar un estado más donde solo cambien los punteros.
 
 preguntar si debo agregar un estado más para poner el write enable en 1 para que el siguiente estado se mande a escribir.
 
 
 si le parece bien que cuando termine de operar mande al estado READ_DATA
+
+
+
+
+
+
+1/11/15
+
+Preguntar si por hacer la instancia del barrelShifter y un FFD en el keyMixer
+que es una maquina de estados hay bronca.
+
+
+Preguntar si hay otra forma para retrasar el start para q se termine de 
+escribir el ultimo dato que opera S_operation antes de que empiece el mixer.

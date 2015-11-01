@@ -70,19 +70,20 @@
 module barrelShifter16 
 (
 	input wire [W_SIZE-1:0] iData,
-	input wire [W_SIZE-1:0] iRotate,
+	input wire [W_WIDTH-1:0] iRotate,
 	input wire iDir,
 	output reg [W_SIZE-1:0] oData
 );
 
 
 	parameter W_SIZE = 16;
+	parameter W_WIDTH = $clog2(W_SIZE);
 
 	always @(*) begin
 		case (iRotate)
 
 `ZERO: begin
-	oData <= oData;
+	oData <= iData;
 end
 ///////////////////////////////////////
 
@@ -274,19 +275,20 @@ endmodule
 module barrelShifter32
 (
 	input wire [W_SIZE-1:0] iData,
-	input wire [W_SIZE-1:0] iRotate,
+	input wire [W_WIDTH-1:0] iRotate,
 	input wire iDir,
 	output reg [W_SIZE-1:0] oData
 );
 
 
 	parameter W_SIZE = 32;
+	parameter W_WIDTH = $clog2(W_SIZE);
 
 	always @(*) begin
 		case (iRotate)
 
 `ZERO: begin
-	oData <= oData;
+	oData <= iData;
 end
 ///////////////////////////////////////
 
@@ -652,19 +654,20 @@ endmodule
 module barrelShifter64
 (
 	input wire [W_SIZE-1:0] iData,
-	input wire [W_SIZE-1:0] iRotate,
+	input wire [W_WIDTH-1:0] iRotate,
 	input wire iDir,
 	output reg [W_SIZE-1:0] oData
 );
 
 
 	parameter W_SIZE = 64;
+	parameter W_WIDTH = $clog2(W_SIZE);
 
 	always @(*) begin
 		case (iRotate)
 
 `ZERO: begin
-	oData <= oData;
+	oData <= iData;
 end
 ///////////////////////////////////////
 

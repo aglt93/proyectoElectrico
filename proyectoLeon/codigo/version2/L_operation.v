@@ -66,9 +66,8 @@ module L_operation
                          key_address <= key_address;
                          L_address <= L_address;
                          done <= done;
-                         L_we <= L_we;
-                         // {L_sub_i[7:0],L_sub_i[W-1:8]}
-                         L_sub_i_prima <= L_sub_i + key_sub_i;
+                         L_we <= L_we;                         
+                         L_sub_i_prima <= {L_sub_i[W-9:0],L_sub_i[W-1:W-8]} + key_sub_i;
                     end
                          
                     `WRITE_DATA: begin
