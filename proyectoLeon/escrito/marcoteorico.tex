@@ -396,6 +396,73 @@ Las redes Feistel toman un bloque de texto plano de tamaño N (par) y lo dividen
 
 \section{Descripción de los algoritmos a implementar}
 \subsection{RC5}
+El algoritmo criptográfico de llave simétrica RC5 fue creado en 1997 por Ronald Rivest para la \textit{RSA Data Security}. Según \cite{rivest} los objetivos de este algoritmo se basaban en que fuera adaptable tanto para hardware como para software, que tuviera una llave de tamaño variable, que el tamaño de la palabra a cifrar fuera de tamaño variable para que así se ajustara a procesadores de tamaños de palabra diferentes y por último que el número de rondas de cifrado fuera variable (con la finalidad de permitir decidir que tanta seguridad y que tan rápido se cifran los datos).
+
+\subsubsection{Terminología del algoritmo}
+Por simplicidad como se tienen tantos parámetros variables para el algoritmo entonces a la hora de llamarlo se utiliza la siguiente notación: RC5-w/r/b. Estas y otras variables se definen a continuación:
+
+\begin{itemize}
+\item w: es el tamaño de la palabra, el valor nominal es de 32 y los permitidos son 16,32 y 64. Y el algoritmo cifra en bloques de tamaño 2w. Además cada palabra contiene $u=w/8$ bytes.
+
+\item r: corresponde al número de rondas, los cuales pueden variar entre 0 y 255. 
+\item S: tabla con la expansión de la llave. Tiene un tamaño de $t= 2(r+1)$ palabras.
+
+\item llave: Se tiene dos parámetros para definirla:
+\begin{itemize}
+\item b: cantidad de bytes que tiene la llave.
+\item K[i]: K-ésimo byte de la llave va desde K[0] hasta K[b-1].
+\end{itemize}
+
+\item A y B: Corresponden a las partes izquierda y derecha del texto plano respectivamente.
+
+\item L: Arreglo de $c=max(b,1)/u$ palabras que funciona para convertir la llave de bytes a palabras. Inicialmente se encuentra lleno de ceros.
+
+\item $P_w$ y $Q_w$: Constantes que se definen como:
+\begin{equation}
+P_w = odd(2^w(e-2)); e = \text{número de euler}
+\end{equation}
+\begin{equation}
+Q_w = odd(2^w(\phi-2)); \phi = \text{golden ratio}
+\end{equation}
+\end{itemize}
+
+
+
+Según \cite{rivest} los beneficios de utilizar el RC5 como algoritmo de cifrado se tiene una serie de parámetros variables los cuales conforme pasa el tiempo se pueden adaptar a la necesidades de cifrado. Un ejemplo de lo necesario que es esto es el problema con el algoritmo DES , para cuando fue creado su tamaño de llave era ideal pero ahora es muy corta y no hay forma fácil de que el algoritmo acepte una más fácil.
+
+Otros usos del algoritmo es por ejemplo \citep{rivest} RC5-32/8/0, es decir si el uso de una llave, para generar una secuencia de números pseudo-aleatorios.
+
+
+También es importante destacar que:
+\begin{itemize}
+\item + indica suma complemento a dos. Así como - indica resta en complemento a dos.
+\item $\oplus$ indica un XOR bit a bit.
+\item $<<<$ indica rotación hacia la izquierda, igualmente $>>>$ indica rotación a la derecha. Entonces X $<<<$ Y significa que la palabra X se rota Y bits a la izquierda.
+\end{itemize}
+
+\subsubsection{Pasos del algoritmo}
+A continuación se muestra el pseudo-código extraído de \cite{rivest} para cifrar y descifrar datos con este algoritmo. 
+\begin{itemize}
+\item Expansión de llave: Corresponde la primer paso antes de poder cifrar o descifrar texto plano. Recibe como entrada una llave de tamaño arbitrario y realiza lo siguiente:
+\begin{lstlisting}
+for i = b - 1 downto 0 do
+	L [i/u] = (L[i/u] <<< 8) + K[i]
+	
+S[0] = Pw;
+for i = 1 to t-1 do
+	S[i] = S[i-1] + Qw;
+	
+i = j =0
+A = B =0
+do 3*max(t,c) times:
+	A = S[i] = (S[i] + A + B) <<< 3
+	B = L[j] = (L[j] + A + B) <<< ( A + B )
+	i = (i+1) mod(t)
+	j = (j+1) mod(c)
+\end{lstlisting}
+\end{itemize}
+
+
 
 
 \subsection{IDEA o LUCIFER o FEAL}

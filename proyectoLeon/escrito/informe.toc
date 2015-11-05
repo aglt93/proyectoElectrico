@@ -25,5 +25,7 @@
 \contentsline {section}{\numberline {2.6}Escogencia de los algoritmos a implementar}{20}
 \contentsline {section}{\numberline {2.7}Descripci\IeC {\'o}n de los algoritmos a implementar}{21}
 \contentsline {subsection}{RC5}{21}
-\contentsline {subsection}{IDEA o LUCIFER o FEAL}{21}
-\contentsline {chapter}{Bibliograf\'{\i }a}{23}
+\contentsline {subsubsection}{Terminolog\IeC {\'\i }a del algoritmo}{21}
+\contentsline {subsubsection}{Pasos del algoritmo}{23}
+\contentsline {subsection}{IDEA o LUCIFER o FEAL}{23}
+\contentsline {chapter}{Bibliograf\'{\i }a}{25}

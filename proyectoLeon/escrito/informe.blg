@@ -6,9 +6,10 @@ A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: intro.aux
 A level-1 auxiliary file: marcoteorico.aux
 Database file #1: eieclases_ref.bib
+Warning--I didn't find a database entry for "rivest"
 You've used 15 entries,
             1935 wiz_defined-function locations,
-            554 strings with 5946 characters,
+            555 strings with 5952 characters,
 and the built_in function-call counts, 3910 in all, are:
 = -- 418
 > -- 111
@@ -47,3 +48,4 @@ warning$ -- 0
 while$ -- 30
 width$ -- 0
 write$ -- 208
+(There was 1 warning)
