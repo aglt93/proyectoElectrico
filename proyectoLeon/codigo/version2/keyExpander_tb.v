@@ -44,7 +44,7 @@ module testbench;
 		#2 rst = 1;
 		#4 rst = 0;
 
-		#1010
+		#1065
 		$display("Valores de L:\n");
 		for (i = 0; i < `c; i = i + 1) begin
 			$display(expander.L_RAM.ram[i]);
