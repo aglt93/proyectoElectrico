@@ -40,6 +40,11 @@ RAE (2015b).
   \url{http://buscon.rae.es/drae/srv/search?val=criptograf\%EDas}.
 \newblock [Consulta 10 oct de 2015.].
 
+\bibitem[Rivest, 1997]{rivest}
+Rivest, R.~L. (1997).
+\newblock {\em The RC5 Encryption Algorithm}.
+\newblock MIT Laboratory for Computer Science.
+
 \bibitem[SANS, 2007]{driveTrust}
 SANS (2007).
 \newblock Hardware versus software a usability comparison of software-based

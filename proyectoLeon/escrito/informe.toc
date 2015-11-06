@@ -27,5 +27,7 @@
 \contentsline {subsection}{RC5}{21}
 \contentsline {subsubsection}{Terminolog\IeC {\'\i }a del algoritmo}{21}
 \contentsline {subsubsection}{Pasos del algoritmo}{23}
-\contentsline {subsection}{IDEA o LUCIFER o FEAL}{23}
-\contentsline {chapter}{Bibliograf\'{\i }a}{25}
+\contentsline {subsection}{IDEA o LUCIFER o FEAL}{24}
+\contentsline {chapter}{\chapternumberline {3}Implementaci\IeC {\'o}n de los algoritmos}{25}
+\contentsline {section}{\numberline {3.1}RC5}{25}
+\contentsline {chapter}{Bibliograf\'{\i }a}{27}

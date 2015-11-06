@@ -404,7 +404,8 @@ Por simplicidad como se tienen tantos parámetros variables para el algoritmo en
 \begin{itemize}
 \item w: es el tamaño de la palabra, el valor nominal es de 32 y los permitidos son 16,32 y 64. Y el algoritmo cifra en bloques de tamaño 2w. Además cada palabra contiene $u=w/8$ bytes.
 
-\item r: corresponde al número de rondas, los cuales pueden variar entre 0 y 255. 
+\item r: corresponde al número de rondas, los cuales pueden variar entre 0 y 255. Esto debido a que el algoritmo se basa en una red Feistel.
+ 
 \item S: tabla con la expansión de la llave. Tiene un tamaño de $t= 2(r+1)$ palabras.
 
 \item llave: Se tiene dos parámetros para definirla:
@@ -444,21 +445,45 @@ También es importante destacar que:
 A continuación se muestra el pseudo-código extraído de \cite{rivest} para cifrar y descifrar datos con este algoritmo. 
 \begin{itemize}
 \item Expansión de llave: Corresponde la primer paso antes de poder cifrar o descifrar texto plano. Recibe como entrada una llave de tamaño arbitrario y realiza lo siguiente:
-\begin{lstlisting}
+\begin{lstlisting}[mathescape]
 for i = b - 1 downto 0 do
 	L [i/u] = (L[i/u] <<< 8) + K[i]
 	
 S[0] = Pw;
+
 for i = 1 to t-1 do
 	S[i] = S[i-1] + Qw;
 	
 i = j =0
 A = B =0
+
 do 3*max(t,c) times:
 	A = S[i] = (S[i] + A + B) <<< 3
 	B = L[j] = (L[j] + A + B) <<< ( A + B )
 	i = (i+1) mod(t)
 	j = (j+1) mod(c)
+\end{lstlisting}
+Esto lo realiza para transformar la llave de bytes a palabras que se guardan en el arreglo S para que cada palabra de este arreglo se utilice para cifrar o descifrar el texto plano.
+
+\item Cifrado: se realiza sobre los bloques de texto plano A y B simultáneamente, se realizan operaciones XOR y rotaciones entre el texto plano y palabras del arreglo S:
+\begin{lstlisting}[mathescape]
+A = A + S[0];
+B = B + S[1];
+
+for i = 1 to r do
+	A = ((A $\oplus$ B) <<< B) + S[2i];
+	B = ((B $\oplus$ A) <<< A) + S[2i + 1];
+\end{lstlisting}
+
+
+\item Descifrado: se realiza sobre los bloques cifrados A y B simultáneamente y se aplica las operaciones inversas a las del cifrado:
+\begin{lstlisting}[mathescape]
+for i = r downto 1 do
+	B = ((B - S[2i + 1]) >>> A) $\oplus$ A;
+	A = ((A - S[2i]) >>> B) $\oplus$ B;
+	
+B = B - S[1];
+A = A - S[0];
 \end{lstlisting}
 \end{itemize}
 
@@ -468,3 +493,37 @@ do 3*max(t,c) times:
 \subsection{IDEA o LUCIFER o FEAL}
 
 
+
+
+\chapter{Implementación de los algoritmos}
+
+\section{RC5}
+La implementación se basó en el siguiente análisis:
+\begin{itemize}
+\item Se tienen parámetros variables y el objetivo del proyecto es poder analizar como la variación de los mismos impacta en la utilización de recursos del FPGA. Por tanto la manera más óptima de generar código en Verilog es que el código sea parametrizable.
+
+\item Se tiene arreglos de palabras los cuales son de tamaño variable de donde se leen y se escriben valores. La mejor forma de implementar esto es haciendo uso de memorias.
+
+\item Usualmente para cada paso del algoritmo se debe realizar lo siguiente:
+\begin{itemize}
+\item Se lee un dato.
+\item Se opera sobre el dato.
+\item Se guarda el dato.
+\item Se verifica si ya se terminaron de operar todo los datos.
+\item Se cambia o mantiene la dirección para leer otro dato.
+\end{itemize}
+Tomando esto en consideración se optó por implementar máquinas de estado finitas para poder segmentar fácilmente los pasos a seguir y que los mismos sean manejados mediante un reloj.
+
+\item Se tienen rotaciones hacia la izquierda y la derecha de N sobre M bits. Donde N es un valor calculado en tiempo de ejecución sobre una palabra de tamaño M. Esto se podría lograr mediante un barrel shifter que se genere dependiendo de los parámetros enviados a la hora de sintetizar, pero se consideró muy complicado y poco necesario. Por tanto se fijaron 3 tamaños de palabra comunes sobre los cuales se van a realizar los análisis: 16 bits, 32 bits y 64 bits. Esto facilita la escritura de código realizando un barrel shifter específico para cada tamaño de palabra. 
+
+\item Se tienen sumas y restas de complemento a dos las cuales se ajustan perfectamente al uso de sumadores del FPGA.
+
+\item Se tiene XOR bit a bit que se ajustan perfectamente a una implementación en hardware.
+\end{itemize}
+
+Entonces el diagrama básico de un bloque del algoritmo sería como el que se muestra en la Figura \ref{}. A partir de esto podemos concluir que:
+\begin{itemize}
+\item Los arreglos L, S y el arreglo de K[0] a K[b-1] corresponden a memorias RAM.
+\item Cada uno de los \textit{for} que muestran en el pseudo-código corresponde máquina de estado la cual está controlada por un contador para manejar la cantidad de iteraciones.
+\end{itemize}
+Finalmente a partir de todo estos razonamientos se obtuvo el diagrama de bloques que se muestra en la Figura \ref{}.

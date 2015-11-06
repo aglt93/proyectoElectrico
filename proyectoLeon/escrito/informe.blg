@@ -6,46 +6,44 @@ A level-1 auxiliary file: resumen.aux
 A level-1 auxiliary file: intro.aux
 A level-1 auxiliary file: marcoteorico.aux
 Database file #1: eieclases_ref.bib
-Warning--I didn't find a database entry for "rivest"
-You've used 15 entries,
+You've used 16 entries,
             1935 wiz_defined-function locations,
-            555 strings with 5952 characters,
-and the built_in function-call counts, 3910 in all, are:
-= -- 418
-> -- 111
-< -- 15
-+ -- 36
-- -- 32
-* -- 235
-:= -- 776
-add.period$ -- 58
-call.type$ -- 15
-change.case$ -- 89
-chr.to.int$ -- 11
-cite$ -- 15
-duplicate$ -- 158
-empty$ -- 242
-format.name$ -- 49
-if$ -- 728
+            559 strings with 6035 characters,
+and the built_in function-call counts, 4189 in all, are:
+= -- 443
+> -- 118
+< -- 16
++ -- 40
+- -- 34
+* -- 252
+:= -- 827
+add.period$ -- 61
+call.type$ -- 16
+change.case$ -- 94
+chr.to.int$ -- 12
+cite$ -- 16
+duplicate$ -- 172
+empty$ -- 265
+format.name$ -- 52
+if$ -- 782
 int.to.chr$ -- 5
 int.to.str$ -- 0
-missing$ -- 4
-newline$ -- 91
-num.names$ -- 45
-pop$ -- 43
+missing$ -- 6
+newline$ -- 96
+num.names$ -- 48
+pop$ -- 51
 preamble$ -- 1
-purify$ -- 91
+purify$ -- 97
 quote$ -- 0
-skip$ -- 136
+skip$ -- 146
 stack$ -- 0
-substring$ -- 180
-swap$ -- 2
+substring$ -- 194
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 86
+type$ -- 90
 warning$ -- 0
-while$ -- 30
+while$ -- 32
 width$ -- 0
-write$ -- 208
-(There was 1 warning)
+write$ -- 220
