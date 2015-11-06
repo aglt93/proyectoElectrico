@@ -16,13 +16,13 @@ module L_operation
 )
 
 (
-     input clk,
-     input rst,
+     input wire clk,
+     input wire rst,
      //
      output reg [B_length-1:0] key_address,
-     input [7:0] key_sub_i,
+     input wire [7:0] key_sub_i,
      //
-     input [W-1:0] L_sub_i,
+     input wire [W-1:0] L_sub_i,
      output reg [C_length-1:0] L_address,
      //
      output reg [W-1:0] L_sub_i_prima,
@@ -32,64 +32,87 @@ module L_operation
 
      parameter B_length = $clog2(B);
      parameter C_length = $clog2(C);
+     
+     reg [B_length-1:0] key_address_nxt;
+     reg [C_length-1:0] L_address_nxt;
+     reg [W-1:0] L_sub_i_prima_nxt;
+     reg done_nxt;
+     reg L_we_nxt;
+     reg [B_length-1:0] count_nxt;
 
      reg [2:0] state;
      reg [B_length-1:0] count;
+     
 
-     always @(state) 
+     always @(*) 
           begin
                case (state)
 
                     `IDLE: begin
-                         count <= B-1;
-                         done <= 0;
-                         L_we <= 0;
+                        count_nxt = count;
+                        done_nxt = done;
+                        L_we_nxt = L_we;
+                        key_address_nxt = key_address;
+                        L_address_nxt = L_address;
+                        L_sub_i_prima_nxt = L_sub_i_prima;
                     end
                          
                     `WAIT_ADDR: begin
-                        key_address <= count;
-                        L_address <= count/U;
-                        done <= done;
-                        L_sub_i_prima <= L_sub_i_prima;
-                        L_we <= 0;
+                        count_nxt = count;
+                        key_address_nxt = count;
+                        L_address_nxt = count/U;
+                        done_nxt = done;
+                        L_sub_i_prima_nxt = L_sub_i_prima;
+                        L_we_nxt = 0;
                     end
                          
                     `READ_DATA: begin
-                         key_address <= key_address;
-                         L_address <= L_address;
-                         done <= done;
-                         L_we <= L_we;
-                         L_sub_i_prima <= L_sub_i_prima;
+                         count_nxt = count;
+                         key_address_nxt = key_address;
+                         L_address_nxt = L_address;
+                         done_nxt = done;
+                         L_we_nxt = L_we;
+                         L_sub_i_prima_nxt = L_sub_i_prima;
                     end
                          
                     `OPERATE_DATA: begin
-                         key_address <= key_address;
-                         L_address <= L_address;
-                         done <= done;
-                         L_we <= L_we;                         
-                         L_sub_i_prima <= {L_sub_i[W-9:0],L_sub_i[W-1:W-8]} + key_sub_i;
+                         count_nxt = count;
+                         key_address_nxt = key_address;
+                         L_address_nxt = L_address;
+                         done_nxt = done;
+                         L_we_nxt = L_we;                         
+                         L_sub_i_prima_nxt = {L_sub_i[W-9:0],L_sub_i[W-1:W-8]} + key_sub_i;
                     end
                          
                     `WRITE_DATA: begin
-                         count = count-1;
-                         key_address <= key_address;
-                         L_address <= L_address;
-                         L_sub_i_prima <= L_sub_i_prima;
-                         L_we <= 1;
+                         count_nxt = count-1;
+                         key_address_nxt = key_address;
+                         L_address_nxt = L_address;
+                         L_sub_i_prima_nxt = L_sub_i_prima;
+                         L_we_nxt = 1;
 
-                         if (count == B-1) begin
-                              done <= 1;
+                         if (count_nxt == B-1) begin
+                              done_nxt = 1;
                          end
 
                          else begin
-                              done <= done;     
+                              done_nxt = done;     
                          end
+                    end
+                    
+                    default: begin
+                        count_nxt = count;
+                        done_nxt = done;
+                        L_we_nxt = L_we;
+                        key_address_nxt = key_address;
+                        L_address_nxt = L_address;
+                        L_sub_i_prima_nxt = L_sub_i_prima;
                     end
                     
                endcase
           end
 
-     always @(posedge clk or posedge rst)
+     always @(posedge clk)
           begin
                if (rst)
                     state = `IDLE;
@@ -132,5 +155,27 @@ module L_operation
                         end
                     endcase
           end
+
+        always @(posedge clk) begin
+            if(rst) begin
+                count = B-1;
+                done = 0;
+                L_we = 0;
+                key_address = 0;
+                L_address = 0;
+                L_sub_i_prima = 0;
+            end
+
+            else begin
+                count = count_nxt;
+                done = done_nxt;
+                L_we = L_we_nxt;
+                key_address = key_address_nxt;
+                L_address = L_address_nxt;
+                L_sub_i_prima = L_sub_i_prima_nxt;
+            end
+
+        end
+
 
 endmodule
