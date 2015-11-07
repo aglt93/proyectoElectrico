@@ -75,8 +75,6 @@ module keyMixer
     //****************************************
 
     //*********************************************************************
-    //FFD_POSEDGE_SYNCRONOUS_RESET #(W) ffBarrel(clk,rst,1,wS_rotate1,wS_rotate);
-
     barrelShifter32 barrel
     (
         .iData(oS_sub_i_prima),
@@ -171,7 +169,7 @@ module keyMixer
                         j_nxt = j;
                         A_nxt = A;
                         B_nxt = B;
-                        rSumTemp<= rSumTemp;
+                        rSumTemp_nxt = rSumTemp;
                         rRot_L_nxt = rSumTemp[ROTVALUE-1:0];
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = iS_sub_i + rSumTemp;
@@ -190,7 +188,7 @@ module keyMixer
                         j_nxt = j;
                         A_nxt = A;
                         B_nxt = B;
-                        rSumTemp<= rSumTemp;
+                        rSumTemp_nxt = rSumTemp;
                         rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = wS_rotate;
@@ -208,7 +206,7 @@ module keyMixer
                         j_nxt = (j+1) % C;
                         A_nxt = oS_sub_i_prima;
                         B_nxt = oL_sub_i_prima;
-                        rSumTemp<= rSumTemp;
+                        rSumTemp_nxt = rSumTemp;
                         rRot_L_nxt = rRot_L;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
@@ -245,7 +243,7 @@ module keyMixer
                endcase
           end
 
-     always @(posedge clk or posedge rst)
+     always @(posedge clk)
           begin
                if (rst)
                     state = `IDLE;
