@@ -92,8 +92,8 @@ module cipher
 			`OPER_INIT: begin
 				oS_address1_nxt = oS_address1;
 				oS_address2_nxt = oS_address2;
-				oA_cipher_nxt = oA_cipher + iS_sub_i1;
-				oB_cipher_nxt = oB_cipher + iS_sub_i2;
+				oA_cipher_nxt = iA + iS_sub_i1;
+				oB_cipher_nxt = iB + iS_sub_i2;
 				rCount_nxt = rCount;
 				rA_XOR_B_nxt = rA_XOR_B;
 				rRot_value_nxt = rRot_value;
@@ -102,7 +102,7 @@ module cipher
 			////////////////////////
 			`CHANGE_ADDR: begin
 				oS_address1_nxt = rCount << 1;
-				oS_address2_nxt = oS_address1 + 1;
+				oS_address2_nxt = (rCount << 1) + 1;
 				oA_cipher_nxt = oA_cipher;
 				oB_cipher_nxt = oB_cipher;
 				rCount_nxt = rCount;

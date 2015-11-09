@@ -12,7 +12,7 @@ module S_operation
 #(
      parameter T = 16,
      parameter W = 32,
-     parameter QW = 4
+     parameter QW = 32'hB7E15163
 )
 
 (

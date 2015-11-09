@@ -1,11 +1,14 @@
-`define IDLE 3'b000
-`define WAIT_ADDR 3'b001
-`define READ_DATA 3'b010
-`define OPERATE_DATA1 3'b011
-`define OPERATE_DATA2 3'b100
-`define OPERATE_DATA3 3'b101
-`define OPERATE_DATA4 3'b110
-`define WRITE_DATA 3'b111
+`define IDLE 4'd0
+`define WAIT_ADDR 4'd1
+`define READ_DATA 4'd2
+`define SUM_AB1 4'd3
+`define SUM_S_AB 4'd4
+`define ROT_S 4'd5
+`define SUM_AB2 4'd6
+`define SUM_L_AB 4'd7
+`define WAIT_ROT_L 4'd8
+`define ROT_L 4'd9
+`define WRITE_DATA 4'd10
 
 module keyMixer 
 #(
@@ -43,14 +46,10 @@ module keyMixer
 	reg [W-1:0] A;
 	reg [W-1:0] B;
     reg [W-1:0] rSumTemp;
-	reg [T_LENGTH-1:0] i;
-	reg [C_LENGTH-1:0] j;
-	reg [ROTVALUE-1:0] rRot_L;
     reg [MIXCOUNT_LENGTH-1:0] rCount;
 
-    reg [2:0] state;
-    wire [W-1:0] wS_rotate;
-    wire [W-1:0] wS_rotate1;
+    reg [3:0] state;
+    wire [W-1:0] wL_rotate;
     //****************************************
 
 
@@ -60,7 +59,6 @@ module keyMixer
     reg [W-1:0] rSumTemp_nxt;
     reg [T_LENGTH-1:0] i_nxt;
     reg [C_LENGTH-1:0] j_nxt;
-    reg [ROTVALUE-1:0] rRot_L_nxt;
     reg [MIXCOUNT_LENGTH-1:0] rCount_nxt;
 
     reg [C_LENGTH-1:0] oL_address_nxt;
@@ -75,10 +73,10 @@ module keyMixer
     //*********************************************************************
     barrelShifter32 barrel
     (
-        .iData(oS_sub_i_prima),
-        .iRotate(rRot_L),
+        .iData(oL_sub_i_prima),
+        .iRotate(rSumTemp[ROTVALUE-1:0]),
         .iDir(0), //Hacia la izquierda
-        .oData(wS_rotate)
+        .oData(wL_rotate)
     );
     //*********************************************************************
 
@@ -90,12 +88,9 @@ module keyMixer
                         rCount_nxt = rCount;
                         oS_address_nxt = oS_address;
                         oL_address_nxt = oL_address;
-                        i_nxt = i;
-                        j_nxt = j;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
@@ -104,15 +99,12 @@ module keyMixer
                     end
 
                     `WAIT_ADDR: begin
-                        rCount_nxt = rCount+1;
-                        oS_address_nxt = i;
-                        oL_address_nxt = j;
-                        i_nxt = i;
-                        j_nxt = j;
+                        rCount_nxt = rCount + 1;
+                        oS_address_nxt = (oS_address + 1) % T;
+                        oL_address_nxt = (oL_address + 1) % C;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
@@ -122,90 +114,124 @@ module keyMixer
                          
                     `READ_DATA: begin
                         rCount_nxt = rCount;
-                        oS_address_nxt = i;
-                        oL_address_nxt = j;
-                        i_nxt = i;
-                        j_nxt = j;
+                        oS_address_nxt = oS_address;
+                        oL_address_nxt = oL_address;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
                         oS_we_nxt = oS_we;
                         oL_we_nxt = oL_we;
-
                     end
                     
                     // Se realiza la suma A+B.
-                    `OPERATE_DATA1: begin
+                    `SUM_AB1: begin
                         rCount_nxt = rCount;
-                        oS_address_nxt = i;
-                        oL_address_nxt = j;
-                        i_nxt = i;
-                        j_nxt = j;
+                        oS_address_nxt = oS_address;
+                        oL_address_nxt = oL_address;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = A+B;
-                        rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
                         oS_we_nxt = oS_we;
                         oL_we_nxt = oL_we;
                     end
-
-                    // Se realiza la asignacion de los bits que se van a rotar.
-                    // Se realiza la suma S[i] + A + B.
-                    // Se realiza la suma L[j] + A + B.
-                    `OPERATE_DATA2: begin
+                    ///////////////////////
+                    `SUM_S_AB: begin
                         rCount_nxt = rCount;
-                        oS_address_nxt = i;
-                        oL_address_nxt = j;
-                        i_nxt = i;
-                        j_nxt = j;
+                        oS_address_nxt = oS_address;
+                        oL_address_nxt = oL_address;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rSumTemp[ROTVALUE-1:0];
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = iS_sub_i + rSumTemp;
+                        oL_sub_i_prima_nxt = oL_sub_i_prima;
+                        oS_we_nxt = oS_we;
+                        oL_we_nxt = oL_we;
+                    end
+                    ///////////////////////
+                    `ROT_S: begin
+                        rCount_nxt = rCount;
+                        i_nxt = oS_address;
+                        j_nxt = oL_address;
+                        A_nxt = {oS_sub_i_prima[W-4:0],oS_sub_i_prima[W-1:W-3]};
+                        B_nxt = B;
+                        rSumTemp_nxt = rSumTemp;
+                        oDone_nxt = oDone;
+                        oS_sub_i_prima_nxt = A_nxt;
+                        oL_sub_i_prima_nxt = oL_sub_i_prima;
+                        oS_we_nxt = oS_we;
+                        oL_we_nxt = oL_we;
+                    end
+                    ///////////////////////
+                    `SUM_AB2: begin
+                        rCount_nxt = rCount;
+                        oS_address_nxt = oS_address;
+                        oL_address_nxt = oL_address;
+                        A_nxt = A;
+                        B_nxt = B;
+                        rSumTemp_nxt = A_nxt + B;
+                        oDone_nxt = oDone;
+                        oS_sub_i_prima_nxt = oS_sub_i_prima;
+                        oL_sub_i_prima_nxt = oL_sub_i_prima;
+                        oS_we_nxt = oS_we;
+                        oL_we_nxt = oL_we;
+                    end
+                    ///////////////////////
+                    `SUM_L_AB: begin
+                        rCount_nxt = rCount;
+                        oS_address_nxt = oS_address;
+                        oL_address_nxt = oL_address;
+                        A_nxt = A;
+                        B_nxt = B;
+                        rSumTemp_nxt = rSumTemp;
+                        oDone_nxt = oDone;
+                        oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = iL_sub_i + rSumTemp;
                         oS_we_nxt = oS_we;
                         oL_we_nxt = oL_we;
                     end
-
-                    // Se realizan las rotaciones de S[i] y L[j].
-                    // Se calculan los nuevos valores de i y j.
-                    `OPERATE_DATA3: begin
+                    ///////////////////////
+                    `WAIT_ROT_L: begin
                         rCount_nxt = rCount;
                         oS_address_nxt = oS_address;
                         oL_address_nxt = oL_address;
-                        i_nxt = i;
-                        j_nxt = j;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
-                        oS_sub_i_prima_nxt = wS_rotate;
-                        oL_sub_i_prima_nxt = {oL_sub_i_prima[W-4:0],oL_sub_i_prima[W-1:W-3]};
+                        oS_sub_i_prima_nxt = oS_sub_i_prima;
+                        oL_sub_i_prima_nxt = oL_sub_i_prima;
                         oS_we_nxt = oS_we;
                         oL_we_nxt = oL_we;
                     end
-
-                    // Se manda a guardar los datos operados.
+                    ///////////////////////
+                    `ROT_L: begin
+                        rCount_nxt = rCount;
+                        oS_address_nxt = oS_address;
+                        oL_address_nxt = oL_address;
+                        A_nxt = A;
+                        B_nxt = wL_rotate;
+                        rSumTemp_nxt = rSumTemp;
+                        oDone_nxt = oDone;
+                        oS_sub_i_prima_nxt = oS_sub_i_prima;
+                        oL_sub_i_prima_nxt = wL_rotate;
+                        oS_we_nxt = oS_we;
+                        oL_we_nxt = oL_we;
+                    end
+                    ///////////////////////
                     `WRITE_DATA: begin
                         rCount_nxt = rCount;
                         oS_address_nxt = oS_address;
                         oL_address_nxt = oL_address;
-                        i_nxt = (i+1) % T;
-                        j_nxt = (j+1) % C;
-                        A_nxt = oS_sub_i_prima;
-                        B_nxt = oL_sub_i_prima;
+                        A_nxt = A;
+                        B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rRot_L;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
                         oS_we_nxt = 1;
@@ -220,17 +246,13 @@ module keyMixer
                          end
                     end
 
-
                     default: begin
                         rCount_nxt = rCount;
                         oS_address_nxt = oS_address;
                         oL_address_nxt = oL_address;
-                        i_nxt = i;
-                        j_nxt = j;
                         A_nxt = A;
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
-                        rRot_L_nxt = rRot_L;
                         oDone_nxt = oDone;
                         oS_sub_i_prima_nxt = oS_sub_i_prima;
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
@@ -268,18 +290,34 @@ module keyMixer
                         end
                         ///////////////////////     
                         `READ_DATA: begin
-                        	state <= `OPERATE_DATA1;	
+                        	state <= `SUM_AB1;	
                         end
                         ///////////////////////
-                        `OPERATE_DATA1: begin
-                            state <= `OPERATE_DATA2;
+                        `SUM_AB1: begin
+                            state <= `SUM_S_AB;
                         end
                         ///////////////////////
-                        `OPERATE_DATA2: begin
-                            state <= `OPERATE_DATA3;
+                        `SUM_S_AB: begin
+                           state <= `ROT_S; 
                         end
                         ///////////////////////
-                        `OPERATE_DATA3: begin
+                        `ROT_S: begin
+                            state <= `SUM_AB2;
+                        end
+                        ///////////////////////
+                        `SUM_AB2: begin
+                            state <= `SUM_L_AB;
+                        end
+                        ///////////////////////
+                        `SUM_L_AB: begin
+                            state <= `WAIT_ROT_L;
+                        end
+                        ///////////////////////
+                        `WAIT_ROT_L: begin
+                            state <= `ROT_L;
+                        end
+                        ///////////////////////
+                        `ROT_L: begin
                             state <= `WRITE_DATA;
                         end
                         ///////////////////////
@@ -297,14 +335,11 @@ module keyMixer
         always @(posedge clk) begin
             if (rst) begin
                 rCount <= MIXCOUNT_BIT_VALUE;
-                oS_address <= 0;
-                oL_address <= 0;
-                i <= 0;
-                j <= 0;
+                oS_address <= T-1;
+                oL_address <= C-1;
                 A <= 0;
                 B <= 0;
                 rSumTemp <= 0;
-                rRot_L <= 0;
                 oDone <= 0;
                 oS_sub_i_prima <= 0;
                 oL_sub_i_prima <= 0;
@@ -316,12 +351,9 @@ module keyMixer
                 rCount <= rCount_nxt;
                 oS_address <= oS_address_nxt;
                 oL_address <= oL_address_nxt;
-                i <= i_nxt;
-                j <= j_nxt;
                 A <= A_nxt;
                 B <= B_nxt;
                 rSumTemp <= rSumTemp_nxt;
-                rRot_L <= rRot_L_nxt;
                 oDone <= oDone_nxt;
                 oS_sub_i_prima <= oS_sub_i_prima_nxt;
                 oL_sub_i_prima <= oL_sub_i_prima_nxt;

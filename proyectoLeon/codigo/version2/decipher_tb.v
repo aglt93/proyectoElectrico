@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-`include "cipher_dut.v"
+`include "decipher_dut.v"
 
 `define w 32 // Cantidad de bits por palabra.
 `define u 4 // Cantidad de bytes por palabra.
@@ -11,8 +11,8 @@
 `define t_length $clog2(`t) // Cantidad de bit para direccionar al vector S.
 `define c 4 // Tamaño del vector L. Corresponde a b/u.
 `define c_length 2 // Cantidad de bits para direccionar al vector L.
-`define qW 32'h9E3779B9 // Constantes
-`define pW 32'hB7E15163 //
+`define pW 32'h9E3779B9 // Constantes
+`define qW 32'hB7E15163 //
 
 module testbench;
 
@@ -28,11 +28,11 @@ module testbench;
 	wire [`w-1:0] B_cipher;
 
 
-	cipher_dut dut(clk,rst,A,B,A_cipher,B_cipher,done);
+	decipher_dut dut(clk,rst,A,B,A_cipher,B_cipher,done);
 
 	initial begin
 		
-		$dumpfile("cipher.vcd");
+		$dumpfile("decipher.vcd");
 		$dumpvars;
 		clk=0;
 		rst = 0;
@@ -54,22 +54,27 @@ module testbench;
 		#2 rst = 1;
 		#4 rst = 0;
 
+		/*
 		#1065
 		$display("Valores de L:\n");
 		for (i = 0; i < `c; i = i + 1) begin
-			$display(dut.L_RAM.ram[i]);
+			$display("%H", dut.L_RAM.ram[i]);
 		end
 
 		$display("\n\nValores de S:\n");
 		for (i = 0; i < `t; i = i + 1) begin
-			$display(dut.S_RAM.ram[i]);
+			$display("%H",dut.S_RAM.ram[i]);
 		end 
+		*/
+		#8995
+		$display("\n\nValores de S:\n");
+		for (i = 0; i < `t; i = i + 1) begin
+			$display("%H",dut.S_RAM.ram[i]);
+		end		
 
-		#87
-		$display("Valor:");
-		$display(dut.S_RAM.ram[0]);
+		#12000 
 
-		#8000 
+
 
 		#1 $finish;
 
