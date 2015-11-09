@@ -1,6 +1,6 @@
 `timescale 1ns/10ps
 
-`include "keyExpander.v"
+`include "probando.v"
 
 `define w 32 // Cantidad de bits por palabra.
 `define u 4 // Cantidad de bytes por palabra.
@@ -20,8 +20,9 @@ module testbench;
 	reg [127:0] key;
 	reg clk;
 	reg rst;
+	wire done;
 
-	keyExpander expander(clk,rst);
+	hola expander(clk,rst);
 
 	initial begin
 		

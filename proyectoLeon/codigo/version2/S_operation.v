@@ -70,7 +70,7 @@ module S_operation
                     end
                          
                     `OPERATE_DATA: begin
-                         oS_address_nxt = rCount;
+                        oS_address_nxt = rCount;
                          oDone_nxt = oDone;
                          oS_we_nxt = oS_we;                        
                          oS_sub_i_prima_nxt = iS_sub_i + QW;
@@ -104,46 +104,46 @@ module S_operation
           end
 
         always @(posedge clk) begin
-          	if (rst)
-          		state = `IDLE;
-          	else
+        	if (rst)
+        		state = `IDLE;
+        	else
       			case (state)
-                    ///////////////////////
-                    `IDLE: begin
-                        if (!rst) begin
-                        	state <= `WAIT_ADDR;
-                        end
-                        else begin
-                        	state <= `IDLE;
-                        end
-                    end
-                    ////////////////////////
-                    `WAIT_ADDR: begin
-                        if (oDone) begin
-                        	state <= `WAIT_ADDR;
-                        end
+                  ///////////////////////
+                  `IDLE: begin
+                      if (!rst) begin
+                      	state <= `WAIT_ADDR;
+                      end
+                      else begin
+                      	state <= `IDLE;
+                      end
+                  end
+                  ////////////////////////
+                  `WAIT_ADDR: begin
+                      if (oDone) begin
+                      	state <= `WAIT_ADDR;
+                      end
 
-                        else begin
-                        	state <= `READ_DATA; 
-                        end
-                    end
-                    ///////////////////////     
-                    `READ_DATA: begin
-                    	state <= `OPERATE_DATA;	
-                    end
-                    ///////////////////////
-                    `OPERATE_DATA: begin
-                    	state <= `WRITE_DATA;
-                    end
-                    ///////////////////////
-                    `WRITE_DATA: begin
-                    	state <= `WAIT_ADDR;
-                    end
-                    ///////////////////////  
-                    default: begin
-                    	state <= `IDLE;
-                    end
-        		endcase
+                      else begin
+                      	state <= `READ_DATA; 
+                      end
+                  end
+                  ///////////////////////     
+                  `READ_DATA: begin
+                  	state <= `OPERATE_DATA;	
+                  end
+                  ///////////////////////
+                  `OPERATE_DATA: begin
+                  	state <= `WRITE_DATA;
+                  end
+                  ///////////////////////
+                  `WRITE_DATA: begin
+                  	state <= `WAIT_ADDR;
+                  end
+                  ///////////////////////  
+                  default: begin
+                  	state <= `IDLE;
+                  end
+      		endcase
 	    end
 
 	    always @(posedge clk) begin

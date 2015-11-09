@@ -82,161 +82,161 @@ module barrelShifter16
 	always @(*) begin
 		case (iRotate)
 
-`ZERO: begin
-	oData <= iData;
-end
-///////////////////////////////////////
+			`ZERO: begin
+				oData <= iData;
+			end
+			///////////////////////////////////////
 
-`ONE: begin
-	if (iDir) begin
-		oData <= {iData[`ONE-1:0],iData[W_SIZE-1:`ONE]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`ONE-1:0],iData[W_SIZE-1:W_SIZE-`ONE]};
-	end
-end
-///////////////////////////////////////
+			`ONE: begin
+				if (iDir) begin
+					oData <= {iData[`ONE-1:0],iData[W_SIZE-1:`ONE]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`ONE-1:0],iData[W_SIZE-1:W_SIZE-`ONE]};
+				end
+			end
+			///////////////////////////////////////
 
-`TWO: begin
-	if (iDir) begin
-		oData <= {iData[`TWO-1:0],iData[W_SIZE-1:`TWO]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`TWO-1:0],iData[W_SIZE-1:W_SIZE-`TWO]};
-	end
-end
-///////////////////////////////////////
+			`TWO: begin
+				if (iDir) begin
+					oData <= {iData[`TWO-1:0],iData[W_SIZE-1:`TWO]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`TWO-1:0],iData[W_SIZE-1:W_SIZE-`TWO]};
+				end
+			end
+			///////////////////////////////////////
 
-`THREE: begin
-	if (iDir) begin
-		oData <= {iData[`THREE-1:0],iData[W_SIZE-1:`THREE]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`THREE-1:0],iData[W_SIZE-1:W_SIZE-`THREE]};
-	end
-end
-///////////////////////////////////////
+			`THREE: begin
+				if (iDir) begin
+					oData <= {iData[`THREE-1:0],iData[W_SIZE-1:`THREE]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`THREE-1:0],iData[W_SIZE-1:W_SIZE-`THREE]};
+				end
+			end
+			///////////////////////////////////////
 
-`FOUR: begin
-	if (iDir) begin
-		oData <= {iData[`FOUR-1:0],iData[W_SIZE-1:`FOUR]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`FOUR-1:0],iData[W_SIZE-1:W_SIZE-`FOUR]};
-	end
-end
-///////////////////////////////////////
+			`FOUR: begin
+				if (iDir) begin
+					oData <= {iData[`FOUR-1:0],iData[W_SIZE-1:`FOUR]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`FOUR-1:0],iData[W_SIZE-1:W_SIZE-`FOUR]};
+				end
+			end
+			///////////////////////////////////////
 
-`FIVE: begin
-	if (iDir) begin
-		oData <= {iData[`FIVE-1:0],iData[W_SIZE-1:`FIVE]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`FIVE-1:0],iData[W_SIZE-1:W_SIZE-`FIVE]};
-	end
-end
-///////////////////////////////////////
+			`FIVE: begin
+				if (iDir) begin
+					oData <= {iData[`FIVE-1:0],iData[W_SIZE-1:`FIVE]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`FIVE-1:0],iData[W_SIZE-1:W_SIZE-`FIVE]};
+				end
+			end
+			///////////////////////////////////////
 
-`SIX: begin
-	if (iDir) begin
-		oData <= {iData[`SIX-1:0],iData[W_SIZE-1:`SIX]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`SIX-1:0],iData[W_SIZE-1:W_SIZE-`SIX]};
-	end
-end
-///////////////////////////////////////
+			`SIX: begin
+				if (iDir) begin
+					oData <= {iData[`SIX-1:0],iData[W_SIZE-1:`SIX]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`SIX-1:0],iData[W_SIZE-1:W_SIZE-`SIX]};
+				end
+			end
+			///////////////////////////////////////
 
-`SEVEN: begin
-	if (iDir) begin
-		oData <= {iData[`SEVEN-1:0],iData[W_SIZE-1:`SEVEN]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`SEVEN-1:0],iData[W_SIZE-1:W_SIZE-`SEVEN]};
-	end
-end
-///////////////////////////////////////
+			`SEVEN: begin
+				if (iDir) begin
+					oData <= {iData[`SEVEN-1:0],iData[W_SIZE-1:`SEVEN]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`SEVEN-1:0],iData[W_SIZE-1:W_SIZE-`SEVEN]};
+				end
+			end
+			///////////////////////////////////////
 
-`EIGHT: begin
-	if (iDir) begin
-		oData <= {iData[`EIGHT-1:0],iData[W_SIZE-1:`EIGHT]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`EIGHT-1:0],iData[W_SIZE-1:W_SIZE-`EIGHT]};
-	end
-end
-///////////////////////////////////////
+			`EIGHT: begin
+				if (iDir) begin
+					oData <= {iData[`EIGHT-1:0],iData[W_SIZE-1:`EIGHT]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`EIGHT-1:0],iData[W_SIZE-1:W_SIZE-`EIGHT]};
+				end
+			end
+			///////////////////////////////////////
 
-`NINE: begin
-	if (iDir) begin
-		oData <= {iData[`NINE-1:0],iData[W_SIZE-1:`NINE]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`NINE-1:0],iData[W_SIZE-1:W_SIZE-`NINE]};
-	end
-end
-///////////////////////////////////////
+			`NINE: begin
+				if (iDir) begin
+					oData <= {iData[`NINE-1:0],iData[W_SIZE-1:`NINE]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`NINE-1:0],iData[W_SIZE-1:W_SIZE-`NINE]};
+				end
+			end
+			///////////////////////////////////////
 
-`TEN: begin
-	if (iDir) begin
-		oData <= {iData[`TEN-1:0],iData[W_SIZE-1:`TEN]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`TEN-1:0],iData[W_SIZE-1:W_SIZE-`TEN]};
-	end
-end
-///////////////////////////////////////
+			`TEN: begin
+				if (iDir) begin
+					oData <= {iData[`TEN-1:0],iData[W_SIZE-1:`TEN]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`TEN-1:0],iData[W_SIZE-1:W_SIZE-`TEN]};
+				end
+			end
+			///////////////////////////////////////
 
-`ELEVEN: begin
-	if (iDir) begin
-		oData <= {iData[`ELEVEN-1:0],iData[W_SIZE-1:`ELEVEN]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`ELEVEN-1:0],iData[W_SIZE-1:W_SIZE-`ELEVEN]};
-	end
-end
-///////////////////////////////////////
+			`ELEVEN: begin
+				if (iDir) begin
+					oData <= {iData[`ELEVEN-1:0],iData[W_SIZE-1:`ELEVEN]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`ELEVEN-1:0],iData[W_SIZE-1:W_SIZE-`ELEVEN]};
+				end
+			end
+			///////////////////////////////////////
 
-`TWELVE: begin
-	if (iDir) begin
-		oData <= {iData[`TWELVE-1:0],iData[W_SIZE-1:`TWELVE]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`TWELVE-1:0],iData[W_SIZE-1:W_SIZE-`TWELVE]};
-	end
-end
-///////////////////////////////////////
+			`TWELVE: begin
+				if (iDir) begin
+					oData <= {iData[`TWELVE-1:0],iData[W_SIZE-1:`TWELVE]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`TWELVE-1:0],iData[W_SIZE-1:W_SIZE-`TWELVE]};
+				end
+			end
+			///////////////////////////////////////
 
-`THIRTEEN: begin
-	if (iDir) begin
-		oData <= {iData[`THIRTEEN-1:0],iData[W_SIZE-1:`THIRTEEN]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`THIRTEEN-1:0],iData[W_SIZE-1:W_SIZE-`THIRTEEN]};
-	end
-end
-///////////////////////////////////////
+			`THIRTEEN: begin
+				if (iDir) begin
+					oData <= {iData[`THIRTEEN-1:0],iData[W_SIZE-1:`THIRTEEN]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`THIRTEEN-1:0],iData[W_SIZE-1:W_SIZE-`THIRTEEN]};
+				end
+			end
+			///////////////////////////////////////
 
-`FOURTEEN: begin
-	if (iDir) begin
-		oData <= {iData[`FOURTEEN-1:0],iData[W_SIZE-1:`FOURTEEN]}; 
-	end
-	else begin
-		oData <= {iData[W_SIZE-`FOURTEEN-1:0],iData[W_SIZE-1:W_SIZE-`FOURTEEN]};
-	end
-end
-///////////////////////////////////////
+			`FOURTEEN: begin
+				if (iDir) begin
+					oData <= {iData[`FOURTEEN-1:0],iData[W_SIZE-1:`FOURTEEN]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`FOURTEEN-1:0],iData[W_SIZE-1:W_SIZE-`FOURTEEN]};
+				end
+			end
+			///////////////////////////////////////
 
-`FIFTEEN: begin
-	if (iDir) begin
-		oData <= {iData[`FIFTEEN-1:0],iData[W_SIZE-1:`FIFTEEN]}; 
+			`FIFTEEN: begin
+				if (iDir) begin
+					oData <= {iData[`FIFTEEN-1:0],iData[W_SIZE-1:`FIFTEEN]}; 
+				end
+				else begin
+					oData <= {iData[W_SIZE-`FIFTEEN-1:0],iData[W_SIZE-1:W_SIZE-`FIFTEEN]};
+				end
+			end
+		endcase
 	end
-	else begin
-		oData <= {iData[W_SIZE-`FIFTEEN-1:0],iData[W_SIZE-1:W_SIZE-`FIFTEEN]};
-	end
-end
-endcase
-end
 
 endmodule
 

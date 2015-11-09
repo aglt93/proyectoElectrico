@@ -7,8 +7,6 @@
 `define OPERATE_DATA4 3'b110
 `define WRITE_DATA 3'b111
 
-`include "barrelShifter.v"
-
 module keyMixer 
 #(
 	parameter W = 32,
