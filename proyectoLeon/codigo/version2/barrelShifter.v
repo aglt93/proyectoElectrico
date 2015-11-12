@@ -400,8 +400,6 @@ end
 	end
 	else begin
 		oData <= {iData[W_SIZE-`ELEVEN-1:0],iData[W_SIZE-1:W_SIZE-`ELEVEN]};
-		$display("%H",iData);
-		$display("%b",iData);
 	end
 end
 ///////////////////////////////////////

@@ -57,10 +57,7 @@ module keyMixer
     reg [W-1:0] A_nxt;
     reg [W-1:0] B_nxt;
     reg [W-1:0] rSumTemp_nxt;
-    reg [T_LENGTH-1:0] i_nxt;
-    reg [C_LENGTH-1:0] j_nxt;
     reg [MIXCOUNT_LENGTH-1:0] rCount_nxt;
-
     reg [C_LENGTH-1:0] oL_address_nxt;
     reg [W-1:0] oL_sub_i_prima_nxt;
     reg [T_LENGTH-1:0] oS_address_nxt;
@@ -157,8 +154,6 @@ module keyMixer
                     ///////////////////////
                     `ROT_S: begin
                         rCount_nxt = rCount;
-                        i_nxt = oS_address;
-                        j_nxt = oL_address;
                         A_nxt = {oS_sub_i_prima[W-4:0],oS_sub_i_prima[W-1:W-3]};
                         B_nxt = B;
                         rSumTemp_nxt = rSumTemp;
@@ -237,7 +232,7 @@ module keyMixer
                         oS_we_nxt = 1;
                         oL_we_nxt = 1;
 
-                         if (rCount == MIXCOUNT) begin
+                         if (rCount == MIXCOUNT-1) begin
                               oDone_nxt = 1;
                          end
 

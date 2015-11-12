@@ -113,7 +113,7 @@ module keyExpander
 	L_operation 
 	#(
 		.W(W),
-		.C(C)
+		.B(B)
 	)
 	L
 	(

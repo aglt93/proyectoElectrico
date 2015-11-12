@@ -10,9 +10,7 @@
 module L_operation
 #(
      parameter B = 16,
-     parameter W = 32,
-     parameter U = 4,
-     parameter C = 4
+     parameter W = 32
 )
 
 (
@@ -29,7 +27,9 @@ module L_operation
      output reg done,
      output reg L_we
 );
-
+    
+     parameter U = W/8;
+     parameter C = B/U;
      parameter B_length = $clog2(B);
      parameter C_length = $clog2(C);
      

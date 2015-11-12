@@ -7,7 +7,6 @@
 `define WRITE_DATA 3'b100
 
 
-
 module S_operation
 #(
      parameter T = 16,
@@ -62,7 +61,7 @@ module S_operation
                     end
                          
                     `READ_DATA: begin
-                         oS_address_nxt = oS_address;
+                    	 oS_address_nxt = oS_address;
                          oDone_nxt = oDone;
                          oS_we_nxt = oS_we;
                          oS_sub_i_prima_nxt = oS_sub_i_prima;
