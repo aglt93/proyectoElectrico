@@ -60,7 +60,7 @@ module testbench;
 		$dumpvars;
 		clk=0;
 		rst = 0;
-		key = 128'h915F4619BE41B2516355A50110A9CE91;
+		key = 128'h91CEA91001A5556351B241BE19465F91;
 
 		for (i = 0; i < `c; i = i + 1) begin
 			dut.L_RAM.ram[i]=0;
@@ -72,32 +72,43 @@ module testbench;
 
 		dut.S_RAM.ram[0]=`pW;
 
-		A = 32'h21A5DBEE;
-		B = 32'h154B8F6D;
+		A = 32'heedba521;
+		B = 32'h6d8f4b15;
 
 		#2 rst = 1;
 		#4 rst = 0;
 
+
 		/*
-		#1065
+		#1100
 		$display("Valores de L:\n");
 		for (i = 0; i < `c; i = i + 1) begin
-			$display("%H", dut.L_RAM.ram[i]);
+			$display("L[%d] = %H", i,dut.L_RAM.ram[i]);
 		end
-
+		
 		$display("\n\nValores de S:\n");
-		for (i = 0; i < `t; i = i + 1) begin
+		
+		for (i = 0; i <= `t; i = i + 1) begin
 			$display("%H",dut.S_RAM.ram[i]);
 		end 
 		*/
-		#8900
+		#11900
+		/*
 		$display("\n\nValores de S:\n");
+		
 		for (i = 0; i < `t; i = i + 1) begin
 			$display("%H",dut.S_RAM.ram[i]);
-		end 
-		#3000
+		end
 		
-		$display("%h",{dut.oA_cipher,dut.oB_cipher});
+		$display("Valores de L:\n");
+		for (i = 0; i < `c; i = i + 1) begin
+			$display("L[%d] = %H", i,dut.L_RAM.ram[i]);
+		end
+		
+		#3000
+		*/		
+		$display("%X",{A,B});
+		$display("%X",{dut.oA_cipher,dut.oB_cipher});
 		
 		#1 $finish;
 

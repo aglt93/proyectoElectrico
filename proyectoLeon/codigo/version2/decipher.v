@@ -10,6 +10,7 @@
 `define READ_FINAL 4'd9
 `define OPER_FINAL 4'd10
 `define INIT 4'd11
+`define ALGO 4'd12
 
 module decipher
 #(
@@ -190,7 +191,7 @@ module decipher
 				rAorB_nxt = rAorB;
 				rRot_value_nxt = rRot_value;
 
-				if(rCount == 0) begin
+				if(rCount_nxt == 0) begin
 					oDone_nxt = 1;
 				end
 				else begin
@@ -290,7 +291,18 @@ module decipher
 				end
 				////////////////////////
 				`XOR_A: begin
-					state <= `READ_FINAL;
+					state <= `ALGO;
+				end
+				////////////////////////
+				`ALGO: begin
+					if(oDone) begin 
+						state <= `READ_FINAL;
+					end
+
+					else begin
+						state <= `WAIT_ADDR;
+					end
+
 				end
 				////////////////////////
 				`READ_FINAL: begin
