@@ -24,8 +24,8 @@ module testbench;
 	wire done;
 	reg [`w-1:0] A;
 	reg [`w-1:0] B;
-	wire [`w-1:0] A_cipher;
-	wire [`w-1:0] B_cipher;
+	wire [`w-1:0] A_decipher;
+	wire [`w-1:0] B_decipher;
 
 
 	parameter W = 32;
@@ -49,8 +49,8 @@ module testbench;
 		rst,
 		A,
 		B,
-		A_cipher,
-		B_cipher,
+		A_decipher,
+		B_decipher,
 		done
 	);
 
@@ -107,8 +107,9 @@ module testbench;
 		
 		#3000
 		*/		
-		$display("%X",{A,B});
-		$display("%X",{dut.oA_cipher,dut.oB_cipher});
+		$display("Plain text = %X",{A,B});
+		$display("Cipher text = %X",{dut.oA_cipher,dut.oB_cipher});
+		$display("Decipher text = %X",{A_decipher, B_decipher});
 		
 		#1 $finish;
 

@@ -10,7 +10,7 @@
 `define READ_FINAL 4'd9
 `define OPER_FINAL 4'd10
 `define INIT 4'd11
-`define ALGO 4'd12
+`define CHANGE_ADDR 4'd12
 
 module decipher
 #(
@@ -87,7 +87,7 @@ module decipher
 				rAorB_nxt = rAorB;
 				rRot_value_nxt = rRot_value;
 				oDone_nxt = oDone;
-			end	
+			end
 			////////////////////////
 			`WAIT_ADDR: begin
 				oS_address1_nxt = oS_address1;
@@ -124,7 +124,7 @@ module decipher
 				// Roto ese valor A bits.
 				rRot_value_nxt = oA_decipher;
 
-				oDone_nxt = oDone;
+				oDone_nxt = oDone;				
 			end
 			////////////////////////
 			`ROT_B: begin
@@ -151,6 +151,7 @@ module decipher
 				rAorB_nxt = rAorB;
 				rRot_value_nxt = rRot_value;
 				oDone_nxt = oDone;
+				
 			end
 			////////////////////////
 			`RES_A_S: begin
@@ -182,8 +183,8 @@ module decipher
 			////////////////////////
 			`XOR_A: begin
 				// cambio direcciones
-				oS_address1_nxt = rCount << 1;
-				oS_address2_nxt = (rCount<<1) + 1;
+				oS_address1_nxt = oS_address1;
+				oS_address2_nxt = oS_address2;
 				// hago A xor B y lo guardo en A.
 				oA_decipher_nxt = oA_decipher ^ oB_decipher;
 				oB_decipher_nxt = oB_decipher;
@@ -191,12 +192,25 @@ module decipher
 				rAorB_nxt = rAorB;
 				rRot_value_nxt = rRot_value;
 
-				if(rCount_nxt == 0) begin
+				if(rCount == 1) begin
 					oDone_nxt = 1;
 				end
 				else begin
 					oDone_nxt = oDone;					
 				end
+			end
+			`CHANGE_ADDR: begin
+				oS_address1_nxt = rCount << 1;
+				oS_address2_nxt = (rCount<<1) + 1;
+
+				// Guardo el valor rotado en A.
+				oA_decipher_nxt = oA_decipher;
+				oB_decipher_nxt = oB_decipher;
+				rCount_nxt = rCount;
+				rAorB_nxt = rAorB;
+				rRot_value_nxt = rRot_value;
+				oDone_nxt = oDone;
+				
 			end
 			////////////////////////
 			`READ_FINAL: begin
@@ -291,10 +305,10 @@ module decipher
 				end
 				////////////////////////
 				`XOR_A: begin
-					state <= `ALGO;
+					state <= `CHANGE_ADDR;
 				end
 				////////////////////////
-				`ALGO: begin
+				`CHANGE_ADDR: begin
 					if(oDone) begin 
 						state <= `READ_FINAL;
 					end

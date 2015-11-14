@@ -65,7 +65,7 @@ void RC5encrypt(word32 const *in, word32 *out, word32 *key)
         a += *key++;
         b += *key++;
 
-fprintf(stderr,"a=%X, b=%X\n",a,b);
+//fprintf(stderr,"a=%X, b=%X\n",a,b);
         for (i = 0; i < rounds; i++) {
                 a ^= b;
                 a = ROTL(a, b&ANDVAL) + *key++;
@@ -73,7 +73,7 @@ fprintf(stderr,"a=%X, b=%X\n",a,b);
                 b ^= a;
                 b = ROTL(b, a&ANDVAL);
                 b += *key++;
-fprintf(stderr,"a=%X, b=%X\n",a,b);
+//fprintf(stderr,"a=%X, b=%X\n",a,b);
         }
 
         *out = a;
@@ -97,10 +97,15 @@ void RC5decrypt(word32 const *in, word32 *out, word32 *key)
 //fprintf(stderr,"a=%X, b=%X\n",a,b);
         for (i = 0; i < rounds; i++) {
                 b -= *--key;
+                //fprintf(stderr, "b_res = %X\n", b);
                 b = ROTR(b, a&ANDVAL) ^ a;
-
+                //fprintf(stderr, "b_rot = %X\n", b);
+                //b = b ^ a;
+                //fprintf(stderr, "b_xor = %X\n\n", b);
                 a -= *--key;
+                fprintf(stderr, "a_res = %X\n", a);
                 a = ROTR(a, b&ANDVAL) ^ b;
+                fprintf(stderr, "a_rot = %X\n\n", a);
 //fprintf(stderr,"a=%X, b=%X\n",a,b);
         }
 
