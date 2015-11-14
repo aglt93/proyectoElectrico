@@ -1,18 +1,16 @@
 `timescale 1ns/10ps
 
-`include "decipher_dut.v"
 
-`define w 32 // Cantidad de bits por palabra.
-`define u 4 // Cantidad de bytes por palabra.
+`define w 64 // Cantidad de bits por palabra.
+`define u (`w/8)
 `define b 16 // Cantidad de bytes de la llave.
-`define b_length $clog2(`b) // Bits para direccionar a todos los bytes b de la llave.
 `define r 12 // Cantidad de rondas.
-`define t 2*(`r+1) // Tamaño del vector S es igual a 2 (r+1) donde r es la cantidad de rondas.
-`define t_length $clog2(`t) // Cantidad de bit para direccionar al vector S.
-`define c 4 // Tamaño del vector L. Corresponde a b/u.
-`define c_length 2 // Cantidad de bits para direccionar al vector L.
+`define c (`b/`u) // Tamaño del vector L. Corresponde a b/u.
 `define pW 32'hB7E15163 // Constantes
 `define qW 32'h9E3779B9 //
+`define barrel64
+
+`include "decipher_dut.v"
 
 module testbench;
 
@@ -28,10 +26,10 @@ module testbench;
 	wire [`w-1:0] B_decipher;
 
 
-	parameter W = 32;
-	parameter C = 4;
-	parameter b = 16;
-	parameter R = 12;
+	parameter W = `w;
+	parameter C = `c;
+	parameter b = `b;
+	parameter R = `r;
 	parameter QW = `qW;
 
 
@@ -41,7 +39,7 @@ module testbench;
 		.C(C),
 		.B(b),
 		.R(R),
-		.QW(QW)		
+		.QW(QW)
 	)
 		dut
 	(
@@ -55,7 +53,7 @@ module testbench;
 	);
 
 	initial begin
-		
+
 		$dumpfile("decipher.vcd");
 		$dumpvars;
 		clk=0;

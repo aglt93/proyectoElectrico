@@ -35,7 +35,7 @@ module keyMixer
     output reg oL_we
 );
 
-	parameter C_LENGTH = 2;
+	parameter C_LENGTH = $clog2(C);
 	parameter T_LENGTH = $clog2(T);
 	parameter MIXCOUNT = (T>C) ? 3*T:3*C;
 	parameter MIXCOUNT_LENGTH = $clog2(MIXCOUNT);
@@ -68,7 +68,19 @@ module keyMixer
     //****************************************
 
     //*********************************************************************
-    barrelShifter32 barrel
+    `ifdef barrel16
+        barrelShifter16
+    `endif
+
+    `ifdef barrel32
+        barrelShifter32 
+    `endif
+
+    `ifdef barrel64
+        barrelShifter64 
+    `endif
+
+    barrel
     (
         .iData(oL_sub_i_prima),
         .iRotate(rSumTemp[ROTVALUE-1:0]),

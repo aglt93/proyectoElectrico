@@ -66,6 +66,7 @@
 `define SIXTY_FIVE 65
 `define SIXTY_SIX 66
 
+`ifdef barrel16
 
 module barrelShifter16 
 (
@@ -241,6 +242,7 @@ module barrelShifter16
 endmodule
 
 
+`endif
 
 
 
@@ -268,8 +270,7 @@ endmodule
 
 
 
-
-
+`ifdef barrel32
 
 
 module barrelShifter32
@@ -609,6 +610,7 @@ endmodule
 
 
 
+`endif
 
 
 
@@ -648,8 +650,7 @@ endmodule
 
 
 
-
-
+`ifdef barrel64
 
 
 
@@ -1305,3 +1306,4 @@ end
 
 endmodule
 
+`endif

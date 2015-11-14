@@ -57,7 +57,20 @@ module cipher
 	reg oDone_nxt;
 	//*********************************
 	wire [W-1:0] wA_XOR_B_rot;
-	barrelShifter32 bar
+
+	`ifdef barrel16
+        barrelShifter16
+    `endif
+
+    `ifdef barrel32
+        barrelShifter32 
+    `endif
+
+    `ifdef barrel64
+        barrelShifter64 
+    `endif
+    
+	bar
 	(
 		.iData(rA_XOR_B),
 		.iRotate(rRot_value),
