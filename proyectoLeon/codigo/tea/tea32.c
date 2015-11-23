@@ -1,6 +1,10 @@
 #include <stdint.h>
 #include <stdio.h>
 
+
+
+int roundNumber = 31;
+
 // encryption routine
 void encrypt (uint32_t* v, uint32_t* k) {
 
@@ -8,7 +12,7 @@ void encrypt (uint32_t* v, uint32_t* k) {
 	uint32_t delta=0x9e3779b9;
 	uint32_t k0=k[0], k1=k[1], k2=k[2], k3=k[3];
 
-	for (i=0; i < 32; i++) {
+	for (i=0; i < roundNumber; i++) {
 		sum += delta;
 		v0 += ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
 		v1 += ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
@@ -23,7 +27,7 @@ void decrypt (uint32_t* v, uint32_t* k) {
 	uint32_t delta=0x9e3779b9;
 	uint32_t k0=k[0], k1=k[1], k2=k[2], k3=k[3];
 	
-	for (i=0; i<32; i++) {
+	for (i=0; i<roundNumber; i++) {
 		v1 -= ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
 		v0 -= ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
 		sum	-= delta;
@@ -49,7 +53,7 @@ int main()
 	key[2] = 0x3235acbe;
 	key[3] = 0x4533f235;
 
-	printf ("%x, %x \n", input[0], input[1]);
+	printf ("%x%x \n", input[0], input[1]);
 
 	V = input;
 
@@ -57,11 +61,11 @@ int main()
 
 	encrypt(V,K);
 
-	printf ("%x, %x \n", input[0], input[1]);
+	printf ("%x%x \n", input[0], input[1]);
 
 	decrypt(V,K);
 
-	printf ("%x, %x \n", input[0], input[1]);
+	printf ("%x%x \n", input[0], input[1]);
 	
 	
    return 0;
