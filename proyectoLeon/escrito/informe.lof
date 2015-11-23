@@ -11,3 +11,10 @@
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Estructura b\IeC {\'a}sica de un FPGA. \citep {figRandom1}\relax }}{19}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Estructura b\IeC {\'a}sica de un CLB \citep {xilinx5}.\relax }}{19}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{26}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{27}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados para los bloques \textit {L\_operation} y \textit {S\_operation}.\relax }}{27}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de estados para el bloque \textit {keyMixer}\relax }}{28}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de estados para el bloque \textit {cipher}.\relax }}{28}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de estados para el bloque \textit {decipher}.\relax }}{29}
+\addvspace {10pt}

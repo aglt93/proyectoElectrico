@@ -402,7 +402,7 @@ El algoritmo criptográfico de llave simétrica RC5 fue creado en 1997 por Ronal
 Por simplicidad como se tienen tantos parámetros variables para el algoritmo entonces a la hora de llamarlo se utiliza la siguiente notación: RC5-w/r/b. Estas y otras variables se definen a continuación:
 
 \begin{itemize}
-\item w: es el tamaño de la palabra, el valor nominal es de 32 y los permitidos son 16,32 y 64. Y el algoritmo cifra en bloques de tamaño 2w. Además cada palabra contiene $u=w/8$ bytes.
+\item w: es el tamaño de la palabra, el valor nominal es de 32 bits y los permitidos son 16 bits, 32 bits y 64 bits. Y el algoritmo cifra en bloques de tamaño 2w. Además cada palabra contiene $u=w/8$ bytes.
 
 \item r: corresponde al número de rondas, los cuales pueden variar entre 0 y 255. Esto debido a que el algoritmo se basa en una red Feistel.
  
@@ -420,10 +420,10 @@ Por simplicidad como se tienen tantos parámetros variables para el algoritmo en
 
 \item $P_w$ y $Q_w$: Constantes que se definen como:
 \begin{equation}
-P_w = odd(2^w(e-2)); e = \text{número de euler}
+P_w = odd(2^w(e-2)); \text{   }e = \text{número de euler}
 \end{equation}
 \begin{equation}
-Q_w = odd(2^w(\phi-2)); \phi = \text{golden ratio}
+Q_w = odd(2^w(\phi-2));\text{   } \phi = \text{golden ratio}
 \end{equation}
 \end{itemize}
 
@@ -490,14 +490,14 @@ A = A - S[0];
 
 
 
-\subsection{IDEA o LUCIFER o FEAL}
+\subsection{TEA}
 
 
 
 
 \chapter{Implementación de los algoritmos}
 
-\section{RC5}
+\section{Implementación algoritmo RC5}
 La implementación se basó en el siguiente análisis:
 \begin{itemize}
 \item Se tienen parámetros variables y el objetivo del proyecto es poder analizar como la variación de los mismos impacta en la utilización de recursos del FPGA. Por tanto la manera más óptima de generar código en Verilog es que el código sea parametrizable.
@@ -521,9 +521,71 @@ Tomando esto en consideración se optó por implementar máquinas de estado fini
 \item Se tiene XOR bit a bit que se ajustan perfectamente a una implementación en hardware.
 \end{itemize}
 
-Entonces el diagrama básico de un bloque del algoritmo sería como el que se muestra en la Figura \ref{}. A partir de esto podemos concluir que:
+A partir de esto podemos concluir que:
 \begin{itemize}
 \item Los arreglos L, S y el arreglo de K[0] a K[b-1] corresponden a memorias RAM.
-\item Cada uno de los \textit{for} que muestran en el pseudo-código corresponde máquina de estado la cual está controlada por un contador para manejar la cantidad de iteraciones.
+\item Cada uno de los \textit{for} que muestran en el pseudo-código corresponde a una máquina de estados la cual está controlada por un contador para manejar la cantidad de iteraciones.
 \end{itemize}
-Finalmente a partir de todo estos razonamientos se obtuvo el diagrama de bloques que se muestra en la Figura \ref{}.
+Finalmente a partir de todos estos razonamientos se obtuvieron los diagramas de bloques para el cifrado y descifrado que se muestran en las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram} respectivamente.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{./images/figCipherBlockDiagram}
+	\caption{Diagrama de bloques del algoritmo de cifrado RC5.}
+	\label{figCipherBlockDiagram}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\textwidth]{./images/figDecipherBlockDiagram}
+	\caption{Diagrama de bloques del algoritmo de descifrado RC5.}
+	\label{figDecipherBlockDiagram}
+\end{figure}
+
+
+Cada bloque representa un ROM o RAM donde esté indicado y los demás corresponden a máquinas de estados finitas. El diagrama de estados para los bloques \textit{L\_operation, S\_operation} se muestra en la Figura \ref{figSL_operationFSM}. Note que ambos bloques comparten el diagrama de estados pero realizan diferentes operaciones. Para los bloques \textit{keyMixer, cipher y decipher} los diagramas de estados se muestran en las Figuras \ref{figKeyMixerFSM}, \ref{figCipherFSM} y \ref{figDecipherBlockDiagram} respectivamente.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\textwidth]{./images/figSL_operationFSM}
+	\caption{Diagrama de estados para los bloques \textit{L\_operation} y \textit{S\_operation}.}
+	\label{figSL_operationFSM}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.85\textwidth]{./images/figKeyMixerFSM}
+	\caption{Diagrama de estados para el bloque \textit{keyMixer}.}
+	\label{figKeyMixerFSM}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.85\textwidth]{./images/figCipherFSM}
+	\caption{Diagrama de estados para el bloque \textit{cipher}.}
+	\label{figCipherFSM}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.85\textwidth]{./images/figDecipherFSM}
+	\caption{Diagrama de estados para el bloque \textit{decipher}.}
+	\label{figDecipherFSM}
+\end{figure}
+
+\section{Implementación del algoritmo TEA}
+\blindtext
+\cleardoublepage
+
+
+
+
+
+
+
+\chapter{Resultados y análisis}
+
+\section{Resultados y análisis del algoritmo RC5}
+\blindtext
+\cleardoublepage
+
+\section{Resultados y análisis del algoritmo TEA}
+\blindtext
+\cleardoublepage
+

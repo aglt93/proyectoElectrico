@@ -27,7 +27,11 @@
 \contentsline {subsection}{RC5}{21}
 \contentsline {subsubsection}{Terminolog\IeC {\'\i }a del algoritmo}{21}
 \contentsline {subsubsection}{Pasos del algoritmo}{23}
-\contentsline {subsection}{IDEA o LUCIFER o FEAL}{24}
+\contentsline {subsection}{TEA}{24}
 \contentsline {chapter}{\chapternumberline {3}Implementaci\IeC {\'o}n de los algoritmos}{25}
-\contentsline {section}{\numberline {3.1}RC5}{25}
-\contentsline {chapter}{Bibliograf\'{\i }a}{27}
+\contentsline {section}{\numberline {3.1}Implementaci\IeC {\'o}n algoritmo RC5}{25}
+\contentsline {section}{\numberline {3.2}Implementaci\IeC {\'o}n del algoritmo TEA}{26}
+\contentsline {chapter}{\chapternumberline {4}Resultados y an\IeC {\'a}lisis}{31}
+\contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo RC5}{31}
+\contentsline {section}{\numberline {4.2}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{33}
+\contentsline {chapter}{Bibliograf\'{\i }a}{35}

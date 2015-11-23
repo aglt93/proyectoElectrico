@@ -1,16 +1,16 @@
 `define IDLE 4'd0
-`define WAIT_ADDR 4'd1
-`define READ_DATA 4'd2
-`define RES_B_S 4'd3
-`define ROT_B 4'd4
-`define XOR_B 4'd5
-`define RES_A_S 4'd6
-`define ROT_A 4'd7
-`define XOR_A 4'd8
-`define READ_FINAL 4'd9
-`define OPER_FINAL 4'd10
-`define INIT 4'd11
-`define CHANGE_ADDR 4'd12
+`define INIT 4'd1
+`define WAIT_ADDR 4'd2
+`define READ_DATA 4'd3
+`define RES_B_S 4'd4
+`define ROT_B 4'd5
+`define XOR_B 4'd6
+`define RES_A_S 4'd7
+`define ROT_A 4'd8
+`define XOR_A 4'd9
+`define CHANGE_ADDR 4'd10
+`define READ_FINAL 4'd11
+`define OPER_FINAL 4'd12
 
 module decipher
 #(
