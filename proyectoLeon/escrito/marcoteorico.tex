@@ -387,7 +387,7 @@ En un principio el objetivo de este proyecto era realizar una comparación con l
 \item Los algoritmos realizan el proceso de cifrado de maneras muy diferentes: En el caso de los algoritmos simétricos son basados en transposición y sustitución que trabajan en su mayoría con XOR's, sumas y corrimientos. En cambio los algoritmos de llave pública trabajan  basados en la multiplicación de números primos y \textit{Discrete Logarithm Problem} donde ocurren muchas multiplicaciones y sumas. Esto produce un consumo de recursos muy diferente entre ambos tipos.
 \end{itemize}
 
-Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el FEAL los cuales están basados en redes de Feistel\footnote{
+Bajo el criterio que ambos algoritmos tuvieran características similares para poder ser analizados comparativamente y que fueran fáciles de implementar a nivel de hardware se optó por comparar dos algoritmos simétricos, específicamente el RC5 y el TEA los cuales están basados en redes de Feistel\footnote{
 Las redes Feistel toman un bloque de texto plano de tamaño N (par) y lo dividen en dos mitades denominadas L y R. El cifrado en este tipo de redes es iterativo donde el resultado de la iteración $i$ depende del resultado de la iteración $i - 1 $. Ejemplos de algoritmos de este tipo pueden ser DES, Lucifer, FEAL, Khufu, Khafre, LOKI, GOST, CAST, Blowfish, entre otros.} y por tanto comparten características de diseño para que la comparación sea un poco más justa.
 
 
@@ -568,6 +568,9 @@ Cada bloque representa un ROM o RAM donde esté indicado y los demás correspond
 	\caption{Diagrama de estados para el bloque \textit{decipher}.}
 	\label{figDecipherFSM}
 \end{figure}
+
+Un punto importante a aclarar es que el \textit{keyROM} de las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram} se sintetiza en los resultados ya que por facilidad se optó por dejar el mismo como una entrada al circuito diseñado.
+
 
 \section{Implementación del algoritmo TEA}
 \blindtext

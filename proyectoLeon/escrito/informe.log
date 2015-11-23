@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  22 NOV 2015 23:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.24)  23 NOV 2015 16:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1529,44 +1529,46 @@ Package pdftex.def Info: ./images/figSL_operationFSM.png used on input line 549
 File: ./images/figKeyMixerFSM.png Graphic file (type png)
 
 <use ./images/figKeyMixerFSM.png>
-Package pdftex.def Info: ./images/figKeyMixerFSM.png used on input line 556.
+Package pdftex.def Info: ./images/figKeyMixerFSM.png used on input line 555.
 (pdftex.def)             Requested size: 313.65225pt x 146.96216pt.
 
 <./images/figCipherFSM.png, id=160, 370.5042pt x 220.9053pt>
 File: ./images/figCipherFSM.png Graphic file (type png)
 
 <use ./images/figCipherFSM.png>
-Package pdftex.def Info: ./images/figCipherFSM.png used on input line 562.
+Package pdftex.def Info: ./images/figCipherFSM.png used on input line 561.
 (pdftex.def)             Requested size: 313.65225pt x 187.00859pt.
 
 <./images/figDecipherFSM.png, id=161, 441.8106pt x 223.0734pt>
 File: ./images/figDecipherFSM.png Graphic file (type png)
 
 <use ./images/figDecipherFSM.png>
-Package pdftex.def Info: ./images/figDecipherFSM.png used on input line 568.
+Package pdftex.def Info: ./images/figDecipherFSM.png used on input line 567.
 (pdftex.def)             Requested size: 313.65225pt x 158.373pt.
 
 
 Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 580.
+(blindtext)                 on input line 577.
 
-LaTeX Info: Redefining \. on input line 580.
-LaTeX Info: Redefining \% on input line 580.
+LaTeX Info: Redefining \. on input line 577.
+LaTeX Info: Redefining \% on input line 577.
 [26 <./images/figCipherBlockDiagram.png>]
-LaTeX Info: Redefining \. on input line 580.
-LaTeX Info: Redefining \% on input line 580.
+LaTeX Info: Redefining \. on input line 577.
+LaTeX Info: Redefining \% on input line 577.
  [27 <./images/figDecipherBlockDiagram.png> <./images/figSL_operationFSM.png>]
-LaTeX Info: Redefining \. on input line 580.
-LaTeX Info: Redefining \% on input line 580.
+Underfull \vbox (badness 1158) has occurred while \output is active []
+
+LaTeX Info: Redefining \. on input line 577.
+LaTeX Info: Redefining \% on input line 577.
  [28 <./images/figKeyMixerFSM.png> <./images/figCipherFSM.png>]
-LaTeX Info: Redefining \. on input line 580.
-LaTeX Info: Redefining \% on input line 580.
+LaTeX Info: Redefining \. on input line 577.
+LaTeX Info: Redefining \% on input line 577.
  [29 <./images/figDecipherFSM.png>] [30
 
 ]
 
 Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 592.
+(blindtext)                 on input line 589.
 
 [31
 
@@ -1575,10 +1577,10 @@ Package blindtext Warning: spanish not defined, using English instead.
 ]
 
 Package blindtext Warning: spanish not defined, using English instead.
-(blindtext)                 on input line 596.
+(blindtext)                 on input line 593.
 
-LaTeX Info: Redefining \. on input line 596.
-LaTeX Info: Redefining \% on input line 596.
+LaTeX Info: Redefining \. on input line 593.
+LaTeX Info: Redefining \% on input line 593.
 [33] [34
 
 ]) (./informe.bbl
@@ -1678,7 +1680,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  ) 
 Here is how much of TeX's memory you used:
  12770 strings out of 493304
- 174773 string characters out of 6139872
+ 174773 string characters out of 6139871
  413207 words of memory out of 5000000
  15836 multiletter control sequences out of 15000+600000
  56173 words of font info for 109 fonts, out of 8000000 for 9000
@@ -1702,7 +1704,7 @@ fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm
 1095.pfb>
-Output written on informe.pdf (50 pages, 684852 bytes).
+Output written on informe.pdf (50 pages, 685294 bytes).
 PDF statistics:
  264 PDF objects out of 1000 (max. 8388607)
  169 compressed objects within 2 object streams
