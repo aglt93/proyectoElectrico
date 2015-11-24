@@ -115,7 +115,7 @@ module L_operation
      always @(posedge clk)
           begin
                if (rst)
-                    state = `IDLE;
+                    state <= `IDLE;
                else
                     case (state)
                         ///////////////////////
@@ -158,21 +158,21 @@ module L_operation
 
         always @(posedge clk) begin
             if(rst) begin
-                count = B-1;
-                done = 0;
-                L_we = 0;
-                key_address = 0;
-                L_address = 0;
-                L_sub_i_prima = 0;
+                count <= B-1;
+                done <= 0;
+                L_we <= 0;
+                key_address <= 0;
+                L_address <= 0;
+                L_sub_i_prima <= 0;
             end
 
             else begin
-                count = count_nxt;
-                done = done_nxt;
-                L_we = L_we_nxt;
-                key_address = key_address_nxt;
-                L_address = L_address_nxt;
-                L_sub_i_prima = L_sub_i_prima_nxt;
+                count <= count_nxt;
+                done <= done_nxt;
+                L_we <= L_we_nxt;
+                key_address <= key_address_nxt;
+                L_address <= L_address_nxt;
+                L_sub_i_prima <= L_sub_i_prima_nxt;
             end
 
         end
