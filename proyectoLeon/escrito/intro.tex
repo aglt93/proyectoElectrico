@@ -1,6 +1,6 @@
 \chapter{Introducción}
 \section{Justificación}
-El cifrado de datos para aplicaciones de seguridad es de vital importancia en la actualidad. Un ejemplo de esto la fuga de datos de Home Depot en el año 2014, donde se perdió una computadora que contenía información personal de $10000$ empleados y clientes causando un costo de millones de dólares a la empresa \citep{homeDepot}. Otro ejemplo fue la noticia en mayo de 2015 sobre el buscador web \textit{UC Browser} donde indica que es posible robar datos personales por falta de cifrado en la transmisión de datos \citep{ucBrowser}. También en febrero de 2015 se dio a conocer la fuga de decenas de millones de datos de la compañía de seguros \textit{Anthem}. Los datos robados (números de seguro, lugar de residencia, números de teléfono, entre otros), se encontraban en una base de datos en la cual los datos se encontraban sin cifrar como indica \cite{anthem}:
+El cifrado de datos para aplicaciones de seguridad es de vital importancia en la actualidad. Un ejemplo de esto es la fuga de datos de Home Depot en el año 2014, donde se perdió una computadora que contenía información personal de $10000$ empleados y clientes causando un costo de millones de dólares a la empresa \citep{homeDepot}. Otro ejemplo fue la noticia en mayo del 2015 sobre el buscador web \textit{UC Browser} donde quedó en evidencia que es posible robar datos personales por falta de cifrado en la transmisión de datos \citep{ucBrowser}. También en febrero del 2015 se dio a conocer la fuga de decenas de millones de datos de la compañía de seguros \textit{Anthem}. Los datos robados (números de seguro, lugar de residencia, números de teléfono, entre otros), se encontraban en una base de datos en la cual los datos se encontraban sin cifrar como indica \cite{anthem}:
 \begin{center}
     \begin{minipage}{0.9\linewidth}
         \vspace{5pt}%margen superior de minipage
@@ -29,11 +29,11 @@ Inicialmente se va llevará a cabo un análisis individual de cada algoritmo, ha
 
 Como segunda parte del proyecto se realizará un análisis comparativo entre ambos algoritmos eligiendo parámetros fijos para ambos.
 
-Los análisis individuales y comparativos anteriomente mencionados no abarcarán ningún tipo de criptoanálisis de algún algoritmo con respecto otro ni de cuál sería la escogencia de los parámetros ideal para realizar un análisis comparativo entre ambos. Sino que a partir del análisis individual realizado se va a efectuar una escogencia de los parámetros de ambos algoritmos para realizar su comparación implementando las métricas descritas.
+Los análisis individuales y comparativos anteriomente mencionados no abarcarán ningún tipo de criptoanálisis de algún algoritmo con respecto otro ni de cuál sería la escogencia de los parámetros ideal para realizar un análisis comparativo entre ambos. El enfoque más bien será que a partir del análisis individual realizado se va a efectuar una escogencia de los parámetros de ambos algoritmos para realizar su comparación implementando las métricas descritas.
 
 Para la escogencia de estos dos algoritmos se realizará a partir de una identificación de las principales ramas del cifrado para así elegir los dos algoritmos de dos de estas ramas abarcando de esta manera un tema más amplio para el análisis y discusión.
 
-Se limitará a realizar una escogencia de esta manera donde también tendrá mucho peso que los algoritmos que sean implementables, de manera relativamente sencilla, en un FPGA conociendo desde un principio las limitantes estáticas del hardware.
+La contribución de este trabajo se limitará a realizar una escogencia de esta manera donde también tendrá mucho peso que los algoritmos que sean implementables, de manera relativamente sencilla, en un FPGA conociendo desde un principio las limitantes estáticas del hardware.
 
 \section{Objetivos}
 
@@ -48,7 +48,7 @@ Implementar dos algoritmos de cifrado en un FPGA y realizar un análisis compara
 
 \item Implementar dos algoritmos criptográficos comúnmente empleados en un FPGA utilizando el lenguaje de descripción de hardware Verilog.
 
-\item Realizar un análisis individual para cada uno de los algoritmos individuales, variando alguno de sus parámetros (por ejemplo el tamaño de la llave) para comparar haciendo uso de métricas como la cantidad de compuertas, el consumo de memoria interna del FPGA así como la cantidad de bloques aritméticos o de DSP que se van a ir utilizando conforme se varíe el parámetro del algoritmo elegido.
+\item Realizar un análisis individual para cada uno de los algoritmos, variando alguno de sus parámetros (por ejemplo el tamaño de la llave) para comparar haciendo uso de métricas como la cantidad de compuertas, el consumo de memoria interna del FPGA así como la cantidad de bloques aritméticos o de DSP que se van a ir utilizando conforme se varíe el parámetro del algoritmo elegido.
 
 \item Realizar un análisis comparativo de los dos algoritmos implementados, utilizando como métricas la cantidad de compuertas o celdas, el consumo de memoria interna del FPGA así como la cantidad de bloques aritméticos o de DSP que son usados por cada algoritmo.
 
