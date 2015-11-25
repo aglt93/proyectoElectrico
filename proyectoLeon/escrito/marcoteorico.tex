@@ -1,6 +1,6 @@
 \chapter{Marco Teórico}
 
-Este capítulo va a poner en contexto al lector con respecto a conceptos básicos de criptografía, definir y explicar los algoritmos que van a ser implementados en el FPGA, y realizar una breve explicación sobre características de un FPGA para explicar el porqué de la escogencia de los parámetros que van a ser analizadas.
+Este capítulo va a poner en contexto al lector con respecto a los conceptos básicos de criptografía, va a definir y explicar los algoritmos que van a ser implementados en el FPGA. Además va a realizar una breve explicación sobre características de un FPGA para explicar el porqué de la escogencia de los parámetros que van a ser analizadas.
 
 \section{Conceptos Básicos}
 Según la \cite{raeCriptografia} la criptografía se define como
@@ -15,7 +15,7 @@ Según la \cite{raeCriptografia} la criptografía se define como
 \end{center}
 El mensaje que se desea transmitir es llamado \textit{texto plano} o simplemente \textit{mensaje}. Este mensaje pasa por un proceso donde se disfraza el texto plano en un \textit{texto cifrado}, el proceso se denomina \textit{cifrado}\footnote{Según el ISO 7498-2 los términos correctos para encriptar y desencriptar son cifrar y descifrar respectivamente.}. El proceso inverso donde se toma un texto cifrado en un texto plano se denomina \textit{descifrado} \citep{bruce}. 
 
-El texto plano o mensaje se denota por la letra M o P, el texto cifrado se denota por la letra C, la función o algoritmo que cifra se denota por E y la que descrifa se denota por D. Un algoritmo criptográfico corresponde a la función matemática para cifrar y descrifrar.
+El texto plano o mensaje se denota por la letra M, el texto cifrado se denota por la letra C, la función o algoritmo que cifra se denota por E y la que descrifa se denota por D. Un algoritmo criptográfico corresponde a la función matemática para cifrar y descrifrar.
 \newline
 Se muestra en las Ecuaciones \eqref{eqCifrado} y \eqref{eqDescifrado} las relaciones entre estas notaciones. Note como al aplicarle la función de cifrado al texto plano se obtiene el texto cifrado y como al aplicarle la función de descifrado al texto cifrado se obtiene el texto plano. Finalmente se debe cumplir la identidad que describe la Ecuación \eqref{eqCifraDescifra} \citep{bruce}.
 \begin{equation} \label{eqCifrado}
@@ -376,7 +376,7 @@ Como se puede observar los FPGAs son de gran importancia y por eso el objetivo d
 
 
 
-\section{Escogencia de los algoritmos a implementar}
+\section{Escogencia de los algoritmos criptográficos a implementar}
 En un principio el objetivo de este proyecto era realizar una comparación con las métricas descritas en la Introducción sobre un algoritmo simétrico y un algoritmo de llave pública, posterior a la realización del marco teórico se llegó a la conclusión de que realizar este análisis no iba a ser para nada justo debido a tres razones:
 
 \begin{itemize}
