@@ -44,6 +44,7 @@ void decrypt (uint32_t* v, uint32_t* k) {
 	
 	for (i=0; i<roundNumber; i++) {
 		v1 -= ((v0<<4) + k2) ^ (v0 + sum) ^ ((v0>>5) + k3);
+		printf("%x\n", v1);
 		v0 -= ((v1<<4) + k0) ^ (v1 + sum) ^ ((v1>>5) + k1);
 		sum	-= delta;
 	}
