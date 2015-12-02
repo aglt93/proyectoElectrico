@@ -4,7 +4,7 @@
 
 module testbench;
 
-	parameter WORD_SIZE = 8;
+	parameter WORD_SIZE = 32;
 	parameter DELTA = 32'h9e3779b9;
 	parameter ROUND_NUMBER = 32;
 	////////////////////////////////////
@@ -22,12 +22,12 @@ module testbench;
 	wire [WORD_SIZE-1:0] A_decipher;
 	wire [WORD_SIZE-1:0] B_decipher;
 	//
+	wire [WORD_SIZE-1:0] A_cipher;
+	wire [WORD_SIZE-1:0] B_cipher;
+	//
 	reg start;
 	reg start2;
 	wire done;
-	wire [1:0] oKey_address;
-	reg [WORD_SIZE-1:0] iKey_sub_i;
-
 	/////////////////////////////////////////
 	dut
 	#(
@@ -43,40 +43,17 @@ module testbench;
 		.iStartDecipher(start),
 		.iV0(A),
 		.iV1(B),
-		.iKey_sub_i(iKey_sub_i),
-		.oKey_address(oKey_address),
-		.oC0(A_decipher),
-		.oC1(B_decipher),
-		.oDone(done1)
+		.iK0(key0),
+		.iK1(key1),
+		.iK2(key2),
+		.iK3(key3),
+		.oC0(A_cipher),
+		.oC1(B_cipher),
+		.oV0(A_decipher),
+		.oV1(B_decipher),
+		.oDoneCipher(done1),
+		.oDoneDecipher(done2)
 	);
-
-
-	always @(oKey_address) begin
-
-		iKey_sub_i = 0;
-
-		case(oKey_address)
-
-			0: begin
-				iKey_sub_i = key0;
-			end
-
-			1: begin
-				iKey_sub_i = key1;
-			end
-
-			2: begin
-				iKey_sub_i = key2;
-			end
-
-			3: begin
-				iKey_sub_i = key3;
-			end
-
-
-		endcase
-
-	end
 
 	initial begin
 
@@ -102,13 +79,12 @@ module testbench;
 
 		#4000
 		$display("Plain text = %X",{A,B});
-		A = A_decipher;
-		B = B_decipher;
+		A = A_cipher;
+		B = B_cipher;
 		#10
 		
-		$display("Cipher text = %X",{A_decipher,B_decipher});
-		start2 = 0;
-		#100
+		$display("Cipher text = %X",{tea.cifrar.oC1,tea.cifrar.oC0});
+		
 		start=1;
 
 		#4000

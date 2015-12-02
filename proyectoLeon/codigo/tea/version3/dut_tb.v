@@ -4,7 +4,7 @@
 
 module testbench;
 
-	parameter WORD_SIZE = 8;
+	parameter WORD_SIZE = 32;
 	parameter DELTA = 32'h9e3779b9;
 	parameter ROUND_NUMBER = 32;
 	////////////////////////////////////

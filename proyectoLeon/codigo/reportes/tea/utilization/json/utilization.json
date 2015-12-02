@@ -1,0 +1,56 @@
+{
+    "16_32i": {
+        "DSPs": "0",
+        "LUT as Logic": "403",
+        "LUT as Memory": "0",
+        "SLICEL": "83",
+        "SLICEM": "44",
+        "Slice Registers": "319"
+    },
+    "32_32i": {
+        "DSPs": "0",
+        "LUT as Logic": "740",
+        "LUT as Memory": "0",
+        "SLICEL": "153",
+        "SLICEM": "100",
+        "Slice Registers": "607"
+    },
+    "64_32s": {
+        "DSPs": "0",
+        "LUT as Logic": "771",
+        "LUT as Memory": "0",
+        "Slice Registers": "607"
+    },
+    "8_32i": {
+        "DSPs": "0",
+        "LUT as Logic": "228",
+        "LUT as Memory": "0",
+        "SLICEL": "54",
+        "SLICEM": "21",
+        "Slice Registers": "175"
+    },
+    "rc5_8": {
+        "DSPs": "0",
+        "LUT as Logic": "337",
+        "LUT as Memory": "16",
+        "SLICEL": "73",
+        "SLICEM": "39",
+        "Slice Registers": "255"
+    },
+    "rc5_16": {
+        "DSPs": "0",
+        "LUT as Logic": "619",
+        "LUT as Memory": "32",
+        "SLICEL": "119",
+        "SLICEM": "79",
+        "Slice Registers": "398"
+    },
+    "rc5_32": {
+        "DSPs": "0",
+        "LUT as Logic": "993",
+        "LUT as Memory": "0",
+        "SLICEL": "195",
+        "SLICEM": "143",
+        "Slice Registers": "589"
+    },
+}

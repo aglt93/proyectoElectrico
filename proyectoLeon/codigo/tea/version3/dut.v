@@ -1,4 +1,4 @@
-`define WORD_SIZE 64
+`define WORD_SIZE 32
 `define DELTA 32'h9e3779b9
 `define ROUND_NUMBER 32
 `define NO_XILLINX
@@ -47,8 +47,6 @@ wire [WORD_SIZE-1:0] oC1_cipher;
 wire [WORD_SIZE-1:0] oC0_decipher;
 wire [WORD_SIZE-1:0] oC1_decipher;
 
-
-// Logica para el seleccionar cifrado o descifrado
 always @(*) begin
 	if(iStartCipher) begin
 		oC0 = oC0_cipher;
