@@ -7,6 +7,11 @@ Apricorn (2015).
   \url{http://www.apricorn.com/software-vs-hardware-encryption/}.
 \newblock [Consulta 1 set. 2015].
 
+\bibitem[David J.~Wheeler, 1994]{tea}
+David J.~Wheeler, R. M.~N. (1994).
+\newblock {\em TEA, a Tiny Encryption Algorithm}.
+\newblock Computer Laboratory, Cambridge University.
+
 \bibitem[Denning, 1982]{denning}
 Denning, D. (1982).
 \newblock {\em Cryptography and Data Security}.

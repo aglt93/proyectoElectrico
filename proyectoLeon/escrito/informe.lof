@@ -11,10 +11,14 @@
 \contentsline {figure}{\numberline {2.8}{\ignorespaces Estructura b\IeC {\'a}sica de un FPGA. \citep {figRandom1}\relax }}{19}
 \contentsline {figure}{\numberline {2.9}{\ignorespaces Estructura b\IeC {\'a}sica de un CLB \citep {xilinx5}.\relax }}{19}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{26}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{27}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados para los bloques \textit {L\_operation} y \textit {S\_operation}.\relax }}{27}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de estados para el bloque \textit {keyMixer}.\relax }}{28}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de estados para el bloque \textit {cipher}.\relax }}{28}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de estados para el bloque \textit {decipher}.\relax }}{29}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{28}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{29}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados para los bloques \textit {L\_operation} y \textit {S\_operation} del algoritmo RC5.\relax }}{29}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de estados para el bloque \textit {keyMixer} del algoritmo RC5.\relax }}{30}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de estados para el bloque \textit {cipher} del algoritmo RC5.\relax }}{30}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de estados para el bloque \textit {decipher} del algoritmo RC5.\relax }}{31}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de bloques del algoritmo de cifrado TEA.\relax }}{32}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de bloques del algoritmo de descifrado TEA.\relax }}{32}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de estados para el bloque \textit {cipher} del algoritmo TEA.\relax }}{32}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de estados para el bloque \textit {decipher} del algoritmo TEA.\relax }}{33}
 \addvspace {10pt}

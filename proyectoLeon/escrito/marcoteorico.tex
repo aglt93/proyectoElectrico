@@ -122,7 +122,7 @@ D_K (C) = M
 Los algoritmos simétricos se dividen en 2 categorías \citep{bruce}:
 
 \begin{itemize}
-\item Cifrado de bloque: Se cifra en bloques de bits ya sea \textit{bytes, words}, etc. Es decir cuando se va a proceder a cifrar un texto plano, se segmenta el texto en grupos de bits y estos son cifrados en conjunto. Se puede tomar como ejemplo el algoritmo \textit{Data Encryption Standart} (DES) el cual cifra sobre bloques de 64 bits. Otros ejemplos son:
+\item Cifrado de bloque: Se cifra en bloques de bits ya sea \textit{bytes, words}, etc. Es decir cuando se va a proceder a cifrar un texto plano, se segmenta el texto en grupos de bits y estos son cifrados en conjunto. Se puede tomar como ejemplo el algoritmo \textit{Data Encryption Standart} (DES) el cual cifra sobre bloques de 64 bits y es uno de los algoritmos simétricos más importantes. Otros ejemplos son:
 \begin{itemize}
 \item Lucifer.
 \item LOKI.
@@ -394,7 +394,7 @@ Las redes Feistel toman un bloque de texto plano de tamaño N (par) y lo dividen
 
 
 
-\section{Descripción de los algoritmos a implementar}
+\section{Descripción de los algoritmos criptográficos a implementar}
 \subsection{RC5}
 El algoritmo criptográfico de llave simétrica RC5 fue creado en 1997 por Ronald Rivest para la \textit{RSA Data Security}. Según \cite{rivest} los objetivos de este algoritmo se basaban en que fuera adaptable tanto para hardware como para software, que tuviera una llave de tamaño variable, que el tamaño de la palabra a cifrar fuera de tamaño variable para que así se ajustara a procesadores de tamaños de palabra diferentes y por último que el número de rondas de cifrado fuera variable (con la finalidad de permitir decidir que tanta seguridad y que tan rápido se cifran los datos).
 
@@ -445,7 +445,7 @@ También es importante destacar que:
 A continuación se muestra el pseudo-código extraído de \cite{rivest} para cifrar y descifrar datos con este algoritmo. 
 \begin{itemize}
 \item Expansión de llave: Corresponde la primer paso antes de poder cifrar o descifrar texto plano. Recibe como entrada una llave de tamaño arbitrario y realiza lo siguiente:
-\begin{lstlisting}[mathescape]
+\begin{lstlisting}[caption=Pseudo-código del paso de expansión de llave en el algoritmo RC5 \citep{rivest}., label=lstKeyExpansionRC5, mathescape]
 for i = b - 1 downto 0 do
 	L [i/u] = (L[i/u] <<< 8) + K[i]
 	
@@ -466,7 +466,7 @@ do 3*max(t,c) times:
 Esto lo realiza para transformar la llave de bytes a palabras que se guardan en el arreglo S para que cada palabra de este arreglo se utilice para cifrar o descifrar el texto plano.
 
 \item Cifrado: se realiza sobre los bloques de texto plano A y B simultáneamente, se realizan operaciones XOR y rotaciones entre el texto plano y palabras del arreglo S:
-\begin{lstlisting}[mathescape]
+\begin{lstlisting}[caption=Pseudo-código del paso de cifrado en el algoritmo RC5 \citep{rivest}., label=lstCipherRC5, mathescape]
 A = A + S[0];
 B = B + S[1];
 
@@ -477,7 +477,7 @@ for i = 1 to r do
 
 
 \item Descifrado: se realiza sobre los bloques cifrados A y B simultáneamente y se aplica las operaciones inversas a las del cifrado:
-\begin{lstlisting}[mathescape]
+\begin{lstlisting}[caption=Pseudo-código del paso de descifrado en el algoritmo RC5 \citep{rivest}., label={lstDecipherRC5}, mathescape]
 for i = r downto 1 do
 	B = ((B - S[2i + 1]) >>> A) $\oplus$ A;
 	A = ((A - S[2i]) >>> B) $\oplus$ B;
@@ -491,14 +491,77 @@ A = A - S[0];
 
 
 \subsection{TEA}
+El algoritmo \textit{Tiny Encryption Algorithm} fue creado en 1994 por David Wheeler y Roger Needham con el objetivo de ser seguro, fácil de implementar y con un desempeño razonable \citep{tea}. El algoritmo es muy vérsatil ya que se puede implementar en una gran variedad de lenguajes de programación y no cuenta con tablas de reemplazo o expansión de llaves las cuales complican la implementación del algoritmo. Un ejemplo de esto es el algoritmo RC5 donde el paso de expansión de llave del algoritmo consume una gran cantidad de recursos y de tiempo de procesamiento.
+
+Según \cite{tea} este tipo de algoritmo puede reemplazar al DES el cual es más complejo de implementar (debido a que tiene tablas de sustitución y expansión de llave) con la particularidad de que se puede aumentar la seguridad aumentando la cantidad de rondas de cifrado donde difiere con el DES que cuenta con un número de rondas fijo (16).
+
+\subsubsection{Terminología del algoritmo}
+A continuación se definen las variables que se utilizan para describir el algoritmo:
+\begin{itemize}
+\item V (v0 y v1): Corresponde a un arreglo de 2 palabras de 32 bits que contiene el texto plano a cifrar.
+
+\item K (k0, k1, k2, k3): Corresponde a un arreglo de 4 palabras de 32 bits que conforman la llave de cifrado y descifrado.
+
+\item N: Corresponde al número de rondas para cifrar y descifrar.
+
+\item \textit{delta}: Corresponde al valor $(\sqrt{5}-1)2^N$ que es un número derivado del \textit{golden ratio} y se utiliza como parte del cifrado y descifrado.
+
+\item \textit{sum, \{y,z\}}: Valor temporal de la sumatoria de delta y valores temporales del texto cifrado.
+\end{itemize}
+
+
+\subsubsection{Pasos del algoritmo}
+El algoritmo al no contar con algún tipo de operación especial sobre la llave realiza únicamente los pasos de cifrado y descifrado, su implementación en C se muestra en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA} respectivamente.
+
+\begin{lstlisting}[caption=Código en C del paso de cifrado en el algoritmo TEA \citep{tea}., label={lstCipherTEA}, mathescape]
+void code(long* v, long* k) {
+	unsigned long y=v[0],z=v[1], sum=0,
+	
+	/* set up */
+	delta=0x9e3779b9,
+
+	/* a key schedule constant */
+	n=32;
+	while (n-->0) {
+		/* basic cycle start */
+		sum += delta;
+		y += ((z<<4)+k[0]) ^ (z+sum) ^ ((z>>5)+k[1]);
+		z += ((y<<4)+k[2]) ^ (y+sum) ^ ((y>>5)+k[3]);
+	}
+	/* end cycle */
+	
+	v[0]=y; v[1]=z; 
+}
+\end{lstlisting}
 
 
 
+\begin{lstlisting}[caption=Código en C del paso de descifrado en el algoritmo TEA \citep{tea}, label={lstDecipherTEA}, mathescape]
+void decode(long* v,long* k) {
 
-\chapter{Implementación de los algoritmos}
+	unsigned long n=32, sum, y=v[0], z=v[1],
+	delta=0x9e3779b9;
+	sum=delta<<5;
 
-\section{Implementación algoritmo RC5}
-La implementación se basó en el siguiente análisis:
+	/* start cycle */
+	while (n-->0) {
+		z-= ((y<<4)+k[2]) ^ (y+sum) ^ ((y>>5)+k[3]);
+		y-= ((z<<4)+k[0]) ^ (z+sum) ^ ((z>>5)+k[1]);
+		sum-=delta; 
+	}
+	/* end cycle */
+	
+	v[0]=y; v[1]=z; 
+
+}
+\end{lstlisting}
+
+
+
+\chapter{Implementación de los algoritmos criptográficos}
+
+\section{Implementación del algoritmo RC5}
+La implementación de este algoritmo se basó en el siguiente análisis:
 \begin{itemize}
 \item Se tienen parámetros variables y el objetivo del proyecto es poder analizar como la variación de los mismos impacta en la utilización de recursos del FPGA. Por tanto la manera más óptima de generar código en Verilog es que el código sea parametrizable.
 
@@ -524,7 +587,7 @@ Tomando esto en consideración se optó por implementar máquinas de estado fini
 A partir de esto podemos concluir que:
 \begin{itemize}
 \item Los arreglos L, S y el arreglo de K[0] a K[b-1] corresponden a memorias RAM.
-\item Cada uno de los \textit{for} que muestran en el pseudo-código corresponde a una máquina de estados la cual está controlada por un contador para manejar la cantidad de iteraciones.
+\item Cada uno de los \textit{for} que muestran en el pseudo-código de los Listados \ref{lstKeyExpansionRC5}, \ref{lstCipherRC5} y \ref{lstDecipherRC5} corresponde a una máquina de estados la cual está controlada por un contador para manejar la cantidad de iteraciones.
 \end{itemize}
 Finalmente a partir de todos estos razonamientos se obtuvieron los diagramas de bloques para el cifrado y descifrado que se muestran en las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram} respectivamente.
 
@@ -542,30 +605,30 @@ Finalmente a partir de todos estos razonamientos se obtuvieron los diagramas de 
 \end{figure}
 
 
-Cada bloque representa un ROM o RAM donde esté indicado y los demás corresponden a máquinas de estados finitas. El diagrama de estados para los bloques \textit{L\_operation, S\_operation} se muestra en la Figura \ref{figSL_operationFSM}. Note que ambos bloques comparten el diagrama de estados pero realizan diferentes operaciones. Para los bloques \textit{keyMixer, cipher y decipher} los diagramas de estados se muestran en las Figuras \ref{figKeyMixerFSM}, \ref{figCipherFSM} y \ref{figDecipherBlockDiagram} respectivamente.
+Cada bloque representa un ROM o RAM donde esté indicado y los demás corresponden a máquinas de estados finitas. El diagrama de estados para los bloques \textit{L\_operation, S\_operation} se muestra en la Figura \ref{figSL_operationFSM}. Note que ambos bloques comparten el diagrama de estados pero realizan diferentes operaciones. Para los bloques \textit{keyMixer, cipher y decipher} los diagramas de estados se muestran en las Figuras \ref{figKeyMixerFSM}, \ref{figCipherFSM} y \ref{figDecipherFSM} respectivamente.
 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{./images/figSL_operationFSM}
-	\caption{Diagrama de estados para los bloques \textit{L\_operation} y \textit{S\_operation}.}
+	\caption{Diagrama de estados para los bloques \textit{L\_operation} y \textit{S\_operation} del algoritmo RC5.}
 	\label{figSL_operationFSM}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.85\textwidth]{./images/figKeyMixerFSM}
-	\caption{Diagrama de estados para el bloque \textit{keyMixer}.}
+	\caption{Diagrama de estados para el bloque \textit{keyMixer} del algoritmo RC5.}
 	\label{figKeyMixerFSM}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.85\textwidth]{./images/figCipherFSM}
-	\caption{Diagrama de estados para el bloque \textit{cipher}.}
+	\caption{Diagrama de estados para el bloque \textit{cipher} del algoritmo RC5.}
 	\label{figCipherFSM}
 \end{figure}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.85\textwidth]{./images/figDecipherFSM}
-	\caption{Diagrama de estados para el bloque \textit{decipher}.}
+	\caption{Diagrama de estados para el bloque \textit{decipher} del algoritmo RC5.}
 	\label{figDecipherFSM}
 \end{figure}
 
@@ -573,10 +636,59 @@ Un punto importante a aclarar es que el \textit{keyROM} de las Figuras \ref{figC
 
 
 \section{Implementación del algoritmo TEA}
-\blindtext
-\cleardoublepage
+La implementación del algoritmo se basó en el siguiente análisis:
+
+\begin{itemize}
+\item Nuevamente se tienen parámetros variables y el objetivo del proyecto es poder analizar como la variación de los mismos impacta en la utilización de recursos del FPGA. Por tanto la manera más óptima de generar código en Verilog es que el código sea parametrizable.
 
 
+\item Convertir la llave en una memoria RAM como se realizó en el algoritmo RC5 se consideró innecesario. Esto debido a que las operaciones no se realizan por bytes sino por palabras y solo se cuenta con 4 palabras que conforman la llave.
+
+\item Para que la frecuencia de reloj no fuera tan baja y con la meta a futuro de convertir el código en un \textit{pipeline} se tomaron las operaciones dentro de los \textit{while} de los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA} y se segmentaron para que cada ciclo de reloj solo se realice una suma o XOR.
+
+\item Al estar basado en una red Feistel debe ser posible variar el número de rondas. El código en C de los algoritmos en el artículo \citep{tea} no contaba con la variación del número de rondas y se tuvo que analizar que parámetros se debían variar para lograrlo. Según \cite{tea} se debe alterar el valor de \textit{sum} de algoritmo de descifrado (Listado \ref{lstDecipherTEA}) y convertirlo en el valor de \textit{delta} multiplicado por la cantidad de rondas.
+
+
+\item El algoritmo se encuentra orientado a trabajar sobre texto plano de 64 bits (2 palabras de 32 bits, v0 y v1) pero se adaptó para que el algoritmo trabajara sobre palabras de tamaño variable así como de tamaño de llave variable, que depende directamente del tamaño de la palabra. La finalidad de este cambio es poder realizar el análisis variando los diferentes parámetros.
+\end{itemize}
+
+
+A partir de estos análisis se puede concluir que:
+\begin{itemize}
+\item La llave completa se puso como entrada al circuito.
+
+\item La forma más óptima (obviando el pipeline) para describir los algoritmos de cifrado y descifrado es   mediante máquinas de estados finitas.
+\end{itemize}
+
+Con todo lo descrito anteriormente se crearon los diagramas de bloques que se muestran en las Figuras \ref{figCipherBlockDiagramTea} y \ref{figDecipherBlockDiagramTea} para los algoritmos de cifrado y descifrado respectivamente. Además los bloques \textit{cipher} y \textit{decipher} de esas Figuras corresponden a máquinas de estados finitas las cuales tienen los diagramas de estados que se muestran en la Figuras \ref{figCipherTeaFSM} y \ref{figDecipherTeaFSM} respectivamente.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.65\textwidth]{./images/figCipherBlockDiagramTea}
+	\caption{Diagrama de bloques del algoritmo de cifrado TEA.}
+	\label{figCipherBlockDiagramTea}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.65\textwidth]{./images/figDecipherBlockDiagramTea}
+	\caption{Diagrama de bloques del algoritmo de descifrado TEA.}
+	\label{figDecipherBlockDiagramTea}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figCipherTeaFSM}
+	\caption{Diagrama de estados para el bloque \textit{cipher} del algoritmo TEA.}
+	\label{figCipherTeaFSM}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figDecipherTeaFSM}
+	\caption{Diagrama de estados para el bloque \textit{decipher} del algoritmo TEA.}
+	\label{figDecipherTeaFSM}
+\end{figure}
 
 
 

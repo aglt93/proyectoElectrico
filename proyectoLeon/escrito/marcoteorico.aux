@@ -93,40 +93,74 @@
 \newlabel{figEstructuraFPGA}{{\M@TitleReference {2.8}{Estructura b\IeC {\'a}sica de un FPGA. \citep  {figRandom1}\relax }}{19}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.9}{\ignorespaces Estructura b\IeC {\'a}sica de un CLB \citep  {xilinx5}.\relax }}{19}}
 \newlabel{figEstructuraCLB}{{\M@TitleReference {2.9}{Estructura b\IeC {\'a}sica de un CLB \citep  {xilinx5}.\relax }}{19}}
-\@writefile{toc}{\contentsline {section}{\numberline {2.6}Escogencia de los algoritmos a implementar}{20}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.6}Escogencia de los algoritmos criptogr\IeC {\'a}ficos a implementar}{20}}
 \citation{rivest}
-\@writefile{toc}{\contentsline {section}{\numberline {2.7}Descripci\IeC {\'o}n de los algoritmos a implementar}{21}}
+\@writefile{toc}{\contentsline {section}{\numberline {2.7}Descripci\IeC {\'o}n de los algoritmos criptogr\IeC {\'a}ficos a implementar}{21}}
 \@writefile{toc}{\contentsline {subsection}{RC5}{21}}
-\@writefile{toc}{\contentsline {subsubsection}{Terminolog\IeC {\'\i }a del algoritmo}{21}}
+\citation{rivest}
+\citation{rivest}
+\@writefile{toc}{\contentsline {subsubsection}{Terminolog\IeC {\'\i }a del algoritmo}{22}}
+\citation{rivest}
+\citation{rivest}
 \citation{rivest}
 \citation{rivest}
 \citation{rivest}
 \@writefile{toc}{\contentsline {subsubsection}{Pasos del algoritmo}{23}}
+\newlabel{lstKeyExpansionRC5}{{\M@TitleReference {2.1}{Pasos del algoritmo}}{23}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.1}Pseudo-c\IeC {\'o}digo del paso de expansi\IeC {\'o}n de llave en el algoritmo RC5 \citep  {rivest}.}{23}}
+\newlabel{lstCipherRC5}{{\M@TitleReference {2.2}{Pasos del algoritmo}}{23}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.2}Pseudo-c\IeC {\'o}digo del paso de cifrado en el algoritmo RC5 \citep  {rivest}.}{23}}
+\citation{rivest}
+\citation{rivest}
+\citation{tea}
+\citation{tea}
+\newlabel{lstDecipherRC5}{{\M@TitleReference {2.3}{Pasos del algoritmo}}{24}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.3}Pseudo-c\IeC {\'o}digo del paso de descifrado en el algoritmo RC5 \citep  {rivest}.}{24}}
 \@writefile{toc}{\contentsline {subsection}{TEA}{24}}
+\@writefile{toc}{\contentsline {subsubsection}{Terminolog\IeC {\'\i }a del algoritmo}{24}}
+\citation{tea}
+\citation{tea}
+\citation{tea}
+\citation{tea}
+\@writefile{toc}{\contentsline {subsubsection}{Pasos del algoritmo}{25}}
+\newlabel{lstCipherTEA}{{\M@TitleReference {2.4}{Pasos del algoritmo}}{25}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.4}C\IeC {\'o}digo en C del paso de cifrado en el algoritmo TEA \citep  {tea}.}{25}}
+\newlabel{lstDecipherTEA}{{\M@TitleReference {2.5}{Pasos del algoritmo}}{25}}
+\@writefile{lol}{\contentsline {lstlisting}{\numberline {2.5}C\IeC {\'o}digo en C del paso de descifrado en el algoritmo TEA \citep  {tea}}{25}}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
-\@writefile{toc}{\contentsline {chapter}{\chapternumberline {3}Implementaci\IeC {\'o}n de los algoritmos}{25}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.1}Implementaci\IeC {\'o}n algoritmo RC5}{25}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{26}}
-\newlabel{figCipherBlockDiagram}{{\M@TitleReference {3.1}{Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{26}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{27}}
-\newlabel{figDecipherBlockDiagram}{{\M@TitleReference {3.2}{Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados para los bloques \textit  {L\_operation} y \textit  {S\_operation}.\relax }}{27}}
-\newlabel{figSL_operationFSM}{{\M@TitleReference {3.3}{Diagrama de estados para los bloques \textit  {L\_operation} y \textit  {S\_operation}.\relax }}{27}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de estados para el bloque \textit  {keyMixer}.\relax }}{28}}
-\newlabel{figKeyMixerFSM}{{\M@TitleReference {3.4}{Diagrama de estados para el bloque \textit  {keyMixer}.\relax }}{28}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de estados para el bloque \textit  {cipher}.\relax }}{28}}
-\newlabel{figCipherFSM}{{\M@TitleReference {3.5}{Diagrama de estados para el bloque \textit  {cipher}.\relax }}{28}}
-\@writefile{toc}{\contentsline {section}{\numberline {3.2}Implementaci\IeC {\'o}n del algoritmo TEA}{28}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de estados para el bloque \textit  {decipher}.\relax }}{29}}
-\newlabel{figDecipherFSM}{{\M@TitleReference {3.6}{Diagrama de estados para el bloque \textit  {decipher}.\relax }}{29}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {3}Implementaci\IeC {\'o}n de los algoritmos criptogr\IeC {\'a}ficos}{27}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.1}Implementaci\IeC {\'o}n del algoritmo RC5}{27}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{28}}
+\newlabel{figCipherBlockDiagram}{{\M@TitleReference {3.1}{Diagrama de bloques del algoritmo de cifrado RC5.\relax }}{28}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{29}}
+\newlabel{figDecipherBlockDiagram}{{\M@TitleReference {3.2}{Diagrama de bloques del algoritmo de descifrado RC5.\relax }}{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.3}{\ignorespaces Diagrama de estados para los bloques \textit  {L\_operation} y \textit  {S\_operation} del algoritmo RC5.\relax }}{29}}
+\newlabel{figSL_operationFSM}{{\M@TitleReference {3.3}{Diagrama de estados para los bloques \textit  {L\_operation} y \textit  {S\_operation} del algoritmo RC5.\relax }}{29}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.4}{\ignorespaces Diagrama de estados para el bloque \textit  {keyMixer} del algoritmo RC5.\relax }}{30}}
+\newlabel{figKeyMixerFSM}{{\M@TitleReference {3.4}{Diagrama de estados para el bloque \textit  {keyMixer} del algoritmo RC5.\relax }}{30}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.5}{\ignorespaces Diagrama de estados para el bloque \textit  {cipher} del algoritmo RC5.\relax }}{30}}
+\newlabel{figCipherFSM}{{\M@TitleReference {3.5}{Diagrama de estados para el bloque \textit  {cipher} del algoritmo RC5.\relax }}{30}}
+\@writefile{toc}{\contentsline {section}{\numberline {3.2}Implementaci\IeC {\'o}n del algoritmo TEA}{30}}
+\citation{tea}
+\citation{tea}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces Diagrama de estados para el bloque \textit  {decipher} del algoritmo RC5.\relax }}{31}}
+\newlabel{figDecipherFSM}{{\M@TitleReference {3.6}{Diagrama de estados para el bloque \textit  {decipher} del algoritmo RC5.\relax }}{31}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces Diagrama de bloques del algoritmo de cifrado TEA.\relax }}{32}}
+\newlabel{figCipherBlockDiagramTea}{{\M@TitleReference {3.7}{Diagrama de bloques del algoritmo de cifrado TEA.\relax }}{32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.8}{\ignorespaces Diagrama de bloques del algoritmo de descifrado TEA.\relax }}{32}}
+\newlabel{figDecipherBlockDiagramTea}{{\M@TitleReference {3.8}{Diagrama de bloques del algoritmo de descifrado TEA.\relax }}{32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de estados para el bloque \textit  {cipher} del algoritmo TEA.\relax }}{32}}
+\newlabel{figCipherTeaFSM}{{\M@TitleReference {3.9}{Diagrama de estados para el bloque \textit  {cipher} del algoritmo TEA.\relax }}{32}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de estados para el bloque \textit  {decipher} del algoritmo TEA.\relax }}{33}}
+\newlabel{figDecipherTeaFSM}{{\M@TitleReference {3.10}{Diagrama de estados para el bloque \textit  {decipher} del algoritmo TEA.\relax }}{33}}
 \@writefile{lof}{\addvspace {10pt}}
 \@writefile{lot}{\addvspace {10pt}}
-\@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Resultados y an\IeC {\'a}lisis}{31}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo RC5}{31}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{33}}
+\@writefile{toc}{\contentsline {chapter}{\chapternumberline {4}Resultados y an\IeC {\'a}lisis}{35}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo RC5}{35}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{37}}
 \@setckpt{marcoteorico}{
-\setcounter{page}{35}
+\setcounter{page}{39}
 \setcounter{equation}{0}
 \setcounter{enumi}{5}
 \setcounter{enumii}{0}
@@ -173,9 +207,9 @@
 \setcounter{cmsm@mctr}{0}
 \setcounter{bsm@mctr}{0}
 \setcounter{workm@mctr}{0}
-\setcounter{sheetsequence}{49}
-\setcounter{lastsheet}{50}
-\setcounter{lastpage}{36}
+\setcounter{sheetsequence}{53}
+\setcounter{lastsheet}{54}
+\setcounter{lastpage}{40}
 \setcounter{figure}{0}
 \setcounter{lofdepth}{1}
 \setcounter{table}{0}
@@ -183,7 +217,7 @@
 \setcounter{parentequation}{0}
 \setcounter{NAT@ctr}{0}
 \setcounter{SC@C}{0}
-\setcounter{lstnumber}{7}
+\setcounter{lstnumber}{18}
 \setcounter{ContinuedFloat}{0}
 \setcounter{subfigure}{0}
 \setcounter{subtable}{0}
