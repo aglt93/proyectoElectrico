@@ -63,6 +63,16 @@ module decipher
 	// COMBINATIONAL LOGIC
 	always@(*) begin
 
+		rAux1_nxt = rAux1;
+		rAux2_nxt = rAux2;
+		rAux3_nxt = rAux3;
+		oC0_nxt = oC0;
+		oC1_nxt = oC1;
+		sum_nxt = sum;
+		rCount_nxt = rCount;
+		oDone_nxt = oDone;
+
+
 		case (state)
 			///////////////////////////
 			`IDLE: begin
@@ -215,17 +225,7 @@ module decipher
 				rCount_nxt = rCount;
 				oDone_nxt = oDone;
 			end
-			/////////////////////////
-			default: begin
-				rAux1_nxt = rAux1;
-				rAux2_nxt = rAux2;
-				rAux3_nxt = rAux3;
-				oC0_nxt = oC0;
-				oC1_nxt = oC1;
-				sum_nxt = sum;
-				rCount_nxt = rCount;
-				oDone_nxt = oDone; 
-			end
+
 		endcase
 	end
 
@@ -238,7 +238,8 @@ module decipher
 		end
 
 		else begin
-		
+			state <= `IDLE;
+
 			case(state)
 				///////////////////////////
 				`IDLE: begin
@@ -304,9 +305,6 @@ module decipher
 					end
 				end
 				//////////////////////////
-				default: begin
-					state <= `IDLE;
-				end
 			endcase
 		end
 	end

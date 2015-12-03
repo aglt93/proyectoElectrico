@@ -1,7 +1,7 @@
 `define WORD_SIZE 32
 `define DELTA 32'h9e3779b9
 `define ROUND_NUMBER 32
-//`define NO_XILLINX
+`define NO_XILLINX
 
 `ifdef NO_XILLINX
 	`include "cipher.v"

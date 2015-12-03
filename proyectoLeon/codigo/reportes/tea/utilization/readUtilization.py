@@ -30,6 +30,10 @@ try:
 				sliceRegisters = [i.strip() for i in line.split('|',6)]
 				utilJson[sliceRegisters[1]]=sliceRegisters[2]
 
+			elif 'Block RAM Tile' in line:
+				ram = [i.strip() for i in line.split('|',6)]
+				utilJson[ram[1]]=ram[2]
+
 			elif 'DSPs' in line:
 				dsp = [i.strip() for i in line.split('|',6)]
 				utilJson[dsp[1]]=dsp[2]
