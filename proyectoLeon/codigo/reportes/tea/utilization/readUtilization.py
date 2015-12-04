@@ -30,7 +30,7 @@ try:
 				sliceRegisters = [i.strip() for i in line.split('|',6)]
 				utilJson[sliceRegisters[1]]=sliceRegisters[2]
 
-			elif 'Block RAM Tile' in line:
+			elif '| Block RAM Tile' in line:
 				ram = [i.strip() for i in line.split('|',6)]
 				utilJson[ram[1]]=ram[2]
 
@@ -40,7 +40,7 @@ try:
 
 except Exception as e:
 	print "Not able to parse file " + fileName + " because " + str(e)
-	
+
 #############################################################################################################
 try:
 	util = json.load(open("json/utilization.json",'r'))

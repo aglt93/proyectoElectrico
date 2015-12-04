@@ -1,56 +1,47 @@
 {
-    "16_32i": {
+    "128_32.txt": {
+        "Block RAM Tile": "0",
         "DSPs": "0",
-        "LUT as Logic": "403",
+        "LUT as Logic": "2841",
         "LUT as Memory": "0",
-        "SLICEL": "83",
-        "SLICEM": "44",
-        "Slice Registers": "319"
+        "SLICEL": "439",
+        "SLICEM": "357",
+        "Slice Registers": "2456"
     },
-    "32_32i": {
+    "16_32.txt": {
+        "Block RAM Tile": "0",
         "DSPs": "0",
-        "LUT as Logic": "740",
+        "LUT as Logic": "383",
         "LUT as Memory": "0",
-        "SLICEL": "153",
-        "SLICEM": "100",
-        "Slice Registers": "607"
+        "SLICEL": "74",
+        "SLICEM": "38",
+        "Slice Registers": "328"
     },
-    "64_32s": {
+    "32_32.txt": {
+        "Block RAM Tile": "0",
         "DSPs": "0",
-        "LUT as Logic": "771",
+        "LUT as Logic": "737",
         "LUT as Memory": "0",
-        "Slice Registers": "607"
+        "SLICEL": "133",
+        "SLICEM": "90",
+        "Slice Registers": "632"
     },
-    "8_32i": {
+    "64_32.txt": {
+        "Block RAM Tile": "0",
         "DSPs": "0",
-        "LUT as Logic": "228",
+        "LUT as Logic": "1439",
         "LUT as Memory": "0",
-        "SLICEL": "54",
-        "SLICEM": "21",
-        "Slice Registers": "175"
+        "SLICEL": "243",
+        "SLICEM": "179",
+        "Slice Registers": "1240"
     },
-    "rc5_8": {
+    "8_32.txt": {
+        "Block RAM Tile": "0",
         "DSPs": "0",
-        "LUT as Logic": "337",
-        "LUT as Memory": "16",
-        "SLICEL": "73",
-        "SLICEM": "39",
-        "Slice Registers": "255"
-    },
-    "rc5_16": {
-        "DSPs": "0",
-        "LUT as Logic": "619",
-        "LUT as Memory": "32",
-        "SLICEL": "119",
-        "SLICEM": "79",
-        "Slice Registers": "398"
-    },
-    "rc5_32": {
-        "DSPs": "0",
-        "LUT as Logic": "993",
+        "LUT as Logic": "217",
         "LUT as Memory": "0",
-        "SLICEL": "195",
-        "SLICEM": "143",
-        "Slice Registers": "589"
-    },
+        "SLICEL": "45",
+        "SLICEM": "27",
+        "Slice Registers": "176"
+    }
 }
