@@ -5,3 +5,5 @@
 \contentsline {table}{\numberline {2.2}{\ignorespaces Ventajas y beneficios de dise\IeC {\~n}ar con ASICs \citep {xilinx3}.\relax }}{17}
 \addvspace {10pt}
 \addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA.\relax }}{36}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA normalizados.\relax }}{37}

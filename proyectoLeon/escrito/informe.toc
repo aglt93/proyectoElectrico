@@ -34,6 +34,5 @@
 \contentsline {section}{\numberline {3.1}Implementaci\IeC {\'o}n del algoritmo RC5}{27}
 \contentsline {section}{\numberline {3.2}Implementaci\IeC {\'o}n del algoritmo TEA}{30}
 \contentsline {chapter}{\chapternumberline {4}Resultados y an\IeC {\'a}lisis}{35}
-\contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo RC5}{35}
-\contentsline {section}{\numberline {4.2}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{37}
-\contentsline {chapter}{Bibliograf\'{\i }a}{39}
+\contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{36}
+\contentsline {chapter}{Bibliograf\'{\i }a}{41}

@@ -22,3 +22,7 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de estados para el bloque \textit {cipher} del algoritmo TEA.\relax }}{32}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de estados para el bloque \textit {decipher} del algoritmo TEA.\relax }}{33}
 \addvspace {10pt}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de \textit {slice L} y \textit {slice M} contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{39}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de \textit {slice registers} y LUTs contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{39}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de la frecuencia m\IeC {\'a}xima contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{40}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima (normalizados respecto al valor m\IeC {\'\i }nimo) del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{40}
