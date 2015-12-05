@@ -1,6 +1,6 @@
 \select@language {spanish}
 \contentsline {chapter}{\'{I}ndice de figuras}{xii}
-\contentsline {chapter}{\IeC {\'I}ndice de tablas}{xiii}
+\contentsline {chapter}{\IeC {\'I}ndice de tablas}{xiv}
 \contentsline {chapter}{\chapternumberline {1}Introducci\IeC {\'o}n}{1}
 \contentsline {section}{\numberline {1.1}Justificaci\IeC {\'o}n}{1}
 \contentsline {section}{\numberline {1.2}Alcances y limitaciones del proyecto}{2}
@@ -35,4 +35,4 @@
 \contentsline {section}{\numberline {3.2}Implementaci\IeC {\'o}n del algoritmo TEA}{30}
 \contentsline {chapter}{\chapternumberline {4}Resultados y an\IeC {\'a}lisis}{35}
 \contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{36}
-\contentsline {chapter}{Bibliograf\'{\i }a}{41}
+\contentsline {chapter}{Bibliograf\'{\i }a}{45}

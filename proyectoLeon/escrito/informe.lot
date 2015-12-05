@@ -5,5 +5,7 @@
 \contentsline {table}{\numberline {2.2}{\ignorespaces Ventajas y beneficios de dise\IeC {\~n}ar con ASICs \citep {xilinx3}.\relax }}{17}
 \addvspace {10pt}
 \addvspace {10pt}
-\contentsline {table}{\numberline {4.1}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA.\relax }}{36}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA normalizados.\relax }}{37}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Recursos disponible para el FPGA Kintex-7 xc7k70tfbv676-1 de Xillinx.\relax }}{35}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Resultados de simulaci\IeC {\'o}n del TEA para diferentes tama\IeC {\~n}os de palabra.\relax }}{37}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA.\relax }}{37}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA normalizados.\relax }}{38}

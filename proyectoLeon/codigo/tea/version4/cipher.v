@@ -46,13 +46,13 @@ module cipher
 	reg [WORD_SIZE-1:0] rAux1;
 	reg [WORD_SIZE-1:0] rAux2;
 	reg [WORD_SIZE-1:0] rAux3;
-	reg [WORD_SIZE-1:0] sum;
+	reg [31:0] sum;
 	reg [ROUND_NUMBER_BITS-1:0] rCount;
 	//
 	reg [WORD_SIZE-1:0] rAux1_nxt;
 	reg [WORD_SIZE-1:0] rAux2_nxt;
 	reg [WORD_SIZE-1:0] rAux3_nxt;
-	reg [WORD_SIZE-1:0] sum_nxt;
+	reg [31:0] sum_nxt;
 	reg [ROUND_NUMBER_BITS-1:0] rCount_nxt;
 	//
 	reg [WORD_SIZE-1:0] oC0_nxt;

@@ -1,12 +1,15 @@
 `timescale 1ns/10ps
-
 `include "dut.v"
+
+`define WORD_SIZE 128
+`define DELTA 32'h9e3779b9
+`define ROUND_NUMBER 32
 
 module testbench;
 
-	parameter WORD_SIZE = 32;
-	parameter DELTA = 32'h9e3779b9;
-	parameter ROUND_NUMBER = 32;
+	parameter WORD_SIZE = `WORD_SIZE;
+	parameter DELTA = `DELTA;
+	parameter ROUND_NUMBER = `ROUND_NUMBER;
 	////////////////////////////////////
 	reg clk;
 	reg rst;
@@ -55,6 +58,19 @@ module testbench;
 		.oDoneDecipher(done2)
 	);
 
+	// Task para randomizar los valores de entrada.
+	task random; 
+	begin
+		key0 = $random;
+		key1 = $random;
+		key2 = $random;
+		key3 = $random;
+		B = 128'h9a34483d3b1a68a41235130bf207ee95;
+		A = 128'h3ca67c8e158908776dcc3a7b41cb88e6;
+	end
+	endtask
+
+	////////////////////////////////////////////
 	initial begin
 
 		$dumpfile("dut.vcd");
@@ -63,6 +79,7 @@ module testbench;
 		rst = 0;
 		start=0;
 		start2=0;
+		/*
 		key0 = 32'h132acf42;
 		key1 = 32'h234acb45;
 		key2 = 32'h3235acbe;
@@ -70,7 +87,8 @@ module testbench;
 
 		A = 32'h3d45f7a7;
 		B = 32'h235fcb21;
-
+	*/
+		random();
 		#2 rst = 1;
 		#4 rst = 0;
 

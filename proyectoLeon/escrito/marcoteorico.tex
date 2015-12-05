@@ -695,32 +695,102 @@ Con todo lo descrito anteriormente se crearon los diagramas de bloques que se mu
 
 
 \chapter{Resultados y análisis}
-En esta Sección se va a mostrar y analizar los resultados de realizar la implementación de los algoritmos criptográficos RC5 y TEA.
+En esta capítulo se va a mostrar y analizar los resultados de realizar la implementación de los algoritmos criptográficos RC5 y TEA.
 Primero se dan resultados y análisis individuales, para posteriomente realizar el análisis comparativo.
 
-Las síntesis e implementaciones se llevaron a cabo haciendo uso de la herramienta de desarrollo \textit{Vivado Design Suite} de \textit{Xillinx} bajo la licencia gratuita \textit{WEBPack}. Se hizo utilizó como objetivo de implementación la tarjeta  ????? de la familia de FPGAs ?????-7. En la Tabla \ref{tabRecursosTarjeta} se muestran todos los recursos disponibles de la misma. 
+Las síntesis e implementaciones se llevaron a cabo haciendo uso de la herramienta de desarrollo \textit{Vivado Design Suite} de \textit{Xillinx} bajo la licencia gratuita \textit{WEBPack}. Se hizo utilizó como objetivo de implementación la tarjeta xc7k70tfbv676-1 de la familia de FPGAs \textit{Kintex-7}. En la Tabla \ref{tabRecursosFPGA} se muestran todos los recursos disponibles de la misma. 
+
+\begin{table}[htbp]
+  \centering
+  \caption{Recursos disponible para el FPGA Kintex-7 xc7k70tfbv676-1 de Xillinx.}
+    \begin{tabular}{lr}
+    \toprule
+    Componente & Cantidad Disponible\\
+    \midrule
+	Slices & 10250\\
+	Slice LUTs & 41000\\
+	Slice Registers & 82000\\
+	Block RAM & 135\\
+	DSPs & 240\\
+	I/O ports & 300\\
+    \bottomrule
+    \end{tabular}%
+  \label{tabRecursosFPGA}%
+\end{table}%
+
+Para poder obtener las métricas que se analizan se utilizaron los reportes de temporización y utilización que la herramienta ofrece al finalizar el proceso de implementación. Se guardaron estos archivos después de cada sintesís e implementación y se utilizó un \textit{script} de Python para extraer los datos deseados y escribirlos a un archivo CSV (\textit{Comma Separated Values}) para poder abrir el mismo haciendo uso de \textit{Excel} para graficar las diferentes métricas haciendo uso de tablas pivote para un análisis más eficiente.
 
 
-	ACA VA LA TABLA DE RECURSOS DE LA TARJETA
-
-Para poder obtener las métricas que se analizan se utilizaron los reportes de temporización y utilización que la herramienta ofrece al finalizar este proceso. Así se guardaron estos archivos después de cada sintesís e implementación, se utilizó un \textit{script} de Python para extraer los datos deseados y finalmente escribirlos a un archivo CSV (\textit{Comma Separated Values}) para poder abrir el mismo haciendo uso de \textit{Excel} para graficar las diferentes métricas haciendo uso de tablas pivote para un análisis más eficiente.
+Cabe aclarar que aunque en un principio no se iba a tomar en cuenta el análisis de temporización, específicamente la frecuencia máxima de reloj, la misma fue agregada a la lista de métricas a analizar debido a que en la implementación realizada la frecuencia máxima de reloj afecta directamente el tiempo de procesamiento para cifrar y descifrar datos y por tanto es una métrica muy importante a analizar. Agregado a esto se puede destacar el hecho de que igualmente a causa de la implementación el variar la cantidad de rondas que cifran o descifran los datos no afectan de ninguna manera la cantidad de recursos del FPGA y solo afectan el tiempo de procesamiento total de cifrado o descifrado.
 
 
-Cabe aclarar que aunque en un principio no se iba a tomar en cuenta el análisis de temporización, específicamente la frecuencia máxima de reloj, la misma fue agregada a la lista de métricas a analizar debido a que en la implementación realizada la frecuencia máxima de reloj afecta directamente el tiempo de procesamiento para cifrar y descifrar datos y por tanto es una métrica muy importante a analizar. Agregado a esto se puede destacar el hecho de que igualmente a causa de la implementación el variar la cantidad de rondas que cifran los datos no afectan de ninguna manera la cantidad de recursos del FPGA y solo afectan el tiempo de procesamiento total de cifrado y descifrado.
+Otro aspecto importante es que se asumió que los módulos \textit{top} de los algoritmos son módulos que serán parte de un dispositivo más grande (por ejemplo un procesador) y por tanto que ese dispositivo hará uso de tanto los módulos de cifrado y descifrado, así los módulos serán sintetizados e implementados simúltaneamente para cada algoritmo, ya que el análisis de ambos módulos tendrá más valor que el de los módulos por separado. Particularmente para el algoritmo RC5 se hizo que los módulos de cifrado y descifrado compartan el módulo que se encarga de la expansión de llave (\textit{keyExpander} en las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram}) esto con la finalidad de consumir la menor cantidad de recursos y hacer lo más óptimo posible el diseño.
 
 
-Otro aspecto importante es que se asumió que los módulos \textit{top} de los algoritmos son módulos que serán parte de un dispositivo más grande (por ejemplo un procesador) y por tanto que ese dispositivo hará uso de tanto los módulos de cifrado y descifrado, así los módulos serán sintetizados e implementados simúltaneamente para cada algoritmo, ya que el análisis de ambos módulos tendrá más valor que el de los módulos por separado. Particularmente para el algoritmo RC5 se hizo que los módulos de cifrado y descifrado compartan el módulo que se encarga de la expansión de llave \textit{keyExpander} en las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram} esto con la finalidad de consumir la menor cantidad de recursos y hacer lo más óptimo posible el diseño.
-
-
-Un problema al que se enfrentó al implementar los algoritmos en el FPGA es que la cantidad de salidas y entradas del diseño era muy grande para que el mismo fuera implementable en el FPGA. La solución a esto corresponde a un módulo para serializar y deserializar las entradas y salidas pero el mismo no fue implementado ya que no era uno de los objetivos del proyecto, además de que se considero innecesario ya que, como se indicó anteriormente, estos algoritmos formarían parte de un dispositivo más grande que ya contará con este módulo. Así para poder implementar el diseño simplemente se pusieron dos puertos, uno de entrada y otro de salida, ambos de tamaño de la palabra y las señales de control de los módulos.
+Un problema al que se enfrentó al implementar los algoritmos en el FPGA es que la cantidad de salidas y entradas del diseño era muy grande para que el mismo fuera implementable en el FPGA. La solución a esto corresponde a un módulo para serializar y deserializar las entradas y salidas pero el mismo no fue implementado ya que no era uno de los objetivos del proyecto, además de que se consideró innecesario ya que, como se indicó anteriormente, estos algoritmos formarían parte de un dispositivo más grande que ya contará con este módulo. Así para poder implementar el diseño simplemente se pusieron dos puertos, uno de entrada y otro de salida, ambos del tamaño de la palabra y las señales de control de los módulos.
 
 \section{Resultados y análisis del algoritmo TEA}
-HACE FALTA AGREGAR UN RESULTADO DE CIFRAR Y DESCIFRAR DICIENDO QUE LOS RESULTADOS SON IGUALES A LOS DEL CÓDIGO EN C DEL LISTADO.
+Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se logró comparando los resultados de texto cifrado y descifrado con el código en C que se encuentra en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA}\footnote{El código para verificar fue ligeramente diferente al de los listados debido a que se tuvo que ajustar para poder variar el tamaño de palabra.}. La Tabla \ref{tabSimTEA} muestra el resultado de cifrado y descifrado al simular con diferentes tamaños de palabra para 32 rondas de cifrado/descifrado. Además la tabla en la columna \textit{layout} indica un número de figura al cual está ligado la implementación para el tamaño de palabra. Este \textit{layout} corresponde al dado por la herramienta de desarrollo para observar la distribución de recursos en el circuito. Además el camino resaltado en blanco en cada \textit{layout} corresponde al \textit{critical path} de cada implementación.
 
-LO QUE PENSABA HACER ERA PONER COMO UN RESULTADO DE CIFRADO/DESICFRADO Y EL LAYOUT CORRESPONDIENTE MEDIANTE UNA TABLA.
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de simulación del TEA para diferentes tamaños de palabra.}
+    \begin{tabular}{lrrr}
+    \toprule
+	\begin{tabular}[c]{@{}l@{}}Tamaño\\de palabra\\(bits)\end{tabular} & Texto plano (hex) & Texto cifrado (hex) & Figura \textit{layout} \\
+    \midrule
+	8 & 0d8d & aba7 & \ref{fig8_32_layout} \\
+	\midrule
+	16 & 7b0d998d & 829789bc &  \ref{fig16_32_layout} \\
+	\midrule
+	32 & 3d45f7a7235fcb21 & f5509056d5db9e6a & \ref{fig32_32_layout} \\
+	\midrule
+	64 & \begin{tabular}[c]{@{}l@{}}0000000006b97b0d\\0000000046df998d\end{tabular}  & \begin{tabular}[c]{@{}l@{}}0d85f88a9ef595ff\\4810210e9e2a4f5e\end{tabular} & \ref{fig64_32_layout} \\
+	\midrule
+	128 & \begin{tabular}[c]{@{}l@{}}3ca67c8e15890877\\6dcc3a7b41cb88e6\\9a34483d3b1a68a4\\1235130bf207ee95\end{tabular} & \begin{tabular}[c]{@{}l@{}}c0144f6419ce0203\\dbee17be33c2bf5c\\87b4dc12f9cbe22f\\f2f826efc585fa46\end{tabular} & \ref{fig128_32_layout} \\
+    \bottomrule
+    \end{tabular}%
+  \label{tabSimTEA}%
+\end{table}%
 
 
-En el caso de este algoritmo los parámetros que se variaron y cómo se variaron se muestran en la Tabla \ref{tabVariacionTEA}. Además en esa misma Tabla se muestra el consumo de recursos del FPGA al variar esos parámetros. Note en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA} como por el algoritmo no es posible variar independientemente el tamaño de la llave del tamaño de la palabra a cifrar y por tanto no es posible realizar un análisis independiente del análisis de la variación del tamaño de llave y como afecta los recursos del FPGA. \footnote{Para tamaños de palabra mayores a 128 se consideró innecesario el análisis debido a que ya un tamaño de palabra tan grande no es óptimo de utilizar bajo ninguna circunstancia.}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig8_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 8 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig8_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig16_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 16 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig16_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig32_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 32 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig32_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig64_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 64 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig64_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig128_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 128 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig128_32_layout}
+\end{figure}
+
+
+En el caso de este algoritmo los parámetros que se variaron y cómo se variaron se muestran en la Tabla \ref{tabVariacionTEA} donde se fijó la cantidad de rondas en el valor nominal del algoritmo, 32 rondas de cifrado/descifrado\footnote{Para tamaños de palabra mayores a 128 se consideró innecesario el análisis debido a que ya un tamaño de palabra tan grande no es óptimo de utilizar bajo ninguna circunstancia.}.  Además en esa misma tabla se muestra el consumo de recursos del FPGA al variar esos parámetros. Note en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA} como por el algoritmo no es posible variar independientemente el tamaño de la llave del tamaño de la palabra a cifrar y por tanto no es posible realizar un análisis independiente del análisis de la variación del tamaño de llave y como afecta los recursos del FPGA. 
 
 % Table generated by Excel2LaTeX from sheet 'datos'
 \begin{table}[htbp]
@@ -743,7 +813,7 @@ En el caso de este algoritmo los parámetros que se variaron y cómo se variaron
 		
 De la Tabla \ref{tabVariacionTEA} se pueden extraer las gráficas que se muestran en las Figuras \ref{figSlicesTEA}, \ref{figSliceRegsLutsTEA} y \ref{figFrecuenciasTEA}.
 
-La Figura \ref{figSlicesTEA} muestra como varía la cantidad de \textit{slices} tanto de tipo L como M conforme el tamaño de palabra varía. La Figura \ref{figSliceRegsLutsTEA} muestra como varía la cantidad de \textit{slice registers} y LUTs al variar el tamaño de la palabra. Note como después de variar la palabra de 32 bits a 64 bits la cantidad de recursos comienza a aumentar mostrando un comportamiento exponencial. La relación de ambas gráficas es la esperada ya que muestran la misma tendencia debido a que los \textit{slices} se encuentran compuestos por registros y LUTs.
+La Figura \ref{figSlicesTEA} muestra como varía la cantidad de \textit{slices} tanto de tipo L como M conforme el tamaño de palabra varía. La Figura \ref{figSliceRegsLutsTEA} muestra como varía la cantidad de \textit{slice registers} y LUTs al variar el tamaño de la palabra. Note como después de variar la palabra de 32 bits a 64 bits la cantidad de recursos comienza a aumentar mostrando un comportamiento exponencial. Además la relación de ambas gráficas es la esperada ya que muestran la misma tendencia debido a que los \textit{slices} se encuentran compuestos por registros y LUTs.
 
 \begin{figure}[H]
 	\centering
@@ -763,11 +833,11 @@ La Figura \ref{figFrecuenciasTEA} muestra la variación de la frecuencia máxima
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\textwidth]{./images/figFrecuenciasTEA}
-	\caption{Gráfica de variación de la frecuencia máxima contra la variación del tamaño de palabra en bits al implementar el algoritmo TEA.}
+	\caption{Gráfica de variación de la frecuencia máxima de reloj contra la variación del tamaño de palabra en bits al implementar el algoritmo TEA.}
 	\label{figFrecuenciasTEA}
 \end{figure}	
 	
-Finalmente todos estos datos fueron normalizados respecto al valor mínimo de cada columna de la Tabla \ref{tabVariacionTEA} (por ejemplo 217 en la columna \textit{LUT as Logic}) con la finalidad de dar un análisis más acertado sobre cual sería el tamaño de palabra más conveniente a utilizar para este algoritmo. Los datos normalizados se muestran en la Tabla \ref{tabNormalizadoTEA} y se reflejan en la gráfica de la Figura \ref{figNormalizadoTEA}.
+Finalmente los datos de la Tabla \ref{tabVariacionTEA} fueron normalizados respecto al valor mínimo de cada columna (por ejemplo 217 en la columna \textit{LUT as Logic}) con la finalidad de dar un análisis más acertado sobre cual sería el tamaño de palabra más conveniente a utilizar para este algoritmo. Los datos normalizados se muestran en la Tabla \ref{tabNormalizadoTEA} y se reflejan en la gráfica de la Figura \ref{figNormalizadoTEA}.
 
 % Table generated by Excel2LaTeX from sheet 'datos'
 \begin{table}[htbp]
@@ -795,20 +865,19 @@ Finalmente todos estos datos fueron normalizados respecto al valor mínimo de ca
 \end{figure}
 	
 	
-Note nuevamente como los recursos muestran el comportamiento exponencial descrito en las otras gráficas, pero como esta gráfica en particular muestra los datos normalizados, el análisis se puede realizar global de manera global.
+Note nuevamente como los recursos muestran el comportamiento exponencial descrito en las otras gráficas, pero como esta gráfica en particular los datos se muestran normalizados, el análisis se puede realizar de manera global.
 
-El comportamiento esperado es que al duplicar el tamaño de palabra se debe aumentar la cantidad de recursos consumidos en el FPGA al doble, así como reducir a la mitad la frecuencia máxima de reloj. Como se observa conforme se varía el tamaño de palabra los recursos tienden ser menores al doble y conforme se aumenta el tamaño de palabra la proporción se aleja cada vez más de ser el doble. Esto se puede deber nuevamente a la herramienta de desarrollo que puede optimizar el diseño DE QUE MANERA??????????
-En el caso de la frecuencia máxima de reloj se observa como hasta que la palabra llega a ser de 128 bits se obtiene la frecuencia de la mitad de la frecuencia para el tamaño de palabra de 8 bits, esto se debe nuevamente (y como se explicó anteriormente en el análisis de la Figura \ref{figFrecuenciasTEA}) a la herramienta de desarrollo.
+Analizando la gráfica de la Figura \ref{figNormalizadoTEA} el comportamiento esperado es que al duplicar el tamaño de palabra se debe aumentar la cantidad de recursos consumidos en el FPGA al doble, así como reducir a la mitad la frecuencia máxima de reloj. Contrario a los resultados esperados se observa como conforme se varía el tamaño de palabra los recursos tienden ser menores al doble y la proporción se aleja cada vez más de ser el doble. Esto se puede deber nuevamente a la herramienta de desarrollo que puede optimizar el diseño \textcolor{red}{DE QUE MANERA??????????}. En el caso de la frecuencia máxima de reloj se observa como hasta que la palabra llega a ser de 128 bits se obtiene la frecuencia de la mitad de la frecuencia para el tamaño de palabra de 8 bits, esto se debe nuevamente (y como se explicó anteriormente en el análisis de la Figura \ref{figFrecuenciasTEA}) a la herramienta de desarrollo.
 
 
 Finalmente bajo los análisis dados anteriormente se puede concluir que el tamaño de palabra ideal podría ser cualquiera menor a 32 bits. Las razones de esto son las siguientes:
 
 \begin{itemize}
-\item El tamaño de palabra de 32 bits, implica una entrada de texto plano de 64 bits, la cual se ajusta perfectamente al tamaño de palabra actual de la mayoría de procesadores de computadoras personales. También existen muchos microcontroladores con procesadores con tamaños de palabra de 32 bits o 16 bits, lo cual indicaría para el algoritmo tamaños de palabra de 8 bits o 16 bits. El beneficio de ``acoplar'' de alguna manera las entradas y salidas del algoritmo a las entradas y salidas del procesador es que en el cifrado puede procesar inmediatamente la información conforme esta sale del procesador y en el caso del descifrado es que puede entregar inmediamente al procesador la información descifrada y continuar descifrando datos inmediatamente.\footnote{Inclusive existen microcontroladores con procesadores de 8 bits por ejemplo el HC 08 de Freescale (\url{http://www.freescale.com/products/more-processors/8-bit-mcus/hc08:HC08FAMILY?cof=0&am=0}) así que sería también válido realizar un análisis para 4 bits de tamaño de palabra del algoritmo.}
+\item El tamaño de palabra de 32 bits, implica una entrada de texto plano de 64 bits, la cual se ajusta perfectamente al tamaño de palabra actual de la mayoría de procesadores de computadoras personales. También existen muchos microcontroladores con procesadores con tamaños de palabra de 32 bits o 16 bits, lo cual indicaría para el algoritmo tamaños de palabra de 8 bits o 16 bits. El beneficio de ``acoplar'' de alguna manera las entradas y salidas del algoritmo a las entradas y salidas del procesador es que en el cifrado puede procesar inmediatamente la información conforme esta sale del procesador y en el caso del descifrado es que puede entregar inmediamente al procesador la información descifrada y continuar descifrando datos.\footnote{Inclusive existen microcontroladores con procesadores de 8 bits por ejemplo el HC 08 de Freescale (\url{http://www.freescale.com/products/more-processors/8-bit-mcus/hc08:HC08FAMILY?cof=0&am=0}). Entonces sería válido realizar un análisis para 4 bits de tamaño de palabra del algoritmo.}
 
-\item Las frecuencias máximas de reloj a las que trabajan esas implementaciones son mucho mejores que en las implementaciones de palabras de mayor tamaño.
+\item Las frecuencias máximas de reloj a las que trabajan esas implementaciones son mucho mayores que en las implementaciones de palabras de mayor tamaño.
 
-\item Aunque puede ocurrir una disminución en el nivel de seguridad del algoritmo al trabajar con palabras más pequeñas, esta se puede aumentar aumentando la cantidad de rondas de cifrado y al trabajar a una frecuencia más alta el impacto en el desempeño no es tan alto.
+\item Aunque puede ocurrir una disminución en el nivel de seguridad del algoritmo al trabajar con palabras más pequeñas, esta se puede aumentar aumentando la cantidad de rondas de cifrado y al trabajar a una frecuencia más alta el impacto en el desempeño no es tanto.
 
 \item Se ahorra una gran cantidad de recursos en el FPGA el cual se traduce directamente en costos de producción.
 \end{itemize}

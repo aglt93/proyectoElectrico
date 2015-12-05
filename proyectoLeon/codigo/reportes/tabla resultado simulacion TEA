@@ -1,0 +1,7 @@
+
+Tamaño de palabra (bits) & Texto plano & Texto cifrado & Figura \textit{layout} \\
+8 & 0d8d & aba7 & \ref{fig_32_layout} \\
+16 & 7b0d998d & 829789bc &  \ref{fig_32_layout} \\
+32 & 3d45f7a7235fcb21 & f5509056d5db9e6a & \ref{fig_32_layout} \\
+64 & 0000000006b97b0d0000000046df998d & 0d85f88a9ef595ff4810210e9e2a4f5e & \ref{fig_32_layout} \\
+128 & 3ca67c8e158908776dcc3a7b41cb88e69a34483d3b1a68a41235130bf207ee95 & c0144f6419ce0203dbee17be33c2bf5c87b4dc12f9cbe22ff2f826efc585fa46 & \ref{fig_32_layout} \\
