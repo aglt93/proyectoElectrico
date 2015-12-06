@@ -204,7 +204,6 @@ module keyMixer
                         oL_sub_i_prima_nxt = iL_sub_i + rSumTemp;
                         oS_we_nxt = oS_we;
                         oL_we_nxt = oL_we;
-                        //$display("%H",oL_sub_i_prima_nxt);
                     end
                     ///// 8 //////////////////
                     `WAIT_ROT_L: begin
@@ -246,8 +245,6 @@ module keyMixer
                         oL_sub_i_prima_nxt = oL_sub_i_prima;
                         oS_we_nxt = 1;
                         oL_we_nxt = 1;
-                        //$display("%X",A);
-                        //$display("%X",B);
 
                          if (rCount == MIXCOUNT-1) begin
                               oDone_nxt = 1;

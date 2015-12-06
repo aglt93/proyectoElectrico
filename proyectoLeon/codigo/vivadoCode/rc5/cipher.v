@@ -11,7 +11,9 @@
 `define ROT_A 4'd10
 `define SUM_B 4'd11
 
-`define barrel16
+
+`define barrel32
+
 
 module cipher
 #(
@@ -44,11 +46,11 @@ module cipher
 	parameter T_LENGTH = $clog2(T);
 	//*********************************
 	reg [3:0] state;
-	reg [R_BIT-1:0] rCount;
+	reg [R_BIT:0] rCount;
 	reg [W-1:0] rA_XOR_B;
 	reg [ROT_VALUE-1:0] rRot_value;
 	//*********************************
-	reg [R_BIT-1:0] rCount_nxt;
+	reg [R_BIT:0] rCount_nxt;
 	reg [W-1:0] rA_XOR_B_nxt;
 	reg [ROT_VALUE-1:0] rRot_value_nxt;
 	reg [W-1:0] oS_address1_nxt;
@@ -210,7 +212,8 @@ module cipher
 				rCount_nxt = rCount + 1;
 				rA_XOR_B_nxt = rA_XOR_B;
 				rRot_value_nxt = rRot_value;
-
+				//$display(R);
+				//$display(rCount);
 				if (rCount == R) begin
 					oDone_nxt = 1;
 				end

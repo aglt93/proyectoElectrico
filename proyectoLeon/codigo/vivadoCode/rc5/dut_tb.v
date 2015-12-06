@@ -2,13 +2,13 @@
 
 `include "dut.v"
 
-`define W 16 // Cantidad de bits por palabra.
+`define W 32 // Cantidad de bits por palabra.
 `define U (`W/8)
 `define B 16 // Cantidad de bytes de la llave.
 `define R 12 // Cantidad de rondas.
 `define C (`B/`U) // Tamaño del vector L. Corresponde a b/u.
 
-`define barrel16
+`define barrel32
 
 `ifdef barrel16
 	`define PW 16'hb7e1 // Constantes
@@ -99,28 +99,34 @@ module testbench;
 		rst = 0;
 		iStartCipher = 0;
 		iStartDecipher = 0;
-		key = 128'h91CEA91001A5556351B241BE19465F91;
-
+		key = 128'h91CEA91001A5556351B241BE19465F91; 
+		//128'hd4543e135e68d4564a2c5b2aac54b1a5;
+		   
+		
 		for (i = 0; i < C; i = i + 1) begin
 			dut.L_RAM.ram[i]=0;
+			
 		end
 
 		for (i = 0; i < b; i = i + 1) begin
 			dut.key_RAM.ram[i]=key[8*i+:8];
+			
 		end 	
 
 		dut.S_RAM.ram[0]=PW;
 
 		iA = 32'heedba521;
+		//32'hf232b52a;
 		iB = 32'h6d8f4b15;
-
+		//32'heeebba13;
+		
 		#2 rst = 1;
 		#4 rst = 0;
 
 		#100
 		iStartCipher = 1;
 
-		#10020
+		#27020
 		$display("Plain text = %X",{iA,iB});
 		$display("Cipher text = %X",{oA_cipher,oB_cipher});
 		iA_cipher = oA_cipher;
@@ -143,7 +149,7 @@ module testbench;
 		#10
 		iStartDecipher = 1;		
 
-		#16000
+		#20000
 		$display("Decipher text = %X",{oA_decipher, oB_decipher});
 		
 		#1 $finish;
