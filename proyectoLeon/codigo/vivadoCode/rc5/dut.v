@@ -21,7 +21,7 @@
 	`define QW 64'h9e3779b97f4a7c15 //
 `endif
 
-`define NO_XILLINX
+//`define NO_XILLINX
 
 `ifdef NO_XILLINX
 	`include "ram.v"
@@ -34,6 +34,8 @@
 	`include "S_operation.v"
 	`include "keyMixer.v"
 `endif
+
+
 
 
 module dut

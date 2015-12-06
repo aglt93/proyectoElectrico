@@ -11,6 +11,7 @@
 `define ROT_A 4'd10
 `define SUM_B 4'd11
 
+`define barrel16
 
 module cipher
 #(

@@ -12,6 +12,8 @@
 `define READ_FINAL 4'd11
 `define OPER_FINAL 4'd12
 
+`define barrel16
+
 module decipher
 #(
 
