@@ -83,7 +83,7 @@ module cipher
 			`IDLE: begin
 				oS_address1_nxt = oS_address1;
 				oS_address2_nxt = oS_address2;
-				oA_cipher_nxt = oA_cipher_nxt;
+				oA_cipher_nxt = oA_cipher;
 				oB_cipher_nxt = oB_cipher;
 				rCount_nxt = rCount;
 				rA_XOR_B_nxt = rA_XOR_B;
@@ -222,7 +222,7 @@ module cipher
 			default: begin
 				oS_address1_nxt = oS_address1;
 				oS_address2_nxt = oS_address2;
-				oA_cipher_nxt = oA_cipher_nxt;
+				oA_cipher_nxt = oA_cipher;
 				oB_cipher_nxt = oB_cipher;
 				rCount_nxt = rCount;
 				rA_XOR_B_nxt = rA_XOR_B;

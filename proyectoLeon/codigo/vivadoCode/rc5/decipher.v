@@ -83,7 +83,7 @@ module decipher
 			`IDLE: begin
 				oS_address1_nxt = oS_address1;
 				oS_address2_nxt = oS_address2;
-				oA_decipher_nxt = oA_decipher_nxt;
+				oA_decipher_nxt = oA_decipher;
 				oB_decipher_nxt = oB_decipher;
 				rCount_nxt = rCount;
 				rAorB_nxt = rAorB;
@@ -255,7 +255,7 @@ module decipher
 			default: begin
 				oS_address1_nxt = oS_address1;
 				oS_address2_nxt = oS_address2;
-				oA_decipher_nxt = oA_decipher_nxt;
+				oA_decipher_nxt = oA_decipher;
 				oB_decipher_nxt = oB_decipher;
 				rCount_nxt = rCount;
 				rAorB_nxt = rAorB;
@@ -266,7 +266,7 @@ module decipher
 	end
 	//***********************************************************************
 	always @(posedge clk) begin
-      	if (rst)
+      	if (!iStart || rst)
       		state <= `IDLE;
       	else
   			case (state)
@@ -347,7 +347,7 @@ module decipher
 	end
 	//************************************************************************
 	always @(posedge clk) begin
-		if (rst) begin
+		if (!iStart || rst) begin
 			oS_address1 <= R<<1;
 			oS_address2 <= (R<<1) + 1;
 			oA_decipher <= 0;

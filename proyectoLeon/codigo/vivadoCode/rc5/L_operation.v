@@ -16,6 +16,7 @@ module L_operation
 (
      input wire clk,
      input wire rst,
+     input wire iStart,
      //
      output reg [B_length-1:0] key_address,
      input wire [7:0] key_sub_i,
@@ -114,13 +115,13 @@ module L_operation
 
      always @(posedge clk)
           begin
-               if (rst)
+               if (!iStart || rst)
                     state <= `IDLE;
                else
                     case (state)
                         ///////////////////////
                         `IDLE: begin
-                            if (!rst) begin
+                            if (iStart) begin
                                 state <= `WAIT_ADDR;
                             end
                             else begin
@@ -157,7 +158,7 @@ module L_operation
           end
 
         always @(posedge clk) begin
-            if(rst) begin
+            if(!iStart || rst) begin
                 count <= B-1;
                 done <= 0;
                 L_we <= 0;

@@ -10,6 +10,7 @@ module keyExpander
 (
 	input wire clk,
 	input wire rst,
+	input wire iStart,
 	//
 	input wire [W-1:0] iS_sub_i,
 	input wire [W-1:0] iL_sub_i,
@@ -54,10 +55,8 @@ module keyExpander
 	//*******************************
 	wire wStart;
 
-	assign start1 = wL_done && wS_done;
-	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff1(clk,rst,1,start1,start2);
-	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff2(clk,rst,1,start2,wStart);
-
+	assign wStart = wL_done && wS_done;
+	
 	assign oL_sub_i_prima = (!wStart) ? wL_sub_i_prima1:wL_sub_i_prima2;
 	assign oL_address = (!wStart) ? wL_address1:wL_address2;
 
@@ -103,6 +102,7 @@ module keyExpander
 	(
 		.clk(clk),
 		.rst(rst),
+		.iStart(iStart),
 		.iS_sub_i(iS_sub_i),
 		.oS_sub_i_prima(wS_sub_i_prima1),
 		.oS_we(wS_we1),
@@ -119,6 +119,7 @@ module keyExpander
 	(
 		.clk(clk),
 		.rst(rst),
+		.iStart(iStart),
 		.L_sub_i(iL_sub_i),
 		.L_sub_i_prima(wL_sub_i_prima1),
 		.L_we(wL_we1),

@@ -18,6 +18,7 @@ module S_operation
 
     input clk,
     input rst,
+    input wire iStart,
     //
     input wire [W-1:0] iS_sub_i,
     output reg [W-1:0] oS_sub_i_prima,
@@ -103,13 +104,13 @@ module S_operation
           end
 
         always @(posedge clk) begin
-        	if (rst)
+        	if (!iStart || rst)
         		state = `IDLE;
         	else
       			case (state)
                   ///////////////////////
                   `IDLE: begin
-                      if (!rst) begin
+                      if (iStart) begin
                       	state <= `WAIT_ADDR;
                       end
                       else begin
@@ -146,7 +147,7 @@ module S_operation
 	    end
 
 	    always @(posedge clk) begin
-	    	if (rst) begin
+	    	if (!iStart || rst) begin
 	    		oS_address <= 0;
                 oDone <= 0;
                 oS_we <= 0;                        

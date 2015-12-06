@@ -36,8 +36,7 @@
 `endif
 
 
-
-module decipher_dut
+module dut
 #(
 	parameter W = `W,
 	parameter C = `C,
@@ -48,11 +47,26 @@ module decipher_dut
 (
 	input wire clk,
 	input wire rst,
+	// Senales para iniciar cifrado/descifrado
+	input wire iStartCipher,
+	input wire iStartDecipher,
+	// Entradas a la memoria de la llave
+	input wire [7:0] iKey_sub_i,
+	input wire [B_LENGTH-1:0] iKey_address,
+	input wire iWen,
+	// Entradas
 	input wire [W-1:0] iA,
 	input wire [W-1:0] iB,
+	input wire [W-1:0] iA_cipher,
+	input wire [W-1:0] iB_cipher,
+	// Salidas
+	output wire [W-1:0] oA_cipher,
+	output wire [W-1:0] oB_cipher,
 	output wire [W-1:0] oA_decipher,
 	output wire [W-1:0] oB_decipher,
-	output wire oDone
+	// Senales done
+	output wire oDoneCipher,
+	output wire oDoneDecipher
 );
 
 	parameter T = 2*(R+1);
@@ -72,17 +86,15 @@ module decipher_dut
 	wire [W-1:0] S_sub_i_prima;
 	wire [W-1:0] L_sub_i_prima;
 	wire keyExpanderDone;
-	wire [W-1:0] oA_cipher;
-    wire [W-1:0] oB_cipher;
 
 	///////////////////////////////////////////////
-	wire wStartCipher;
+	wire wStartCipher = iStartCipher && keyExpanderDone2;
 	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff1(clk,rst,1,keyExpanderDone,keyExpanderDone1);
-	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff2(clk,rst,1,keyExpanderDone1,wStartCipher);
+	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff2(clk,rst,1,keyExpanderDone1,keyExpanderDone2);
 
-	wire wStartDecipher;
-	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff3(clk,rst,1,cipherDone,cipherDone1);
-	FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff4(clk,rst,1,cipherDone1,wStartDecipher);
+	wire wStartDecipher = iStartDecipher && keyExpanderDone2;
+	//FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff3(clk,rst,1,oDoneCipher,cipherDone1);
+	//FFD_POSEDGE_SYNCRONOUS_RESET #(1) ff4(clk,rst,1,cipherDone1,wStartDecipher);
 	//
 	wire [T_LENGTH-1:0] S_address_expander;
 	wire [T_LENGTH-1:0] wS_address2;
@@ -111,15 +123,15 @@ module decipher_dut
 		.clk(clk),
 		.rst(rst),
 		.iStart(wStartDecipher),
-		.iA(oA_cipher),
-		.iB(oB_cipher),
+		.iA(iA_cipher),
+		.iB(iB_cipher),
 		.oS_address1(wS_address_decipher1),
 		.oS_address2(wS_address_decipher2),
 		.iS_sub_i1(S_sub_i),
 		.iS_sub_i2(iS_sub_i2),
 		.oA_decipher(oA_decipher),
 		.oB_decipher(oB_decipher),
-		.oDone(oDone)
+		.oDone(oDoneDecipher)
 	);
 	//*****************************************************************************
 	cipher 
@@ -140,7 +152,7 @@ module decipher_dut
 		.iS_sub_i2(iS_sub_i2),
 		.oA_cipher(oA_cipher),
 		.oB_cipher(oB_cipher),
-		.oDone(cipherDone)
+		.oDone(oDoneCipher)
 	);
 	//********************************************************************
 	keyExpander
@@ -155,6 +167,7 @@ module decipher_dut
 	(
 		.clk(clk),
 		.rst(rst),
+		.iStart(iStartCipher || iStartDecipher),
 		.iS_sub_i(S_sub_i),
 		.iL_sub_i(L_sub_i),
 		.iKey_sub_i(key_sub_i),
@@ -195,11 +208,11 @@ module decipher_dut
 	(
 		.clk(clk),
 		.data_a(0),
-		.data_b(0),
+		.data_b(iKey_sub_i),
 		.addr_a(key_address),
-		.addr_b(0),
+		.addr_b(iKey_address),
 		.we_a(0),
-		.we_b(0),
+		.we_b(iWen),
 		.q_a(key_sub_i)
 	);
 	//*****************************************************
