@@ -82,8 +82,8 @@ module S_operation
                          oS_address_nxt = oS_address;
                          oS_sub_i_prima_nxt = oS_sub_i_prima;
                          oS_we_nxt = 1;
-  
-                         if (rCount == T) begin
+                      
+                         if (rCount == T || rCount == 0) begin
                               oDone_nxt = 1;
                          end
 
