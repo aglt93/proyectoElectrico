@@ -1,4 +1,4 @@
-`define barrel32
+`define barrel64
 
 `ifdef barrel16
 	`define PW 16'hb7e1 // Constantes

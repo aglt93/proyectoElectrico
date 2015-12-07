@@ -66,7 +66,7 @@
 `define SIXTY_FIVE 65
 `define SIXTY_SIX 66
 
-`define barrel32
+`define barrel64
 
 
 `ifdef barrel16

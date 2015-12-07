@@ -1,10 +1,10 @@
-`define W 32 // Cantidad de bits por palabra.
+`define W 64 // Cantidad de bits por palabra.
 `define U (`W/8)
 `define B 16 // Cantidad de bytes de la llave.
 `define R 16 // Cantidad de rondas.
 `define C (`B/`U) // Tamaño del vector L. Corresponde a b/u.
 
-`define barrel32
+`define barrel64
 
 `ifdef barrel16
 	`define PW 16'hb7e1 // Constantes

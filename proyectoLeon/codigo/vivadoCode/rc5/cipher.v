@@ -12,7 +12,7 @@
 `define SUM_B 4'd11
 
 
-`define barrel32
+`define barrel64
 
 
 module cipher

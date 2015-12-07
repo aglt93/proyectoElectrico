@@ -11,7 +11,7 @@
 `define WRITE_DATA 4'd10
 
 
-`define barrel32
+`define barrel64
 
 module keyMixer 
 #(
