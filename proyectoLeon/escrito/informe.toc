@@ -35,5 +35,8 @@
 \contentsline {section}{\numberline {3.2}Implementaci\IeC {\'o}n del algoritmo TEA}{30}
 \contentsline {chapter}{\chapternumberline {4}Resultados y an\IeC {\'a}lisis}{35}
 \contentsline {section}{\numberline {4.1}Resultados y an\IeC {\'a}lisis del algoritmo TEA}{36}
-\contentsline {section}{\numberline {4.2}Resultados y an\IeC {\'a}lisis del algoritmo RC5}{39}
-\contentsline {chapter}{Bibliograf\'{\i }a}{51}
+\contentsline {section}{\numberline {4.2}Resultados y an\IeC {\'a}lisis del algoritmo RC5}{45}
+\contentsline {subsection}{Resultados y an\IeC {\'a}lisis de la variaci\IeC {\'o}n del tama\IeC {\~n}o de la llave}{45}
+\contentsline {subsection}{Resultados y an\IeC {\'a}lisis de la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra}{48}
+\contentsline {section}{\numberline {4.3}An\IeC {\'a}lisis comparativo}{55}
+\contentsline {chapter}{Bibliograf\'{\i }a}{57}

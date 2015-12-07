@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.7.24)  6 DEC 2015 21:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.4.2)  7 DEC 2015 04:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1084,7 +1084,7 @@ File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
  (./resumen.aux) (./intro.aux)
-(./marcoteorico.aux))
+(./marcoteorico.aux) (./desarrollo.aux))
 \openout1 = `informe.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 166.
@@ -1102,7 +1102,8 @@ LaTeX Font Info:    ... okay on input line 166.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 166.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 166.
 
- (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 166.
@@ -1628,76 +1629,82 @@ File: ./images/figDecipherTeaFSM.png Graphic file (type png)
 Package pdftex.def Info: ./images/figDecipherTeaFSM.png used on input line 688.
 
 (pdftex.def)             Requested size: 332.09775pt x 162.20383pt.
-LaTeX Info: Redefining \. on input line 697.
-LaTeX Info: Redefining \% on input line 697.
+)
+LaTeX Info: Redefining \. on input line 221.
+LaTeX Info: Redefining \% on input line 221.
  [32 <./images/figCipherBlockDiagramTea.png> <./images/figDecipherBlockDiagramT
 ea.png> <./images/figCipherTeaFSM.png>]
-LaTeX Info: Redefining \. on input line 697.
-LaTeX Info: Redefining \% on input line 697.
+LaTeX Info: Redefining \. on input line 221.
+LaTeX Info: Redefining \% on input line 221.
 
-[33 <./images/figDecipherTeaFSM.png>] [34
+[33 <./images/figDecipherTeaFSM.png>]
+\openout2 = `desarrollo.aux'.
+
+ (./desarrollo.tex [34
+
+
 
 ] [35]
 <./images/fig8_32_layout.png, id=208, 433.62pt x 208.78pt>
 File: ./images/fig8_32_layout.png Graphic file (type png)
 
 <use ./images/fig8_32_layout.png>
-Package pdftex.def Info: ./images/fig8_32_layout.png used on input line 759.
+Package pdftex.def Info: ./images/fig8_32_layout.png used on input line 63.
 (pdftex.def)             Requested size: 332.09775pt x 159.9073pt.
 
 <./images/fig16_32_layout.png, id=209, 781.92125pt x 519.9425pt>
 File: ./images/fig16_32_layout.png Graphic file (type png)
 
 <use ./images/fig16_32_layout.png>
-Package pdftex.def Info: ./images/fig16_32_layout.png used on input line 766.
+Package pdftex.def Info: ./images/fig16_32_layout.png used on input line 70.
 (pdftex.def)             Requested size: 332.09775pt x 220.82587pt.
 
 <./images/fig32_32_layout.png, id=210, 901.3675pt x 548.0475pt>
 File: ./images/fig32_32_layout.png Graphic file (type png)
 
 <use ./images/fig32_32_layout.png>
-Package pdftex.def Info: ./images/fig32_32_layout.png used on input line 773.
+Package pdftex.def Info: ./images/fig32_32_layout.png used on input line 77.
 (pdftex.def)             Requested size: 332.09775pt x 201.92142pt.
 
 <./images/fig64_32_layout.png, id=211, 816.04875pt x 520.94624pt>
 File: ./images/fig64_32_layout.png Graphic file (type png)
 
 <use ./images/fig64_32_layout.png>
-Package pdftex.def Info: ./images/fig64_32_layout.png used on input line 780.
+Package pdftex.def Info: ./images/fig64_32_layout.png used on input line 84.
 (pdftex.def)             Requested size: 332.09775pt x 211.99954pt.
 
-<./images/fig128_32_layout.png, id=212, 400.49625pt x 487.8225pt>
+<./images/fig128_32_layout.png, id=212, 487.8225pt x 400.49625pt>
 File: ./images/fig128_32_layout.png Graphic file (type png)
 
 <use ./images/fig128_32_layout.png>
-Package pdftex.def Info: ./images/fig128_32_layout.png used on input line 787.
-(pdftex.def)             Requested size: 332.09775pt x 404.53528pt.
-LaTeX Info: Redefining \. on input line 794.
-LaTeX Info: Redefining \% on input line 794.
+Package pdftex.def Info: ./images/fig128_32_layout.png used on input line 91.
+(pdftex.def)             Requested size: 332.09775pt x 272.65161pt.
+LaTeX Info: Redefining \. on input line 98.
+LaTeX Info: Redefining \% on input line 98.
  [36]
-LaTeX Info: Redefining \. on input line 817.
-LaTeX Info: Redefining \% on input line 817.
+LaTeX Info: Redefining \. on input line 121.
+LaTeX Info: Redefining \% on input line 121.
  [37]
 <./images/figSlicesTEA.png, id=220, 508.14844pt x 289.08pt>
 File: ./images/figSlicesTEA.png Graphic file (type png)
 
 <use ./images/figSlicesTEA.png>
-Package pdftex.def Info: ./images/figSlicesTEA.png used on input line 820.
+Package pdftex.def Info: ./images/figSlicesTEA.png used on input line 124.
 (pdftex.def)             Requested size: 332.09775pt x 188.93193pt.
 
 <./images/figSliceRegsLutsTEA.png, id=221, 511.9125pt x 258.9675pt>
 File: ./images/figSliceRegsLutsTEA.png Graphic file (type png)
 
 <use ./images/figSliceRegsLutsTEA.png>
-Package pdftex.def Info: ./images/figSliceRegsLutsTEA.png used on input line 82
-6.
+Package pdftex.def Info: ./images/figSliceRegsLutsTEA.png used on input line 13
+0.
 (pdftex.def)             Requested size: 332.09775pt x 168.00284pt.
 
 <./images/figFrecuenciasTEA.png, id=222, 537.50812pt x 267.24844pt>
 File: ./images/figFrecuenciasTEA.png Graphic file (type png)
 
 <use ./images/figFrecuenciasTEA.png>
-Package pdftex.def Info: ./images/figFrecuenciasTEA.png used on input line 835.
+Package pdftex.def Info: ./images/figFrecuenciasTEA.png used on input line 139.
 
 (pdftex.def)             Requested size: 332.09775pt x 165.11734pt.
 
@@ -1705,108 +1712,172 @@ Package pdftex.def Info: ./images/figFrecuenciasTEA.png used on input line 835.
 File: ./images/figNormalizadoTEA.png Graphic file (type png)
 
 <use ./images/figNormalizadoTEA.png>
-Package pdftex.def Info: ./images/figNormalizadoTEA.png used on input line 862.
+Package pdftex.def Info: ./images/figNormalizadoTEA.png used on input line 166.
 
 (pdftex.def)             Requested size: 369.0pt x 194.71767pt.
-LaTeX Info: Redefining \. on input line 871.
-LaTeX Info: Redefining \% on input line 871.
+LaTeX Info: Redefining \. on input line 175.
+LaTeX Info: Redefining \% on input line 175.
  [38]
-Underfull \hbox (badness 1117) in paragraph at lines 891--891
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [39]
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [40 <./images/fig8_32_layout.png (PNG copy)> <./images/fig16_32_layout.png>]
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [41 <./images/fig32_32_layout.png> <./images/fig64_32_layout.png>]
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [42 <./images/fig128_32_layout.png> <./images/figSlicesTEA.png>]
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [43 <./images/figSliceRegsLutsTEA.png> <./images/figFrecuenciasTEA.png>]
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [44 <./images/figNormalizadoTEA.png>]
+Underfull \hbox (badness 1117) in paragraph at lines 195--195
 []\T1/aer/m/n/10.95 Tabla 4.5: |Re-sul-ta-dos de si-mu-la-ción pa-ra dis-tin-to
 s ti-pos del RC5 va-
  []
 
 
-Underfull \hbox (badness 3769) in paragraph at lines 891--891
+Underfull \hbox (badness 3769) in paragraph at lines 195--195
 \T1/aer/m/n/10.95 rian-do el ta-ma-ño de pa-la-bra con una lla-ve de 16 by-tes 
 igual a
  []
 
-<./images/fig16_12_16_layout.png, id=227, 863.225pt x 592.2125pt>
+<./images/fig16_12_16_layout.png, id=247, 863.225pt x 592.2125pt>
 File: ./images/fig16_12_16_layout.png Graphic file (type png)
 
 <use ./images/fig16_12_16_layout.png>
-Package pdftex.def Info: ./images/fig16_12_16_layout.png used on input line 927
+Package pdftex.def Info: ./images/fig16_12_16_layout.png used on input line 230
 .
 (pdftex.def)             Requested size: 332.09775pt x 227.83534pt.
 
-<./images/fig32_12_16_layout.png, id=228, 237.88875pt x 405.515pt>
+<./images/fig32_12_16_layout.png, id=248, 405.515pt x 237.88875pt>
 File: ./images/fig32_12_16_layout.png Graphic file (type png)
 
 <use ./images/fig32_12_16_layout.png>
-Package pdftex.def Info: ./images/fig32_12_16_layout.png used on input line 934
+Package pdftex.def Info: ./images/fig32_12_16_layout.png used on input line 236
 .
-(pdftex.def)             Requested size: 184.5pt x 314.51837pt.
+(pdftex.def)             Requested size: 332.09775pt x 194.82318pt.
 
-<./images/fig64_12_16_layout.png, id=229, 698.61pt x 539.01375pt>
+<./images/fig64_12_16_layout.png, id=249, 698.61pt x 539.01375pt>
 File: ./images/fig64_12_16_layout.png Graphic file (type png)
 
 <use ./images/fig64_12_16_layout.png>
-Package pdftex.def Info: ./images/fig64_12_16_layout.png used on input line 941
+Package pdftex.def Info: ./images/fig64_12_16_layout.png used on input line 242
 .
 (pdftex.def)             Requested size: 332.09775pt x 256.23157pt.
 
-<./images/fig32_16_7_layout.png, id=230, 786.94pt x 566.115pt>
+<./images/fig32_16_7_layout.png, id=250, 786.94pt x 566.115pt>
 File: ./images/fig32_16_7_layout.png Graphic file (type png)
 
 <use ./images/fig32_16_7_layout.png>
-Package pdftex.def Info: ./images/fig32_16_7_layout.png used on input line 948.
+Package pdftex.def Info: ./images/fig32_16_7_layout.png used on input line 249.
 
-(pdftex.def)             Requested size: 332.09775pt x 238.90692pt.
+(pdftex.def)             Requested size: 313.65225pt x 225.62999pt.
 
-<./images/fig32_16_12_layout.png, id=231, 253.94875pt x 511.9125pt>
+<./images/fig32_16_12_layout.png, id=251, 511.9125pt x 253.94875pt>
 File: ./images/fig32_16_12_layout.png Graphic file (type png)
 
 <use ./images/fig32_16_12_layout.png>
-Package pdftex.def Info: ./images/fig32_16_12_layout.png used on input line 955
+Package pdftex.def Info: ./images/fig32_16_12_layout.png used on input line 255
 .
-(pdftex.def)             Requested size: 184.5pt x 371.9277pt.
+(pdftex.def)             Requested size: 369.0pt x 183.0522pt.
 
-<./images/fig32_16_16_layout.png, id=232, 440.64626pt x 585.18625pt>
+<./images/fig32_16_16_layout.png, id=252, 585.18625pt x 440.64626pt>
 File: ./images/fig32_16_16_layout.png Graphic file (type png)
 
 <use ./images/fig32_16_16_layout.png>
-Package pdftex.def Info: ./images/fig32_16_16_layout.png used on input line 963
+Package pdftex.def Info: ./images/fig32_16_16_layout.png used on input line 262
 .
-(pdftex.def)             Requested size: 332.09775pt x 441.04947pt.
-)
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [39]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [40]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [41 <./images/fig8_32_layout.png (PNG copy)> <./images/fig16_32_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [42 <./images/fig32_32_layout.png> <./images/fig64_32_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [43 <./images/fig128_32_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
+(pdftex.def)             Requested size: 332.09775pt x 250.08173pt.
+LaTeX Info: Redefining \. on input line 302.
+LaTeX Info: Redefining \% on input line 302.
+ [45
 
-[44 <./images/figSlicesTEA.png> <./images/figSliceRegsLutsTEA.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [45 <./images/figFrecuenciasTEA.png> <./images/figNormalizadoTEA.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
+]
+LaTeX Info: Redefining \. on input line 302.
+LaTeX Info: Redefining \% on input line 302.
  [46 <./images/fig16_12_16_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [47 <./images/fig32_12_16_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [48 <./images/fig64_12_16_layout.png> <./images/fig32_16_7_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [49 <./images/fig32_16_12_layout.png>]
-LaTeX Info: Redefining \. on input line 221.
-LaTeX Info: Redefining \% on input line 221.
- [50 <./images/fig32_16_16_layout.png>] (./informe.bbl
+LaTeX Info: Redefining \. on input line 302.
+LaTeX Info: Redefining \% on input line 302.
+ [47 <./images/fig32_12_16_layout.png> <./images/fig64_12_16_layout.png>]
+<./images/figLlaveRC5.png, id=263, 508.14844pt x 243.91125pt>
+File: ./images/figLlaveRC5.png Graphic file (type png)
+
+<use ./images/figLlaveRC5.png>
+Package pdftex.def Info: ./images/figLlaveRC5.png used on input line 305.
+(pdftex.def)             Requested size: 295.20113pt x 141.69936pt.
+
+<./images/figSlicesRC5.png, id=264, 508.14844pt x 254.45062pt>
+File: ./images/figSlicesRC5.png Graphic file (type png)
+
+<use ./images/figSlicesRC5.png>
+Package pdftex.def Info: ./images/figSlicesRC5.png used on input line 319.
+(pdftex.def)             Requested size: 295.20113pt x 147.82217pt.
+
+<./images/figSliceRegsLutsRC5.png, id=265, 508.14844pt x 239.39438pt>
+File: ./images/figSliceRegsLutsRC5.png Graphic file (type png)
+
+<use ./images/figSliceRegsLutsRC5.png>
+Package pdftex.def Info: ./images/figSliceRegsLutsRC5.png used on input line 32
+6.
+(pdftex.def)             Requested size: 295.20113pt x 139.0753pt.
+
+<./images/figRamRC5.png, id=266, 507.39563pt x 262.73157pt>
+File: ./images/figRamRC5.png Graphic file (type png)
+
+<use ./images/figRamRC5.png>
+Package pdftex.def Info: ./images/figRamRC5.png used on input line 334.
+(pdftex.def)             Requested size: 295.20113pt x 152.86147pt.
+LaTeX Info: Redefining \. on input line 338.
+LaTeX Info: Redefining \% on input line 338.
+ [48]
+<./images/figFrecuenciasRC5.png, id=270, 508.14844pt x 271.76532pt>
+File: ./images/figFrecuenciasRC5.png Graphic file (type png)
+
+<use ./images/figFrecuenciasRC5.png>
+Package pdftex.def Info: ./images/figFrecuenciasRC5.png used on input line 342.
+
+(pdftex.def)             Requested size: 295.20113pt x 157.88109pt.
+
+<./images/figNormalizadoRC5.png, id=271, 730.98094pt x 397.485pt>
+File: ./images/figNormalizadoRC5.png Graphic file (type png)
+
+<use ./images/figNormalizadoRC5.png>
+Package pdftex.def Info: ./images/figNormalizadoRC5.png used on input line 366.
+
+(pdftex.def)             Requested size: 369.0pt x 200.65251pt.
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
+ [49]
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
+ [50 <./images/fig32_16_7_layout.png> <./images/fig32_16_12_layout.png>]
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
+ [51 <./images/fig32_16_16_layout.png> <./images/figLlaveRC5.png>]
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
+ [52 <./images/figSlicesRC5.png> <./images/figSliceRegsLutsRC5.png>]
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
+ [53 <./images/figRamRC5.png> <./images/figFrecuenciasRC5.png>]
+LaTeX Info: Redefining \. on input line 372.
+LaTeX Info: Redefining \% on input line 372.
+
+[54 <./images/figNormalizadoRC5.png>])
+LaTeX Info: Redefining \. on input line 224.
+LaTeX Info: Redefining \% on input line 224.
+ [55
+
+] (./informe.bbl [56
+
+
+]
 Underfull \hbox (badness 10000) in paragraph at lines 28--33
 []\T1/aer/m/n/10.95 Hamilton, D. (2015).  Fi-ve da-ta leak night-ma-res.  Re-
  []
@@ -1853,10 +1924,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--73
 article / 2289232 / lan-[]wan /
  []
 
-[51
-
-
-]
+[57]
 Underfull \hbox (badness 10000) in paragraph at lines 81--86
 \T1/aett/m/n/10.95 xilinx . com / training / fpga / 7 _ series _ CLB _ architec
 ture _ video . htm$\T1/aer/m/n/10.95 .
@@ -1883,7 +1951,7 @@ n't
 )
 LaTeX Info: Redefining \. on input line 246.
 LaTeX Info: Redefining \% on input line 246.
- [52]
+ [58]
 \tf@toc=\write4
 \openout4 = `informe.toc'.
 
@@ -1896,19 +1964,23 @@ LaTeX Info: Redefining \% on input line 246.
  (./informe.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
- (./resumen.aux) (./intro.aux) (./marcoteorico.aux))
+ (./resumen.aux) (./intro.aux) (./marcoteorico.aux)
+(./desarrollo.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 12933 strings out of 493304
- 178799 string characters out of 6139871
+ 12990 strings out of 493304
+ 180076 string characters out of 6139872
  384240 words of memory out of 5000000
- 15977 multiletter control sequences out of 15000+600000
- 57019 words of font info for 112 fonts, out of 8000000 for 9000
+ 16018 multiletter control sequences out of 15000+600000
+ 59509 words of font info for 115 fonts, out of 8000000 for 9000
  1053 hyphenation exceptions out of 8191
- 46i,14n,58p,1104b,2045s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 46i,14n,58p,1102b,2045s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texli
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dis
@@ -1925,13 +1997,13 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
 -dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmtt9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pf
-b>
-Output written on informe.pdf (66 pages, 1444941 bytes).
+ublic/amsfonts/cm/cmti8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmtt9.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb>
+Output written on informe.pdf (72 pages, 1496133 bytes).
 PDF statistics:
- 342 PDF objects out of 1000 (max. 8388607)
- 206 compressed objects within 3 object streams
+ 371 PDF objects out of 1000 (max. 8388607)
+ 222 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 171 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 201 words of extra memory for PDF output out of 10000 (max. 10000000)
 

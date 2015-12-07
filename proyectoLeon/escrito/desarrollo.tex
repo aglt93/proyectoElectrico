@@ -1,358 +1,381 @@
-\chapter{Desarrollo de la aplicación}
+\chapter{Resultados y análisis}
+En esta capítulo se va a mostrar y analizar los resultados de realizar la implementación de los algoritmos criptográficos RC5 y TEA.
+Primero se dan resultados y análisis individuales, para posteriomente realizar el análisis comparativo.
 
-\section{Generalidades}
+Las síntesis e implementaciones se llevaron a cabo haciendo uso de la herramienta de desarrollo \textit{Vivado Design Suite} de \textit{Xillinx} bajo la licencia gratuita \textit{WEBPack}. Se hizo utilizó como objetivo de implementación la tarjeta xc7k70tfbv676-1 de la familia de FPGAs \textit{Kintex-7}. En la Tabla \ref{tabRecursosFPGA} se muestran todos los recursos disponibles de la misma. 
 
-En esta sección se presentan generalidades del diseño de la aplicación. Se explica el por qué se siguió el modelo MVC tradicional y los navegadores con los cuales se garantiza que la aplicación sea completamente funcional.
+\begin{table}[htbp]
+  \centering
+  \caption{Recursos disponible para el FPGA Kintex-7 xc7k70tfbv676-1 de Xillinx.}
+    \begin{tabular}{lr}
+    \toprule
+    Componente & Cantidad Disponible\\
+    \midrule
+	Slices & 10250\\
+	Slice LUTs & 41000\\
+	Slice Registers & 82000\\
+	Block RAM & 135\\
+	DSPs & 240\\
+	I/O ports & 300\\
+    \bottomrule
+    \end{tabular}%
+  \label{tabRecursosFPGA}%
+\end{table}%
 
-\subsection{Modelo MVC}
-
-El patrón de diseño MVC es uno de los más populares para la creación de aplicaciones, tanto de escritorio como web. Esto debido a que permite que los componentes de la arquitectura del software puedan variar de manera casi independiente y aún así seguir proveyendo una correcta funcionalidad a la aplicación. De esta manera, no solo se puede hacer un diseño limpio y fácil de entender y depurar, sino que es más fácil realizar actualizaciones y darles mantenimiento, ya que si algo falla, es bastante evidente cual de los componentes es el que está fallando. Además, el MVC facilita la programación orientada a objetos, paradigma que ya se tiene en HTML5 con los DOM, por lo que es apropiado utilizarlo. \\
-
-Para seguir este patrón las divisiones se realizaron de la siguiente manera:
-
-\begin{enumerate}
-\item Los Views están compuestos por los diferentes archivos en el lenguaje HTML5 que le permiten al usuario visualizar en su navegador la aplicación y poder interactuar con la misma.
-
-\item Los Controllers son varios archivos en JavaScript, utilizando el framework AngularJS, que permiten dar funciones específicas a las interacciones que tiene el usuario con los Views. Los controllers envían peticiones HTTP, como los son los POSTs, GETs, PUTs para modificar los contenidos del Model.
-
-\item El Model se realizó utilizando el framework LoopBack de Stronloops y algunas funciones del NodeJS. Además la persistencia de los datos se realiza haciendo uso de una base de datos en MongoDb.  
-
-\end{enumerate}
-
-\subsection{Navegadores}
-
-El diseño de aplicaciones web con lleva un reto: se debe de realizar tomando en cuenta las diferentes tecnologías que utilizan los navegadores comerciales más populares que se usan en la actualidad: Chrome, Firefox, Iceweasel, Opera, Internet Explorer de Microsoft (fuera de soporte y próximamente se utilizará Edge) y Safari en Mac OS X.\\
-
-Para el desarrollo de la aplicación de este proyecto, se seleccionaron los dos navegadores más utilizados en la actualidad, Firefox y Chrome. Se diseñó y corroboró el funcionamiento en estos dos navegadores pero no se garantiza el completo funcionamiento de la aplicación en otros navegadores, con la excepción de Iceweasel, que es la versión de software libre de Firefox, presente en los sistemas operativos Debian, ya que para este navegador también se realizaron pruebas y funciona de igual manera que Firefox.
-
-\section{Frontend}
-
-Para el desarrollo del frontend de la aplicación se eligió utilizar HTML5, CSS3 y AngularJS. Esto debido a las funcionalidades predeterminadas que tiene HTML5 como cargar videos, realizar streaming de video y los elementos como el canvas. CSS3 es el que le brinda el estilo a los elementos del documentos permitiendo personalizar los colores, fuente, posiciones y otras características de la página web, dándole así la apariencia deseada. Finalmente Angular permite darle las características dinámicas que requiere la interfaz para obtener una buena experiencia de usuario.\\
-
-\subsection{Consideraciones Generales}
-
-Como una consideración general en todos los modos de operación de la aplicación, para operar sobre los cuadros del video se utiliza el elemento video de las librerías de HTML5 y se utiliza la propiedad del video \emph{currentTime} al cual se puede escribir para poner un valor de punto flotante en segundos para moverse a ese punto exacto del video. Sabiendo la duración del video en segundos y la tasa de FPS, se multiplican para obtener la cantidad de cuadros totales. Para avanzar cuadro por cuadro se le suma a \emph{currentTime} + $1/\text{FPS}$, para retroceder cuadro a cuadro se le resta, y para ir a un cuadro específico solo se iguala a $\frac{ \text{i}}{FPS}$, donde i es el número de cuadro al que se quiere ir, y con dicha división se obtiene el tiempo actual en segundos al que se quiere ir. 
-
-En AngularJS, como se explicó en el marco teórico se tienen diferentes formas de llevar a cabo las funciones del fronted. Entre ellas están los controllers que son la principal fuente de interacción con el usuario y los services, que son ayudan a tener una funcionalidad general en todos los views de una aplicación. Por esta razón el menu principal se realizó como un service y los demás métodos de interacción con el usuarios se pusieron dentro de las clases de controllers.
-
-La estructura del frontend cuenta con los siguientes componentes:
-
-\begin{enumerate}
-\item Controllers:
-	\begin{enumerate}
-		\item View1Ctrl: controller para el modo de operación de segmentación temporal.
-		\item View2Ctrl: controller para el modo de operación de trayectorias de objetos.
-		\item View3Ctrl: controller para el modo de operación de segmentación por contornos.
-		\item View4Ctrl: controller para el modo de operación de segmentación semántica
-	\end{enumerate}
-\item Services:
-	\begin{enumerate}
-		\item LeftMenu: service presente en todos los modos de operación para tener acceso al menu principal de la aplicación.
-	\end{enumerate}
-
-\item App: módulo principal de la aplicación. Es el que realiza el routing de las peticiones realizadas al servidor y lo redirige al controller indicado, el cual actualizará el view de la manera indicada para que se visualice la información de manera correcta.
-
-\end{enumerate}
+Para poder obtener las métricas que se analizan se utilizaron los reportes de temporización y utilización que la herramienta ofrece al finalizar el proceso de implementación. Se guardaron estos archivos después de cada sintesís e implementación y se utilizó un \textit{script} de Python para extraer los datos deseados y escribirlos a un archivo CSV (\textit{Comma Separated Values}) para poder abrir el mismo haciendo uso de \textit{Excel} para graficar las diferentes métricas haciendo uso de tablas pivote para un análisis más eficiente.
 
 
-Siguiendo el modelo MVC, en esta parte del diseño se abarcan los componentes tanto de los Views como los Controllers. Estos se dividen en las siguientes secciones:\\
+Cabe aclarar que aunque en un principio no se iba a tomar en cuenta el análisis de temporización, específicamente la frecuencia máxima de reloj, la misma fue agregada a la lista de métricas a analizar debido a que en la implementación realizada la frecuencia máxima de reloj afecta directamente el tiempo de procesamiento para cifrar y descifrar datos y por tanto es una métrica muy importante a analizar. Agregado a esto se puede destacar el hecho de que igualmente a causa de la implementación el variar la cantidad de rondas que cifran o descifran los datos no afectan de ninguna manera la cantidad de recursos del FPGA y solo afectan el tiempo de procesamiento total de cifrado o descifrado.
+
+
+Otro aspecto importante es que se asumió que los módulos \textit{top} de los algoritmos son módulos que serán parte de un dispositivo más grande (por ejemplo un procesador) y por tanto que ese dispositivo hará uso de tanto los módulos de cifrado y descifrado, así los módulos serán sintetizados e implementados simúltaneamente para cada algoritmo, ya que el análisis de ambos módulos tendrá más valor que el de los módulos por separado. Particularmente para el algoritmo RC5 se hizo que los módulos de cifrado y descifrado compartan el módulo que se encarga de la expansión de llave (\textit{keyExpander} en las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram}) esto con la finalidad de consumir la menor cantidad de recursos y hacer lo más óptimo posible el diseño.
+
+
+Un problema al que se enfrentó al implementar los algoritmos en el FPGA es que la cantidad de salidas y entradas del diseño era muy grande para que el mismo fuera implementable en el FPGA. La solución a esto corresponde a un módulo para serializar y deserializar las entradas y salidas pero el mismo no fue implementado ya que no era uno de los objetivos del proyecto, además de que se consideró innecesario ya que, como se indicó anteriormente, estos algoritmos formarían parte de un dispositivo más grande que ya contará con este módulo. Así para poder implementar el diseño simplemente se pusieron dos puertos, uno de entrada y otro de salida, ambos del tamaño de la palabra y las señales de control de los módulos.
+
+\section{Resultados y análisis del algoritmo TEA} \label{resultadosAnalisisTEA}
+Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se logró comparando los resultados de texto cifrado y descifrado con el código en C que se encuentra en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA}\footnote{El código para verificar fue ligeramente diferente al de los listados debido a que se tuvo que ajustar para poder variar el tamaño de palabra.}. La Tabla \ref{tabSimTEA} muestra el resultado de cifrado y descifrado al simular con diferentes tamaños de palabra para 32 rondas de cifrado/descifrado. Además la tabla en la columna \textit{layout} indica un número de figura al cual está ligado la implementación para el tamaño de palabra. Este \textit{layout} corresponde al dado por la herramienta de desarrollo para observar la distribución de recursos en el circuito. Además el camino resaltado en blanco en cada \textit{layout} corresponde al \textit{critical path} de cada implementación.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de simulación del TEA para diferentes tamaños de palabra.}
+    \begin{tabular}{lrrr}
+    \toprule
+	\begin{tabular}[c]{@{}l@{}}Tamaño\\de palabra\\(bits)\end{tabular} & Texto plano (hex) & Texto cifrado (hex) & Figura \textit{layout} \\
+    \midrule
+	8 & 0d8d & aba7 & \ref{fig8_32_layout} \\
+	\midrule
+	16 & 7b0d998d & 829789bc &  \ref{fig16_32_layout} \\
+	\midrule
+	32 & 3d45f7a7235fcb21 & f5509056d5db9e6a & \ref{fig32_32_layout} \\
+	\midrule
+	64 & \begin{tabular}[c]{@{}l@{}}0000000006b97b0d\\0000000046df998d\end{tabular}  & \begin{tabular}[c]{@{}l@{}}0d85f88a9ef595ff\\4810210e9e2a4f5e\end{tabular} & \ref{fig64_32_layout} \\
+	\midrule
+	128 & \begin{tabular}[c]{@{}l@{}}3ca67c8e15890877\\6dcc3a7b41cb88e6\\9a34483d3b1a68a4\\1235130bf207ee95\end{tabular} & \begin{tabular}[c]{@{}l@{}}c0144f6419ce0203\\dbee17be33c2bf5c\\87b4dc12f9cbe22f\\f2f826efc585fa46\end{tabular} & \ref{fig128_32_layout} \\
+    \bottomrule
+    \end{tabular}%
+  \label{tabSimTEA}%
+\end{table}%
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig8_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 8 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig8_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig16_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 16 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig16_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig32_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 32 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig32_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig64_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 64 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig64_32_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig128_32_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo TEA de 128 bits de tamaño de palabra y 32 rondas de cifrado/descifrado.}
+	\label{fig128_32_layout}
+\end{figure}
+
+
+En el caso de este algoritmo los parámetros que se variaron y cómo se variaron se muestran en la Tabla \ref{tabVariacionTEA} donde se fijó la cantidad de rondas en el valor nominal del algoritmo, 32 rondas de cifrado/descifrado\footnote{Para tamaños de palabra mayores a 128 se consideró innecesario el análisis debido a que ya un tamaño de palabra tan grande no es óptimo de utilizar bajo ninguna circunstancia.}.  Además en esa misma tabla se muestra el consumo de recursos del FPGA al variar esos parámetros. Note en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA} como por el algoritmo no es posible variar independientemente el tamaño de la llave del tamaño de la palabra a cifrar y por tanto no es posible realizar un análisis independiente del análisis de la variación del tamaño de llave y como afecta los recursos del FPGA. 
+
+% Table generated by Excel2LaTeX from sheet 'datos'
+\begin{table}[htbp]
+  \centering
+  \caption{Variación de parámetros del algoritmo TEA y consumo de recursos del FPGA.}
+    \begin{tabular}{rrrrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tamaño\\palabra\\(bits)\end{tabular}  & \begin{tabular}[c]{@{}l@{}}Tamaño\\llave\\(bits)\end{tabular} & \begin{tabular}[c]{@{}l@{}}LUT as\\Logic\end{tabular}  & Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Registers\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frecuencia \\máx. (MHz)\end{tabular}   \\
+    \midrule
+    8     & 32    & 217   & 45    & 27    & 176   & 434,783 \\
+    16    & 64    & 383   & 74    & 38    & 328   & 392,157 \\
+    32    & 128   & 737   & 133   & 90    & 632   & 338,983 \\
+    64    & 256   & 1439  & 243   & 179   & 1240  & 303,030 \\
+    128   & 512   & 2841  & 439   & 357   & 2456  & 217,391 \\
+
+    \bottomrule
+    \end{tabular}%
+  \label{tabVariacionTEA}%
+\end{table}%
+		
+De la Tabla \ref{tabVariacionTEA} se pueden extraer las gráficas que se muestran en las Figuras \ref{figSlicesTEA}, \ref{figSliceRegsLutsTEA} y \ref{figFrecuenciasTEA}.
+
+La Figura \ref{figSlicesTEA} muestra como varía la cantidad de \textit{slices} tanto de tipo L como M conforme el tamaño de palabra varía. La Figura \ref{figSliceRegsLutsTEA} muestra como varía la cantidad de \textit{slice registers} y LUTs al variar el tamaño de la palabra. Note como después de variar la palabra de 32 bits a 64 bits la cantidad de recursos comienza a aumentar mostrando un comportamiento exponencial. Además la relación de ambas gráficas es la esperada ya que muestran la misma tendencia debido a que los \textit{slices} se encuentran compuestos por registros y LUTs.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figSlicesTEA}
+	\caption{Gráfica de variación de \textit{slice L} y \textit{slice M} contra la variación del tamaño de palabra en bits al implementar el algoritmo TEA.}
+	\label{figSlicesTEA}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figSliceRegsLutsTEA}
+	\caption{Gráfica de variación de \textit{slice registers} y LUTs contra la variación del tamaño de palabra en bits al implementar el algoritmo TEA.}
+	\label{figSliceRegsLutsTEA}
+\end{figure}
+
+La Figura \ref{figFrecuenciasTEA} muestra la variación de la frecuencia máxima de reloj conforme el tamaño de palabra varía. El comportamiento es el esperado hasta cierto punto, ya que la frecuencia de reloj disminuye pero era esperado que la misma disminuyera de forma exponencial al igual que el consumo de recursos iba aumentando. Esto puede deberse a que la herramienta de desarrollo optimiza el proceso de \textit{place \& route} para lograr la mejor respuesta del diseño.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/figFrecuenciasTEA}
+	\caption{Gráfica de variación de la frecuencia máxima de reloj contra la variación del tamaño de palabra en bits al implementar el algoritmo TEA.}
+	\label{figFrecuenciasTEA}
+\end{figure}	
+	
+Finalmente los datos de la Tabla \ref{tabVariacionTEA} fueron normalizados respecto al valor mínimo de cada columna (por ejemplo 217 en la columna \textit{LUT as Logic}) con la finalidad de dar un análisis más acertado sobre cual sería el tamaño de palabra más conveniente a utilizar para este algoritmo. Los datos normalizados se muestran en la Tabla \ref{tabNormalizadoTEA} y se reflejan en la gráfica de la Figura \ref{figNormalizadoTEA}.
+
+% Table generated by Excel2LaTeX from sheet 'datos'
+\begin{table}[htbp]
+  \centering
+  \caption{Variación de parámetros del algoritmo TEA y consumo de recursos del FPGA normalizados.}
+    \begin{tabular}{rrrrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tamaño\\palabra\\(bits)\end{tabular}  & \begin{tabular}[c]{@{}l@{}}Tamaño\\llave\\(bits)\end{tabular} & \begin{tabular}[c]{@{}l@{}}LUT as\\Logic\end{tabular}  & Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Registers\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frecuencia \\máx. reloj\end{tabular}   \\
+    \midrule
+    8     & 32    & 1,00  & 1,00  & 1,00  & 1,00  & 2,00 \\
+    16    & 64    & 1,76  & 1,64  & 1,41  & 1,86  & 1,80 \\
+    32    & 128   & 3,40  & 2,96  & 3,33  & 3,59  & 1,56 \\
+    64    & 256   & 6,63  & 5,40  & 6,63  & 7,05  & 1,39 \\
+    128   & 512   & 13,09 & 9,76  & 13,22 & 13,95 & 1,00 \\
+    \bottomrule
+    \end{tabular}%
+  \label{tabNormalizadoTEA}%
+\end{table}%
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./images/figNormalizadoTEA}
+	\caption{Gráfica de consumo de recursos y frecuencia máxima (normalizados respecto al valor mínimo) del FPGA contra la variación del tamaño de palabra en bits al implementar el algoritmo TEA.}
+	\label{figNormalizadoTEA}
+\end{figure}
+	
+	
+Note nuevamente como los recursos muestran el comportamiento exponencial descrito en las otras gráficas, pero como esta gráfica en particular los datos se muestran normalizados, el análisis se puede realizar de manera global.
+
+Analizando la gráfica de la Figura \ref{figNormalizadoTEA} el comportamiento esperado es que al duplicar el tamaño de palabra se debe aumentar la cantidad de recursos consumidos en el FPGA al doble, así como reducir a la mitad la frecuencia máxima de reloj. Contrario a los resultados esperados se observa como conforme se varía el tamaño de palabra los recursos tienden ser menores al doble y la proporción se aleja cada vez más de ser el doble. Esto se puede deber nuevamente a la herramienta de desarrollo que puede optimizar el diseño \textcolor{red}{DE QUE MANERA??????????}. En el caso de la frecuencia máxima de reloj se observa como hasta que la palabra llega a ser de 128 bits se obtiene la frecuencia de la mitad de la frecuencia para el tamaño de palabra de 8 bits, esto se debe nuevamente (y como se explicó anteriormente en el análisis de la Figura \ref{figFrecuenciasTEA}) a la herramienta de desarrollo.
+
+
+Finalmente bajo los análisis dados anteriormente se puede concluir que el tamaño de palabra ideal podría ser cualquiera menor a 32 bits. Las razones de esto son las siguientes:
 
 \begin{itemize}
-\item Menu principal: Service LeftMenu, es un controller en el patrón MVC.
+\item El tamaño de palabra de 32 bits, implica una entrada de texto plano de 64 bits, la cual se ajusta perfectamente al tamaño de palabra actual de la mayoría de procesadores de computadoras personales. También existen muchos microcontroladores con procesadores con tamaños de palabra de 32 bits o 16 bits, lo cual indicaría para el algoritmo tamaños de palabra de 8 bits o 16 bits. El beneficio de ``acoplar'' de alguna manera las entradas y salidas del algoritmo a las entradas y salidas del procesador es que en el cifrado puede procesar inmediatamente la información conforme esta sale del procesador y en el caso del descifrado es que puede entregar inmediamente al procesador la información descifrada y continuar descifrando datos.\footnote{Inclusive existen microcontroladores con procesadores de 8 bits por ejemplo el HC 08 de Freescale (\url{http://www.freescale.com/products/more-processors/8-bit-mcus/hc08:HC08FAMILY?cof=0&am=0}). Entonces sería válido realizar un análisis para 4 bits de tamaño de palabra del algoritmo.}
 
-\item Interfaces: son cuatro, y todas tienen elementos tanto de Views, como los son archivos HTML5 y CSS de cada uno, y tienen los Controllers respectivos para las funcionalidades que se exponen más adelante Las interfaces son las siguientes:
+\item Las frecuencias máximas de reloj a las que trabajan esas implementaciones son mucho mayores que en las implementaciones de palabras de mayor tamaño.
 
- \begin{enumerate}
-		\item Interfaz para la segmentación temporal
-		\item Interfaz para las trayectorias de objetos
-		\item Interfaz para la segmentación de contornos 
-		\item Interfaz para la segmentación semántica
-\end{enumerate}
+\item Aunque puede ocurrir una disminución en el nivel de seguridad del algoritmo al trabajar con palabras más pequeñas, esta se puede aumentar aumentando la cantidad de rondas de cifrado y al trabajar a una frecuencia más alta el impacto en el desempeño no es tanto.
 
-
+\item Se ahorra una gran cantidad de recursos en el FPGA el cual se traduce directamente en costos de producción.
 \end{itemize}
-
-A continuación se describe el menu principal y cada una de estas interfaces de frontend.
-
-\subsection{Menu Principal}
-
-Para contar con un menú principal que no interfiriera con el espacio necesario para poder visualizar los videos, y realizar las anotaciones de una manera cómoda y ordenada; se decidió hacer un menú deslizante en la parte izquierda de la pantalla. El menú se puede mostrar u ocultar haciendo click sobre el nombre de la aplicación. En la Figura \ref{fig:menuFull} se muestra como se observaría la interfaz del programa con el menú principal abierto y en la Figura \ref{fig:mainmenu} se hace un acercamiento al menú para que se puede apreciar bien el contenido del mismo. 
-
-Desde este menú se varía el modo de operación de la aplicación, por lo que cada vez que se acceda a él y se seleccione un modo diferente se cargan las configuraciones predeterminadas para dicho modo y la interfaz se adecua de manera apropiada.
-
-\begin{figure}
-	\includegraphics[width=\linewidth]{images/menuFull}
-	\caption{Menú principal deslizante desde la izquierda} \label{fig:menuFull}
-\end{figure}
-
-\begin{figure}
-	\includegraphics[width=0.35\linewidth]{images/mainmenu}
-	\caption{Acercamiento del menú principal} \label{fig:mainmenu}
-\end{figure}
-
-Además cada una de las interfaces cuenta con los mismos botones superiores que realizan las funciones de cargar un video local, cargar un video que se haya hecho disponible desde el servidor, cargar un proyecto anterior o crear un nuevo proyecto. Toda está información de proyectos nuevos se almacena directamente en la base de datos del servidor. Cada uno de estos botones despliega las ventanas mostradas en la Figura \ref{fig:loads}.
-
-\begin{figure}
-	
-	\centering
-	\begin{subfigure}[t]{0.48\textwidth}
-		\includegraphics[width=\textwidth]{images/videoL}
-		\caption{Selección de videos locales}
-		\label{fig:v1}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[t]{0.48\textwidth}
-		\includegraphics[width=\textwidth]{images/videos}
-		\caption{Selección de videos desde la base de datos}
-		\label{fig:v2}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[t]{0.48\textwidth}
-		\includegraphics[width=\textwidth]{images/proyectos}
-		\caption{Creación de un proyecto nuevo}
-		\label{fig:v3}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[t]{0.48\textwidth}
-		\includegraphics[width=\textwidth]{images/proyectoL}
-		\caption{Menú para manipular datos previos y descargar}
-		\label{fig:v4}
-	\end{subfigure}
-	\caption{Cargar proyectos desde la base de datos}\label{fig:loads}
-	
-\end{figure}
-
-Además para los modos segmentación de contornos y trayectoria de objetos, se incluyó un selector de color para poder variar los tonos con lo que se hacen las anotaciones espaciales. Este selector se puede visualizar en la Figura \ref{fig:colores}, y el mismo aparece cada vez que se va a agregar un nuevo seguimiento o un nuevo contorno a la lista del video.
-
-
-\begin{figure}
-	\includegraphics[width=0.7\linewidth]{images/colores}
-	\caption{Selector de colores para los modos de trayectorias y contornos} \label{fig:colores}
-\end{figure}
-
-A continuación se describe las interfaces de los diferentes modos de operación de manera detallada.
-
-\subsection{Interfaz de segmentación temporal}
-
-El primero de los modos de operación es el de segmentación temporal. Su interfaz completa se puede apreciar en la Figura \ref{fig:tempFull}. En esta se visualiza el video en la parte izquierda de la ventana principal. A la derecha se tiene dos ventanas secundarias.\\
-
-\begin{figure}
-	\includegraphics[width=\linewidth]{images/tempFull}
-	\caption{Interfaz de la segmentación temporal completa} \label{fig:tempFull}
-\end{figure}
-
-En la superior aparece el botón de añadir evento, el cual inicia una secuencia de eventos que le permite al usuario seleccionar el tipo de evento que ha presentando. Se inicia seleccionando el cuadro en el que ha ocurrido, luego se elige el tipo de transición, después el cuadro final de la transición y por último el tipo de escena que inicia luego de finalizada la transición. En el caso especial de un corte que el cuadro inicial y el final son el mismo, se omite el paso de seleccionar cuadro final. Finalmente se presenta al usuario un cuadro resumen con los datos que el mismo ingresó y con el botón de guardar, se añade el evento a la base de datos. En la capturas de pantalla organizadas en la Figura   \ref{fig:temptemp} se muestra el proceso descrito anteriormente de manera visual. En la imagen \ref{fig:temp1} es el primer paso luego de seleccionar añadir un evento. Se avanza a \ref{fig:temp2} y se agrega el tipo de transición, finalmente en \ref{fig:temp3} se elije el tipo de escena que se inició. En \ref{fig:temp4} se puede observar el resumen de datos que se le muestra al usuario antes de grabar el evento creado. \\
-
-\begin{figure}
-	
-	\centering
-	\begin{subfigure}[b]{0.7\textwidth}
-		\includegraphics[width=\textwidth]{images/temp1}
-		\caption{Selección de primer cuadro}
-		\label{fig:temp1}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.7\textwidth}
-		\includegraphics[width=\textwidth]{images/temp2}
-		\caption{Selección del tipo de transición}
-		\label{fig:temp2} 
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.7\textwidth}
-		\includegraphics[width=\textwidth]{images/temp3}
-		\caption{Selección del tipo de datos antes de guardar}
-		\label{fig:temp3}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.7\textwidth}
-		\includegraphics[width=\textwidth]{images/temp4}
-		\caption{Resumen para el usuario antes de almacenar el dato.}
-		\label{fig:temp4}	
-	\end{subfigure}
-	\caption{Detalle del funcionamiento en el módulo de agregar evento a la segmentación temporal}\label{fig:temptemp}
-	
-\end{figure}
-
-En la inferior aparece una pequeña ventana de visualización de todos los eventos que han sido agregados en dicho proyecto. En esta ventana se puede tomar dos decisiones por cada evento: ir al cuadro inicial en el que ocurren, o eliminarlo de la base de datos. Dicha se ventana se puede apreciar le Figura \ref{fig:temp5} De esta manera se pueden agregar y eliminar eventos de un proyecto. Al final de la visualización de todos los eventos, se presenta un botón de descarga, el cual a la hora de presionarlo, descarga a la computadora local un archivo de formato JSON con todas las anotaciones realizadas hasta el momento.\\
-
-\begin{figure}
-	\includegraphics[width=0.7\linewidth]{images/temp5}
-	\caption{Panel para eliminar segmentaciones previas o para ir a la segmentación seleccionada.} \label{fig:temp5}
-\end{figure}
-
-
-Para este modo de operación, el programa graba constantemente de manera automática. Esto porque se evita la perdida de datos en cualquier eventualidad y porque al poder añadir y borrar de manera sencilla, no afecta que el programa guarde y actualice la base de datos de manera automática.
-
-
-\subsection{Interfaz de trayectorias}
-
-El modo para describir trayectorias varía su interfaz de gran manera en comparación a la segmentación temporal, esto debido a que ahora no solo se tiene información en una dimensión (el tiempo). En este modo se tiene información en tres dimensiones: en el eje $x$ de la imagen, en el $y$ y en el $tiempo$. Por esta razón la complejidad y opciones de la interfaz incrementan. Ahora no se tienen los dos paneles a la derecha. El video toma el 100\% de su tamaño en la interfaz de la aplicación. Es decir, un video de 1920x1080 se desplegará con estas dimensiones sin importar la resolución actual de la pantalla. Se habilitan barras de desplazamiento para la completa visualización del video si la dimensión de este es mayor a la resolución del monitor. Esta decisión de diseño se tomó ya que si se está realizando seguimiento de objetos, lo mejor es que la precisión de pixeles sea grande, y la mejor manera para esto es que la proporción entre el video original y el que realmente se despliega en pantalla sea de 1 a 1. La interfaz general de este modo se aprecia en la Figura \ref{fig:objFull}.\\
-
-\begin{figure}
-	\includegraphics[width=\linewidth]{images/objFull}
-	\caption{Interfaz de trayectorias completa} \label{fig:objFull}
-\end{figure}
-
-El menú para agregar anotaciones al video en este modo se detalla en la Figura \ref{fig:objobj}. En \ref{fig:obj1} se muestran los botones para agregar una nueva trayectoria, para eliminar la trayectoria actual, para cambiar la trayectoria actual y para salvar todo el contenido editado hasta el momento en la base de datos. En \ref{fig:obj2} se muestra como se selecciona con un drop menu el nombre de la trayectoria que se quiere continuar editando. Finalmente en la Figura \ref{fig:obj3} se muestra como se ve el video luego de que se agrega una punto de trayectoria a algún objeto.\\
-
-Debido a su naturaleza, en este modo no se permite agregar más de un punto por cuadro. Ya que cada uno de estos representa un momento en el tiempo y un objeto no puede estar en dos posiciones a la vez. Por esta razón, el agregar un segundo punto en el mismo cuadro se bloquea a menos de que el el punto sea previamente eliminado. De igual manera, este modo tiene un botón grande en la parte inferior que permite poder descargar las trayectorias que han sido cargadas o que se han trazado en el proyecto actual.\\
-
-A diferencia del modo de operación anterior, para grabar los cambios realizados en las trayectorias de los objetos, es necesario pulsar el botón de grabar. Esto debido a que se agrega un punto por cada cuadro, por lo que no se quiere estar escribiendo tantas veces a la base de datos. El usuario es responsable por guardar los avances antes de cerrar la aplicación. Si se crea una nueva trayectoria o se cambia a otra, en estos casos el programa si genera un autoguardado en la base de datos del contenido de la trayectoria que se está dejando antes de cargar o crear uno diferente.
-
-\begin{figure}
-	
-	\centering
-	\begin{subfigure}[b]{\textwidth}
-		\includegraphics[width=\textwidth]{images/obj1}
-		\caption{Menú para administrar las trayectorias}
-		\label{fig:obj1}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.18\textwidth}
-		\includegraphics[width=\textwidth]{images/obj2}
-		\caption{Selección de trayectoria actual}
-		\label{fig:obj2}
-	\end{subfigure}
-	\qquad \qquad \qquad ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.18\textwidth}
-		\includegraphics[width=\textwidth]{images/obj3}
-		\caption{Rastreo de la posición del objeto}
-		\label{fig:obj3}
-	\end{subfigure}
-	\caption{Elementos de la interfaz para rastreo}\label{fig:objobj}
-	
-\end{figure}
 
 \clearpage
+\section{Resultados y análisis del algoritmo RC5}
+Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se logró comparando los resultados de texto cifrado y descifrado con el código en C que se encuentra en el artículo del algoritmo \citep{rivest}. La Tabla \ref{tabSimRC51} muestra el resultado de cifrado y descifrado al simular variando el tamaño de palabra y la Tabla \ref{tabSimRC52} muestra los resultados de simular variando el tamaño de llave. Al igual que el algoritmo anterior la tabla en la columna \textit{layout} indica un número de figura al cual está ligado la implementación.
 
-\subsection{Interfaz de segmentación de contornos}
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de simulación para distintos tipos del RC5 variando el tamaño de palabra con una llave de 16 bytes igual a 91CEA91001A5556351B241BE19465F91$_{hex}$.}
+    \begin{tabular}{lrrr}
+    \toprule
+	\begin{tabular}[c]{@{}l@{}}Tipo\\RC5 \end{tabular} & Texto plano (hex) & Texto cifrado (hex) & Figura \textit{layout} \\
+    \midrule
+	16/12/16 & a5214b15 & a496d848 & \ref{fig16_12_16_layout} \\
+	\midrule
+	32/12/16 & \begin{tabular}[c]{@{}l@{}}eedba521\\6d8f4b15\end{tabular} & \begin{tabular}[c]{@{}l@{}}ac13c0f7\\52892b5b\end{tabular} & \ref{fig32_12_16_layout}\\
+	\midrule
+	64/12/16 & \begin{tabular}[c]{@{}l@{}}00000000\\eedba521\\00000000\\6d8f4b15\end{tabular} & \begin{tabular}[c]{@{}l@{}}829c9641\\f96ead46\\f91c9890\\738c8807\end{tabular} & \ref{fig64_12_16_layout}\\
+    \bottomrule
+    \end{tabular}%
+  \label{tabSimRC51}%
+\end{table}%
 
-La segmentación espacial a partir de contornos comparte la misma interfaz que el modo anterior. Esto debido a que la visualización de información relevante es también en las dimensiones de $x$, $y$, y $t$. A diferencia del anterior, en este modo si se puede agregar más de un punto por cuadro, de hecho, la funcionalidad recae en que se tomen todos los pixeles por lo cuales se mueve el puntero del ratón mientras el botón izquierdo del mouse este presionado.
 
-Como se puede apreciar en la Figura \ref{fig:contourFull} y comparando con la Figura \ref{fig:objFull} se ve que ambas interfaces son las mismas. Ahora bien, si se observa la Figura \ref{fig:contour1} se ve que el contorno realizado por el este modo de operación abarca todos los pixeles alrededor del objeto de interés. De igual manera se crean diferentes contornos, se puede elegir el color con el cual se realizará el contorno, se puede eliminar, se puede editar simplemente con salir, y volver al cuadro deseado y comenzar a dibujar de nuevo. Si se suelta el botón izquierdo del mouse mientras se realiza el contorno no supone ningún inconveniente, el contornos se puede retomar desde donde se dejó. Al finalizar el dibujo y avanzar al siguiente cuadro, la aplicación analiza los cuadros del contornos anterior y elimina del arreglo los pares ordenados que por alguna razón hayan quedado repetido, optimizando así el no guardar información que no sea útil.
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de simulación para distintos tipos del RC5 variando el tamaño de llave.}
+    \begin{tabular}{lrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tipo\\RC5 \end{tabular} & Llave (hex) & Texto plano (hex) & Texto cifrado (hex) & \begin{tabular}[c]{@{}l@{}}Figura\\\textit{layout}\end{tabular}\\
+    \midrule
+32/16/7 & \begin{tabular}[c]{@{}l@{}}2c5b2aa\\c54b1a5\end{tabular} & \begin{tabular}[c]{@{}l@{}}12153524\\c0895e81\end{tabular} & \begin{tabular}[c]{@{}l@{}}9e6edba6\\9b789a70\end{tabular} & \ref{fig32_16_7_layout} \\
+\midrule
+32/16/12 & \begin{tabular}[c]{@{}l@{}}5e68d4\\564a2c\\5b2aac\\54b1a5\end{tabular} & \begin{tabular}[c]{@{}l@{}}f232b52\\aeeebba13\end{tabular} & \begin{tabular}[c]{@{}l@{}}a4db4976\\94726be1\end{tabular} & \ref{fig32_16_12_layout} \\
+\midrule
+32/16/16 & \begin{tabular}[c]{@{}l@{}}d4543e13\\5e68d456\\4a2c5b2a\\ac54b1a5\end{tabular} & \begin{tabular}[c]{@{}l@{}}eedba521\\6d8f4b15\end{tabular} & \begin{tabular}[c]{@{}l@{}}b6c95c5c\\e51616b8\end{tabular} & \ref{fig32_16_16_layout} \\
+    \bottomrule
+    \end{tabular}%
+  \label{tabSimRC52}%
+\end{table}%
+
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{images/contourFull}
-	\caption{Interfaz de segmentación de contornos completa} \label{fig:contourFull}
+	\includegraphics[width=0.9\textwidth]{./images/fig16_12_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-16/12/16.}
+	\label{fig16_12_16_layout}
 \end{figure}
 
-
 \begin{figure}
-	\includegraphics[width=0.2\linewidth]{images/contour1}
-	\caption{Contorno de un jugador. Incluye todos los pixeles que conforman el contorno.} \label{fig:contour1}
-\end{figure}
-
-
-\subsection{Interfaz de segmentación semántica}
-
-Finalmente se tiene el último modo de operación que es el de segmentación semántica. Esta interfaz es muy similar a la de segmentación temporal (como se puede apreciar en la Figura \ref{fig:semanticFull}), ya que en estos dos modos de operación el espacio de importancia es el tiempo. Al ser humano no le interesa tanto conocer las posiciones en $x$ o $y$ de los elementos en este modo de operación ya que la información semántica es obtenida a partir de método empíricos como la experiencia o la intuición. Lo que es relevante es que al presenciar cierto evento, se pueda capturar el inicio y final del mismo, y agregar una o más palabras clave que ayuden a clasificar el contenido. Por está razón la interacción de la interfaz del usuario se definió como se ve en la Figura \ref{fig:semantic1}.\\
-
-Se puede observar que la acción que se le solicita al usuario es que presione los botones estando en el cuadro apropiado. Una vez que se utilizan botón de primer cuadro y último cuadro para fijar estos parámetros de correctamente solo hace falta introducir palabras clave separadas por espacios, que describan el contenido, las acciones o eventos que estén sucediendo en el video en un determinado momento. De esta manera se puede definir un período finito de tiempo con identificadores semánticos.\\
-
-En la Figura \ref{fig:semantic2} se aprecia como son visualizados los datos semánticos previamente introducidos en la aplicación. Funciona de manera similar al modo de operación para segmentación temporal. Cada etiqueta posee dos botones, uno lo lleva al momento de inicio del evento, y el otro borra el evento de la base de datos.\\
-
-\begin{figure}
-	\includegraphics[width=\linewidth]{images/semanticFull}
-	\caption{Interfaz de segmentación semántica completa} \label{fig:semanticFull}
+	\includegraphics[width=0.9\textwidth]{./images/fig32_12_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/12/16.}
+	\label{fig32_12_16_layout}
 \end{figure}
 
 \begin{figure}
-	
+	\includegraphics[width=0.9\textwidth]{./images/fig64_12_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-64/12/16.}
+	\label{fig64_12_16_layout}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
 	\centering
-	\begin{subfigure}[b]{0.7\textwidth}
-		\includegraphics[width=\textwidth]{images/semantic1}
-		\caption{Menu para agregar segmentaciones semánticas}
-		\label{fig:semantic1}
-	\end{subfigure}
-	~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
-	%(or a blank line to force the subfigure onto a new line)
-	\begin{subfigure}[b]{0.7\textwidth}
-		\includegraphics[width=\textwidth]{images/semantic2}
-		\caption{Visualizador de segmentaciones semánticas actuales}
-		\label{fig:semantic2}
-	\end{subfigure}
+	\includegraphics[width=0.85\textwidth]{./images/fig32_16_7_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/16/7.}
+	\label{fig32_16_7_layout}
 \end{figure}
 
-De esta manera se da por concluido el desarrollo de todos los modos de operación de la aplicación y como se ven y se utilizan sus respectivas interfaces.
-
-\section{Backend}
-
-Para el desarrollo del backend se utilizó la herramienta LoopBack. Esta provee una serie de funcionalidades genéricas para escribir y leer de bases de datos. Para configurar la herramientas e utilizan diferentes archivos JSON con los diferentes parámetros que definen el tipo de base de datos que se va a utilizar, las colecciones, y el modelo de los documentos. Los archivos .json de configuración se puede ver en la sección \ref{ap1} de los apéndices.\\
-
-Una vez se hayan creado los archivos de configuración necesarios para tener cada una de las colecciones funcional, lo que se obtiene es un conjunto de métodos genéricos como los que se observan en la Figura \ref{fig:API}. Estos son diferentes tipos de métodos que se utilizan en las peticiones HTTP para realizar labores distintas. Lo métodos que se utilizaron en cada una de las colecciones fueron únicamente los POST, PUT, GET de la dirección raíz del servicio. Por ejemplo: un POST  a la dirección http:app@domain.com/api/contourSegmentation crearía un nuevo proyecto del tipo segmentación de contornos. Dichos métodos son suficientes para poder administrar correctamente lecturas y escrituras básicas a la base de datos. \\
-
-Además de tener estos métodos genéricos, se puede tener métodos personalizados. Son desarrollados como si fuera un método del framework de NodeJS. Se creó un método especializado que puede ser utilizado por el administrador. Cuando este método se ejecuta, la función que realiza es escanear el directorio de videos dentro de la raíz del servidor, encuentra los archivos del tipo .mp4 y actualiza la base de datos para que dichos videos puedan estar disponibles para cargar desde el menu de carga desde el servidor remoto.\\
-
-Finalmente la única configuración importante de cada uno de los modos de operación existentes que hace falta es la del modelo de los datos, es decir, como se ordena la información de cada uno de los documentos de la base de datos para que cada uno de ellos sea leído he interpretado de la manera correcta. Se tienen cuatro tipos específicos de modelo de datos y una forma general de como se almacenan los proyectos en la base de datos. Esto se explica con mayor detalle en la próxima sección que está dedicada a la base de datos.
+\begin{figure}
+	\includegraphics[width=1\textwidth]{./images/fig32_16_12_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/16/12.}
+	\label{fig32_16_12_layout}
+\end{figure}
 
 
 \begin{figure}
-	\includegraphics[width=\linewidth]{images/api}
-	\caption{Visualización gráfica de los métodos del API} \label{fig:API}
+	\includegraphics[width=0.9\textwidth]{./images/fig32_16_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/16/16.}
+	\label{fig32_16_16_layout}
 \end{figure}
 
-\section{Base de datos}
+Posterior a verificar el funcionamiento del algoritmo mediante se procedió a sintetizar e implementar el algoritmo (con las variaciones descritas en las Tablas \ref{tabSimRC51} y \ref{tabSimRC52}) haciendo uso del \textit{Vivado Design Suite}. Con esto se obtuvo la variación de recursos del FPGA mostrada en las Tablas \ref{tabVariacionRC5llave} y \ref{tabVariacionRC5palabra} mediante el mismo procedimiento descrito en la Sección \ref{resultadosAnalisisTEA}. En el caso de las variaciones de palabra se realizó de esta manera porque el autor del algoritmo indica que la implementación nominal del algoritmo es la RC5-32/12/16  y por tanto se quería observar la variación en el consumo de recursos alrededor del tamaño de palabra nominal, ajustandose a valores típicos de tamaños de palabra (potencias de 2). En el caso del tamaño de llave la variación se llevó a cabo de esta manera para poder realizar el análisis comparativo más adelante.
 
+\begin{table}[htbp]
+  \centering
+    \begin{tabular}{rrrrrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tamaño\\llave\\(bytes)\end{tabular} & \begin{tabular}[c]{@{}l@{}}LUT as\\Logic\end{tabular} & RAM   & \begin{tabular}[c]{@{}l@{}}LUT as\\Memory\end{tabular} & Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Regs\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frec.\\máx.\\(MHz)\end{tabular} \\
+    \midrule
+    7    & 993   & 2     & 8     & 180   & 135   & 685   & 227,27 \\
+    12    & 993   & 2     & 8     & 194   & 127   & 688   & 217,39 \\
+    16    & 991   & 2     & 8     & 187   & 129   & 688   & 212,77 \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Variación del tamaño de la llave y recursos del FPGA para el algoritmo RC5-32/16/B}
+  \label{tabVariacionRC5llave}%
+\end{table}%
 
-El diseño de la base de datos toma en cuenta cada uno de los diferentes modos de operación de la aplicación , por lo que se diseñó un tipo diferente de colección para cada uno de ellos. Todos los modos de operación tienen como base la estructura siguiente:
+\begin{table}[htbp]
+  \centering
+    \begin{tabular}{rrrrrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tamaño\\palabra\\(bits)\end{tabular} & \begin{tabular}[c]{@{}l@{}}LUT\\as Logic\end{tabular} & RAM   & \begin{tabular}[c]{@{}l@{}}LUT as\\Memory\end{tabular} & Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Regs\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frec.\\máx.\\(MHz)\end{tabular} \\
+   \midrule
+    16    & 578   & 0     & 40    & 112   & 82    & 446   & 377,36 \\
+    32    & 972   & 2     & 8     & 188   & 139   & 687   & 212,77 \\
+    64    & 1911  & 4     & 8     & 314   & 236   & 1273  & 192,31 \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Variación del tamaño de la palabra y recursos del FPGA para el algoritmo RC5-W/12/16}
+  \label{tabVariacionRC5palabra}%
+\end{table}%
 
-\begin{itemize}
-\item \textit{id:} identificador único de la base de datos con el que se puede acceder a un documento. Es un número único en toda la colección para cada proyecto.
-\item \textit{title:} variable en la cual se almacena el nombre del proyecto para luego poder cargarlo con facilidad, recordándolo por nombre.
-\item \textit{author:} variable en la cual se almacena el autor del proyecto. 
-\item \textit{data:} Es la información relevante de la segmentación realizada. Dependiendo del tipo de modo de operación, es la porción del documento de la base de datos que varía. Cada uno de los diferentes tipos se explican a continuación.
-\end{itemize}
+\subsection{Resultados y análisis de la variación del tamaño de la llave}
 
-Como se observa la Figura \ref{fig:dbAr1}, todos los diferentes tipos de segmentación utilizan la misma estructura de proyecto. Lo que varía dentro de cada uno de ellos es la estructura del objeto denominado como \emph{data}. Las siguientes subsecciones se encargan de explicar el porqué de esta estructura.
+De la Tabla \ref{tabVariacionRC5llave} se generó la gráfica mostrada en la Figura \ref{figllaveRC5}. La gráfica muestra la viaración del consumo de recursos del FPGA y la frecuencia máxima de reloj conforme varia el tamaño de llave, el comportamiento mostrado fue casi constante demostrando que la variación del tamaño de la llave de un tamaño mayor al doble no afecta el consumo de recursos del FPGA. Esto es muy valioso debido a que al aumentar el tamaño de llave se aumenta la seguridad del algoritmo pero no afecta el consumo de recursos del FPGA. En el aspecto que si afecta esta variación es en la cantidad de tiempo de procesamiento, ya que se debe leer y escribir más veces a la memoria que resguarda la llave. Así se podría concluir del análisis que el tamaño de llave ideal depende de cuanta seguridad se quiere y que tan rápido se necesita llevar a cabo el proceso de cifrado/descifrado de los datos.
 
-\subsection{\textit{Data} en segmentación temporal}
-
-En el caso de la segmentación temporal los datos relevantes son: cuadro inicial de una transición, cuadro final de una transición, el tipo de transición que ocurrió y el tipo de escena a la cual se llega luego de la transición. Por esta razón tiene el modelo de \emph{data} más sencillo de los cuatro modos de operación. Está compuesto por un arreglo de objetos donde los objetos tienen la siguiente estructura:\\
-
-\textit{timeline data} = \{``initialFrame'',``lastFrame'',``eventType'',``sceneType''\}
-
-\subsection{\textit{Data} en trayectorias de objetos}
-
-Para este caso la información relevante es: cuadro actual, posición en X y posición en Y del centro del objeto en cada cuadro. Además a diferencia del modo de segmentación temporal, se puede tener más de un dato en el mismo período de tiempo, ya que durante cierto cuadro, pueden estar presentes dos o más objetos, a los cuales se debe de seguir de manera independiente. Por esta razón la estructura del dato es un poco más compleja y se puede observar como se compone en la Figura \ref{fig:dbAr1}.\\
-
-Primero se asigna un nombre a la trayectoria, se le asigna un color específico que es con el que se van a visualizar las trayectorias en el video, y finalmente el apartado de data. En este se almacena un objeto que tiene tres partes, el número de cuadro de la posición en estudio, y las posiciones en $x$ y en $y$ del objeto. De esta manera se puede saber a cual objeto pertenece, donde está y en que instante de tiempo. Finalmente se puede representar como un objeto JSON de la siguiente manera:\\
-
-\textit{track data} = \{``trackName'',``color'',``data''\}, donde data vendría dado por un arreglo de arreglos como el siguiente:\\
-
-\textit{data} = [frameNumber,\{``xPosition'', ``yPosition''\}]
-
-\subsection{\textit{Data} en segmentación espacial}
-
-De manera muy similar se define el tipo de modelo para la segmentación de contornos. En este caso se aumentó un poco más el nivel de complejidad, ya que que los contornos no tienen únicamente una posición $x$ y $y$ como la posición, sino que más bien pueden tener N número de puntos. Por esta razón se extiende un poco más la profundidad del modelo y se hace un arreglo de objetos del tipo posición = \{``xPosition'',``yPosition''\} y finalmente se tiene la siguiente estructura, como se puede corroborar además en la Figura \ref{fig:dbAr1}:\\
-
-\textit{contour data} = \{``contourName'',``color'',``contour information''\}\\
-
-\textit{contour information} = [[``frameNumber'', ``contourPoints'' ]]\\
-
-\textit{contourPoints} = [point0, ... , pointN],  donde pointX = \{``xPosition'',``yPosition''\}\\
-
-\subsection{\textit{Data} en segmentación semántica}
-
-Finalmente para la segmentación temporal se adopta un modelo muy similar al de la segmentación temporal, ya que no puede haber más una escena en el mismo espacio de tiempo, lo que se puede hacer es asignar una mayor cantidad de palabras clave al mismo segmento. El modelo para este tipo de segmentación queda definido de la siguiente manera:\\
-
-\textit{semantic data} = \{``initialFrame'',``lastFrame'', keywords\}\\
-
-\textit{keywords} = [``keyword0'', ..., ``keywordN'']\\
-
-
-De esta manera se concluyen los cuatro tipos de modelos de la base de datos para los diferentes modos de operación según el tipo de segmentación que se quiera realizar.\\
-
-Con esto se concluye el desarrollo de la aplicación y se continua con el análisis de resultados.
-
-\begin{figure}
-	\includegraphics[width=0.9\linewidth]{images/dbArq}
-	\caption{Esquema del diseño de los modelos de la base de datos} \label{fig:dbAr1}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./images/figLlaveRC5}
+	\caption{Gráfica de consumo de recursos y frecuencia máxima del FPGA contra la variación del tamaño de llave en bytes al implementar el algoritmo RC5.}
+	\label{figllaveRC5}
 \end{figure}
+
+
+\subsection{Resultados y análisis de la variación del tamaño de la palabra}
+De la Tabla \ref{tabVariacionRC5palabra} se extrajeron las gráficas de la Figuras \ref{figSlicesRC5}, \ref{figSliceRegsLutsRC5}, \ref{figRamRC5} y \ref{figFrecuenciasRC5}. 
+
+La Figura \ref{figSlicesRC5} muestra la variación de la cantidad de \textit{Slices L} y \textit{Slices M} consumidos conforme se varía el tamaño de palabra. Además la Figura \ref{figSliceRegsLutsRC5} muestra la variación de la cantidad de \textit{Slice Registers} y LUTs variando el tamaño de palabra. Como se puede observar de ambas figuras los datos muestran un comportamiento exponencial y similar, esto se debe a que, como se mencionó en el análisis del algoritmo TEA, los \textit{Slices} se componen de registros y LUTs.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./images/figSlicesRC5}
+	\caption{Gráfica de consumo de \textit{Slices L} y \textit{Slices M} del FPGA contra la variación del tamaño de la palabra al implementar el algoritmo RC5.}
+	\label{figSlicesRC5}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./images/figSliceRegsLutsRC5}
+	\caption{Gráfica de consumo de \textit{Slice Registers} y LUTs del FPGA contra la variación del tamaño de la palabra al implementar el algoritmo RC5.}
+	\label{figSliceRegsLutsRC5}
+\end{figure}
+
+La Figura \ref{figRamRC5} muestra el consumo de \textit{LUT as memory} y bloques de memoria RAM al variar el tamaño de palabra. Como se puede observar, la implementación del algoritmo con tamaño de palabra de 16 bits no hace uso de ningún RAM y más bien utiliza LUTs como memoria. Posteriormente las otras dos implementaciones hacen uso de RAMs causando el desuso de gran parte de los LUTs utilizados como memoria, disminuyendo esta métrica de manera drástica y manteniéndola constante. Finalmente de la gráfica se puede observar el comportamiento lineal del consumo de bloques de memoria RAM ajustándose a lo esperado de que al duplicar el tamaño de palabra se duplique el uso de bloques de memoria RAM.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./images/figRamRC5}
+	\caption{Gráfica de consumo de \textit{LUT as memory} y bloques de memoria RAM del FPGA contra la variación del tamaño de la palabra al implementar el algoritmo RC5.}
+	\label{figRamRC5}
+\end{figure}
+
+La Figura \ref{figFrecuenciasRC5} muestra la variación de la frecuencia máxima de reloj al variar el tamaño de palabra. Como se puede observar para la implementación de tamaño de palabra de 16 bits la frecuencia es mucho más alta que para las otras dos implementaciones. Esto se debe al cambio de utilizar LUTs como memoria a bloques de memoria RAM, los cuales son mucho más lentos. Además note como al pasar de 32 bits de tamaño de palabra a 64 bits, la variación de frecuencia máxima es pequeña, debido a que al no mapear la memoria a LUTs sino a bloques de memoria RAM no se tiene una memoria distribuida sino centralizada produciendo que la frecuencia sea mucho más estable.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{./images/figFrecuenciasRC5}
+	\caption{Gráfica de frecuencia máxima del FPGA contra la variación del tamaño de la palabra al implementar el algoritmo RC5.}
+	\label{figFrecuenciasRC5}
+\end{figure}
+
+Finalmente y al igual que con el algoritmo TEA se normalizaron los datos para tener una visión global para analizar. Los datos normalizados se muestran en la Tabla \ref{tabNormalizadoRC5} y se reflejan en la Figura \ref{figNormalizadoRC5}. Se exceptúo del análisis normalizado las métricas \textit{LUT as memory} y RAM debido a que RAM no era un parámetro normalizable (para el tamaño de palabra de 16 bits es cero) y que \textit{LUT as memory} varió de forma inconsistente por el uso de bloques de memoria RAM, agregando poco valor al análisis. De la gráfica se observa VOY A AGUANTARLA A HABLAR CON EL PROFE PORQUE LA GRAFICA SE COMPORTA IGUAL A LA DEL TEA.
+
+\begin{table}[htbp]
+  \centering
+    \begin{tabular}{rrrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tamaño\\palabra\\(bits)\end{tabular} & \begin{tabular}[c]{@{}l@{}}LUT\\as Logic\end{tabular} &   Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Regs\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frec.\\máx.\\(MHz)\end{tabular} \\
+   \midrule
+    16    & 1     & 1     & 1     & 1     & 1,96 \\
+    32    & 1,68  & 1,68  & 1,70  & 1,54  & 1,11 \\
+    64    & 3,31  & 2,80  & 2,88  & 2,85  & 1 \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Variación del tamaño de la palabra y recursos del FPGA normalizados para el algoritmo RC5-W/12/16.}
+  \label{tabNormalizadoRC5}%
+\end{table}%
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=1\textwidth]{./images/figNormalizadoRC5}
+	\caption{Gráfica de consumo de recursos y frecuencia máxima (normalizados respecto al valor mínimo) del FPGA contra la variación del tamaño de palabra al implementar el algoritmo RC5.}
+	\label{figNormalizadoRC5}
+\end{figure}
+
+
+\clearpage
+\section{Análisis comparativo}
+Para realizar el análisis comparativo es necesario tener un punto de referencia para la escogencia de los parámetros de cada algoritmo con el fin de lograr un análisis justo. Esto se logró tomando como referencia lo descrito en los artículos que describen cada algoritmo. En ambos artículos se hace una referencia a cual implementación del algoritmo es ``equivalente'' a utilizar el algoritmo DES. Citando ambos artículos:
+\cite{rivest}
+    \emph{``As an example, consider the problem of replacing DES with an "equivalent" RC5 algorithm. One might reasonable choose RC5-32/16/7 as such a replacement.''}
+
+\cite{tea}
+   \emph{``This type of algorithm can replace DES in software, and is short enough to write into almost any program on any computer.''}
+ 
+Por tanto el RC5-32/16/7 y el TEA con 32 rondas y tamaño de palabra de 32 bits fueron elegidos para realizar el análisis comparativo.

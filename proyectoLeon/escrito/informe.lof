@@ -22,18 +22,24 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Diagrama de estados para el bloque \textit {cipher} del algoritmo TEA.\relax }}{32}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Diagrama de estados para el bloque \textit {decipher} del algoritmo TEA.\relax }}{33}
 \addvspace {10pt}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 8 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{41}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 16 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{41}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 32 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{42}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 64 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{42}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 128 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{43}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de \textit {slice L} y \textit {slice M} contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{44}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de \textit {slice registers} y LUTs contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{44}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de la frecuencia m\IeC {\'a}xima de reloj contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{45}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima (normalizados respecto al valor m\IeC {\'\i }nimo) del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{45}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 8 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{40}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 16 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{40}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 32 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{41}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 64 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{41}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo TEA de 128 bits de tama\IeC {\~n}o de palabra y 32 rondas de cifrado/descifrado.\relax }}{42}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de \textit {slice L} y \textit {slice M} contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{42}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de \textit {slice registers} y LUTs contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{43}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Gr\IeC {\'a}fica de variaci\IeC {\'o}n de la frecuencia m\IeC {\'a}xima de reloj contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{43}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima (normalizados respecto al valor m\IeC {\'\i }nimo) del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra en bits al implementar el algoritmo TEA.\relax }}{44}
 \contentsline {figure}{\numberline {4.10}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-16/12/16.\relax }}{46}
 \contentsline {figure}{\numberline {4.11}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/12/16.\relax }}{47}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-64/12/16.\relax }}{48}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/7.\relax }}{48}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/12.\relax }}{49}
-\contentsline {figure}{\numberline {4.15}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/16.\relax }}{50}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-64/12/16.\relax }}{47}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/7.\relax }}{50}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/12.\relax }}{50}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/16.\relax }}{51}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de llave en bytes al implementar el algoritmo RC5.\relax }}{51}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {Slices L} y \textit {Slices M} del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{52}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {Slice Registers} y LUTs del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{52}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {LUT as memory} y bloques de memoria RAM del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{53}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Gr\IeC {\'a}fica de frecuencia m\IeC {\'a}xima del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{53}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima (normalizados respecto al valor m\IeC {\'\i }nimo) del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra al implementar el algoritmo RC5.\relax }}{54}
