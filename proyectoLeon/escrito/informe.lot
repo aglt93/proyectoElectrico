@@ -9,3 +9,5 @@
 \contentsline {table}{\numberline {4.2}{\ignorespaces Resultados de simulaci\IeC {\'o}n del TEA para diferentes tama\IeC {\~n}os de palabra.\relax }}{37}
 \contentsline {table}{\numberline {4.3}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA.\relax }}{37}
 \contentsline {table}{\numberline {4.4}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA normalizados.\relax }}{38}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Resultados de simulaci\IeC {\'o}n para distintos tipos del RC5 variando el tama\IeC {\~n}o de palabra con una llave de 16 bytes igual a 91CEA91001A5556351B241BE19465F91$_{hex}$.\relax }}{40}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Resultados de simulaci\IeC {\'o}n para distintos tipos del RC5 variando el tama\IeC {\~n}o de llave.\relax }}{40}

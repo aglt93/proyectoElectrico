@@ -1,7 +1,7 @@
 from os import system
 
 
-fileNames = ["8_32","16_32","32_32","64_32","128_32"]
+fileNames = ["16_12_16.txt","32_12_16.txt","64_12_16.txt","32_16_7.txt","32_16_12.txt","32_16_16.txt"]
 
 
 for fileUtil in fileNames:

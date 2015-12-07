@@ -1,1 +1,56 @@
-{}
+{
+    "16_12_16.txt": {
+        "Block RAM Tile": "0",
+        "DSPs": "0",
+        "LUT as Logic": "578",
+        "LUT as Memory": "40",
+        "SLICEL": "112",
+        "SLICEM": "82",
+        "Slice Registers": "446"
+    },
+    "32_12_16.txt": {
+        "Block RAM Tile": "2",
+        "DSPs": "0",
+        "LUT as Logic": "972",
+        "LUT as Memory": "8",
+        "SLICEL": "188",
+        "SLICEM": "139",
+        "Slice Registers": "687"
+    },
+    "32_16_12.txt": {
+        "Block RAM Tile": "2",
+        "DSPs": "0",
+        "LUT as Logic": "993",
+        "LUT as Memory": "8",
+        "SLICEL": "194",
+        "SLICEM": "127",
+        "Slice Registers": "688"
+    },
+    "32_16_16.txt": {
+        "Block RAM Tile": "2",
+        "DSPs": "0",
+        "LUT as Logic": "991",
+        "LUT as Memory": "8",
+        "SLICEL": "187",
+        "SLICEM": "129",
+        "Slice Registers": "688"
+    },
+    "32_16_7.txt": {
+        "Block RAM Tile": "2",
+        "DSPs": "0",
+        "LUT as Logic": "993",
+        "LUT as Memory": "8",
+        "SLICEL": "180",
+        "SLICEM": "135",
+        "Slice Registers": "685"
+    },
+    "64_12_16.txt": {
+        "Block RAM Tile": "4",
+        "DSPs": "0",
+        "LUT as Logic": "1911",
+        "LUT as Memory": "8",
+        "SLICEL": "314",
+        "SLICEM": "236",
+        "Slice Registers": "1273"
+    }
+}

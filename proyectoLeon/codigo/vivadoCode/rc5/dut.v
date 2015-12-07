@@ -1,9 +1,3 @@
-`define W 32 // Cantidad de bits por palabra.
-`define U (`W/8)
-`define B 16 // Cantidad de bytes de la llave.
-`define R 12 // Cantidad de rondas.
-`define C (`B/`U) // Tamaño del vector L. Corresponde a b/u.
-
 `define barrel32
 
 `ifdef barrel16
@@ -40,11 +34,11 @@
 
 module dut
 #(
-	parameter W = `W,
-	parameter C = `C,
-	parameter B = `B,
-	parameter R = `R,
-	parameter QW = `QW
+	parameter W = 32,
+	parameter C = W/8,
+	parameter B = 16,
+	parameter R = 12,
+	parameter QW = 32'h9e3779b9
 )
 (
 	input wire clk,

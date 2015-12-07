@@ -19,12 +19,20 @@ try:
 				utilJson[sliceM[1]]=sliceM[2]
 
 			elif 'LUT as Logic' in line:
-				lut = [i.strip() for i in line.split('|',6)]
-				utilJson[lut[1]]=lut[2]
+				lutL = [i.strip() for i in line.split('|',6)]
+				utilJson[lutL[1]]=lutL[2]
+
+			elif 'LUT as Memory' in line:
+				lutM = [i.strip() for i in line.split('|',6)]
+				utilJson[lutM[1]]=lutM[2]
 
 			elif 'Slice Registers' in line:
 				sliceRegisters = [i.strip() for i in line.split('|',6)]
 				utilJson[sliceRegisters[1]]=sliceRegisters[2]
+
+			elif '| Block RAM Tile' in line:
+				ram = [i.strip() for i in line.split('|',6)]
+				utilJson[ram[1]]=ram[2]
 
 			elif 'DSPs' in line:
 				dsp = [i.strip() for i in line.split('|',6)]
@@ -32,7 +40,7 @@ try:
 
 except Exception as e:
 	print "Not able to parse file " + fileName + " because " + str(e)
-	
+
 #############################################################################################################
 try:
 	util = json.load(open("json/utilization.json",'r'))

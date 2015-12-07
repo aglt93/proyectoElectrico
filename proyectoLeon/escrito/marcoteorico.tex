@@ -881,3 +881,86 @@ Finalmente bajo los análisis dados anteriormente se puede concluir que el tama�
 
 \item Se ahorra una gran cantidad de recursos en el FPGA el cual se traduce directamente en costos de producción.
 \end{itemize}
+
+
+\section{Resultados y análisis del algoritmo RC5}
+Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se logró comparando los resultados de texto cifrado y descifrado con el código en C que se encuentra en el artículo del algoritmo \citep{rivest}. La Tabla \ref{tabSimRC51} muestra el resultado de cifrado y descifrado al simular variando el tamaño de palabra y la Tabla \ref{tabSimRC52} muestra los resultados de simular variando el tamaño de llave. Al igual que el algoritmo anterior la tabla en la columna \textit{layout} indica un número de figura al cual está ligado la implementación.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de simulación para distintos tipos del RC5 variando el tamaño de palabra con una llave de 16 bytes igual a 91CEA91001A5556351B241BE19465F91$_{hex}$.}
+    \begin{tabular}{lrrr}
+    \toprule
+	\begin{tabular}[c]{@{}l@{}}Tipo\\RC5 \end{tabular} & Texto plano (hex) & Texto cifrado (hex) & Figura \textit{layout} \\
+    \midrule
+	16/12/16 & a5214b15 & a496d848 & \ref{fig16_12_16_layout} \\
+	\midrule
+	32/12/16 & \begin{tabular}[c]{@{}l@{}}eedba521\\6d8f4b15\end{tabular} & \begin{tabular}[c]{@{}l@{}}ac13c0f7\\52892b5b\end{tabular} & \ref{fig32_12_16_layout}\\
+	\midrule
+	64/12/16 & \begin{tabular}[c]{@{}l@{}}00000000\\eedba521\\00000000\\6d8f4b15\end{tabular} & \begin{tabular}[c]{@{}l@{}}829c9641\\f96ead46\\f91c9890\\738c8807\end{tabular} & \ref{fig64_12_16_layout}\\
+    \bottomrule
+    \end{tabular}%
+  \label{tabSimRC51}%
+\end{table}%
+
+
+\begin{table}[htbp]
+  \centering
+  \caption{Resultados de simulación para distintos tipos del RC5 variando el tamaño de llave.}
+    \begin{tabular}{lrrrr}
+    \toprule
+    \begin{tabular}[c]{@{}l@{}}Tipo\\RC5 \end{tabular} & Llave (hex) & Texto plano (hex) & Texto cifrado (hex) & \begin{tabular}[c]{@{}l@{}}Figura\\\textit{layout}\end{tabular}\\
+    \midrule
+32/16/7 & \begin{tabular}[c]{@{}l@{}}2c5b2aa\\c54b1a5\end{tabular} & \begin{tabular}[c]{@{}l@{}}12153524\\c0895e81\end{tabular} & \begin{tabular}[c]{@{}l@{}}9e6edba6\\9b789a70\end{tabular} & \ref{fig32_16_7_layout} \\
+\midrule
+32/16/12 & \begin{tabular}[c]{@{}l@{}}5e68d4\\564a2c\\5b2aac\\54b1a5\end{tabular} & \begin{tabular}[c]{@{}l@{}}f232b52\\aeeebba13\end{tabular} & \begin{tabular}[c]{@{}l@{}}a4db4976\\94726be1\end{tabular} & \ref{fig32_16_12_layout} \\
+\midrule
+32/16/16 & \begin{tabular}[c]{@{}l@{}}d4543e13\\5e68d456\\4a2c5b2a\\ac54b1a5\end{tabular} & \begin{tabular}[c]{@{}l@{}}eedba521\\6d8f4b15\end{tabular} & \begin{tabular}[c]{@{}l@{}}b6c95c5c\\e51616b8\end{tabular} & \ref{fig32_16_16_layout} \\
+    \bottomrule
+    \end{tabular}%
+  \label{tabSimRC52}%
+\end{table}%
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig16_12_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-16/12/16.}
+	\label{fig16_12_16_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./images/fig32_12_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/12/16.}
+	\label{fig32_12_16_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig64_12_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-64/12/16.}
+	\label{fig64_12_16_layout}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig32_16_7_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/16/7.}
+	\label{fig32_16_7_layout}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{./images/fig32_16_12_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/16/12.}
+	\label{fig32_16_12_layout}
+\end{figure}
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.9\textwidth]{./images/fig32_16_16_layout}
+	\caption{\textit{Layout} de la implementación del algoritmo RC5-32/16/16.}
+	\label{fig32_16_16_layout}
+\end{figure}

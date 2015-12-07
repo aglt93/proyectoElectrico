@@ -10,6 +10,9 @@
 `define ROT_L 4'd9
 `define WRITE_DATA 4'd10
 
+
+`define barrel32
+
 module keyMixer 
 #(
 	parameter W = 32,

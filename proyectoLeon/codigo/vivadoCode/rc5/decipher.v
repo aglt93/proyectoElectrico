@@ -14,7 +14,6 @@
 
 `define barrel32
 
-
 module decipher
 #(
 
