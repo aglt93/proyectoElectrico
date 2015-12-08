@@ -188,7 +188,7 @@ Finalmente bajo los análisis dados anteriormente se puede concluir que el tama�
 
 \clearpage
 \section{Resultados y análisis del algoritmo RC5}
-Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se logró comparando los resultados de texto cifrado y descifrado con el código en C que se encuentra en el artículo del algoritmo \citep{rivest}. La Tabla \ref{tabSimRC51} muestra el resultado de cifrado y descifrado al simular variando el tamaño de palabra y la Tabla \ref{tabSimRC52} muestra los resultados de simular variando el tamaño de llave. Al igual que el algoritmo anterior la tabla en la columna \textit{layout} indica un número de figura al cual está ligado la implementación.
+Inicialmente se corroboró que el algoritmo funcionara de forma correcta. Esto se llevó a cabo mediante la comparación de los resultados de texto cifrado y descifrado con el código en C que se encuentra en el artículo del algoritmo: \citep{rivest}. La Tabla \ref{tabSimRC51} muestra el resultado de cifrado y descifrado al simular el algoritmo variando el tamaño de palabra y la Tabla \ref{tabSimRC52} muestra los resultados de simular el algoritmo variando el tamaño de llave. Al igual que el algoritmo anterior, la tabla en la columna \textit{layout} indica un número de figura al cual se encuentra ligada la implementación.
 
 \begin{table}[htbp]
   \centering
@@ -264,7 +264,7 @@ Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se lo
 	\label{fig32_16_16_layout}
 \end{figure}
 
-Posterior a verificar el funcionamiento del algoritmo mediante se procedió a sintetizar e implementar el algoritmo (con las variaciones descritas en las Tablas \ref{tabSimRC51} y \ref{tabSimRC52}) haciendo uso del \textit{Vivado Design Suite}. Con esto se obtuvo la variación de recursos del FPGA mostrada en las Tablas \ref{tabVariacionRC5llave} y \ref{tabVariacionRC5palabra} mediante el mismo procedimiento descrito en la Sección \ref{resultadosAnalisisTEA}. En el caso de las variaciones de palabra se realizó de esta manera porque el autor del algoritmo indica que la implementación nominal del algoritmo es la RC5-32/12/16  y por tanto se quería observar la variación en el consumo de recursos alrededor del tamaño de palabra nominal, ajustandose a valores típicos de tamaños de palabra (potencias de 2). En el caso del tamaño de llave la variación se llevó a cabo de esta manera para poder realizar el análisis comparativo más adelante.
+Posterior a verificar el funcionamiento del algoritmo se procedió a sintetizar e implementar el algoritmo en el FPGA (con las variaciones descritas en las Tablas \ref{tabSimRC51} y \ref{tabSimRC52}) haciendo uso del \textit{Vivado Design Suite}. Con esto se obtuvo la variación de recursos del FPGA (mediante el mismo procedimiento descrito en la Sección \ref{resultadosAnalisisTEA}) mostrada en las Tablas \ref{tabVariacionRC5llave} y \ref{tabVariacionRC5palabra}. En el caso de las variaciones de palabra, los valores fueron elegidos debido a que el autor del algoritmo indica que la implementación nominal del algoritmo es la RC5-32/12/16. Por tanto se quería observar la variación en el consumo de recursos alrededor del tamaño de palabra nominal y eligiendo valores típicos de tamaños de palabra (potencias de 2). En el caso del tamaño de llave los tamaños fueron elegidos con el fin de poder realizar el análisis comparativo más adelante.
 
 \begin{table}[htbp]
   \centering
@@ -298,7 +298,7 @@ Posterior a verificar el funcionamiento del algoritmo mediante se procedió a si
 
 \subsection{Resultados y análisis de la variación del tamaño de la llave}
 
-De la Tabla \ref{tabVariacionRC5llave} se generó la gráfica mostrada en la Figura \ref{figllaveRC5}. La gráfica muestra la viaración del consumo de recursos del FPGA y la frecuencia máxima de reloj conforme varia el tamaño de llave, el comportamiento mostrado fue casi constante demostrando que la variación del tamaño de la llave de un tamaño mayor al doble no afecta el consumo de recursos del FPGA. Esto es muy valioso debido a que al aumentar el tamaño de llave se aumenta la seguridad del algoritmo pero no afecta el consumo de recursos del FPGA. En el aspecto que si afecta esta variación es en la cantidad de tiempo de procesamiento, ya que se debe leer y escribir más veces a la memoria que resguarda la llave. Así se podría concluir del análisis que el tamaño de llave ideal depende de cuanta seguridad se quiere y que tan rápido se necesita llevar a cabo el proceso de cifrado/descifrado de los datos.
+De la Tabla \ref{tabVariacionRC5llave} se generó la gráfica mostrada en la Figura \ref{figllaveRC5}, la cual muestra la variación del consumo de recursos del FPGA y la frecuencia máxima de reloj conforme varía el tamaño de llave. El comportamiento mostrado fue casi constante demostrando que la variación del tamaño de la llave hasta de un tamaño mayor al doble, afecta de manera mínima el consumo de recursos del FPGA. Esto es muy valioso debido a que al aumentar el tamaño de llave se aumenta la seguridad del algoritmo pero no afecta el consumo de recursos del FPGA. El aspecto que si se ve afectado con esta variación es en la cantidad de tiempo de procesamiento, ya que se debe leer y escribir más veces a la memoria que resguarda la llave. Así se podría concluir del análisis, que el tamaño de llave ideal depende de cuanta seguridad se quiere y que tan rápido se necesita llevar a cabo el proceso de cifrado/descifrado de los datos.
 
 \begin{figure}[H]
 	\centering
@@ -311,8 +311,7 @@ De la Tabla \ref{tabVariacionRC5llave} se generó la gráfica mostrada en la Fig
 \subsection{Resultados y análisis de la variación del tamaño de la palabra}
 De la Tabla \ref{tabVariacionRC5palabra} se extrajeron las gráficas de la Figuras \ref{figSlicesRC5}, \ref{figSliceRegsLutsRC5}, \ref{figRamRC5} y \ref{figFrecuenciasRC5}. 
 
-La Figura \ref{figSlicesRC5} muestra la variación de la cantidad de \textit{Slices L} y \textit{Slices M} consumidos conforme se varía el tamaño de palabra. Además la Figura \ref{figSliceRegsLutsRC5} muestra la variación de la cantidad de \textit{Slice Registers} y LUTs variando el tamaño de palabra. Como se puede observar de ambas figuras los datos muestran un comportamiento exponencial y similar, esto se debe a que, como se mencionó en el análisis del algoritmo TEA, los \textit{Slices} se componen de registros y LUTs.
-
+La Figura \ref{figSlicesRC5} muestra la variación de la cantidad de \textit{Slices L} y \textit{Slices M} consumidos conforme se aumenta el tamaño de palabra. Además la Figura \ref{figSliceRegsLutsRC5} muestra la variación de la cantidad de \textit{Slice Registers} y LUTs conforme se aumenta el tamaño de palabra. Como se puede observar de ambas gráficas el consumo de recursos del FPGA muestra un comportamiento exponencial. Además es destacable que ambas figura muestran el mismo comportamiento ya que, como se mencionó en el análisis del algoritmo TEA, los \textit{Slices} se componen de registros y LUTs.
 
 \begin{figure}[H]
 	\centering
@@ -328,7 +327,7 @@ La Figura \ref{figSlicesRC5} muestra la variación de la cantidad de \textit{Sli
 	\label{figSliceRegsLutsRC5}
 \end{figure}
 
-La Figura \ref{figRamRC5} muestra el consumo de \textit{LUT as memory} y bloques de memoria RAM al variar el tamaño de palabra. Como se puede observar, la implementación del algoritmo con tamaño de palabra de 16 bits no hace uso de ningún RAM y más bien utiliza LUTs como memoria. Posteriormente las otras dos implementaciones hacen uso de RAMs causando el desuso de gran parte de los LUTs utilizados como memoria, disminuyendo esta métrica de manera drástica y manteniéndola constante. Finalmente de la gráfica se puede observar el comportamiento lineal del consumo de bloques de memoria RAM ajustándose a lo esperado de que al duplicar el tamaño de palabra se duplique el uso de bloques de memoria RAM.
+La Figura \ref{figRamRC5} muestra el consumo de \textit{LUT as memory} y bloques de memoria RAM al variar el tamaño de palabra. Se observa que, la implementación del algoritmo con tamaño de palabra de 16 bits no hace uso de ningún bloque de memoria RAM y más bien utiliza LUTs como memoria. Las otras dos implementaciones hacen uso de bloques de memoria RAM causando el desuso de gran parte de los LUTs como memoria, disminuyendo esta métrica de manera drástica y convirtiendola en un valor constante. También de la gráfica se puede observar el comportamiento lineal del consumo de bloques de memoria RAM. Esto se ajusta al comportamiento esperado de que al duplicar el tamaño de palabra se vaya duplicando el uso de bloques de memoria RAM.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./images/figRamRC5}
@@ -336,7 +335,7 @@ La Figura \ref{figRamRC5} muestra el consumo de \textit{LUT as memory} y bloques
 	\label{figRamRC5}
 \end{figure}
 
-La Figura \ref{figFrecuenciasRC5} muestra la variación de la frecuencia máxima de reloj al variar el tamaño de palabra. Como se puede observar para la implementación de tamaño de palabra de 16 bits la frecuencia es mucho más alta que para las otras dos implementaciones. Esto se debe al cambio de utilizar LUTs como memoria a bloques de memoria RAM, los cuales son mucho más lentos. Además note como al pasar de 32 bits de tamaño de palabra a 64 bits, la variación de frecuencia máxima es pequeña, debido a que al no mapear la memoria a LUTs sino a bloques de memoria RAM no se tiene una memoria distribuida sino centralizada produciendo que la frecuencia sea mucho más estable.
+La Figura \ref{figFrecuenciasRC5} muestra la variación de la frecuencia máxima de reloj al variar el tamaño de palabra. Como se puede observar para la implementación con tamaño de palabra de 16 bits la frecuencia es mucho más alta que para las otras dos implementaciones. Esto se debe al cambio de utilizar LUTs como memoria a utilizar bloques de memoria RAM, los cuales son mucho más lentos. Además se nota como al pasar de 32 bits de tamaño de palabra a 64 bits, la variación de frecuencia máxima es pequeña, ya que al no mapear la memoria a LUTs sino a bloques de memoria RAM no se tiene una memoria distribuida sino centralizada, produciendo que la frecuencia sea mucho más estable.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.8\textwidth]{./images/figFrecuenciasRC5}
@@ -344,7 +343,7 @@ La Figura \ref{figFrecuenciasRC5} muestra la variación de la frecuencia máxima
 	\label{figFrecuenciasRC5}
 \end{figure}
 
-Finalmente y al igual que con el algoritmo TEA se normalizaron los datos para tener una visión global para analizar. Los datos normalizados se muestran en la Tabla \ref{tabNormalizadoRC5} y se reflejan en la Figura \ref{figNormalizadoRC5}. Se exceptúo del análisis normalizado las métricas \textit{LUT as memory} y RAM debido a que RAM no era un parámetro normalizable (para el tamaño de palabra de 16 bits es cero) y que \textit{LUT as memory} varió de forma inconsistente por el uso de bloques de memoria RAM, agregando poco valor al análisis. De la gráfica se observa VOY A AGUANTARLA A HABLAR CON EL PROFE PORQUE LA GRAFICA SE COMPORTA IGUAL A LA DEL TEA.
+Finalmente y al igual que con el algoritmo TEA se normalizaron los datos para tener una visión global para analizar. Los datos normalizados se muestran en la Tabla \ref{tabNormalizadoRC5} y se reflejan en la gráfica de la Figura \ref{figNormalizadoRC5}. Se exceptúo del análisis normalizado las métricas \textit{LUT as memory} y RAM debido a que RAM no era un parámetro normalizable (para el tamaño de palabra de 16 bits tiene un valor de cero) y que \textit{LUT as memory} varió de forma inconsistente por el uso de bloques de memoria RAM, agregando poco valor al análisis. De la gráfica se observa VOY A AGUANTARLA A HABLAR CON EL PROFE PORQUE LA GRAFICA SE COMPORTA IGUAL A LA DEL TEA Y ME HIZO CORRECCION EN ESO.
 
 \begin{table}[htbp]
   \centering
@@ -371,11 +370,74 @@ Finalmente y al igual que con el algoritmo TEA se normalizaron los datos para te
 
 \clearpage
 \section{Análisis comparativo}
-Para realizar el análisis comparativo es necesario tener un punto de referencia para la escogencia de los parámetros de cada algoritmo con el fin de lograr un análisis justo. Esto se logró tomando como referencia lo descrito en los artículos que describen cada algoritmo. En ambos artículos se hace una referencia a cual implementación del algoritmo es ``equivalente'' a utilizar el algoritmo DES. Citando ambos artículos:
-\cite{rivest}
-    \emph{``As an example, consider the problem of replacing DES with an "equivalent" RC5 algorithm. One might reasonable choose RC5-32/16/7 as such a replacement.''}
+Con la finalidad de realizar un análisis comparativo justo es necesario tener un punto de referencia para la escogencia de los parámetros de cada algoritmo. Esto se logró tomando como referencia lo descrito en los artículos de cada algoritmo. En ambos artículos se hace una referencia a cual implementación del algoritmo es ``equivalente'' a utilizar el algoritmo DES. \cite{rivest} indica que:
+\begin{center}
+    \begin{minipage}{0.9\linewidth}
+        \vspace{5pt}%margen superior de minipage
+        {\small
+            \emph{``Como un ejemplo, considere el problema de reemplazar DES con un ``equivalente'' del algoritmo RC5. Una elección razonable sería RC5-32/16/7 como reemplazo.''}
+        }
+ 		\vspace{5pt}%margen inferior de la minipage
+    \end{minipage}
+\end{center}
 
-\cite{tea}
-   \emph{``This type of algorithm can replace DES in software, and is short enough to write into almost any program on any computer.''}
+\begin{flushleft}
+Así como \cite{tea} indica:
+\end{flushleft}
+\begin{center}
+    \begin{minipage}{0.9\linewidth}
+        \vspace{5pt}%margen superior de minipage
+        {\small
+            \emph{``Este tipo de algoritmo puede reemplazar al DES en software, y es lo suficientemente corto para ser escrito en cualquier programa o computadora.''}
+        }
+ 		\vspace{5pt}%margen inferior de la minipage
+    \end{minipage}
+\end{center}
  
-Por tanto el RC5-32/16/7 y el TEA con 32 rondas y tamaño de palabra de 32 bits fueron elegidos para realizar el análisis comparativo.
+Por tanto el RC5-32/16/7 y el TEA con 32 rondas y tamaño de palabra de 32 bits fueron elegidos para realizar el análisis comparativo. Los parámetros y recursos consumidos de cada implementación del algoritmo se muestran en la Tabla \ref{tabVariacionComparativa}. Nuevamente se realizó una normalización de los datos como se muestra en la Tabla \ref{tabNormalizadoComparativa} y se graficaron los datos de la misma en la Figura \ref{figNormalizadoComparativa}. 
+
+% Table generated by Excel2LaTeX from sheet 'datos'
+\begin{table}[htbp]
+  \centering
+  \small
+  \setlength\tabcolsep{0.5pt}
+    \begin{tabular}{c|r|r|r|r|r|r|r|r|r|r}
+    \toprule
+    Algoritmo & \begin{tabular}[c]{@{}l@{}}Tamaño\\palabra\\(bits)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Tamaño\\llave\\(bytes)\end{tabular} & \begin{tabular}[c]{@{}l@{}}Número\\rondas\end{tabular} & \begin{tabular}[c]{@{}l@{}}LUT as\\Logic\end{tabular} & RAM   & \begin{tabular}[c]{@{}l@{}}LUT as\\Memory\end{tabular} & Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Registers\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frec.\\máx.\\(MHz)\end{tabular}\\
+    \midrule
+    RC5   & 32    & 7     & 16    & 993   & 2     & 8     & 180   & 135   & 685   & 227,27 \\
+    TEA   & 32    & 16    & 32    & 737   & 0     & 0     & 133   & 90    & 632   & 338,983 \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Tabla comparativa de parámetros y consumo de recursos de los algoritmos RC5 y TEA.}
+  \label{tabVariacionComparativa}%
+\end{table}%
+
+% Table generated by Excel2LaTeX from sheet 'datos'
+\begin{table}[htbp]
+  \centering
+    \begin{tabular}{crrrrr}
+    \toprule
+    Algoritmo & \begin{tabular}[c]{@{}l@{}}LUT as\\Logic\end{tabular} & Slice L & Slice M & \begin{tabular}[c]{@{}l@{}}Slice\\Registers\end{tabular} & \begin{tabular}[c]{@{}l@{}}Frec.\\máx.\\(MHz)\end{tabular}\\
+    \midrule
+    TEA   & 1     & 1     & 1     & 1     & 1,49 \\
+    RC5   & 1,35  & 1,35  & 1,5   & 1,08  & 1 \\
+    \bottomrule
+    \end{tabular}%
+  \caption{Tabla comparativa normalizada (respecto al valor mínimo) del consumo de recursos y frecuencia máxima de los algoritmos RC5 y TEA.}
+  \label{tabNormalizadoComparativa}%
+\end{table}%
+
+De la Figura \ref{figNormalizadoComparativa} se puede observar claramente como el algoritmo TEA tiene mejores métricas en todo aspecto, consume menos recursos y tiene una frecuencia máxima mucho mayor. Esto se puede deber a varias razones:
+\begin{itemize}
+\item El algoritmo TEA no cuenta con la variación independiente de la llave y por tanto el algoritmo no necesita ser tan complicado, disminuyendo la cantidad de lógica necesaria para implementarlo.
+
+\item El algoritmo RC5 hace uso de bloques de memoria RAM, el TEA no lo hace. Esto produce que la cantidad de lógica aumente y además se vuelva más lenta, al tener que leer y escribir a varias memorias.
+\end{itemize}
+Otro aspecto que debemos tomar en cuenta es el tiempo que toma el proceso de cifrado y descifrado. En el RC5 es mucho mayor que en el TEA, tanto en frecuencia de reloj como en cantidad de ciclos del mismo. Así, finalmente podemos concluir que el mejor algoritmo criptográfico a utilizar, según las métricas analizadas en este proyecto, sería el TEA con 32 bits de tamaño de palabra y 32 rondas.
+\begin{figure}
+	\centering
+	\includegraphics[width=1\textwidth]{./images/figNormalizadoComparativo}
+	\caption{Gráfica del consumo de recursos y frecuencia máxima (normalizados respecto al valor mínimo) del FPGA para los algoritmos algoritmo RC5 y TEA.}
+	\label{figNormalizadoComparativa}
+\end{figure}
