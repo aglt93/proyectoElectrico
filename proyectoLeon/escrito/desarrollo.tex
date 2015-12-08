@@ -1,8 +1,8 @@
 \chapter{Resultados y análisis}
-En esta capítulo se va a mostrar y analizar los resultados de realizar la implementación de los algoritmos criptográficos RC5 y TEA.
-Primero se dan resultados y análisis individuales, para posteriomente realizar el análisis comparativo.
+En este capítulo se van a mostrar y analizar los resultados de la implementación de los algoritmos criptográficos RC5 y TEA.
+Primero se presentan resultados y análisis individuales, para posteriomente realizar el análisis comparativo.
 
-Las síntesis e implementaciones se llevaron a cabo haciendo uso de la herramienta de desarrollo \textit{Vivado Design Suite} de \textit{Xillinx} bajo la licencia gratuita \textit{WEBPack}. Se hizo utilizó como objetivo de implementación la tarjeta xc7k70tfbv676-1 de la familia de FPGAs \textit{Kintex-7}. En la Tabla \ref{tabRecursosFPGA} se muestran todos los recursos disponibles de la misma. 
+Las síntesis e implementación de los algoritmos en el FPGA se llevó a cabo haciendo uso de la herramienta de desarrollo \textit{Vivado Design Suite} de \textit{Xillinx} bajo la licencia gratuita \textit{WEBPack}. Se eligió como objetivo de implementación la tarjeta xc7k70tfbv676-1 de la familia de FPGAs \textit{Kintex-7}. En la Tabla \ref{tabRecursosFPGA} se muestran todos los recursos disponibles de la misma. 
 
 \begin{table}[htbp]
   \centering
@@ -22,16 +22,18 @@ Las síntesis e implementaciones se llevaron a cabo haciendo uso de la herramien
   \label{tabRecursosFPGA}%
 \end{table}%
 
-Para poder obtener las métricas que se analizan se utilizaron los reportes de temporización y utilización que la herramienta ofrece al finalizar el proceso de implementación. Se guardaron estos archivos después de cada sintesís e implementación y se utilizó un \textit{script} de Python para extraer los datos deseados y escribirlos a un archivo CSV (\textit{Comma Separated Values}) para poder abrir el mismo haciendo uso de \textit{Excel} para graficar las diferentes métricas haciendo uso de tablas pivote para un análisis más eficiente.
+Para obtener las métricas de análisis se utilizaron los reportes de temporización y utilización que la herramienta ofrece al finalizar el proceso de implementación. Se guardaron estos archivos después de cada sintesís e implementación y se escribió un \textit{script} de Python para extraer los datos deseados y escribirlos a un archivo CSV (\textit{Comma Separated Values}). Luego de esto se utilizó \textit{Excel} para graficar las diferentes métricas haciendo uso de tablas pivote para un análisis más eficiente.
 
 
-Cabe aclarar que aunque en un principio no se iba a tomar en cuenta el análisis de temporización, específicamente la frecuencia máxima de reloj, la misma fue agregada a la lista de métricas a analizar debido a que en la implementación realizada la frecuencia máxima de reloj afecta directamente el tiempo de procesamiento para cifrar y descifrar datos y por tanto es una métrica muy importante a analizar. Agregado a esto se puede destacar el hecho de que igualmente a causa de la implementación el variar la cantidad de rondas que cifran o descifran los datos no afectan de ninguna manera la cantidad de recursos del FPGA y solo afectan el tiempo de procesamiento total de cifrado o descifrado.
+Cabe aclarar que aunque en un principio no se iba a tomar en cuenta el análisis de temporización, específicamente la frecuencia máxima de reloj, la misma fue agregada a la lista de métricas a analizar debido a que en la implementación realizada la frecuencia máxima de reloj afecta directamente el tiempo de procesamiento para cifrar y descifrar datos y por tanto es una métrica muy importante a analizar. Adicionalmente se puede destacar el hecho de que igualmente a causa de la implementación, el variar la cantidad de rondas que cifran o descifran los datos no afectan de ninguna manera la cantidad de recursos del FPGA y solo afectan el tiempo de procesamiento total de cifrado o descifrado.
 
 
 Otro aspecto importante es que se asumió que los módulos \textit{top} de los algoritmos son módulos que serán parte de un dispositivo más grande (por ejemplo un procesador) y por tanto que ese dispositivo hará uso de tanto los módulos de cifrado y descifrado, así los módulos serán sintetizados e implementados simúltaneamente para cada algoritmo, ya que el análisis de ambos módulos tendrá más valor que el de los módulos por separado. Particularmente para el algoritmo RC5 se hizo que los módulos de cifrado y descifrado compartan el módulo que se encarga de la expansión de llave (\textit{keyExpander} en las Figuras \ref{figCipherBlockDiagram} y \ref{figDecipherBlockDiagram}) esto con la finalidad de consumir la menor cantidad de recursos y hacer lo más óptimo posible el diseño.
 
 
 Un problema al que se enfrentó al implementar los algoritmos en el FPGA es que la cantidad de salidas y entradas del diseño era muy grande para que el mismo fuera implementable en el FPGA. La solución a esto corresponde a un módulo para serializar y deserializar las entradas y salidas pero el mismo no fue implementado ya que no era uno de los objetivos del proyecto, además de que se consideró innecesario ya que, como se indicó anteriormente, estos algoritmos formarían parte de un dispositivo más grande que ya contará con este módulo. Así para poder implementar el diseño simplemente se pusieron dos puertos, uno de entrada y otro de salida, ambos del tamaño de la palabra y las señales de control de los módulos.
+
+También se recalca el hecho de que en ninguno de los algoritmos analizados el FPGA hizo uso de los bloques de DSP con los que cuenta, por tanto esta métrica fue descartada de los análisis y no se hará mención alguna de la misma de aquí en adelante.
 
 \section{Resultados y análisis del algoritmo TEA} \label{resultadosAnalisisTEA}
 Inicialmente se corroboró que el algoritmo funcionara correctamente, esto se logró comparando los resultados de texto cifrado y descifrado con el código en C que se encuentra en los Listados \ref{lstCipherTEA} y \ref{lstDecipherTEA}\footnote{El código para verificar fue ligeramente diferente al de los listados debido a que se tuvo que ajustar para poder variar el tamaño de palabra.}. La Tabla \ref{tabSimTEA} muestra el resultado de cifrado y descifrado al simular con diferentes tamaños de palabra para 32 rondas de cifrado/descifrado. Además la tabla en la columna \textit{layout} indica un número de figura al cual está ligado la implementación para el tamaño de palabra. Este \textit{layout} corresponde al dado por la herramienta de desarrollo para observar la distribución de recursos en el circuito. Además el camino resaltado en blanco en cada \textit{layout} corresponde al \textit{critical path} de cada implementación.
@@ -171,8 +173,9 @@ Finalmente los datos de la Tabla \ref{tabVariacionTEA} fueron normalizados respe
 	
 Note nuevamente como los recursos muestran el comportamiento exponencial descrito en las otras gráficas, pero como esta gráfica en particular los datos se muestran normalizados, el análisis se puede realizar de manera global.
 
+ESTO MAÑANA LO DISCUTO CON EL PROFE!//////////
 Analizando la gráfica de la Figura \ref{figNormalizadoTEA} el comportamiento esperado es que al duplicar el tamaño de palabra se debe aumentar la cantidad de recursos consumidos en el FPGA al doble, así como reducir a la mitad la frecuencia máxima de reloj. Contrario a los resultados esperados se observa como conforme se varía el tamaño de palabra los recursos tienden ser menores al doble y la proporción se aleja cada vez más de ser el doble. Esto se puede deber nuevamente a la herramienta de desarrollo que puede optimizar el diseño \textcolor{red}{DE QUE MANERA??????????}. En el caso de la frecuencia máxima de reloj se observa como hasta que la palabra llega a ser de 128 bits se obtiene la frecuencia de la mitad de la frecuencia para el tamaño de palabra de 8 bits, esto se debe nuevamente (y como se explicó anteriormente en el análisis de la Figura \ref{figFrecuenciasTEA}) a la herramienta de desarrollo.
-
+////////////////7
 
 Finalmente bajo los análisis dados anteriormente se puede concluir que el tamaño de palabra ideal podría ser cualquiera menor a 32 bits. Las razones de esto son las siguientes:
 
@@ -434,7 +437,9 @@ De la Figura \ref{figNormalizadoComparativa} se puede observar claramente como e
 
 \item El algoritmo RC5 hace uso de bloques de memoria RAM, el TEA no lo hace. Esto produce que la cantidad de lógica aumente y además se vuelva más lenta, al tener que leer y escribir a varias memorias.
 \end{itemize}
-Otro aspecto que debemos tomar en cuenta es el tiempo que toma el proceso de cifrado y descifrado. En el RC5 es mucho mayor que en el TEA, tanto en frecuencia de reloj como en cantidad de ciclos del mismo. Así, finalmente podemos concluir que el mejor algoritmo criptográfico a utilizar, según las métricas analizadas en este proyecto, sería el TEA con 32 bits de tamaño de palabra y 32 rondas.
+Otro aspecto que debemos tomar en cuenta es el tiempo que toma el proceso de cifrado y descifrado. En el RC5 es mucho mayor que en el TEA, tanto en frecuencia de reloj como en cantidad de ciclos del mismo. 
+
+Así, finalmente, podemos concluir que el mejor algoritmo criptográfico a utilizar, según las métricas analizadas en este proyecto, sería el TEA con 32 bits de tamaño de palabra y 32 rondas.
 \begin{figure}
 	\centering
 	\includegraphics[width=1\textwidth]{./images/figNormalizadoComparativo}
