@@ -7,12 +7,13 @@
 \addvspace {10pt}
 \contentsline {table}{\numberline {4.1}{\ignorespaces Recursos disponible para el FPGA Kintex-7 xc7k70tfbv676-1 de Xillinx.\relax }}{35}
 \contentsline {table}{\numberline {4.2}{\ignorespaces Resultados de simulaci\IeC {\'o}n del TEA para diferentes tama\IeC {\~n}os de palabra.\relax }}{37}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA.\relax }}{37}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA.\relax }}{38}
 \contentsline {table}{\numberline {4.4}{\ignorespaces Variaci\IeC {\'o}n de par\IeC {\'a}metros del algoritmo TEA y consumo de recursos del FPGA normalizados.\relax }}{38}
 \contentsline {table}{\numberline {4.5}{\ignorespaces Resultados de simulaci\IeC {\'o}n para distintos tipos del RC5 variando el tama\IeC {\~n}o de palabra con una llave de 16 bytes igual a 91CEA91001A5556351B241BE19465F91$_{hex}$.\relax }}{45}
 \contentsline {table}{\numberline {4.6}{\ignorespaces Resultados de simulaci\IeC {\'o}n para distintos tipos del RC5 variando el tama\IeC {\~n}o de llave.\relax }}{46}
 \contentsline {table}{\numberline {4.7}{\ignorespaces Variaci\IeC {\'o}n del tama\IeC {\~n}o de la llave y recursos del FPGA para el algoritmo RC5-32/16/B\relax }}{48}
 \contentsline {table}{\numberline {4.8}{\ignorespaces Variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra y recursos del FPGA para el algoritmo RC5-W/12/16\relax }}{48}
-\contentsline {table}{\numberline {4.9}{\ignorespaces Variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra y recursos del FPGA normalizados para el algoritmo RC5-W/12/16.\relax }}{49}
+\contentsline {table}{\numberline {4.9}{\ignorespaces Variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra y recursos del FPGA normalizados para el algoritmo RC5-W/12/16.\relax }}{50}
 \contentsline {table}{\numberline {4.10}{\ignorespaces Tabla comparativa de par\IeC {\'a}metros y consumo de recursos de los algoritmos RC5 y TEA.\relax }}{55}
 \contentsline {table}{\numberline {4.11}{\ignorespaces Tabla comparativa normalizada (respecto al valor m\IeC {\'\i }nimo) del consumo de recursos y frecuencia m\IeC {\'a}xima de los algoritmos RC5 y TEA.\relax }}{56}
+\addvspace {10pt}

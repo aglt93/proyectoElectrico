@@ -35,12 +35,13 @@
 \contentsline {figure}{\numberline {4.11}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/12/16.\relax }}{47}
 \contentsline {figure}{\numberline {4.12}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-64/12/16.\relax }}{47}
 \contentsline {figure}{\numberline {4.13}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/7.\relax }}{50}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/12.\relax }}{50}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/12.\relax }}{51}
 \contentsline {figure}{\numberline {4.15}{\ignorespaces \textit {Layout} de la implementaci\IeC {\'o}n del algoritmo RC5-32/16/16.\relax }}{51}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de llave en bytes al implementar el algoritmo RC5.\relax }}{51}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de llave en bytes al implementar el algoritmo RC5.\relax }}{52}
 \contentsline {figure}{\numberline {4.17}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {Slices L} y \textit {Slices M} del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{52}
-\contentsline {figure}{\numberline {4.18}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {Slice Registers} y LUTs del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{52}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {Slice Registers} y LUTs del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{53}
 \contentsline {figure}{\numberline {4.19}{\ignorespaces Gr\IeC {\'a}fica de consumo de \textit {LUT as memory} y bloques de memoria RAM del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{53}
-\contentsline {figure}{\numberline {4.20}{\ignorespaces Gr\IeC {\'a}fica de frecuencia m\IeC {\'a}xima del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{53}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Gr\IeC {\'a}fica de frecuencia m\IeC {\'a}xima del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra al implementar el algoritmo RC5.\relax }}{54}
 \contentsline {figure}{\numberline {4.21}{\ignorespaces Gr\IeC {\'a}fica de consumo de recursos y frecuencia m\IeC {\'a}xima (normalizados respecto al valor m\IeC {\'\i }nimo) del FPGA contra la variaci\IeC {\'o}n del tama\IeC {\~n}o de palabra al implementar el algoritmo RC5.\relax }}{54}
 \contentsline {figure}{\numberline {4.22}{\ignorespaces Gr\IeC {\'a}fica del consumo de recursos y frecuencia m\IeC {\'a}xima (normalizados respecto al valor m\IeC {\'\i }nimo) del FPGA para los algoritmos algoritmo RC5 y TEA.\relax }}{56}
+\addvspace {10pt}

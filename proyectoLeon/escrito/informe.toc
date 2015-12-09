@@ -1,6 +1,6 @@
 \select@language {spanish}
-\contentsline {chapter}{\'{I}ndice de figuras}{xii}
-\contentsline {chapter}{\IeC {\'I}ndice de tablas}{xiv}
+\contentsline {chapter}{\'{I}ndice de figuras}{viii}
+\contentsline {chapter}{\IeC {\'I}ndice de tablas}{x}
 \contentsline {chapter}{\chapternumberline {1}Introducci\IeC {\'o}n}{1}
 \contentsline {section}{\numberline {1.1}Justificaci\IeC {\'o}n}{1}
 \contentsline {section}{\numberline {1.2}Alcances y limitaciones del proyecto}{2}
@@ -39,4 +39,5 @@
 \contentsline {subsection}{Resultados y an\IeC {\'a}lisis de la variaci\IeC {\'o}n del tama\IeC {\~n}o de la llave}{45}
 \contentsline {subsection}{Resultados y an\IeC {\'a}lisis de la variaci\IeC {\'o}n del tama\IeC {\~n}o de la palabra}{48}
 \contentsline {section}{\numberline {4.3}An\IeC {\'a}lisis comparativo}{55}
-\contentsline {chapter}{Bibliograf\'{\i }a}{57}
+\contentsline {chapter}{\chapternumberline {5}Conclusiones y recomendaciones}{57}
+\contentsline {chapter}{Bibliograf\'{\i }a}{59}
